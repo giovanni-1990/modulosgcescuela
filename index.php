@@ -26,9 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = "escuela2025"; // You should change this to a secure password
     
     if ($_POST['password'] === $password) {
-        $_SESSION['loggedin'] = true;
-        $_SESSION['last_activity'] = time();
-        header("Location: sgc.html");
+        $_SESSION['loggedin'] = true;        $_SESSION['last_activity'] = time();
+        header("Location: sgc.php");
         exit;
     } else {
         $error_message = "Contraseña incorrecta";
