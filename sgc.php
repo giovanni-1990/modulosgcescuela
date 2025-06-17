@@ -2371,7 +2371,11 @@ require_once 'session_check.php';
             <li><a href="#procesos">Procesos Misionales y de Apoyo</a></li>
             <li><a href="#beneficios">Beneficios del Sistema de Gestión de Calidad</a></li>        <li><a href="#eej-sgc">ESEJ en el SGC</a></li>        <li><a href="#recursos">Recursos</a></li>
         <li><a href="#red-docente" style="color: var(--accent-gold);">Red Docente</a></li>
-        <li><a href="logout.php" class="header-logout-btn" style="background-color:#dc3545;color:white;font-weight:bold;text-align:center;border-radius:4px;margin:10px 20px;display:block;">↪ Cerrar Sesión</a></li>
+        <li>
+            <form action="logout.php" method="post" style="margin:0;padding:0;">
+                <button type="submit" class="header-logout-btn" style="background-color:#dc3545;color:white;font-weight:bold;text-align:center;border-radius:4px;margin:10px 20px;display:block;width:100%;cursor:pointer;">↪ Cerrar Sesión</button>
+            </form>
+        </li>
     </ul>
     </nav>
 
