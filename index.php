@@ -12,11 +12,10 @@ if (isset($_SESSION['loggedin']) && isset($_SESSION['last_activity'])) {
         session_destroy();
         header("Location: index.php");
         exit;
-    } else {
-        // Update last activity time
+    } else {        // Update last activity time
         $_SESSION['last_activity'] = time();
-        // Redirect to sgc.html if session is valid
-        header("Location: sgc.html");
+        // Redirect to sgc.php if session is valid
+        header("Location: sgc.php");
         exit;
     }
 }
