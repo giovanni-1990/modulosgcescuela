@@ -178,8 +178,29 @@ require_once 'session_check.php';
             top: 50%;
             transform: translateY(-50%);
             display: flex;
-            align-items: flex-start;
-            gap: 15px;
+            align-items: center;
+            gap: 10px;
+        }
+        .header-logout-btn {
+            display: flex;
+            align-items: center;
+            background-color: #dc3545;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            border: 1px solid #bd2130;
+        }
+        .header-logout-btn:hover {
+            background-color: #c82333;
+            color: white;
+        }
+        .header-logout-btn .logout-icon {
+            margin-right: 8px;
+            font-size: 1.1em;
         }
 
         #startTourBtn {
