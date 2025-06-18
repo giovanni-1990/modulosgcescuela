@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedimiento y Mejora de Evaluación en Período de Prueba - OJ</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+        :root {
+            --color-primary-dark: #003366;
+            --color-primary-light: #4a90e2;
+            --color-gold: #d4af37;
+            --color-white: #ffffff;
+            --color-background: #f8f9fa;
+            --color-text: #333333;
+            --color-border: #dee2e6;
+        }
+
+        /* --- RESET Y ESTILOS BASE (MOBILE-FIRST) --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            margin: 0;
+            padding: 10px; /* Menos padding en móvil */
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 100%; /* El contenedor ocupa todo el ancho en móvil */
+            margin: 0 auto;
+            background-color: var(--color-white);
+            border: 1px solid var(--color-border);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary-light));
+            color: var(--color-white);
+            padding: 20px 15px; /* Padding ajustado para móvil */
+            text-align: center;
+            border-bottom: 4px solid var(--color-gold);
+        }
+
+        header h1 { margin: 0; font-size: 1.6em; font-weight: 700; }
+        header h2 { margin: 5px 0 0; font-size: 1em; font-weight: 400; opacity: 0.9; }
+        
+        .analysis-section, .scenarios-section { padding: 20px 15px; border-bottom: 1px solid var(--color-border); }
+        .analysis-section h2, .scenarios-section h2 { color: var(--color-primary-dark); border-bottom: 2px solid var(--color-gold); padding-bottom: 10px; text-align: center; font-size: 1.4em; }
+        
+        .analysis-grid { 
+            display: grid;
+            grid-template-columns: 1fr; /* Una columna por defecto para móviles */
+            gap: 20px; 
+            margin-top: 20px; 
+        }
+        .analysis-box { padding: 15px; border-radius: 8px; border: 1px solid var(--color-border); }
+        .analysis-box h3 { margin-top: 0; color: var(--color-primary-dark); }
+        .analysis-box ul li { text-align: justify; }
+
+        .flowchart { padding: 20px 10px; display: flex; flex-direction: column; align-items: center; }
+        .step, .decision { border: 2px solid var(--color-primary-light); border-radius: 8px; padding: 15px; margin-bottom: 20px; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .decision { border-style: dashed; border-color: var(--color-gold); background-color: #fffaf0; }
+        .step h3, .decision h3 { font-size: 1.2em; margin-top: 0; color: var(--color-primary-dark); border-bottom: 2px solid var(--color-gold); padding-bottom: 8px; display: flex; align-items: center; }
+        .step h3::before, .decision h3::before { content: '➤'; color: var(--color-gold); margin-right: 10px; font-size: 1.2em; }
+        .arrow { font-size: 2em; color: var(--color-primary-dark); margin-bottom: 20px; text-align: center; }
+        
+        p, .improvement-content ul, .improvement-content ol, .modal-content p { text-align: justify; }
+
+        details { border: 1px solid var(--color-border); border-radius: 5px; margin-top: 10px; }
+        summary { font-weight: 700; cursor: pointer; padding: 12px; background-color: #f1f1f1; color: var(--color-primary-dark); list-style-position: inside; border-radius: 4px; transition: background-color 0.2s; }
+        summary:hover { background-color: #e9ecef; }
+        summary::marker { color: var(--color-gold); }
+        
+        .improvement-content { padding: 15px; background-color: var(--color-white); border-top: 1px solid var(--color-border); }
+        
+        .action-button { 
+        background-color: var(--color-primary-light); 
+        color: white; 
+        padding: 10px 15px; 
+        border: none; 
+        border-radius: 5px; 
+        cursor: pointer; 
+        font-size: 1em; 
+        margin-top: 10px;
+        display: block;
+        width: auto; /* Cambiado de 100% a auto */
+        text-align: left; /* Añadido */
+        margin-left: 20px; /* Añadido */
+        }
+        
+        .test-cost { color: #556b2f; font-size: 0.85em; font-style: italic; display: block; margin-left: 15px; }
+
+        /* --- DIAGRAMA DEL COMITÉ (MOBILE-FIRST) --- */
+        .committee-flow-container { display: flex; flex-direction: column; align-items: center; width: 100%; margin-top: 20px; position: relative; }
+        .committee-hub { background-color: var(--color-primary-dark); color: var(--color-white); padding: 15px; border-radius: 8px; text-align: center; border: 3px solid var(--color-gold); z-index: 2; position: relative; }
+        .committee-hub h4 { margin: 0; font-size: 1.1em; }
+        .committee-hub span { font-size: 0.8em; opacity: 0.9; display: block; margin-top: 5px;}
+        .committee-hub::after { content: ''; position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); width: 3px; height: 22px; background-color: var(--color-primary-light); }
+
+        .committee-members { display: grid; grid-template-columns: 1fr; /* Una columna en móvil */ gap: 25px; width: 100%; margin-top: 40px; }
+        .committee-members::before { display: none; /* La línea horizontal no tiene sentido en móvil */ }
+        
+        .flow-member { position: relative; border: 1px solid var(--color-border); border-radius: 5px; margin: 0; transition: box-shadow 0.3s; }
+        .flow-member:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .flow-member::before { content: ''; position: absolute; top: -20px; left: 50%; transform: translateX(-50%); width: 3px; height: 20px; background-color: var(--color-primary-light); z-index: 1; }
+        .flow-member summary { border-radius: 4px 4px 0 0; padding: 15px; outline: none; }
+        .flow-member[open] > summary { background-color: var(--color-gold); color: var(--color-primary-dark); }
+        .member-content { padding: 15px; background-color: var(--color-white); border-top: 1px solid var(--color-border); border-radius: 0 0 4px 4px; }
+        .member-content p { font-size: 0.9em; margin-bottom: 10px; }
+        .member-content strong { color: var(--color-primary-dark); }
+        
+        .important-note { margin-top: 25px; padding: 15px 20px; background-color: #fffaf0; border-left: 5px solid var(--color-gold); border-radius: 8px; border: 1px solid #ffe8a1; }
+        .important-note p { margin: 0; color: var(--color-text); font-size: 0.95em; }
+        .important-note p strong { color: var(--color-primary-dark); }
+
+        /* --- ESTILOS PARA EL DIAGRAMA DE ESCENARIOS AÑADIDO --- */
+        .scenario-flow-container { margin-top: 20px; display: flex; flex-direction: column; align-items: center; }
+        .scenario-start { background-color: var(--color-primary-dark); color: var(--color-white); border-radius: 8px; padding: 15px 20px; text-align: center; border: 2px solid var(--color-primary-light); }
+        .scenario-start h3 { margin: 0; font-size: 1.1em; }
+        .scenario-branches { display: grid; grid-template-columns: 1fr; gap: 15px; width: 100%; margin-top: 20px; }
+        .scenario-card { background-color: #f0f8ff; border: 1px solid var(--color-primary-light); border-radius: 8px; padding: 15px; text-align: left; cursor: pointer; transition: all 0.3s ease; width: 100%; border-left-width: 5px; }
+        .scenario-card:hover { background-color: var(--color-primary-light); color: var(--color-white); border-color: var(--color-primary-dark); transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+        .scenario-card h4 { margin: 0 0 5px 0; color: var(--color-primary-dark); font-size: 1.1em; }
+        .scenario-card:hover h4 { color: var(--color-white); }
+        .scenario-card p { font-size: 0.9em; margin: 0; text-align: left;}
+
+        /* --- MODAL STYLES (MOBILE-FIRST) --- */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); animation: fadeIn 0.3s; }
+        .modal-content { background-color: #fefefe; margin: 5% auto; padding: 20px; border: 1px solid #888; width: 90%; max-width: 650px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.3); position: relative; }
+        .modal-content-large {
+            background-color: #fefefe;
+            margin: 2% auto; /* Menos margen superior para más espacio vertical */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 95%; /* Más ancho en móviles */
+            max-width: 950px; /* Ancho máximo para escritorios */
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .modal-content h3 { color: var(--color-primary-dark); margin-top: 0; border-bottom: 2px solid var(--color-gold); padding-bottom: 10px; }
+        .modal-content .justification { margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-left: 4px solid var(--color-primary-light); border-radius: 5px; }
+        .modal-content .justification strong { color: var(--color-primary-dark); }
+        .close-button { color: #aaa; float: right; font-size: 28px; font-weight: bold; position: absolute; top: 10px; right: 20px; }
+        .close-button:hover, .close-button:focus { color: black; text-decoration: none; cursor: pointer; }
+        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+
+        /* --- FOOTER STYLE --- */
+        footer { text-align: center; padding: 15px 20px; background-color: var(--color-primary-dark); color: rgba(255, 255, 255, 0.8); font-size: 0.85em; }
+        footer p { margin: 0; }
+        
+        /* --- ESTILOS PROPUESTA BARS --- */
+        #bars-proposal-content { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.6; color: #343a40; }
+        #bars-proposal-content .container { max-width: 100%; margin: 0; padding: 15px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        #bars-proposal-content .header { text-align: center; border-bottom: 2px solid #dee2e6; padding-bottom: 20px; margin-bottom: 30px; }
+        /* CAMBIO: Texto del encabezado a color oscuro */
+        #bars-proposal-content .header h1 { color: #333; margin: 0; font-size: 1.8em; }
+        #bars-proposal-content .header p { margin: 5px 0 0 0; font-size: 1.1em; color: #6c757d; }
+        /* CAMBIO: Texto de subtítulos a color oscuro */
+        #bars-proposal-content h2 { color: #333; border-bottom: 2px solid #bbdefb; padding-bottom: 10px; margin-top: 40px; text-align: left; }
+        #bars-proposal-content .section { margin-bottom: 30px; }
+        #bars-proposal-content .highlight-box { background-color: #e3f2fd; border-left: 5px solid #2196f3; padding: 20px; margin: 20px 0; border-radius: 5px; }
+        #bars-proposal-content .limitations-list li, #bars-proposal-content .benefits-list li { margin-bottom: 10px; }
+        #bars-proposal-content .limitations-list strong { color: #c62828; }
+        #bars-proposal-content .benefits-list strong { color: #2e7d32; }
+        #bars-proposal-content table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        #bars-proposal-content th, #bars-proposal-content td { padding: 12px; border: 1px solid #dee2e6; text-align: left; vertical-align: top; }
+        #bars-proposal-content th { background-color: #f1f3f5; font-weight: 600; }
+        #bars-proposal-content .comparison-table .before-col { background-color: #ffebee; }
+        #bars-proposal-content .comparison-table .after-col { background-color: #e8f5e9; }
+        #bars-proposal-content .footer { text-align: center; margin-top: 40px; font-size: 0.9em; color: #adb5bd; border-top: 1px solid #e9ecef; padding-top: 20px; }
+        
+        /* --- ESTILOS PARA EL FORMULARIO INTEGRADO (ENCAPSULADOS) --- */
+        #integrated-form-viewer { font-family: Arial, sans-serif; font-size: 12px; line-height: 1.5; background-color: #fff; color: #333; margin: 0; padding: 20px; }
+        #integrated-form-viewer .header { text-align: center; border-bottom: 3px solid #000; padding-bottom: 10px; margin-bottom: 20px; }
+        #integrated-form-viewer .header h1 { margin: 5px 0; font-size: 1.5em; color: #333; }
+        #integrated-form-viewer .header p { margin: 2px 0; font-size: 1em; }
+        #integrated-form-viewer .version-tag { float: right; font-weight: bold; border: 1px solid #000; padding: 5px 10px; }
+        #integrated-form-viewer .section-title { background-color: #e0e0e0; color: #000; padding: 8px; font-weight: bold; font-size: 1.1em; margin-top: 25px; border-left: 5px solid #555; text-align: left; }
+        #integrated-form-viewer table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        #integrated-form-viewer td, #integrated-form-viewer th { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+        #integrated-form-viewer .info-table td:first-child { font-weight: bold; width: 200px; }
+        #integrated-form-viewer input[type="text"], #integrated-form-viewer input[type="date"], #integrated-form-viewer select, #integrated-form-viewer textarea { width: 98%; padding: 5px; border: 1px solid #ccc; border-radius: 3px; font-family: Arial, sans-serif; font-size: 12px; }
+        #integrated-form-viewer textarea { height: 60px; resize: vertical; }
+        #integrated-form-viewer .factor-block { margin-bottom: 25px; border: 1px solid #e0e0e0; padding: 15px; border-radius: 5px; }
+        #integrated-form-viewer .factor-title { font-weight: bold; font-size: 1.1em; margin: 0 0 10px 0; color: #333; }
+        #integrated-form-viewer .bars-table th { background-color: #f2f2f2; text-align: left; }
+        #integrated-form-viewer .bars-table .radio-cell { text-align: center; width: 5%; }
+        #integrated-form-viewer .bars-table .level-cell { width: 15%; font-weight: bold; }
+        #integrated-form-viewer .bars-table .points-cell { width: 10%; text-align: center; }
+        #integrated-form-viewer .bars-table .weight-cell { width: 10%; text-align: center; font-style: italic; color: #555;}
+        #integrated-form-viewer .autoeval-section { background-color: #f9f9f9; border: 1px dashed #ccc; padding: 15px; margin-top: 20px; border-radius: 5px; }
+        #integrated-form-viewer .autoeval-section label { font-weight: bold; display: block; margin-top: 10px; }
+        #integrated-form-viewer .declaration-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
+        #integrated-form-viewer .signature-box { border: 1px solid #aaa; padding: 15px; text-align: center; }
+        #integrated-form-viewer .signature-area { height: 70px; margin: 20px 0 10px 0; border-bottom: 1px solid #000; }
+        #integrated-form-viewer footer { text-align: center; margin-top: 30px; font-size: 0.9em; color: #777; }
+        @media (max-width: 768px) { #integrated-form-viewer .declaration-grid { grid-template-columns: 1fr; } }
+
+
+        /* --- PUNTO DE QUIEBRE PARA TABLETS --- */
+        @media (min-width: 768px) {
+            body { padding: 20px; }
+            header { padding: 25px; }
+            header h1 { font-size: 1.8em; } header h2 { font-size: 1.1em; }
+            .analysis-section, .scenarios-section { padding: 30px 25px; }
+            .analysis-section h2, .scenarios-section h2 { font-size: 1.6em; }
+            .analysis-grid { grid-template-columns: 1fr 1fr; }
+            .scenario-branches { grid-template-columns: 1fr 1fr; gap: 20px; } /* Ajuste para escenarios */
+            .flowchart { padding: 30px 20px; }
+            .step, .decision { padding: 20px; }
+            .committee-members { grid-template-columns: repeat(2, 1fr); gap: 40px 25px; position: relative; padding-top: 20px; }
+            .committee-members::before { display: block; content: ''; position: absolute; top: 0; left: 25%; right: 25%; height: 3px; background-color: var(--color-primary-light); z-index: 1; }
+            .flow-member::before { left: 50%; }
+            .action-button { width: auto; }
+            .modal-content { margin: 10% auto; padding: 25px; }
+            #bars-proposal-content .container { padding: 30px 40px; }
+            #bars-proposal-content .header h1 { font-size: 2em; }
+        }
+
+        /* --- PUNTO DE QUIEBRE PARA ESCRITORIOS --- */
+        @media (min-width: 1024px) {
+            .container { max-width: 950px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+            header { padding: 30px; }
+            header h1 { font-size: 2em; } header h2 { font-size: 1.2em; }
+            .scenario-branches { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } /* Ajuste para escenarios */
+            .committee-members { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); left: 0; right: 0; }
+            .committee-members::before { left: 10%; right: 10%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Análisis y Procedimiento Mejorado de Evaluación en Período de Prueba</h1>
+        <h2>Basado en Art. 100 Pacto Colectivo - 2025, Ley de Servicio Civil (Dto. 48-99) y Formulario FO-GRH-UDIRH-14</h2>
+    </header>
+
+    <section class="analysis-section">
+        <h2>Análisis y Mejora del Instrumento (FO-GRH-UDIRH-14)</h2>
+        <div class="analysis-grid">
+            <div class="analysis-box">
+                <h3>Análisis del Instrumento Actual</h3>
+                <ul>
+                    <li><strong>Fortalezas:</strong> Estandarización, claridad en la puntuación y formalidad del proceso.</li>
+                    <li><strong>Debilidades:</strong> Alta subjetividad, falta de anclajes de comportamiento que definan cada puntaje, y un enfoque más reactivo que proactivo.</li>
+                </ul>
+            </div>
+            <div class="analysis-box">
+                <h3>Propuestas de Mejora al Instrumento</h3>
+                <ul>
+                    <li><strong>Implementar Escalas de Calificación con Anclaje Conductual (BARS) o bien la que se considere más adecuada.</strong>
+                         <details style="border:none; margin-top:5px;">
+                            <summary style="display:inline-block; padding: 5px 10px; font-size:0.9em; background-color:#eaf2fa; color: var(--color-primary-dark);">¿Qué es BARS?</summary>
+                            <div class="improvement-content" style="padding:10px; border-radius:5px; margin-top:5px;">
+                                <p><strong>BARS (Behaviorally Anchored Rating Scales)</strong> es una técnica que reduce la subjetividad al vincular calificaciones numéricas con descripciones específicas de conductas observables. Esto aumenta la consistencia y justicia de la evaluación.</p>
+                            </div>
+                        </details>
+                    </li>
+                    <li><strong>Añadir Sección de "Metas y Expectativas Iniciales"</strong>.</li>
+                    <li><strong>Transformar "Aspectos por mejorar" en un "Plan de Desarrollo"</strong>.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========= SECCIÓN DEL ACORDEÓN CON CONTENIDO ANIDADO Y BOTÓN PARA MODAL ========= -->
+    <section class="analysis-section">
+        <details>
+            <summary>Mejora al Instrumento de Evaluación del Período de Prueba</summary>
+            <div class="improvement-content">
+                <!-- Contenido de la propuesta BARS -->
+                <div id="bars-proposal-content">
+                    <div class="container">
+                        <header class="header"><h1>Propuesta de Mejora al Instrumento de Evaluación del Período de Prueba</h1><p>Implementación de la Metodología BARS (Escalas de Calificación Ancladas en el Comportamiento)</p></header>
+                        <main>
+                            <section class="section"><h2>1. Análisis del Instrumento Actual (FO-GRH-UDIRH-14)</h2><p>El formulario actual establece una base sólida para la evaluación del desempeño al definir 10 factores clave. Sin embargo, su eficacia se ve limitada por las siguientes debilidades inherentes a su diseño:</p><div class="highlight-box"><ul class="limitations-list"><li><strong>Subjetividad Elevada:</strong> Las etiquetas de calificación como "Satisfactorio" (10 puntos), "Moderadamente Bueno" (7-9 puntos) o "Muy Pobre" (4-6 puntos) son altamente interpretativas. Lo que un evaluador considera "Bueno" puede ser "Satisfactorio" para otro, llevando a inconsistencias.</li><li><strong>Ambigüedad en el Feedback:</strong> Para un empleado, recibir un "8" en "Productividad" no comunica qué comportamientos específicos debe mantener o mejorar. La retroalimentación carece de un anclaje conductual claro y accionable.</li><li><strong>Dificultad para Justificar:</strong> Los evaluadores pueden tener dificultades para argumentar de manera objetiva y defender una calificación específica, ya que se basa en un juicio general en lugar de en la observación de comportamientos concretos.</li><li><strong>Potencial de Sesgos:</strong> Un sistema subjetivo es más susceptible a sesgos personales (efecto halo, sesgo de recenticidad, etc.), lo que puede afectar la equidad del proceso.</li></ul></div></section>
+                            <section class="section"><h2>2. Propuesta de Solución: La Metodología BARS</h2><p>Proponemos evolucionar el instrumento actual implementando <strong>Escalas de Calificación Ancladas en el Comportamiento (BARS)</strong>. Este método no cambia los factores a evaluar, sino que redefine la escala de calificación, reemplazando las etiquetas ambiguas por descripciones concretas y observables de desempeño.</p><p>En lugar de preguntar al evaluador "qué tan bueno fue el empleado", se le pide que <strong>identifique cuál de las descripciones de comportamiento se alinea mejor con el desempeño observado</strong>.</p><h3>Comparativa Directa: Factor "Productividad"</h3><table class="comparison-table"><thead><tr><th class="before-col">MÉTODO ACTUAL (Subjetivo)</th><th class="after-col">MÉTODO BARS (Objetivo y Conductual)</th></tr></thead><tbody><tr><td class="before-col">El evaluador elige un valor numérico dentro de un rango.<br>- Satisfactorio (10 pts)<br>- Moderadamente Bueno (7-9 pts)<br>- Muy Pobre (4-6 pts)<br>- No Satisfactorio (0-3 pts)</td><td class="after-col">El evaluador selecciona la descripción que mejor se ajusta:<br><strong>(10 pts) Excepcional:</strong> "Consistentemente excede las metas. Completa tareas significativamente antes de los plazos y su trabajo rara vez necesita correcciones."<br><strong>(9 pts) Supera Expectativas:</strong> "Frecuentemente entrega más trabajo del esperado con alta calidad. Cumple todos sus plazos."<br><strong>(7-8 pts) Cumple Expectativas:</strong> "Completa la cantidad de trabajo esperada dentro de los plazos. Su trabajo es de buena calidad."</td></tr></tbody></table></section>
+                            <section class="section"><h2>3. Ventajas Clave de la Implementación de BARS</h2><p>La adopción de esta metodología transformará el proceso de evaluación en una herramienta estratégica con múltiples beneficios:</p<ul class="benefits-list"><li><strong>Mayor Objetividad y Equidad:</strong> Las evaluaciones se basan en evidencia observable y estándares claros, reduciendo drásticamente la subjetividad y los sesgos.</li><li><strong>Feedback Claro y Accionable:</strong> El empleado entiende exactamente qué comportamientos específicos lo llevaron a su calificación y qué debe hacer para mejorar. Las conversaciones de retroalimentación se vuelven más constructivas y enfocadas en el desarrollo.</li><li><strong>Consistencia entre Evaluadores:</strong> Todos los líderes utilizan el mismo lenguaje y los mismos criterios conductuales, lo que garantiza una aplicación más uniforme y justa de la evaluación en toda la organización.</li><li><strong>Defensa Legal y Administrativa Sólida:</strong> Las decisiones de personal (confirmar o no un puesto) están respaldadas por documentación conductual específica, lo que las hace más robustas y defendibles ante cualquier cuestionamiento.</li><li><strong>Herramienta de Desarrollo Integrada:</strong> El propio formulario sirve como una guía que comunica claramente a los empleados los comportamientos que son valorados y esperados para cada nivel de desempeño en su puesto.</li></ul></section>
+                            <section class="section"><h2>4. Conclusión y Recomendación</h2><p>La migración del actual sistema de evaluación a uno basado en BARS representa una mejora estratégica fundamental. No solo optimiza el proceso administrativo, sino que fomenta una cultura de retroalimentación clara, desarrollo continuo y gestión del desempeño justa y transparente.</p><p><strong>Recomendamos la aprobación para desarrollar e implementar la versión mejorada del Instrumento de Evaluación del Período de Prueba utilizando la metodología BARS.</strong></p></section>
+                        </main>
+                        <footer class="footer"><p>Gerencia de Recursos Humanos - Unidad de Desarrollo Integral</p><p>Organismo Judicial - Guatemala, C.A.</p></footer>
+                    </div>
+                </div>
+
+                <!-- Botón para abrir el modal del formulario -->
+                <button id="viewFormBtn" class="action-button" style="margin-left: 0; margin-top: 20px; width: 100%; text-align: center; padding: 12px; font-weight: bold; background-color: var(--color-gold); color: var(--color-primary-dark);">
+                    Visualizar Modelo de Formulario Integral (Versión 06-Integral)
+                </button>
+
+            </div>
+        </details>
+    </section>
+    <!-- ========= FIN DE LA SECCIÓN INTEGRADA ========= -->
+    
+
+    <!-- ========= SECCIÓN POSIBLES MOTIVOS ========= -->
+    <section class="scenarios-section">
+        <h2>Posibles Motivos para Solicitar Reevaluación</h2>
+        <div class="scenario-flow-container">
+            <div class="scenario-start">
+                <h3>El trabajador marca "NO CONFORME"</h3>
+            </div>
+            <div class="arrow">↓</div>
+            <div class="scenario-branches">
+                <button class="scenario-card" data-modal-target="modal-reason1">
+                    <h4>1. Desacuerdo con Calificaciones</h4>
+                    <p>Considera que las puntuaciones no reflejan su desempeño real.</p>
+                </button>
+                <button class="scenario-card" data-modal-target="modal-reason2">
+                    <h4>2. Falta de Evidencia</h4>
+                    <p>La evaluación carece de ejemplos concretos que la justifiquen.</p>
+                </button>
+                <button class="scenario-card" data-modal-target="modal-reason3">
+                    <h4>3. Incumplimiento del Procedimiento</h4>
+                    <p>Se omitieron pasos clave del proceso de evaluación establecido.</p>
+                </button>
+                <button class="scenario-card" data-modal-target="modal-reason4">
+                    <h4>4. Factores Externos</h4>
+                    <p>No se consideraron circunstancias ajenas que afectaron el rendimiento.</p>
+                </button>
+                 <button class="scenario-card" data-modal-target="modal-reason5">
+                    <h4>5. Percepción de Sesgo</h4>
+                    <p>Cree que la evaluación fue influenciada por factores no laborales.</p>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- ========= FIN DE LA SECCIÓN POSIBLES MOTIVOS ========= -->
+
+    <main class="flowchart">
+        <!-- PASO 1 -->
+        <div class="step">
+            <h3>1. Evaluación Inicial del Desempeño</h3>
+            <p>El jefe inmediato realiza la evaluación utilizando el instrumento <strong>FO-GRH-UDIRH-14</strong>. La evaluación debe ser objetiva, basándose en el desempeño observado durante el período de prueba.</p>
+            <details>
+                <summary>Propuestas de Mejora, Métodos y Herramientas</summary>
+                <div class="improvement-content">
+                    <h4>Propuesta de Mejora en el Proceso:</h4>
+                    <p>La evaluación no debe ser un evento único al final. Debe ser el resultado de un seguimiento continuo.</p>
+                    <h4>Métodos:</h4>
+                    <ul>
+                        <li><strong>Reunión Inicial:</strong> Al comenzar el período, jefe y empleado llenan la sección propuesta de "Metas y Expectativas Iniciales".</li>
+                        <li><strong>Reuniones de Seguimiento:</strong> Breves reuniones quincenales o mensuales para dar retroalimentación (feedback) continua.</li>
+                    </ul>
+                    <h4>Herramientas:</h4>
+                    <ul>
+                        <li><strong>Instrumento Mejorado (FO-GRH-UDIRH-14 v2.0):</strong> Utilizar la versión con escalas BARS y plan de metas.</li>
+                        <li><strong>Bitácora de Desempeño:</strong> El evaluador debe llevar un registro de incidentes críticos (positivos y negativos) con fechas y hechos concretos para justificar cada calificación.</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <!-- DECISIÓN 1 -->
+        <div class="decision">
+            <h3>2. Resultado de la Evaluación: ¿El trabajador está conforme?</h3>
+            <p>Se presenta el resultado y el trabajador firma marcando "CONFORME" o "NO CONFORME".</p>
+        </div>
+        
+        <div class="arrow">↓ (Ruta en caso de "NO CONFORME")</div>
+
+        <!-- PASO 3 -->
+        <div class="step">
+            <h3>3. Solicitud de Reevaluación</h3>
+            <p>El trabajador presenta un escrito a RR.HH. en <strong>3 días hábiles (definir a partir de cuando, comienza a correr los días)</strong>, detallando los puntos de inconformidad.</p>
+        </div>
+        
+        <div class="arrow">↓</div>
+        
+        <!-- DIAGRAMA DE FLUJO INTERACTIVO DEL COMITÉ -->
+        <div class="step">
+            <h3>4. Integración del Comité Técnico Reevaluador</h3>
+            <p>Tras recibir la solicitud de reevaluación, la Gerencia de Recursos Humanos (GRH) conforma un comité técnico multidisciplinario para garantizar un análisis integral, objetivo e imparcial. Este comité es responsable de llevar a cabo la evaluación complementaria.</p>
+            
+            <div class="committee-flow-container">
+                <div class="committee-hub">
+                    <h4>Comité Técnico Reevaluador</h4>
+                    <span>Haga clic en cada miembro para ver su rol y justificación</span>
+                </div>
+                <div class="committee-members">
+                    <details class="flow-member">
+                        <summary>Unidad de Desarrollo Integral / Dotación (GRH)</summary>
+                        <div class="member-content">
+                            <p><strong>Justificación Legal:</strong> Se fundamenta en la Ley de Servicio Civil (Decreto 1748 y sus reformas), su Reglamento, y las normativas internas del Organismo Judicial, que delegan en la Dirección de Recursos Humanos la gestión del personal, incluyendo los procesos de evaluación, seguimiento y administración del talento humano.</p>
+                            <p><strong>Razón de su Participación:</strong> Actúa como coordinador del proceso. Tiene a su cargo la convocatoria del comité, la provisión del expediente del caso, la verificación del cumplimiento de plazos y formalidades, así como la documentación integral de todas las actuaciones, asegurando la trazabilidad y legalidad del procedimiento.</p>
+                        </div>
+                    </details>
+                    <details class="flow-member">
+                        <summary>Escuela de Estudios Judiciales (EEJ)</summary>
+                        <div class="member-content">
+                            <p><strong>Justificación Legal:</strong> Con base en el artículo 100 del Pacto Colectivo de Condiciones de Trabajo del Organismo Judicial - 2025, la EEJ es designada como la entidad técnica responsable de realizar la evaluación complementaria en caso de inconformidad con los resultados de un proceso evaluativo.</p>
+                            <p><strong>Razón de su Participación:</strong> Aporta su experticia técnica en la evaluación de competencias laborales. Está encargada del diseño, aplicación e interpretación de pruebas técnicas —como entrevistas, simulaciones u otros instrumentos—, con el fin de medir objetivamente el desempeño y las capacidades del trabajador, asegurando imparcialidad y rigor técnico en el proceso.</p>
+                        </div>
+                    </details>
+                    <details class="flow-member">
+                        <summary>Asesor Jurídico</summary>
+                        <div class="member-content">
+                             <p><strong>Justificación Legal:</strong> Se fundamenta en el principio del debido proceso, conforme al artículo 12 de la Constitución Política de la República de Guatemala (CPRG); en el principio de legalidad de los actos administrativos, regulado en la Ley de lo Contencioso Administrativo; y en el respeto al derecho de defensa del trabajador, como garantía fundamental en procedimientos administrativos o disciplinarios.</p>
+                             <p><strong>Razón de su Participación:</strong>Actúa como observador para velar por la transparencia, objetividad y probidad en el desarrollo del proceso. Su función principal es verificar que no existan conflictos de interés, sesgos ni presiones indebidas, contribuyendo así a fortalecer la legitimidad institucional y la confianza en los resultados del procedimiento.</p>
+                        </div>
+                    </details>
+                    <details class="flow-member">
+                        <summary>Representante del Sistema de Integridad</summary>
+                        <div class="member-content">
+                            <p><strong>Justificación Legal:</strong> Política de Integridad del Organismo Judicial, Ley contra la Corrupción (Decreto 9-2012) y normativa ética interna.</p>
+                            <p><strong>Razón de su Participación:</strong> Actúa como observador para garantizar la transparencia, objetividad y probidad del proceso. Verifica que no existan conflictos de interés, sesgos o presiones indebidas, fortaleciendo la legitimidad y confianza en el resultado.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <div class="important-note">
+                <p><strong>Importante:</strong> Con base al artículo 100 del Pacto Colectivo de Condiciones de Trabajo del Organismo Judicial - 2025, "para este trámite, el trabajador podrá ser apoyado por un representante del "S.T.O.J" o de cualquier profesional de su elección para garantizar la transparencia del proceso"."</p>
+            </div>
+
+        </div>
+        
+        <div class="arrow">↓</div>
+
+        <!-- PASO 5 -->
+        <div class="step">
+            <h3>5. Ejecución de la Reevaluación por el Comité</h3>
+            <p>El Comité Técnico Reevaluador ejecuta la <strong>evaluación complementaria</strong> en <strong>5 días hábiles (definir a partir de cuando, comienza a correr los días)</strong>, usando métodos técnicos para asegurar la imparcialidad. La EEJ lidera la aplicación de las pruebas.</p>
+            <details>
+                <summary>Métodos y Pruebas a realizar por la EEJ</summary>
+                <div class="improvement-content">
+                    <ol>
+                        <li><strong>Análisis Documental:</strong> Revisión del expediente de evaluación.</li>
+                        <li><strong>Entrevista por Competencias (Prueba Oral):</strong> Se indaga sobre conductas pasadas.
+                            <button id="interviewBtn" class="action-button">Ver Ejemplos de Preguntas</button>
+                        </li>
+                        <li><strong>Pruebas Prácticas / Simulaciones (Prueba de Ejecución):</strong> Se evalúa la habilidad para realizar tareas clave del puesto.</li>
+                        <li><strong>Prueba de Juicio Situacional (Prueba Escrita/Oral):</strong> Se presentan dilemas para evaluar la toma de decisiones y la ética.
+                             <button id="sjtBtn" class="action-button">Ver Casos de Juicio Situacional</button>
+                        </li>
+                    </ol>
+                    <details>
+                        <summary>Posibles Pruebas Psicométricas a Utilizar</summary>
+                        <div class="improvement-content">
+                            <p>Estas pruebas deben ser aplicadas e interpretadas por un psicólogo. Sirven como complemento para entender rasgos de personalidad, aptitudes y estilos de trabajo.</p>
+                            <ul style="text-align: left; padding-left: 20px;">
+                                <li><strong>Test de Moss:</strong> Mide habilidades de supervisión y relaciones interpersonales.<span class="test-cost">Costo variable, requiere licencia o compra a distribuidores.</span></li>
+                                <li><strong>Test Wartegg (8 campos):</strong> Evalúa aspectos de la personalidad.<span class="test-cost">Generalmente sin costo de material, pero incluido en el costo de una evaluación psicológica completa.</span></li>
+                                <li><strong>Test de Terman-Merril:</strong> Mide capacidad intelectual.<span class="test-cost">Versiones antiguas de dominio público. Versiones actualizadas requieren compra.</span></li>
+                                <li><strong>Test de Cleaver (DISC):</strong> Identifica el comportamiento en el trabajo.<span class="test-cost">Costo por evaluación, requiere certificación y compra a proveedores como TTI Success Insights.</span></li>
+                                <li><strong>Test 16PF:</strong> Perfil amplio de 16 factores de la personalidad.<span class="test-cost">Requiere licencia y compra a IPAT o distribuidores autorizados.</span></li>
+                                <li><strong>Test de Aptitudes Diferenciales (DAT-5):</strong> Mide habilidades específicas.<span class="test-cost">Costo por licencia de uso, vendido por Pearson Assessments.</span></li>
+                                <li><strong>Test de Zavic:</strong> Mide intereses y valores laborales.<span class="test-cost">Costo por aplicación, distribuido por manualmoderno.com u otros.</span></li>
+                                <li><strong>Test de Wonderlic:</strong> Prueba rápida de agilidad mental.<span class="test-cost">Costo por prueba o por volumen, vendido directamente por Wonderlic.</span></li>
+                                <li><strong>Inventario de Coeficiente Emocional (BarOn ICE):</strong> Mide la inteligencia emocional.<span class="test-cost">Costo por licencia de uso, requiere compra a MHS Assessments.</span></li>
+                                <li><strong>Test de la Persona Bajo la Lluvia:</strong> Técnica proyectiva para evaluar manejo del estrés.<span class="test-cost">Sin costo de material, pero su interpretación profesional tiene un costo.</span></li>
+                                <li><strong>Test de Lüscher (Test de los Colores):</strong> Técnica proyectiva de estado psicofisiológico.<span class="test-cost">Material con costo, interpretación profesional es el costo principal.</span></li>
+                                <li><strong>Evaluación de Potencial SHL (OPQ):</strong> Cuestionario de personalidad ocupacional.<span class="test-cost">Alto costo, requiere licencia corporativa con SHL.</span></li>
+                                <li><strong>Test Kostick (PAPI):</strong> Mide la percepción y preferencias en el trabajo.<span class="test-cost">Requiere licencia y certificación, distribuido por Cubiks o similares.</span></li>
+                                <li><strong>Inventario de Hogan (HPI, HDS, MVPI):</strong> Suite de tests predictivos de rendimiento laboral.<span class="test-cost">Alto costo, requiere certificación y se adquiere a través de distribuidores autorizados.</span></li>
+                                <li><strong>Inventario Multifásico de Personalidad de Minnesota (MMPI-2):</strong> Herramienta clínica para perfiles de personalidad.<span class="test-cost">Uso restringido a psicólogos clínicos. Alto costo, adquirido vía Pearson Assessments.</span></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </details>
+        </div>
+        <div class="arrow">↓</div>
+        <!-- PASO 6 -->
+        <div class="step"><h3>6. Resolución Definitiva</h3><p>Con base en el dictamen técnico, objetivo y colegiado del Comité Reevaluador, se resuelve la situación del trabajador en <strong>3 días</strong>.</p></div>
+    </main>
+
+    <footer>
+        <p>Autor: Lic. Giovanni Arias - Gestor de Calidad de la Escuela de Estudios Judiciales</p>
+    </footer>
+</div>
+
+<!-- MODAL PARA EL FORMULARIO INTEGRAL (NUEVO) -->
+<div id="formModal" class="modal">
+    <div class="modal-content-large">
+        <span class="close-button">&times;</span>
+        <div id="integrated-form-viewer">
+            <header class="header">
+                <h1>INSTRUMENTO DE EVALUACIÓN INTEGRAL DEL PERÍODO DE PRUEBA</h1>
+                <p>(Modelo BARS con Objetivos, Ponderación y Autoevaluación)</p>
+            </header>
+            <main>
+                <table class="info-table">
+                    <tr><td>NOMBRE DEL EMPLEADO:</td> <td><input type="text"></td><td>PUESTO:</td> <td><input type="text"></td></tr>
+                    <tr><td>DEPENDENCIA:</td> <td><input type="text"></td><td>TELÉFONO DE LA DEPENDENCIA:</td> <td><input type="text"></td></tr>
+                    <tr><td>NOMBRE Y CARGO DE JEFE INMEDIATO:</td> <td><input type="text"></td><td>PERFIL DEL PUESTO:</td><td><select><option value="">Seleccione...</option><option value="admin">Administrativo / Soporte</option><option value="atencion">Atención al Público</option><option value="tecnico">Técnico / Especialista</option><option value="judicial">Judicial / Jurídico</option></select></td></tr>
+                </table>
+                <table class="info-table">
+                    <tr><td>TIPO DE PROCESO:</td><td><input type="checkbox" id="ingreso_form"> <label for="ingreso_form">PRIMER INGRESO (Tres meses)</label><br><input type="checkbox" id="ascenso_form"> <label for="ascenso_form">ASCENSO (Dos meses)</label></td><td>PERÍODO DE PRUEBA:</td><td>DE: <input type="date" style="width: 40%;"> HASTA: <input type="date" style="width: 40%;"></td></tr>
+                </table>
+                <h2 class="section-title">I. OBJETIVOS Y LOGROS CLAVE (A definir al inicio del período)</h2>
+                <p><strong>Instrucciones:</strong> Al inicio del período, el evaluador y el empleado deben definir de 2 a 4 objetivos clave. Al final, se evaluará el resultado alcanzado.</p>
+                <table class="info-table">
+                    <thead><tr><th>Objetivo Clave</th><th>Resultado Alcanzado (Evaluado al final)</th></tr></thead>
+                    <tbody>
+                        <tr><td><textarea placeholder="Ej: Aprender a generar reportes semanales del sistema X de forma autónoma."></textarea></td><td><textarea placeholder="Ej: Logró la autonomía en la semana 6. Los reportes se entregan a tiempo y sin errores."></textarea></td></tr>
+                        <tr><td><textarea placeholder="Ej: Digitalizar 100 expedientes del archivo Y con un 98% de precisión."></textarea></td><td><textarea placeholder="Ej: Superó la meta, digitalizando 115 expedientes. La auditoría mostró un 99.5% de precisión."></textarea></td></tr>
+                    </tbody>
+                </table>
+                <h2 class="section-title">II. EVALUACIÓN DE COMPETENCIAS (BARS)</h2>
+                <p><strong>Instrucciones:</strong> Para cada factor, marque la opción que mejor describa el desempeño del trabajador. La nota se ponderará según el perfil del puesto.</p>
+                <div class="factor-block"><h3 class="factor-title">1. Conocimiento del trabajo: Habilidades, información práctica y técnicas usadas.</h3><table class="bars-table"><thead><tr><th class="radio-cell">Marcar</th><th class="level-cell">Nivel</th><th class="points-cell">Puntos</th><th class="weight-cell">Peso</th><th>Descripción del Comportamiento</th></tr></thead><tbody><tr><td class="radio-cell"><input type="radio" name="factor1"></td><td class="level-cell">Excepcional</td><td class="points-cell">10</td><td class="weight-cell">(15%)</td><td>Domina todos los aspectos de su puesto y es un referente para otros. Aplica su conocimiento para proponer mejoras.</td></tr><tr><td class="radio-cell"><input type="radio" name="factor1"></td><td class="level-cell">Supera Expectativas</td><td class="points-cell">9</td><td class="weight-cell">(15%)</td><td>Demuestra un sólido conocimiento y rara vez necesita ayuda. Aprende rápidamente nuevas tareas y procedimientos.</td></tr><tr><td class="radio-cell"><input type="radio" name="factor1"></td><td class="level-cell">Cumple Expectativas</td><td class="points-cell">7-8</td><td class="weight-cell">(15%)</td><td>Posee el conocimiento necesario para desempeñar sus funciones eficazmente. Busca ayuda cuando se enfrenta a situaciones nuevas.</td></tr><tr><td class="radio-cell"><input type="radio" name="factor1"></td><td class="level-cell">Necesita Mejorar</td><td class="points-cell">4-6</td><td class="weight-cell">(15%)</td><td>Muestra vacíos en el conocimiento de tareas clave. Comete errores por falta de entendimiento de los procedimientos.</td></tr><tr><td class="radio-cell"><input type="radio" name="factor1"></td><td class="level-cell">Inaceptable</td><td class="points-cell">0-3</td><td class="weight-cell">(15%)</td><td>Carece del conocimiento fundamental para realizar su trabajo, requiriendo supervisión y ayuda constantes.</td></tr></tbody></table></div>
+                <div class="factor-block"><h3 class="factor-title">9. Servicio: Espíritu de servicio hacia el usuario externo e interno.</h3><table class="bars-table"><thead><tr><th class="radio-cell">Marcar</th><th class="level-cell">Nivel</th><th class="points-cell">Puntos</th><th class="weight-cell">Peso</th><th>Descripción del Comportamiento</th></tr></thead><tbody><tr><td class="radio-cell"><input type="radio" name="factor9"></td><td class="level-cell">Excepcional</td><td class="points-cell">10</td><td class="weight-cell">(25%)</td><td>Se anticipa a las necesidades de los usuarios y ofrece soluciones proactivas. Recibe consistentemente elogios.</td></tr><tr><td class="radio-cell"><input type="radio" name="factor9"></td><td class="level-cell">Supera Expectativas</td><td class="points-cell">9</td><td class="weight-cell">(25%)</td><td>Muestra una actitud consistentemente positiva y servicial. Hace un esfuerzo adicional para resolver problemas.</td></tr><tr><td class="radio-cell"><input type="radio" name="factor9"></td><td class="level-cell">Cumple Expectativas</td><td class="points-cell">7-8</td><td class="weight-cell">(25%)</td><td>Responde a las solicitudes de manera cortés y oportuna. Proporciona información precisa.</td></tr><tr><td class="radio-cell"><input type="radio" name="factor9"></td><td class="level-cell">Necesita Mejorar</td><td class="points-cell">4-6</td><td class="weight-cell">(25%)</td><td>A veces se muestra impaciente o indiferente a las necesidades de los usuarios. Proporciona información incompleta.</td></tr><tr><td class="radio-cell"><input type="radio" name="factor9"></td><td class="level-cell">Inaceptable</td><td class="points-cell">0-3</td><td class="weight-cell">(25%)</td><td>Ha generado quejas de usuarios por su trato o falta de respuesta. Muestra una actitud negativa.</td></tr></tbody></table></div>
+                <h2 class="section-title">III. AUTOEVALUACIÓN DEL COLABORADOR (A completar por el empleado antes de la reunión)</h2>
+                <div class="autoeval-section"><p><strong>Instrucciones:</strong> Su perspectiva es fundamental. Por favor, reflexione sobre su desempeño durante este período y responda a las siguientes preguntas. Esto servirá como base para un diálogo constructivo con su evaluador.</p><label for="logros_form">1. ¿Cuáles considera que fueron sus logros más importantes durante este período?</label><textarea id="logros_form"></textarea><label for="desafios_form">2. ¿Qué desafíos encontró y cómo los gestionó?</label><textarea id="desafios_form"></textarea><label for="apoyo_form">3. ¿Qué apoyo, capacitación o recursos le ayudarían a tener aún más éxito en su puesto?</label><textarea id="apoyo_form"></textarea></div>
+                <h2 class="section-title">IV. RESULTADO GENERAL Y DECISIÓN</h2>
+                <table class="info-table"><tr><td>PUNTEO TOTAL PONDERADO:</td><td><input type="text" placeholder="Cálculo automático" style="width: 150px; font-weight: bold; text-align: center;" disabled></td><td colspan="2"><strong>SATISFACTORIO:</strong> 60 a 100 puntos. (Se considera confirmado el puesto)<br><strong>INSATISFACTORIO:</strong> 0 a 59 puntos.</td></tr><tr><td>DECISIÓN DE LA JEFATURA:</td><td colspan="3"><input type="radio" name="confirmacion" id="conf_si_form"> <label for="conf_si_form">Confirmar en el puesto</label><input type="radio" name="confirmacion" id="conf_no_form" style="margin-left: 20px;"> <label for="conf_no_form">No confirmar en el puesto</label></td></tr></table>
+                <p><strong>Comentarios finales del Evaluador (Justificación de la decisión y plan de acción):</strong></p><textarea></textarea>
+                <h2 class="section-title">V. DECLARACIÓN Y FIRMAS</h2>
+                <div class="declaration-grid"><div class="signature-box"><p>Este informe se basa en mis observaciones del trabajador en el puesto.</p><div class="signature-area"></div><p><strong>Firma y Sello del Evaluador</strong></p></div><div class="signature-box"><p>Visto Bueno</p><div class="signature-area"></div><p><strong>Firma y Sello del Jefe de la Dependencia</strong></p></div><div class="signature-box"><p>Mi firma indica que he revisado esta evaluación y he tenido la oportunidad de discutirla.</p><input type="checkbox" id="conforme_form"> <label for="conforme_form">CONFORME</label><input type="checkbox" id="no_conforme_form" style="margin-left:15px;"> <label for="no_conforme_form">NO CONFORME</label><div class="signature-area"></div><p><strong>Firma del Empleado</strong></p></div></div>
+            </main>
+        </div>
+    </div>
+</div>
+
+<!-- MODALES PARA MOTIVOS DE REEVALUACIÓN -->
+<div id="modal-reason1" class="modal"><div class="modal-content"><span class="close-button">&times;</span><h3>Motivo 1: Desacuerdo con Calificaciones</h3><p>El trabajador considera que las puntuaciones asignadas en uno o varios rubros no reflejan objetivamente su desempeño real. Siente que su rendimiento fue superior al calificado por el jefe inmediato, y puede presentar ejemplos o resultados de su trabajo que contradicen la nota asignada.</p><div class="justification"><p><strong>Justificación Legal y Procedimental:</strong> Se apela al <strong>Principio de Objetividad</strong>. La evaluación debe basarse en el mérito y el desempeño demostrado, no en percepciones subjetivas. El trabajador ejerce su <strong>derecho de defensa y de revisión</strong> de un acto administrativo (la evaluación) que le afecta directamente.</p></div></div></div>
+<div id="modal-reason2" class="modal"><div class="modal-content"><span class="close-button">&times;</span><h3>Motivo 2: Falta de Evidencia Concreta</h3><p>La evaluación presenta calificaciones bajas o "aspectos a mejorar" sin estar respaldada por ejemplos específicos, fechas o hechos concretos (incidentes críticos) que justifiquen dicha puntuación. La crítica es genérica y no permite al trabajador entender qué conductas específicas debe corregir.</p><div class="justification"><p><strong>Justificación Legal y Procedimental:</strong> Se basa en el <strong>Principio de Motivación de los Actos Administrativos</strong> y el <strong>Debido Proceso</strong>. Toda decisión de la autoridad (en este caso, el evaluador) debe estar debidamente fundamentada en hechos y pruebas. Sin evidencia, la evaluación se presume arbitraria.</p></div></div></div>
+<div id="modal-reason3" class="modal"><div class="modal-content"><span class="close-button">&times;</span><h3>Motivo 3: Incumplimiento del Procedimiento</h3><p>El trabajador argumenta que el proceso de evaluación no siguió los pasos debidos establecidos en la normativa interna. Por ejemplo, la falta de una reunión de retroalimentación, no haber establecido metas claras al inicio del período, o que la evaluación fue realizada fuera de los plazos estipulados.</p><div class="justification"><p><strong>Justificación Legal y Procedimental:</strong> Se invoca el <strong>Principio de Legalidad</strong> y el <strong>Debido Proceso</strong>. La administración pública (y sus funcionarios) debe actuar conforme a los procedimientos establecidos. El incumplimiento de una formalidad esencial puede viciar de nulidad el acto evaluativo.</p></div></div></div>
+<div id="modal-reason4" class="modal"><div class="modal-content"><span class="close-button">&times;</span><h3>Motivo 4: Factores Externos No Considerados</h3><p>Existieron circunstancias ajenas al control del trabajador que afectaron significativamente su desempeño y que, a su juicio, no fueron tomadas en cuenta en la evaluación. Ejemplos incluyen la falta de herramientas adecuadas, una sobrecarga de trabajo imprevista y no gestionada, o falta de capacitación para nuevas tareas asignadas.</p><div class="justification"><p><strong>Justificación Legal y Procedimental:</strong> Apela a los <strong>Principios de Equidad y Razonabilidad</strong>. Una evaluación justa debe considerar el contexto en el que se desempeñó el trabajo. Responsabilizar al trabajador por fallas del sistema o circunstancias de fuerza mayor es contrario a una evaluación equitativa del mérito.</p></div></div></div>
+<div id="modal-reason5" class="modal"><div class="modal-content"><span class="close-button">&times;</span><h3>Motivo 5: Percepción de Sesgo o Discriminación</h3><p>El trabajador tiene indicios razonables para creer que la evaluación fue influenciada negativamente por factores subjetivos no relacionados con su desempeño laboral. Esto puede incluir conflictos personales con el evaluador, prejuicios, acoso laboral o cualquier forma de trato desigual o discriminatorio.</p><div class="justification"><p><strong>Justificación Legal y Procedimental:</strong> Este es el alegato más grave. Se fundamenta en el <strong>Derecho a la Igualdad y No Discriminación</strong> (garantía constitucional) y en los <strong>Principios de Imparcialidad y Probidad</strong> que rigen la función pública. Probarlo requiere indicios sólidos, pero su sola alegación fundamentada obliga a una revisión exhaustiva e imparcial.</p></div></div></div>
+
+<!-- Modales Originales -->
+<div id="interviewModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h3>Ejemplos de Preguntas para Entrevista por Competencias</h3>
+    <p>Buscan que el candidato describa situaciones pasadas (método STAR: Situación, Tarea, Acción, Resultado).</p>
+    <ul>
+        <li><strong>Responsabilidad:</strong> Describa una ocasión en la que cometió un error. ¿Cómo lo manejó y qué aprendió?</li>
+        <li><strong>Iniciativa:</strong> Cuente sobre una vez que identificó una mejora que nadie más había visto. ¿Qué hizo?</li>
+        <li><strong>Trabajo en Equipo:</strong> Hábleme de una experiencia trabajando con un compañero difícil. ¿Cómo logró cumplir el objetivo?</li>
+        <li><strong>Servicio al Usuario:</strong> Describa la situación más difícil que ha enfrentado con un usuario. ¿Cómo la resolvió?</li>
+        <li><strong>Integridad:</strong> Describa una situación en la que se sintió presionado para romper una regla. ¿Qué hizo?</li>
+    </ul>
+  </div>
+</div>
+<div id="sjtModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h3>10 Casos de Juicio Situacional Posibles</h3>
+    <p>Se presentan dilemas para evaluar la toma de decisiones, la ética y la priorización en el contexto laboral.</p>
+    <ol>
+        <li>Un abogado conocido le pide "darle una revisada" a un expediente fuera de turno para ver si "todo va bien". <strong>¿Cómo responde?</strong></li>
+        <li>Se da cuenta que un compañero cometió un error en una notificación que podría anular parte de un proceso. Su compañero es también su amigo. <strong>¿Qué hace?</strong></li>
+        <li>Recibe una instrucción de su jefe que usted considera contraria a un reglamento interno. <strong>¿Cómo procede?</strong></li>
+        <li>Un usuario le grita en el mostrador frente a otros, quejándose de la lentitud del sistema. <strong>¿Cuál es su reacción y sus pasos a seguir?</strong></li>
+        <li>Tiene una carga de trabajo muy alta y sabe que no podrá cumplir con todos los plazos del día. <strong>¿Cómo organiza su trabajo y a quién comunica la situación?</strong></li>
+    </ol>
+  </div>
+</div>
+
+<!-- SCRIPT UNIFICADO PARA TODOS LOS MODALES -->
+<script>
+    // --- LÓGICA GENERAL PARA TODOS LOS MODALES ---
+    const allModals = document.querySelectorAll('.modal');
+    
+    // 1. Abrir modales con 'data-modal-target' (para los botones de escenarios)
+    const modalTriggers = document.querySelectorAll('[data-modal-target]');
+    modalTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const modalId = trigger.getAttribute('data-modal-target');
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+            }
+        });
+    });
+
+    // 2. Abrir modales específicos por ID
+    const interviewBtn = document.getElementById("interviewBtn");
+    const sjtBtn = document.getElementById("sjtBtn");
+    const viewFormBtn = document.getElementById("viewFormBtn"); // Nuevo botón
+    const formModal = document.getElementById("formModal"); // Nuevo modal
+
+    if(interviewBtn) interviewBtn.onclick = () => document.getElementById('interviewModal').style.display = 'block';
+    if(sjtBtn) sjtBtn.onclick = () => document.getElementById('sjtModal').style.display = 'block';
+    if(viewFormBtn) viewFormBtn.onclick = () => formModal.style.display = 'block'; // Lógica para el nuevo botón
+
+    // 3. Cerrar cualquier modal al hacer clic en su botón 'x' o fuera del contenido
+    allModals.forEach(modal => {
+        const closeButton = modal.querySelector('.close-button');
+        if (closeButton) {
+            closeButton.onclick = () => {
+                modal.style.display = 'none';
+            };
+        }
+    });
+    window.onclick = function(event) {
+        allModals.forEach(modal => {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
