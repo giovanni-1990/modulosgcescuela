@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Reportes de Servicio No Conforme - EEJ</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        header {
+            text-align: center;
+            border-bottom: 2px solid #004a99;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+        }
+        header img {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+        header h1 {
+            color: #004a99;
+            margin: 0;
+        }
+        header p {
+            color: #555;
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+        h2 {
+            color: #0056b3;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+            margin-top: 15px;
+        }
+        .filter-buttons button {
+            padding: 8px 15px;
+            border: 1px solid #0056b3;
+            background-color: #fff;
+            color: #0056b3;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .filter-buttons button:hover {
+            background-color: #eaf4ff;
+        }
+        .filter-buttons button.active {
+            background-color: #0056b3;
+            color: #fff;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background-color: #eaf4ff;
+            border-left: 5px solid #0056b3;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #004a99;
+        }
+        .stat-card .label {
+            font-size: 1em;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: bold;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .status-publicado {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .error-category {
+            margin-bottom: 25px;
+        }
+        .error-category h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            height: 25px;
+            width: 100%;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            background-color: #007bff;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+            white-space: nowrap;
+            transition: width 0.5s ease-in-out;
+        }
+        details {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #fdfdfd;
+        }
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: #0056b3;
+            padding: 5px;
+        }
+        .recommendations {
+            margin-top: 40px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-left: 5px solid #17a2b8;
+            padding: 20px 30px;
+            border-radius: 8px;
+        }
+        .recommendations ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .recommendations li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .recommendations li::before {
+            content: '✔';
+            color: #17a2b8;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #777;
+            font-size: 0.9em;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 50vh;
+            width: 100%;
+            max-width: 1100px;
+
+        }
+        .form-button-footer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .interactive-form-button {
+            display: inline-block;
+            padding: 12px 28px;
+            background: linear-gradient(90deg, #e6c87a 0%, #d4af37 100%);
+            color: #333;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            box-shadow: 0 2px 8px rgba(212,175,55,0.10);
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .interactive-form-button:hover {
+            background: linear-gradient(90deg, #d4af37 0%, #e6c87a 100%);
+            color: #222;
+            box-shadow: 0 4px 16px rgba(212,175,55,0.18);
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <img src="https://legaltech.com.gt/escuelasgc/img/logo.jpg" alt="Logo Organismo Judicial">
+            <h1>Análisis Interactivo de Reportes de Servicio No Conforme</h1>
+            <p>Escuela de Estudios Judiciales - Sistema de Gestión de Calidad (Enero-Junio 2025)</p>
+        </header>
+
+        <main>
+            <h2>Resumen General</h2>
+            <p>Seleccione un mes para filtrar los datos o vea el resumen semestral.</p>
+            <div class="filter-buttons">
+                <button data-month="all" class="active">Ver Todos</button>
+                <button data-month="1">Enero</button>
+                <button data-month="2">Febrero</button>
+                <button data-month="3">Marzo</button>
+                <button data-month="4">Abril</button>
+                <button data-month="5">Mayo</button>
+                <button data-month="6">Junio</button>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number" id="total-recepcionadas">76</div>
+                    <div class="label">Total de Convocatorias Recepcionadas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="total-rechazos">33</div>
+                    <div class="label">Total de Reportes con Rechazo</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="tasa-rechazo">43.4%</div>
+                    <div class="label">Tasa de Rechazo Inicial</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="tasa-resolucion">100%</div>
+                    <div class="label">Tasa de Resolución (Publicados)</div>
+                </div>
+            </div>
+            
+            <div id="chart-section">
+                <h2 id="chart-title">Evolución Mensual de Actividad</h2>
+                <p id="chart-description">
+                    La gráfica muestra la tendencia semestral. Las <strong>barras rojas</strong> representan el total de reportes rechazados cada mes, mientras que la <strong>línea azul</strong> indica el volumen total de convocatorias recibidas. Esto permite comparar la cantidad de errores con la carga de trabajo.
+                    Haga clic en un mes para ver el desglose de rechazos por área.
+                </p>
+                <div class="chart-container">
+                     <canvas id="mainChart"></canvas>
+                </div>
+            </div>
+
+            <h2>Análisis por Área o Sede</h2>
+            <p>La distribución de rechazos por área de formación muestra una concentración en las sedes regionales y en las áreas de funcionarios y auxiliares judiciales.</p>
+            <table id="area-table">
+                <thead>
+                    <tr>
+                        <th>Área de Formación o Sede</th>
+                        <th>Cantidad de Rechazos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Filas generadas por JS -->
+                </tbody>
+            </table>
+
+            <h2>Categorías de Errores Comunes (Estadística de Ocurrencias)</h2>
+            <p>Los motivos de rechazo se agruparon en cuatro categorías principales. Un solo reporte puede contener errores de múltiples categorías.</p>
+            
+            <div class="error-category">
+                <h3>1. Discrepancia u Omisión de Contenido (<span id="count-contenido">25</span> ocurrencias)</h3>
+                <div class="progress-bar">
+                    <div id="bar-contenido" class="progress-bar-fill" style="width: 36%; background-color: #ffc107; color: #333;">36%</div>
+                </div>
+                <p>Falta de temas, información contradictoria (fechas, público), información de docentes incompleta, orden incorrecto de contenido.</p>
+            </div>
+            
+            <div class="error-category">
+                <h3>2. Inconsistencias de Formato (<span id="count-formato">22</span> ocurrencias)</h3>
+                <div class="progress-bar">
+                    <div id="bar-formato" class="progress-bar-fill" style="width: 32%; background-color: #17a2b8;">32%</div>
+                </div>
+                <p>Uso de fuentes, tamaños o colores incorrectos, plantillas no vigentes, elementos desalineados, QR estirado, espaciado incorrecto.</p>
+            </div>
+            
+            <div class="error-category">
+                <h3>3. Errores Ortográficos y Tipográficos (<span id="count-ortografia">17</span> ocurrencias)</h3>
+                <div class="progress-bar">
+                    <div id="bar-ortografia" class="progress-bar-fill" style="width: 25%;">25%</div>
+                </div>
+                <p>Incluye falta de tildes, errores de escritura (ej. "menbos"), palabras separadas incorrectamente y falta de signos de puntuación.</p>
+            </div>
+            
+            <div class="error-category">
+                <h3>4. Errores Técnicos (Links/QR) (<span id="count-tecnicos">5</span> ocurrencias)</h3>
+                 <div class="progress-bar">
+                    <div id="bar-tecnicos" class="progress-bar-fill" style="width: 7%; background-color: #6c757d;">7%</div>
+                </div>
+                <p>El enlace, teléfono o código QR no funciona o no corresponde con la actividad académica publicitada.</p>
+            </div>
+            
+            <details>
+                <summary><h2>Estado Final de las Convocatorias con Rechazo Inicial</h2></summary>
+                <p>Esta tabla muestra todas las convocatorias que tuvieron al menos una observación. Según la bitácora, todas fueron eventualmente publicadas.</p>
+                <table id="estado-final-table">
+                    <thead>
+                        <tr>
+                            <th>Correlativo</th>
+                            <th>Nombre de la Actividad</th>
+                            <th>Estado Final</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Filas generadas por JS -->
+                    </tbody>
+                </table>
+            </details>
+
+            <details>
+                <summary><h2>Ver detalle completo de todos los motivos de rechazo</h2></summary>
+                <table id="detalle-rechazo-table">
+                    <thead>
+                        <tr>
+                            <th>Correlativo</th>
+                            <th>Área o Sede</th>
+                            <th>Motivo(s) de Rechazo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Filas generadas por JS -->
+                    </tbody>
+                </table>
+            </details>
+
+            <section class="recommendations">
+                <h2>Recomendaciones para la Mejora Continua</h2>
+                <p>Con base en el análisis de los errores más comunes, se proponen las siguientes acciones para reducir la tasa de rechazos y optimizar el proceso de publicación:</p>
+                <ul>
+                    <li>
+                        <strong>Implementar una Lista de Verificación (Checklist):</strong> Antes de enviar una convocatoria, se debe utilizar una lista estandarizada para validar que todos los datos (fechas, horarios, nombres, público objetivo) coincidan con la solicitud original. Esto ataca directamente los errores de <strong>contenido y omisión</strong>.
+                    </li>
+                    <li>
+                        <strong>Uso Obligatorio de Plantillas Vigentes:</strong> Todo el personal debe utilizar la última versión de la plantilla oficial, descargándola desde una ubicación centralizada para cada nuevo documento. Esto evitará las <strong>inconsistencias de formato</strong> y el uso de diseños obsoletos.
+                    </li>
+                    <li>
+                        <strong>Protocolo de Doble Revisión (Revisión por Pares):</strong> Fomentar que un compañero revise brevemente el documento antes de su envío formal. Un segundo par de ojos es muy eficaz para detectar <strong>errores ortográficos y tipográficos</strong> que el autor original podría pasar por alto.
+                    </li>
+                    <li>
+                        <strong>Verificación Funcional de Enlaces y QR:</strong> Es mandatorio que, como paso final, el creador del documento haga clic en todos los enlaces y escanee el código QR desde el PDF final para confirmar que funcionan y dirigen al destino correcto. Esto elimina los <strong>errores técnicos</strong>.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Botón de Google Forms debajo de recomendaciones -->
+            <div class="form-button-footer">
+                <a href="https://forms.gle/7dHT6P3TzXUYsmLP8"
+                   target="_blank"
+                   class="interactive-form-button">
+                    📋 Asistencia
+                </a>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Análisis generado a partir de Memorandos de la Coordinación Técnica y Estadística de Servicio No Conforme (FO-EEJ-59) . 
+            <p>Lic. Giovanni Arias -  Gestor de Calidad ISO 9001:2015</p>
+            <p>Fecha del análisis: 18 de junio de 2025
+            </p>
+        </footer>
+    </div>
+<script>
+// --- DATABASE ---
+const allData = [
+    {correlativo: 'C-033', mes: 1, rechazo: 1, nombre: 'CURSO VIRTUAL ESPECIALIZADO PARA LA JUSTICIA INTERCULTURAL...', sede: 'Chiquimula', motivos: '1. No aparece el cargo de los docentes o de que institución son 2. El formato de la convocatoria no viene en carta'},
+    {correlativo: 'C-034', mes: 1, rechazo: 1, nombre: 'CONVERSATORIO: EXPEDIENTE JUDICIAL ELECTRÓNICO...', sede: 'Actividades Extraordinarias', motivos: '1. Espacio en blanco adicional en la parte inferior. 2. Tamaño del documento en A4'},
+    {correlativo: 'C-035', mes: 1, rechazo: 1, nombre: 'CONFERENCIA: PREVENCIÓN DE ROBO DE IDENTIDAD Y DATOS', sede: 'Chiquimula', motivos: '1. El nombre de la empresa contiene información limitada, lo que podría dificultar su comprensión o identificación por parte del público objetivo.'},
+    {correlativo: 'C-036', mes: 2, rechazo: 1, nombre: 'CURSO: ORTOGRAFÍA Y REDACCIÓN DE DOCUMENTOS...', sede: 'Auxiliares Judiciales', motivos: '1. En la sección de "Temas", aún faltan por agregar los que se encuentran en la otra página del documento compartido para revisión.'},
+    {correlativo: 'C-037', mes: 2, rechazo: 1, nombre: 'CONFERENCIA: PREVENCIÓN DE ROBO DE IDENTIDAD Y DATOS', sede: 'Quetzaltenango', motivos: '1. La palabra Huehuetenango está mal escrita. 2. No indica el título del docente. 3. No indica especialista en conocimiento. 4. Cambio la fecha de recibir solicitudes de inscripción. 5. En el formulario, el encabezado está desalineado. 6. En el formulario de inscripción la palabra Huehuetenango está mal escrita.'},
+    {correlativo: 'C-038', mes: 3, rechazo: 1, nombre: 'CURSO:JUICIO DE FALTAS', sede: 'Quetzaltenango', motivos: '1. Grupo objetivo se puede ajustar. 2. En "TEMAS", la letra está muy pequeña. 3. En "DOCENTE", hay un espacio adicional. 4. El código QR está estirado. 5. Falta "del" después de "Ambiente". 6. En "DISPONIBLE PARA FUNCIONARIOS JUDICIALES" figura "DE PAZ". 7. El apartado de TEMAS sigue estando muy ajustado.'},
+    {correlativo: 'C-039', mes: 3, rechazo: 1, nombre: 'CURSO: ORATORIA FORENSE Y MANEJO DE AUDIENCIAS', sede: 'Quetzaltenango', motivos: '1. Grupo objetivo se puede ajustar. 2. En TEMAS está muy pequeña la letra. 3. El tamaño de letra en DOCENTE y FECHA LÍMITE está muy pequeña. 4. El recuadro amarillo no está bien ubicado. 5. Hay dos hojas del documento.'},
+    {correlativo: 'C-040', mes: 3, rechazo: 1, nombre: 'CURSO PROCEDIMIENTO GENERAL DE LA EJECUCIÓN PENAL...', sede: 'Chiquimula', motivos: '1. El orden de los funcionarios judiciales está incorrecto. 2. En TEMAS en "ETAPA DE EJECUCION no tiene tilde.'},
+    {correlativo: 'C-041', mes: 3, rechazo: 1, nombre: 'PROGRAMA DENOMINACIÓN, CALIFICACIÓN Y PROCEDENCIA...', sede: 'Auxiliares Judiciales', motivos: '1. En TEMAS, falta la palabra "ARBÍTRALES". 2. Corroborar en el cargo de la Docente. 3. Los iconos de Fecha, hora y lugar están estirados.'},
+    {correlativo: 'C-042', mes: 3, rechazo: 1, nombre: 'PROGRAMA DENOMINACIÓN, CALIFICACIÓN Y PROCEDENCIA...', sede: 'Especialización', motivos: '1. El cuadro blanco del QR está más grande. 2. El texto Área de Programa de Especialización está en rojo. 3. En el módulo II la viñeta de la literal c. no está alineada.'},
+    {correlativo: 'C-043', mes: 3, rechazo: 0, nombre: 'Curso: "Derechos Fundamentales en el Proceso Penal...', sede: 'Chiquimula', motivos: ''},
+    {correlativo: 'C-044', mes: 3, rechazo: 0, nombre: '"Uso del Dispositivo Electrónico para Practicar Diligencias..."', sede: 'Chiquimula', motivos: ''},
+    {correlativo: 'C-045', mes: 3, rechazo: 0, nombre: '"Uso de Cámara Gesell y Tecnología..."', sede: 'Auxiliares Judiciales', motivos: ''},
+    {correlativo: 'C-046', mes: 3, rechazo: 0, nombre: 'TALLER: PROCEDIMIENTO DE REVISIÓN DE LAUDO ARBITRAL', sede: 'Auxiliares Judiciales', motivos: ''},
+    {correlativo: 'C-047', mes: 3, rechazo: 0, nombre: 'Curso: Juicio de Faltas', sede: 'Auxiliares Judiciales', motivos: ''},
+    {correlativo: 'C-048', mes: 3, rechazo: 0, nombre: 'RED DE DOCENTES EXTERNOS...', sede: 'Coordinación de Programas', motivos: ''},
+    {correlativo: 'C-049', mes: 3, rechazo: 1, nombre: 'CONFERENCIA LA MÚLTIPLE DISCRIMINACIÓN...', sede: 'Género', motivos: '1. En para más información indica un número de teléfono que actualmente no está funcionando.'},
+    {correlativo: 'C-050', mes: 3, rechazo: 1, nombre: 'CURSO VIOLENCIA CONTRA LAS MUJERES EN EL CIBERESPACIO', sede: 'Género', motivos: '1. En el apartado de TEMAS se repite dos veces el tema. 2. Falta "y" entre Instancia, Jueces de Paz.'},
+    {correlativo: 'C-051', mes: 3, rechazo: 0, nombre: 'CURSO: DERECHOS HUMANOS COMO EJE TRANSVERSAL...', sede: 'Auxiliares Judiciales', motivos: ''},
+    {correlativo: 'C-052', mes: 3, rechazo: 0, nombre: 'CURSO: DERECHO LABORAL...', sede: 'Auxiliares Judiciales', motivos: ''},
+    {correlativo: 'C-053', mes: 3, rechazo: 0, nombre: 'CURSO: PROCEDIMIENTO PARA DELITOS MENOS GRAVES...', sede: 'Auxiliares Judiciales', motivos: ''},
+    {correlativo: 'C-054', mes: 3, rechazo: 0, nombre: 'SEMINARIO: APLICACIÓN E IMPLEMENTACIÓN DE LA LEY DE INSOLVENCIA', sede: 'Auxiliares Judiciales', motivos: ''},
+    {correlativo: 'C-055', mes: 3, rechazo: 1, nombre: 'CURSO DERECHOS HUMANOS COMO EJE TRANSVERSAL...', sede: 'Chiquimula', motivos: '1. En TEMAS en el punto 1, falta tilde en la palabra FUNCION. 2. En docente, falta "de" antes de Chiquimula. 3. Verificar el departamento al que pertenece el docente.'},
+    {correlativo: 'C-056', mes: 3, rechazo: 0, nombre: 'TALLER MODELO DE GESTIÓN POR AUDIENCIAS...', sede: 'Auxiliares Judiciales', motivos: ''},
+    {correlativo: 'C-057', mes: 3, rechazo: 0, nombre: 'TALLER ANÁLISIS DE LA LEY DE TARJETAS DE CRÉDITO...', sede: 'Chiquimula', motivos: ''},
+    {correlativo: 'C-058', mes: 3, rechazo: 0, nombre: 'PROGRAMA: EL IMPACTO DE LA PERSPECTIVA DE GÉNERO...', sede: 'Género', motivos: ''},
+    {correlativo: 'C-059', mes: 3, rechazo: 0, nombre: 'CONFERENCIA: LUCHA CONTRA EL TRÁFICO DE MADERA...', sede: 'Funcionarios Judiciales', motivos: ''},
+    {correlativo: 'C-060', mes: 3, rechazo: 0, nombre: 'CURSO JUICIO ORAL EN MATERIA CIVIL', sede: 'Auxiliares Judiciales', motivos: ''},
+    {correlativo: 'C-061', mes: 3, rechazo: 0, nombre: 'CONFERENCIA: APLICACIÓN DE VALORES...', sede: 'Quetzaltenango', motivos: ''},
+    {correlativo: 'C-062', mes: 4, rechazo: 0, nombre: 'El Valor de la Mujer en el Sistema Judicial...', sede: 'Género', motivos: ''},
+    {correlativo: 'C-063', mes: 4, rechazo: 1, nombre: 'PROGRAMA REPARACIÓN DIGNA EN LOS PROCESOS DE ADOLESCENTES...', sede: 'Especialización', motivos: '1. Formulario de inscripción indica 3 DE ABRIL. 2. El código QR no lee, aparece el mensaje "Este código QR ha sido desactivado por algún motivo".'},
+    {correlativo: 'C-064', mes: 4, rechazo: 0, nombre: 'TALLER CONVENIOS Y JURISPRUDENCIA INTERNACIONAL...', sede: 'Auxiliares Judiciales', motivos: ''},
+    {correlativo: 'C-065', mes: 4, rechazo: 0, nombre: '/RIAEJ/TALLER CONVENIOS Y JURISPRUDENCIA...', sede: 'Auxiliares Judiciales', motivos: ''},
+    {correlativo: 'C-066', mes: 4, rechazo: 0, nombre: 'PANEL: EL ROL DEL DERECHO DEL TRABAJO...', sede: 'Funcionarios Judiciales', motivos: ''},
+    {correlativo: 'C-067', mes: 4, rechazo: 0, nombre: 'CONFERENCIA: CONTRARRESTANDO LAS REDES DE AMENAZAS...', sede: 'Funcionarios Judiciales', motivos: ''},
+    {correlativo: 'C-068', mes: 4, rechazo: 0, nombre: 'CONFERENCIA DILIGENCIAMIENTO DE LA INCONSTITUCIONALIDAD...', sede: 'Quetzaltenango', motivos: ''},
+    {correlativo: 'C-069', mes: 4, rechazo: 0, nombre: 'CONFERENCIA LA PERSPECTIVA DE GÉNERO...', sede: 'Género', motivos: ''},
+    {correlativo: 'C-070', mes: 4, rechazo: 0, nombre: 'Curso: Proceso de Adolescentes en Conflicto...', sede: 'Funcionarios Judiciales', motivos: ''},
+    {correlativo: 'C-071', mes: 4, rechazo: 0, nombre: 'PROGRAMA DE FORMACIÓN APRENDIZAJE DE IDIoma MAYA...', sede: 'Quetzaltenango', motivos: ''},
+    {correlativo: 'C-072', mes: 4, rechazo: 0, nombre: 'Atención con Calidad y Calidez a las Mujeres...', sede: 'Género', motivos: ''},
+    {correlativo: 'C-073', mes: 4, rechazo: 1, nombre: 'CURSO ANTICIPO DE PRUEBA, DILIGENCIAMIENTO, VALORACIÓN...', sede: 'Quetzaltenango', motivos: '1. En la sección de docente, en el cargo del docente, falta colocar "Penal" después de Sentencia.'},
+    {correlativo: 'C-074', mes: 4, rechazo: 0, nombre: 'CURSO APLICACIÓN DE EJE TRANSVERSAL DE PUEBLOS INDÍGENAS...', sede: 'Quetzaltenango', motivos: ''},
+    {correlativo: 'C-075', mes: 5, rechazo: 1, nombre: 'CONFERENCIA BUENAS PRÁCTICAS EN LA INTERVENCIÓN...', sede: 'Chiquimula', motivos: '1. Link/QR lleva a otro formulario de otra actividad.'},
+    {correlativo: 'C-076', mes: 5, rechazo: 1, nombre: 'CURSO PROCEDIMIENTO PARA DELITOS MENOS GRAVES...', sede: 'Auxiliares Judiciales', motivos: '1. Error tipográfico: (PROCESO) en lugar de PROCEDIMIENTO. 2. Error tipográfico: (MENBOS) en lugar de MENOS.'},
+    {correlativo: 'C-077', mes: 5, rechazo: 1, nombre: 'CICLO DE CONFERENCIAS INCIDENCIAS EN LA ACCIÓN CONSTITUCIONAL DE AMPARO', sede: 'Chiquimula', motivos: '1. EL LINK y el QR que dirige al Google Forms no coinciden con el nombre de la actividad.'},
+    {correlativo: 'C-078', mes: 5, rechazo: 1, nombre: 'TALLER APLICACIÓN DE VALORES Y PRINCIPIOS...', sede: 'Chiquimula', motivos: '1. En TEMAS en el subtema tiene dos puntos de más. 2. La Fecha límite para recibir solicitudes indica 15 de mayo y en el formulario 12 de mayo.'},
+    {correlativo: 'C-080', mes: 5, rechazo: 0, nombre: 'Curso: "Derechos Humanos como Eje Transversal..."', sede: 'Auxiliares Judiciales', motivos: ''},
+    {correlativo: 'C-081', mes: 5, rechazo: 0, nombre: 'CONFERENCIA APLICACIÓN DE VALORES EN EL PROCESO CIVIL', sede: 'Auxiliares Judiciales', motivos: ''},
+    {correlativo: 'C-082', mes: 5, rechazo: 0, nombre: 'CURSO: INTERVENCIÓN DEL TRABAJADOR SOCIAL...', sede: 'Género', motivos: ''},
+    {correlativo: 'C-083', mes: 5, rechazo: 0, nombre: 'CONFERENCIA DESAFÍOS EN LA ACCIÓN DE AMPARO...', sede: 'Quetzaltenango', motivos: ''},
+    {correlativo: 'C-084', mes: 5, rechazo: 0, nombre: 'CONFERENCIA TRÁMITE DE APELACIÓN GENERAL...', sede: 'Auxiliares Judiciales', motivos: ''},
+    {correlativo: 'C-085', mes: 5, rechazo: 0, nombre: 'CONFERENCIA IMPUGNACIONES EN MATERIA PENAL', sede: 'Quetzaltenango', motivos: ''},
+    {correlativo: 'C-086', mes: 5, rechazo: 0, nombre: 'CONVERSATORIO ANÁLISIS DE LAS REFORMAS AL CÓDIGO CIVIL...', sede: 'Auxiliares Judiciales', motivos: ''},
+    {correlativo: 'C-087', mes: 5, rechazo: 0, nombre: 'TALLER: PROCEDIMIENTO DE ANTEJUICIO', sede: 'Administrativo', motivos: ''},
+    {correlativo: 'C-088', mes: 5, rechazo: 1, nombre: 'CURSO: VIOLENCIA INTRAFAMILIAR Y SUS EFECTOS...', sede: 'Administrativo', motivos: '1. Apellido de la docente se escribió sin tilde: "GARCIA". 2. En el año de la fecha límite se indica "20205". 3. El LINK y el QR no coinciden con el nombre de la actividad.'},
+    {correlativo: 'C-089', mes: 5, rechazo: 0, nombre: 'CURSO PROCEDIMIENTO PARA DELITOS MENOS GRAVES...', sede: 'Chiquimula', motivos: ''},
+    {correlativo: 'C-090', mes: 5, rechazo: 1, nombre: 'DIPLOMADO DE ESPECIALIZACIÓN EN DERECHOS HUMANOS...', sede: 'Quetzaltenango', motivos: '1. Faltan tildes en "especialización" e "indígenas". 2. Faltan tildes en nombres de docentes. 3. La palabra "sociohistórico" se escribió separada.'},
+    {correlativo: 'C-091', mes: 5, rechazo: 1, nombre: 'CURSO: LA IMPORTANCIA DE LA CRIMINOLOGÍA...', sede: 'Género', motivos: '1. VIVÍ SOLICITÓ CAMBIO, YA QUE LOS TEMAS EN CALENDARIO NO ERAN LOS FINALES.'},
+    {correlativo: 'C-092', mes: 5, rechazo: 0, nombre: 'CURSO PROCESO CONTENCIOSO ADMINISTRATIVO...', sede: 'Chiquimula', motivos: ''},
+    {correlativo: 'C-093', mes: 5, rechazo: 1, nombre: 'CURSO INTERPRETACIÓN Y ARGUMENTACIÓN CONSTITUCIONAL', sede: 'Chiquimula', motivos: '1. En la sección de temas falta tildes en las palabras "INTERPRETACIÓN" y "ARGUMENTACIÓN".'},
+    {correlativo: 'C-094', mes: 5, rechazo: 1, nombre: 'CURSO INTERPRETACIÓN Y ARGUMENTACIÓN CONSTITUCIONAL RIAEJ', sede: 'Chiquimula', motivos: '1. En la sección de temas falta tildes en las palabras "INTERPRETACIÓN" y "ARGUMENTACIÓN".'},
+    {correlativo: 'C-095', mes: 5, rechazo: 1, nombre: 'CONFERENCIA: LAS MUJERES, VIDA SOSTENIBLE Y RESILIENCIA...', sede: 'Género', motivos: '1. En el nombre de la conferencia aparece la palabra "ANTEL". 2. En la fecha se indica "mayo del 2025".'},
+    {correlativo: 'C-096', mes: 5, rechazo: 1, nombre: 'CONFERENCIA: DERECHO DE TRABAJO Y SEGURIDAD SOCIAL', sede: 'Funcionarios Judiciales', motivos: '1. Convocatoria en formato que no está vigente.'},
+    {correlativo: 'C-097', mes: 5, rechazo: 1, nombre: 'CONFERENCIA: APLICACIÓN DEL INTERÉS SUPERIOR DEL NIÑO...', sede: 'Funcionarios Judiciales', motivos: '1. En modalidad, se colocó texto en rojo. 2. En el nombre del docente, el tipo de fuente es diferente al resto de la convocatoria.'},
+    {correlativo: 'C-098', mes: 5, rechazo: 0, nombre: 'CURSO JURISDICCIÓN VOLUNTARIA EN MATERIA DE FAMILIA', sede: 'Quetzaltenango', motivos: ''},
+    {correlativo: 'C-099', mes: 5, rechazo: 1, nombre: 'CURSO: PRUEBA ANTICIPADA EN MATERIA CIVIL', sede: 'Funcionarios Judiciales', motivos: '1. En el nombre del docente, el tipo de fuente es diferente. 2. En los temas hace falta el último tema. 3. Discrepancia en población objetivo.'},
+    {correlativo: 'C-100', mes: 5, rechazo: 1, nombre: 'CURSO: ACCIÓN DE AMPARO COMO PROTECCIÓN DE DERECHOS...', sede: 'Funcionarios Judiciales', motivos: '1. En los temas, en algunos casos se indican los subtemas y en otros no. Asimismo, los temas están incompletos.'},
+    {correlativo: 'C-101', mes: 6, rechazo: 1, nombre: 'TALLER PRIMEROS AUXILIOS', sede: 'Chiquimula', motivos: '1. La hora en la convocatoria no coincide con el horario autorizado. 2. Los temas incluyen un taller con ejercicios de vendajes, pero el taller se desarrollará en modalidad virtual.'},
+    {correlativo: 'C-102', mes: 6, rechazo: 0, nombre: 'PROGRAMA EL VALOR DE LA MUJER EN EL SISTEMA JUDICIAL...', sede: 'Género', motivos: ''},
+    {correlativo: 'C-103', mes: 6, rechazo: 1, nombre: 'CONFERENCIA ABORDAJE DE NIÑEZ VÍCTIMA EN JUZGADOS DE PAZ', sede: 'Quetzaltenango', motivos: '1. El cargo de la docente contiene error. 2. En el séptimo subtema la palabra "Secretaría" está sin tilde. 3. El cargo de la docente continua con error.'},
+    {correlativo: 'C-104', mes: 6, rechazo: 1, nombre: 'CONFERENCIA: DILIGENCIAMIENTO EN PROCESOS DE MAYOR RIESGO', sede: 'Funcionarios Judiciales', motivos: '1. Fecha de la actividad no indica año. 2. Apellidos de primer docente no tienen tilde. 3. Falta una "s" en palabra "Procesos" en el formulario.'},
+    {correlativo: 'C-105', mes: 6, rechazo: 1, nombre: 'CURSO LA PRUEBA EN EL PROCESO PENAL', sede: 'Chiquimula', motivos: '1. Falta un "de" en nombre del tribunal. 2. Falta tilde en palabra "límites". 3. Uno de los subtemas inicia con minúscula. 4. Falta un "de" en nombre del tribunal.'},
+    {correlativo: 'C-106', mes: 6, rechazo: 0, nombre: 'TALLER OPOSICIÓN A LAS MEDIDAS DE SEGURIDAD...', sede: 'Género', motivos: ''}
+];
+
+// --- CHART LOGIC ---
+let mainChart;
+const monthLabels = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'];
+
+const areaColorPalette = {
+    'Chiquimula':               { background: 'rgba(217, 83, 79, 0.6)', border: '#d9534f' },
+    'Quetzaltenango':           { background: 'rgba(92, 184, 92, 0.6)', border: '#5cb85c' },
+    'Auxiliares Judiciales':    { background: 'rgba(240, 173, 78, 0.6)', border: '#f0ad4e' },
+    'Funcionarios Judiciales':  { background: 'rgba(51, 122, 183, 0.6)', border: '#337ab7' },
+    'Género':                   { background: 'rgba(91, 192, 222, 0.6)', border: '#5bc0de' },
+    'Especialización':          { background: 'rgba(155, 89, 182, 0.6)', border: '#9b59b6' },
+    'Administrativo':           { background: 'rgba(230, 126, 34, 0.6)', border: '#e67e22' },
+    'Actividades Extraordinarias':{ background: 'rgba(52, 73, 94, 0.6)', border: '#34495e' },
+    'Coordinación de Programas':{ background: 'rgba(127, 140, 141, 0.6)', border: '#7f8c8d' },
+    'default':                  { background: 'rgba(204, 204, 204, 0.6)', border: '#cccccc' }
+};
+
+function generateChartConfig(selectedMonth) {
+    if (selectedMonth === 'all') {
+        const totalConvocatoriasPorMes = Array(6).fill(0);
+        const totalRechazosPorMes = Array(6).fill(0);
+        allData.forEach(d => {
+            totalConvocatoriasPorMes[d.mes - 1]++;
+            if (d.rechazo > 0) totalRechazosPorMes[d.mes - 1]++;
+        });
+
+        return {
+            type: 'bar',
+            data: {
+                labels: monthLabels,
+                datasets: [{
+                    type: 'line',
+                    label: 'Total de Convocatorias',
+                    data: totalConvocatoriasPorMes,
+                    borderColor: '#0056b3',
+                    backgroundColor: 'rgba(0, 86, 179, 0.1)',
+                    fill: true,
+                    tension: 0.3,
+                    yAxisID: 'y'
+                }, {
+                    type: 'bar',
+                    label: 'Total de Rechazos',
+                    data: totalRechazosPorMes,
+                    backgroundColor: 'rgba(217, 83, 79, 0.6)',
+                    borderColor: '#d9534f',
+                    borderWidth: 2,
+                    yAxisID: 'y'
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true, title: { display: true, text: 'Cantidad de Reportes' }, ticks: { precision: 0 } },
+                    x: { title: { display: true, text: 'Mes (2025)' } }
+                }
+            }
+        };
+    } else {
+        const rechazosDelMes = allData.filter(d => d.mes === selectedMonth && d.rechazo > 0);
+        const rechazosPorSede = {};
+        rechazosDelMes.forEach(d => {
+            rechazosPorSede[d.sede] = (rechazosPorSede[d.sede] || 0) + 1;
+        });
+        const sortedSedes = Object.entries(rechazosPorSede).sort(([,a],[,b]) => b-a);
+        
+        return {
+            type: 'bar',
+            data: {
+                labels: sortedSedes.map(entry => entry[0]),
+                datasets: [{
+                    label: `Rechazos en ${monthLabels[selectedMonth-1]}`,
+                    data: sortedSedes.map(entry => entry[1]),
+                    backgroundColor: sortedSedes.map(entry => (areaColorPalette[entry[0]] || areaColorPalette.default).background),
+                    borderColor: sortedSedes.map(entry => (areaColorPalette[entry[0]] || areaColorPalette.default).border),
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, title: { display: true, text: 'Cantidad de Rechazos' }, ticks: { stepSize: 1, precision: 0 } },
+                    x: { title: { display: true, text: 'Área o Sede' } }
+                }
+            }
+        };
+    }
+}
+
+function renderChart(config) {
+    const ctx = document.getElementById('mainChart').getContext('2d');
+    if (mainChart) mainChart.destroy();
+    mainChart = new Chart(ctx, config);
+}
+
+function categorizeError(motivos) {
+    const m = motivos.toLowerCase();
+    let categories = { ortografia: false, contenido: false, formato: false, tecnico: false };
+    if (/\btilde|mal escrita|menbos|proceso\)|\bfalta "y"|"antel"|mayo del 2025|falta "s"|"límites"|minúscula\b/.test(m)) categories.ortografia = true;
+    if (/\bno aparece el cargo|información limitada|faltan por agregar|no indica título|no indica especialista|grupo objetivo|revisar.*formulario|orden.*incorrecto|falta.*palabra|verificar.*departamento|falta.*penal|falta.*tema|población objetivo|temas.*incompletos|solicitó cambio|no coincide con.*horario|cargo.*error|fecha.*no indica año\b/.test(m)) categories.contenido = true;
+    if (/\bformato.*no viene|espacio en blanco|tamaño.*documento|letra.*pequeña|espacio adicional|qr.*estirado|revisar también el caso del formulario|iconos.*estirados|cuadro.*qr.*grande|texto.*rojo|viñeta.*no está alineada|recuadro.*no está bien ubicado|dos hojas|formato.*no.*vigente|tipo de fuente|encabezado.*desalineado|puntos de más\b/.test(m)) categories.formato = true;
+    if (/\blink\/qr|teléfono.*no.*funciona|qr no lee|qr.*desactivado|no coinciden con el nombre\b/.test(m)) categories.tecnico = true;
+    if (m.includes('diligenciamiento') && !categories.contenido) categories.contenido = true;
+    if (m.length > 0 && !categories.ortografia && !categories.contenido && !categories.formato && !categories.tecnico) categories.contenido = true;
+    return categories;
+}
+
+function updatePage(month) {
+    const isTotalView = (month === 'all');
+    const recepcionadasData = isTotalView ? allData : allData.filter(d => d.mes === month);
+    const rechazoData = recepcionadasData.filter(d => d.rechazo > 0);
+
+    document.getElementById('total-recepcionadas').textContent = recepcionadasData.length;
+    document.getElementById('total-rechazos').textContent = rechazoData.length;
+    document.getElementById('tasa-rechazo').textContent = recepcionadasData.length > 0 ? (rechazoData.length / recepcionadasData.length * 100).toFixed(1) + '%' : '0.0%';
+
+    const areaCounts = {};
+    rechazoData.forEach(d => { areaCounts[d.sede] = (areaCounts[d.sede] || 0) + 1; });
+    const areaTableBody = document.querySelector('#area-table tbody');
+    areaTableBody.innerHTML = '';
+    Object.entries(areaCounts).sort(([,a],[,b]) => b-a).forEach(([sede, count]) => {
+        areaTableBody.innerHTML += `<tr><td>${sede}</td><td>${count}</td></tr>`;
+    });
+
+    let errorCounts = { ortografia: 0, contenido: 0, formato: 0, tecnico: 0 };
+    rechazoData.forEach(d => {
+        const cats = categorizeError(d.motivos);
+        if (cats.ortografia) errorCounts.ortografia++;
+        if (cats.contenido) errorCounts.contenido++;
+        if (cats.formato) errorCounts.formato++;
+        if (cats.tecnico) errorCounts.tecnico++;
+    });
+    const totalErrors = Object.values(errorCounts).reduce((a, b) => a + b, 0);
+    const updateBar = (cat, count) => {
+        const percentage = totalErrors > 0 ? (count / totalErrors * 100).toFixed(0) : 0;
+        document.getElementById(`count-${cat}`).textContent = count;
+        const bar = document.getElementById(`bar-${cat}`);
+        bar.style.width = `${percentage}%`;
+        bar.textContent = `${percentage}%`;
+    };
+    updateBar('contenido', errorCounts.contenido);
+    updateBar('formato', errorCounts.formato);
+    updateBar('ortografia', errorCounts.ortografia);
+    updateBar('tecnicos', errorCounts.tecnico);
+
+    const estadoFinalTableBody = document.querySelector('#estado-final-table tbody');
+    const detalleRechazoTableBody = document.querySelector('#detalle-rechazo-table tbody');
+    estadoFinalTableBody.innerHTML = '';
+    detalleRechazoTableBody.innerHTML = '';
+    rechazoData.sort((a,b) => a.correlativo.localeCompare(b.correlativo)).forEach(d => {
+        estadoFinalTableBody.innerHTML += `<tr><td>${d.correlativo}</td><td>${d.nombre}</td><td class="status-publicado">Publicado</td></tr>`;
+        detalleRechazoTableBody.innerHTML += `<tr><td>${d.correlativo}</td><td>${d.sede}</td><td>${d.motivos}</td></tr>`;
+    });
+    
+    const chartConfig = generateChartConfig(month);
+    renderChart(chartConfig);
+    const chartTitle = document.getElementById('chart-title');
+    const chartDescription = document.getElementById('chart-description');
+    if(isTotalView) {
+        chartTitle.textContent = "Evolución Mensual de Actividad";
+        chartDescription.innerHTML = `La gráfica muestra la tendencia semestral. Las <strong>barras rojas</strong> representan el total de reportes rechazados cada mes, mientras que la <strong>línea azul</strong> indica el volumen total de convocatorias recibidas. Esto permite comparar la cantidad de errores con la carga de trabajo. Haga clic en un mes para ver el desglose de rechazos por área.`;
+    } else {
+        chartTitle.textContent = `Desglose de Rechazos - ${monthLabels[month-1]} 2025`;
+        chartDescription.innerHTML = `La gráfica muestra las áreas o sedes que tuvieron reportes rechazados durante el mes de <strong>${monthLabels[month-1]}</strong>. Puede comparar qué áreas contribuyeron más a la tasa de rechazo en este período.`;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    updatePage('all');
+    const filterButtons = document.querySelectorAll('.filter-buttons button');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            const month = button.dataset.month === 'all' ? 'all' : parseInt(button.dataset.month);
+            updatePage(month);
+        });
+    });
+});
+</script>
+</body>
+</html>
