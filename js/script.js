@@ -3689,4 +3689,14 @@ document.addEventListener('DOMContentLoaded', function() {
             directoryRenderJudges(directoryJudgesData);
         });
 
+        //INSERTA AQUÍ EL RESTO DE CÓDIGO 
+
+
+
+
+        //HASTA AQUÌ
+
+
+//esto no se quita
 });
+//esto no se quita
