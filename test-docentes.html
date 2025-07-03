@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Red Docente</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <main>
+        <section id="red-docente" class="content-section">
+            <div class="container">
+                <div class="section-title-wrapper">
+                    <h3 style="font-size: 2em; color: var(--accent-blue-darker); border-left: 4px solid var(--accent-gold); padding-left: 15px; margin: 0; display: flex; align-items: center;">
+                        <i class="fas fa-chalkboard-teacher" style="margin-right: 15px;"></i>
+                        Red Docente de la Escuela de Estudios Judiciales
+                    </h3>
+                </div>
+                <p style="margin-top:15px; margin-bottom: 30px; text-align: justify;">La Escuela cuenta con una red de profesionales de alto nivel, incluyendo magistrados, jueces y expertos en diversas áreas, que garantizan una formación de excelencia. Utilice el siguiente directorio interactivo para explorar los perfiles de los docentes, filtrar por área de especialidad y conocer sus competencias.</p>
+                
+                <div id="docentes-directory">
+                    <div class="summary-panel">
+                        <div class="summary-box total-box"><div id="total-judges" class="summary-number"></div><div class="summary-label">Total de Registros</div></div>
+                        <div class="summary-box list-box"><h3 class="summary-title">Registros por Cargo</h3><ul id="cargo-stats-list" class="summary-list"></ul></div>
+                        <div class="summary-box list-box"><h3 class="summary-title">Top 15 Áreas de Docencia</h3><ul id="expertise-stats-list" class="summary-list"></ul></div>
+                    </div>
+                    <div class="filters-container">
+                        <h4 class="filters-header">Filtros de Búsqueda</h4>
+                        <div class="filter-grid">
+                            <div class="filter-group"><label for="filter-name">Nombre</label><input type="text" id="filter-name" placeholder="Buscar por nombre..."></div>
+                            <div class="filter-group"><label for="filter-cargo">Cargo</label><select id="filter-cargo"><option value="">Todos los Cargos</option></select></div>
+                            <div class="filter-group"><label for="filter-judicatura">Judicatura</label><select id="filter-judicatura"><option value="">Todas las Judicaturas</option></select></div>
+                            <div class="filter-group"><label for="filter-docencia">Área de Docencia</label><select id="filter-docencia"><option value="">Todas las Áreas</option></select></div>
+                            <div class="filter-group"><label for="filter-estado">Estado</label><select id="filter-estado"><option value="">Todos</option><option value="ACTIVO">Activo</option><option value="BAJA">Baja</option></select></div>
+                        </div>
+                        <div class="filter-buttons"><button id="reset-filters">Limpiar Filtros</button></div>
+                    </div>
+                    <div id="results-count"></div>
+                    <div id="judges-container"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM loaded, testing docentes directory...');
+        
+        // Simular solo la lógica de docentes para test
+        const judgesData = [
+          {
+            "nro": 1,
+            "nombre": "ABRAHAM WILLIAMS GARCÍA HÉRNANDEZ",
+            "cargo": "JUEZ DE PRIMERA INSTANCIA",
+            "dependencia": "JUZGADO PLURIPERSONAL DE PRIMERA INSTANCIA DE LA NIÑEZ Y ADOLESCENCIA",
+            "estado": "ACTIVO",
+            "judicatura": "NIÑEZ Y ADOLESCENCIA",
+            "docencia": ["Derecho Constitucional", "Derechos Humanos", "Derecho Penal y Procesal Penal"],
+            "otra_especialidad": null
+          },
+          {
+            "nro": 2,
+            "nombre": "ALBA LETICIA ALVIZURIS TORRES",
+            "cargo": "JUEZ DE PRIMERA INSTANCIA",
+            "dependencia": "TRIBUNAL PRIMERO PLURIPERSONAL DE SENTENCIA PENAL",
+            "estado": "ACTIVO",
+            "judicatura": "PENAL",
+            "docencia": ["Derecho Penal y Procesal Penal", "Violencia contra la Mujer"],
+            "otra_especialidad": null
+          }
+        ];
+
+        const judgesDirectory = document.getElementById('docentes-directory');
+        if (!judgesDirectory) {
+            console.log('Elemento docentes-directory no encontrado');
+            return;
+        }
+        console.log('Elemento docentes-directory encontrado:', judgesDirectory);
+
+        const judgesContainer = document.getElementById('judges-container');
+        const totalJudgesEl = document.getElementById('total-judges');
+        
+        // Test básico
+        if (totalJudgesEl) {
+            totalJudgesEl.textContent = judgesData.length;
+            console.log('Total de jueces establecido:', judgesData.length);
+        }
+        
+        if (judgesContainer) {
+            judgesContainer.innerHTML = '<p>Test: ' + judgesData.length + ' docentes cargados correctamente!</p>';
+            console.log('Contenido de prueba agregado al contenedor');
+        }
+    });
+    </script>
+</body>
+</html>

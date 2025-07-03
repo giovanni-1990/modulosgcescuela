@@ -3164,9 +3164,20 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         ];
 
-        document.addEventListener('DOMContentLoaded', () => {
+        // Inicialización del directorio de docentes
+        const initDocentesDirectory = () => {
+            console.log('Iniciando directorio de docentes...');
             const judgesDirectory = document.getElementById('docentes-directory');
-            if (!judgesDirectory) return; 
+            if (!judgesDirectory) {
+                console.log('Elemento docentes-directory no encontrado');
+                return;
+            }
+            console.log('Elemento docentes-directory encontrado:', judgesDirectory);
+            
+            // Añadir mensaje visible de debugging
+            const debugDiv = document.createElement('div');
+            debugDiv.innerHTML = '<p style="background: yellow; padding: 10px; margin: 10px 0;">🟡 DEBUG: Función initDocentesDirectory ejecutándose...</p>';
+            judgesDirectory.insertBefore(debugDiv, judgesDirectory.firstChild); 
 
             const judgesContainer = document.getElementById('judges-container');
             const filterName = document.getElementById('filter-name');
@@ -3296,7 +3307,8 @@ document.addEventListener('DOMContentLoaded', function() {
             populateStatistics();
             populateFilters();
             renderJudges(judgesData);
-        });
+        };
+        
         // --- FIN: LÓGICA DIRECTORIO DOCENTES --- //
 
         // --- INICIO: FUNCIONES PARA MODALES DEL NUEVO APARTADO --- //
@@ -3329,7 +3341,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Efectos hover para las tarjetas del nuevo apartado
-        document.addEventListener('DOMContentLoaded', function() {
+        const initHoverEffects = () => {
             const tarjetas = document.querySelectorAll('#nuevo-apartado > div > div[style*="grid-template-columns"] > div');
             tarjetas.forEach(tarjeta => {
                 tarjeta.addEventListener('mouseenter', function() {
@@ -3341,11 +3353,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     this.style.boxShadow = '0 4px 8px var(--shadow-color)';
                 });
             });
-        });
+        };
+        
         // --- FIN: FUNCIONES PARA MODALES DEL NUEVO APARTADO --- //
 
-
-        document.addEventListener('DOMContentLoaded', function() {
+        // Inicialización del slider RIAEJ
+        const initRiaejSlider = () => {
             // --- Script para el Slider de Programas RIAEJ ---
             const riaejProgramSliderData = [
                 {
@@ -3488,7 +3501,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 console.warn("Elementos del slider de certificados (imágenes) no encontrados. El slider no funcionará.");            }
             // --- FIN Script para el Slider de Certificados (IMÁGENES) ---
-        });
+        };
 
         // --- INICIO: LÓGICA DIRECTORIO INTERACTIVO COMPLETO --- //
         const directoryJudgesData = [
@@ -3564,7 +3577,8 @@ document.addEventListener('DOMContentLoaded', function() {
             { "correlativo": 70, "nombre": "VICTOR MANUEL TURCIOS URRUTIA", "cargo": "Docente Externo", "dependencia": "Escuela de Estudios Judiciales", "judicatura": "Licenciado en Ciencias Jurídicas y Sociales, Abogado y Notario", "docencia": ["Ciencias Jurídicas y Sociales"], "otra_especialidad": null, "estado": "ACTIVO" }
         ];
 
-        document.addEventListener('DOMContentLoaded', () => {
+        // Inicialización del directorio completo
+        const initDirectoryCompleto = () => {
             const directoryJudgesContainer = document.getElementById('directory-judges-container');
             const directoryFilterName = document.getElementById('directory-filter-name');
             const directoryFilterJudicatura = document.getElementById('directory-filter-judicatura');
@@ -3687,7 +3701,7 @@ document.addEventListener('DOMContentLoaded', function() {
             directoryPopulateStatistics();
             directoryPopulateFilters();
             directoryRenderJudges(directoryJudgesData);
-        });
+        };
 
         //INSERTA AQUÍ EL RESTO DE CÓDIGO 
 
@@ -3696,6 +3710,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         //HASTA AQUÌ
 
+        // Inicializar todas las funciones después de que el DOM esté listo
+        console.log('Inicializando funciones después del DOM...');
+        initDocentesDirectory();
+        initDirectoryCompleto();
+        initHoverEffects();
+        initRiaejSlider();
 
 //esto no se quita
 });

@@ -755,9 +755,13 @@ require_once 'session_check.php';
                 <div style="text-align: center; margin-top: 40px;">
                     <a href="https://forms.gle/EwHnPtgEq4NmJTXw6" target="_blank" class="action-button">Registro de Asistencia</a>
                 </div>
-                </div>
+            </div>
+        </section>
 
-                <!-- INICIO: SECCIÓN DE DIRECTORIO DE DOCENTES (INTEGRADA) --><div id="red-docente" class="section-title-wrapper">
+        <!-- INICIO: SECCIÓN DE DIRECTORIO DE DOCENTES (INTEGRADA) -->
+        <section id="red-docente" class="content-section">
+            <div class="container">
+                <div class="section-title-wrapper">
                     <h3 style="font-size: 2em; color: var(--accent-blue-darker); border-left: 4px solid var(--accent-gold); padding-left: 15px; margin: 0; display: flex; align-items: center;">
                         <i class="fas fa-chalkboard-teacher" style="margin-right: 15px;"></i>
                         Red Docente de la Escuela de Estudios Judiciales
@@ -783,9 +787,10 @@ require_once 'session_check.php';
                         <div class="filter-buttons"><button id="reset-filters">Limpiar Filtros</button></div>
                     </div>
                     <div id="results-count"></div>
-                    <div id="judges-container"></div>                </div>                <!-- FIN: SECCIÓN DE DIRECTORIO DE DOCENTES (INTEGRADA) -->
-                
-                </div>            </div>
+                    <div id="judges-container"></div>
+                </div>
+                <!-- FIN: SECCIÓN DE DIRECTORIO DE DOCENTES (INTEGRADA) -->
+            </div>
         </section>
 
         <!-- INICIO: SECCIÓN DIRECTORIO INTERACTIVO COMPLETO -->
