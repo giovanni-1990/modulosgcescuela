@@ -3172,12 +3172,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Elemento docentes-directory no encontrado');
                 return;
             }
-            console.log('Elemento docentes-directory encontrado:', judgesDirectory);
-            
-            // Añadir mensaje visible de debugging
-            const debugDiv = document.createElement('div');
-            debugDiv.innerHTML = '<p style="background: yellow; padding: 10px; margin: 10px 0;">🟡 DEBUG: Función initDocentesDirectory ejecutándose...</p>';
-            judgesDirectory.insertBefore(debugDiv, judgesDirectory.firstChild); 
+            console.log('Elemento docentes-directory encontrado:', judgesDirectory); 
 
             const judgesContainer = document.getElementById('judges-container');
             const filterName = document.getElementById('filter-name');
