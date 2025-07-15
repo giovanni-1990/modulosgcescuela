@@ -47,49 +47,72 @@
         }
 
         body.dark-theme {
-            --bg-primary: #121212;
-            --bg-secondary: #1e1e1e;
-            --text-primary: #f5f5f5;
-            --text-secondary: #cccccc;
-            --header-bg: #002244;
-            --header-text: #f5f5f5;
-            --accent-gold: #E6C260;
-            --accent-blue-main: #58a6ff;
-            --accent-blue-darker: #317ccc;
-            --accent-blue-lighter: #79b8ff;
+            /* Colores base mejorados para profesionalismo institucional */
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #242424;
+            --text-primary: #e8e8e8;
+            --text-secondary: #b8b8b8;
+            --header-bg: #1e2849;
+            --header-text: #ffffff;
+            
+            /* Colores de acento optimizados para imagen institucional */
+            --accent-gold: #f4c430;
+            --accent-blue-main: #4a90e2;
+            --accent-blue-darker: #2e5c8a;
+            --accent-blue-lighter: #6ba3e8;
+            
+            /* Componentes UI mejorados */
             --card-bg: #2a2a2a;
-            --card-border: #444444;
-            --shadow-color: rgba(0, 0, 0, 0.3);
+            --card-border: #404040;
+            --shadow-color: rgba(0, 0, 0, 0.6);
             --button-primary-bg: var(--accent-gold);
-            --button-primary-text: #121212;
+            --button-primary-text: #1a1a1a;
             --button-primary-border: var(--accent-gold);
-            --modal-content-bg: #2c2c2c;
-            --risk-extreme-bg: #4a1e1e;
-            --risk-extreme-border: #f48fb1;
-            --risk-high-bg: #4a421e;
-            --risk-high-border: #fff59d;
-            --accordion-header-bg: #317ccc;
+            --modal-content-bg: #2a2a2a;
+            
+            /* Estados de riesgo mejorados */
+            --risk-extreme-bg: #3d1a1a;
+            --risk-extreme-border: #e57373;
+            --risk-high-bg: #3d3a1a;
+            --risk-high-border: #ffb74d;
+            
+            /* Acordeones y navegación mejorados */
+            --accordion-header-bg: #2e5c8a;
             --accordion-header-text: var(--header-text);
-            --accordion-content-bg: #272727;
-            --highlight-note-bg: #4a421e;
+            --accordion-content-bg: #242424;
+            --highlight-note-bg: #3d3a1a;
             --highlight-note-text: var(--accent-gold);
             --highlight-note-border: var(--accent-gold);
             --link-color: var(--accent-blue-lighter);
-            --foda-button-bg: #333;
+            
+            /* Botones FODA mejorados */
+            --foda-button-bg: #333333;
             --foda-button-text: var(--accent-blue-lighter);
-            --foda-button-border: #555;
-            --foda-button-active-bg: var(--accent-blue-lighter);
-            --foda-button-active-text: #121212;
-            --counter-bg: var(--header-bg);
+            --foda-button-border: #555555;
+            --foda-button-active-bg: var(--accent-blue-main);
+            --foda-button-active-text: #ffffff;
+            
+            /* Contadores y elementos institucionales */
+            --counter-bg: #1e2849;
             --counter-text: var(--text-primary);
-            --tour-popover-bg: #2c2c2c;
-            --tour-popover-text: #f5f5f5;
+            --tour-popover-bg: #2a2a2a;
+            --tour-popover-text: #e8e8e8;
             --tour-popover-border: var(--accent-gold);
             --tour-button-bg: var(--accent-gold);
-            --tour-button-text: #121212;
+            --tour-button-text: #1a1a1a;
             --view-image-button-bg: var(--accent-blue-main);
             --view-image-button-text: var(--header-text);
             --view-image-button-hover-bg: var(--accent-blue-darker);
+            
+            /* Variables adicionales para mejor experiencia institucional */
+            --border-color: #404040;
+            --input-bg: #333333;
+            --input-border: #555555;
+            --input-text: #e8e8e8;
+            --nav-bg: #1e1e1e;
+            --nav-hover: #3a3a3a;
+            --table-bg: #242424;
+            --table-border: #404040;
         }
 
         * {
@@ -2215,7 +2238,7 @@
 
         .card-number {
             position: absolute;
-            top: 15px;
+            top: 40px;
             right: 15px;
             background-color: var(--accent-gold);
             color: var(--accent-blue-darker);
@@ -2709,6 +2732,7 @@
         }
         body.dark-theme .directory-count-badge {
             background-color: var(--accent-blue-main);
+            color: var(--header-text);
         }
 
         .directory-filters-container { 
@@ -2895,12 +2919,23 @@
         }
 
         .directory-card-correlativo {
+            position: absolute;
+            top: 40px;
+            right: 15px;
+            background-color: var(--accent-gold);
+            color: var(--accent-blue-darker);
             font-family: 'Merriweather', serif;
-            font-size: 1.8rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            color: var(--card-border);
-            padding-left: 15px;
-            line-height: 1;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--card-bg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 10;
         }
         
         .directory-card-body .directory-detail-group { 
@@ -2992,7 +3027,229 @@
                 column-count: 1; 
             }
         }
-        
 
-        
+        /* ===== MEJORAS INSTITUCIONALES PARA MODO OSCURO ===== */
+
+        /* Header institucional mejorado */
+        body.dark-theme .header-container {
+            background: linear-gradient(135deg, var(--nav-bg) 0%, var(--header-bg) 100%);
+            border-bottom: 2px solid var(--accent-gold);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-theme .header-titles h1 {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        body.dark-theme .sgc-subtitle {
+            color: var(--accent-gold);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Tarjetas institucionales mejoradas */
+        body.dark-theme .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 12px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-theme .card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+            border-color: var(--accent-blue-main);
+        }
+
+        /* Navegación institucional */
+        body.dark-theme #main-nav {
+            background: var(--nav-bg);
+            border-right: 2px solid var(--accent-gold);
+        }
+
+        body.dark-theme #main-nav ul li a {
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-theme #main-nav ul li a:hover {
+            background: var(--nav-hover);
+            color: var(--accent-gold);
+            padding-left: 25px;
+        }
+
+        body.dark-theme #main-nav ul li a.active {
+            background: linear-gradient(90deg, var(--accent-blue-main), transparent);
+            color: var(--accent-gold);
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        /* Números correlativos institucionales */
+        body.dark-theme .card-number,
+        body.dark-theme .directory-card-correlativo {
+            background: linear-gradient(135deg, var(--accent-gold), #f4d03f);
+            color: var(--bg-primary);
+            box-shadow: 0 3px 10px rgba(244, 196, 48, 0.4);
+            font-weight: bold;
+            border: 2px solid rgba(244, 196, 48, 0.3);
+        }
+
+        /* Botones institucionales mejorados */
+        body.dark-theme .action-button,
+        body.dark-theme .view-image-button {
+            background: linear-gradient(135deg, var(--accent-blue-main), var(--accent-blue-darker));
+            color: white;
+            border: none;
+            box-shadow: 0 3px 10px rgba(74, 144, 226, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-theme .action-button:hover,
+        body.dark-theme .view-image-button:hover {
+            background: linear-gradient(135deg, var(--accent-blue-lighter), var(--accent-blue-main));
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Acordeones institucionales */
+        body.dark-theme .accordion-header {
+            background: linear-gradient(135deg, var(--accordion-header-bg), var(--accent-blue-darker));
+            color: var(--accordion-header-text);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-theme .accordion-header:hover {
+            background: linear-gradient(135deg, var(--accent-blue-main), var(--accordion-header-bg));
+            box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+        }
+
+        body.dark-theme .accordion-content {
+            background: var(--accordion-content-bg);
+            border: 1px solid var(--border-color);
+            border-top: none;
+        }
+
+        /* Modales institucionales */
+        body.dark-theme .modal-content {
+            background: var(--modal-content-bg);
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: var(--text-primary);
+        }
+
+        body.dark-theme .image-modal {
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        body.dark-theme .image-modal-close {
+            background: rgba(244, 196, 48, 0.9);
+            color: var(--bg-primary);
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-theme .image-modal-close:hover {
+            background: var(--accent-gold);
+            transform: scale(1.1);
+        }
+
+        /* Formularios institucionales */
+        body.dark-theme input[type="text"],
+        body.dark-theme input[type="email"],
+        body.dark-theme select,
+        body.dark-theme textarea {
+            background: var(--input-bg);
+            border: 2px solid var(--input-border);
+            color: var(--input-text);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-theme input[type="text"]:focus,
+        body.dark-theme input[type="email"]:focus,
+        body.dark-theme select:focus,
+        body.dark-theme textarea:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(244, 196, 48, 0.2);
+            outline: none;
+        }
+
+        /* Destacados institucionales */
+        body.dark-theme .highlight-modification-note {
+            background: linear-gradient(135deg, var(--highlight-note-bg), #3d3a1a);
+            border-left: 4px solid var(--accent-gold);
+            color: var(--text-primary);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-theme .shared-folder-info {
+            background: var(--card-bg);
+            border: 2px solid var(--accent-blue-main);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        /* Tour institucional */
+        body.dark-theme #tour-popover {
+            background: var(--tour-popover-bg);
+            border: 2px solid var(--tour-popover-border);
+            color: var(--tour-popover-text);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        body.dark-theme #tour-highlight-box {
+            border: 3px solid var(--accent-gold);
+            box-shadow: 0 0 20px rgba(244, 196, 48, 0.6);
+        }
+
+        /* Footer institucional */
+        body.dark-theme footer {
+            background: var(--nav-bg);
+            border-top: 2px solid var(--accent-gold);
+            color: var(--text-secondary);
+        }
+
+        body.dark-theme #viewCounter {
+            background: linear-gradient(135deg, var(--counter-bg), #1e2849);
+            color: var(--counter-text);
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Mejoras para componentes específicos de la institución */
+        body.dark-theme .judge-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-theme .judge-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-gold);
+        }
+
+        body.dark-theme .section-title-wrapper h3 {
+            color: var(--accent-blue-lighter);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-theme .folder-path {
+            background: var(--input-bg);
+            border: 2px solid var(--input-border);
+            color: var(--accent-blue-lighter);
+            font-family: 'Courier New', monospace;
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        /* Transiciones suaves para cambio de tema */
+        body.dark-theme * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* ===== FIN MEJORAS INSTITUCIONALES ===== */
+
+
+
 

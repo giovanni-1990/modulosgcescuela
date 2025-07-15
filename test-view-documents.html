@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Botones Ver Documento</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .test-title {
+            color: #2c5aa0;
+            margin-bottom: 15px;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Test de Funcionalidad - Botones "Ver Documento"</h1>
+        
+        <div class="test-section">
+            <h2 class="test-title">Sección Política de Calidad</h2>
+            <button id="viewPoliticaImageBtn" class="view-image-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                Ver Documento - Política de Calidad
+            </button>
+            <p>Haz clic en el botón para ver la imagen de la Política de Calidad.</p>
+        </div>
+
+        <div class="test-section">
+            <h2 class="test-title">Sección Objetivos de Calidad</h2>
+            <button id="viewObjetivosImageBtn" class="view-image-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                Ver Documento - Objetivos de Calidad
+            </button>
+            <p>Haz clic en el botón para ver la imagen de los Objetivos de Calidad.</p>
+        </div>
+
+        <div class="test-section">
+            <h2 class="test-title">Resultados del Test</h2>
+            <div id="testResults">
+                <p>Cargando resultados...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALES -->
+    <!-- MODAL PARA IMAGEN DE POLÍTICA DE CALIDAD -->
+    <div id="politicaImageModal" class="image-modal">
+        <div class="image-modal-content">
+            <span class="image-modal-close" id="closePoliticaImageModal">&times;</span>
+            <img id="politicaModalImage" src="" alt="Política de Calidad del Organismo Judicial" class="modal-image-display">
+        </div>
+    </div>
+
+    <!-- MODAL PARA IMAGEN DE OBJETIVOS DE CALIDAD -->
+    <div id="objetivosImageModal" class="image-modal">
+        <div class="image-modal-content">
+            <span class="image-modal-close" id="closeObjetivosImageModal">&times;</span>
+            <img id="objetivosModalImage" src="" alt="Objetivos de Calidad del Organismo Judicial" class="modal-image-display">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const testResults = document.getElementById('testResults');
+            let results = [];
+
+            // ===== FUNCIONALIDAD BOTONES "VER DOCUMENTO" =====
+            function initViewDocumentButtons() {
+                // Botón para ver Política de Calidad
+                const viewPoliticaBtn = document.getElementById('viewPoliticaImageBtn');
+                const politicaModal = document.getElementById('politicaImageModal');
+                const politicaModalImage = document.getElementById('politicaModalImage');
+                const closePoliticaModal = document.getElementById('closePoliticaImageModal');
+
+                // Botón para ver Objetivos de Calidad
+                const viewObjetivosBtn = document.getElementById('viewObjetivosImageBtn');
+                const objetivosModal = document.getElementById('objetivosImageModal');
+                const objetivosModalImage = document.getElementById('objetivosModalImage');
+                const closeObjetivosModal = document.getElementById('closeObjetivosImageModal');
+
+                // Test de elementos
+                if (viewPoliticaBtn) {
+                    results.push('<span class="success">✓ Botón Política encontrado</span>');
+                } else {
+                    results.push('<span class="error">✗ Botón Política NO encontrado</span>');
+                }
+
+                if (viewObjetivosBtn) {
+                    results.push('<span class="success">✓ Botón Objetivos encontrado</span>');
+                } else {
+                    results.push('<span class="error">✗ Botón Objetivos NO encontrado</span>');
+                }
+
+                if (politicaModal) {
+                    results.push('<span class="success">✓ Modal Política encontrado</span>');
+                } else {
+                    results.push('<span class="error">✗ Modal Política NO encontrado</span>');
+                }
+
+                if (objetivosModal) {
+                    results.push('<span class="success">✓ Modal Objetivos encontrado</span>');
+                } else {
+                    results.push('<span class="error">✗ Modal Objetivos NO encontrado</span>');
+                }
+
+                // Funcionalidad para Política de Calidad
+                if (viewPoliticaBtn && politicaModal && politicaModalImage) {
+                    viewPoliticaBtn.addEventListener('click', function() {
+                        politicaModalImage.src = './img/Politica_de_Calidad_V3.jpg';
+                        politicaModal.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                        results.push('<span class="success">✓ Modal Política activado</span>');
+                        updateResults();
+                    });
+
+                    // Cerrar modal de Política
+                    if (closePoliticaModal) {
+                        closePoliticaModal.addEventListener('click', function() {
+                            politicaModal.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        });
+                    }
+
+                    // Cerrar modal al hacer clic fuera de la imagen
+                    politicaModal.addEventListener('click', function(e) {
+                        if (e.target === politicaModal) {
+                            politicaModal.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        }
+                    });
+                    
+                    results.push('<span class="success">✓ Event listeners Política configurados</span>');
+                }
+
+                // Funcionalidad para Objetivos de Calidad
+                if (viewObjetivosBtn && objetivosModal && objetivosModalImage) {
+                    viewObjetivosBtn.addEventListener('click', function() {
+                        objetivosModalImage.src = './img/Objetivos_Calidad_V4.jpg';
+                        objetivosModal.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                        results.push('<span class="success">✓ Modal Objetivos activado</span>');
+                        updateResults();
+                    });
+
+                    // Cerrar modal de Objetivos
+                    if (closeObjetivosModal) {
+                        closeObjetivosModal.addEventListener('click', function() {
+                            objetivosModal.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        });
+                    }
+
+                    // Cerrar modal al hacer clic fuera de la imagen
+                    objetivosModal.addEventListener('click', function(e) {
+                        if (e.target === objetivosModal) {
+                            objetivosModal.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        }
+                    });
+                    
+                    results.push('<span class="success">✓ Event listeners Objetivos configurados</span>');
+                }
+
+                // Cerrar modales con la tecla Escape
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') {
+                        if (politicaModal && politicaModal.style.display === 'block') {
+                            politicaModal.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        }
+                        if (objetivosModal && objetivosModal.style.display === 'block') {
+                            objetivosModal.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        }
+                    }
+                });
+                
+                results.push('<span class="success">✓ Tecla Escape configurada</span>');
+            }
+
+            function updateResults() {
+                testResults.innerHTML = results.join('<br>');
+            }
+
+            // Inicializar
+            initViewDocumentButtons();
+            updateResults();
+        });
+    </script>
+</body>
+</html>

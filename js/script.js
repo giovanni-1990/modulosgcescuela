@@ -1,3 +1,117 @@
+// Funciones globales para copiar al portapapeles
+function copyToClipboard(elementId) {
+    const element = document.getElementById(elementId);
+    if (!element) {
+        console.error('Elemento no encontrado:', elementId);
+        showCopyNotification('Error: Elemento no encontrado');
+        return;
+    }
+    
+    const text = element.textContent || element.innerText;
+    
+    // Usar la API moderna del portapapeles si está disponible
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(function() {
+            showCopyNotification('Enlace copiado al portapapeles');
+        }, function(err) {
+            console.error('Error con clipboard API:', err);
+            fallbackCopyToClipboard(text);
+        });
+    } else {
+        fallbackCopyToClipboard(text);
+    }
+}
+
+function fallbackCopyToClipboard(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        showCopyNotification('Enlace copiado al portapapeles');
+    } catch (err) {
+        console.error('Error con execCommand:', err);
+        showCopyNotification('Error al copiar el enlace');
+    }
+    
+    document.body.removeChild(textArea);
+}
+
+function showCopyNotification(message) {
+    // Remover notificación anterior si existe
+    const existingNotification = document.getElementById('copy-notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    const notification = document.createElement('div');
+    notification.id = 'copy-notification';
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #2c5aa0;
+        color: white;
+        padding: 15px 20px;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        z-index: 10000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        animation: slideIn 0.3s ease-out;
+        max-width: 300px;
+        word-wrap: break-word;
+    `;
+    
+    // Agregar animación CSS si no existe
+    if (!document.getElementById('copy-notification-styles')) {
+        const style = document.createElement('style');
+        style.id = 'copy-notification-styles';
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    document.body.appendChild(notification);
+    
+    // Eliminar la notificación después de 3 segundos
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease-out';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.remove();
+            }
+        }, 300);
+    }, 3000);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 
 // Theme Toggle
@@ -102,37 +216,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
 
-        // Clipboard copy
-        function copyToClipboard(elementId) {
-            const textToCopy = document.getElementById(elementId).innerText;
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(textToCopy).then(() => {
-                    alert('Enlace copiado al portapapeles!');
-                }).catch(err => {
-                    console.error('Error al copiar el enlace con API: ', err);
-                    fallbackCopyToClipboard(textToCopy);
-                });
-            } else {
-                fallbackCopyToClipboard(textToCopy);
-            }
-            incrementInteraction();
-        }
-        function fallbackCopyToClipboard(text) {
-            const textArea = document.createElement("textarea");
-            textArea.value = text;
-            textArea.style.position = "fixed"; textArea.style.left = "-9999px"; textArea.style.top = "-9999px";
-            document.body.appendChild(textArea);
-            textArea.focus(); textArea.select();
-            try {
-                document.execCommand('copy');
-                alert('Enlace copiado al portapapeles (método alternativo)!');
-            } catch (err) {
-                console.error('Error al copiar el enlace con execCommand: ', err);
-                alert('Error al copiar. Por favor, copie manualmente el enlace.');
-            }
-            document.body.removeChild(textArea);
-        }
-
         // Risk Modal
         const riskModal = document.getElementById("riskModal");
         const openRiskModalCard = document.getElementById("openRiskModalCard");
@@ -189,47 +272,72 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // --- LÓGICA PARA MODALES DE IMAGEN ---
-        const politicaImageModal = document.getElementById("politicaImageModal");
-        const politicaModalImage = document.getElementById("politicaModalImage");
-        const openPoliticaImageBtn = document.getElementById("viewPoliticaImageBtn");
-        const closePoliticaImageModal = document.getElementById("closePoliticaImageModal");
-        const politicaImageUrl = "https://raw.githubusercontent.com/giovanni-1990/objetivos-y-politicas/refs/heads/main/POLITICA%20DE%20CALIDAD.jfif";
+        // --- Función genérica para inicializar carruseles ---
+        function initializeCarousel(modalSelector) {
+            const carousel = document.querySelector(`${modalSelector} .carousel-container`);
+            if (!carousel) return;
 
-        const objetivosImageModal = document.getElementById("objetivosImageModal");
-        const objetivosModalImage = document.getElementById("objetivosModalImage");
-        const openObjetivosImageBtn = document.getElementById("viewObjetivosImageBtn");
-        const closeObjetivosImageModal = document.getElementById("closeObjetivosImageModal");
-        const objetivosImageUrl = "https://raw.githubusercontent.com/giovanni-1990/objetivos-y-politicas/refs/heads/main/OBJETIVOS%20DE%20CALIDAD.jfif";
+            const slidesContainer = carousel.querySelector('.carousel-slides');
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const prevButton = carousel.querySelector('.carousel-button.prev');
+            const nextButton = carousel.querySelector('.carousel-button.next');
+            const dotsContainer = carousel.querySelector('.carousel-dots');
 
-        if (openPoliticaImageBtn && politicaImageModal && politicaModalImage) {
-            openPoliticaImageBtn.onclick = () => {
-                politicaModalImage.src = politicaImageUrl;
-                politicaImageModal.style.display = "block";
-                incrementInteraction();
+            if (!slidesContainer || !slides.length || !prevButton || !nextButton || !dotsContainer) return;
+
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+
+            // Limpiar puntos existentes
+            dotsContainer.innerHTML = '';
+
+            // Crear los puntos indicadores dinámicamente
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => {
+                    goToSlide(i);
+                });
+                dotsContainer.appendChild(dot);
             }
-        }
-        if (closePoliticaImageModal && politicaImageModal) {
-            closePoliticaImageModal.onclick = () => {
-                politicaImageModal.style.display = "none";
-                incrementInteraction();
+
+            const dots = carousel.querySelectorAll('.dot');
+
+            // Función para actualizar el carrusel
+            function updateCarousel() {
+                slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
             }
+            
+            // Función para ir a una diapositiva específica
+            function goToSlide(slideIndex) {
+                currentIndex = slideIndex;
+                updateCarousel();
+            }
+
+            // Remover event listeners existentes para evitar duplicados
+            const newPrevButton = prevButton.cloneNode(true);
+            const newNextButton = nextButton.cloneNode(true);
+            prevButton.parentNode.replaceChild(newPrevButton, prevButton);
+            nextButton.parentNode.replaceChild(newNextButton, nextButton);
+
+            // Event Listeners para los botones
+            newNextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateCarousel();
+            });
+
+            newPrevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            });
+            
+            // Inicializar el carrusel en la primera diapositiva
+            updateCarousel();
         }
 
-        if (openObjetivosImageBtn && objetivosImageModal && objetivosModalImage) {
-            openObjetivosImageBtn.onclick = () => {
-                objetivosModalImage.src = objetivosImageUrl;
-                objetivosImageModal.style.display = "block";
-                incrementInteraction();
-            }
-        }
-        if (closeObjetivosImageModal && objetivosImageModal) {
-            closeObjetivosImageModal.onclick = () => {
-                objetivosImageModal.style.display = "none";
-                incrementInteraction();
-            }
-        }
-        
         // --- Lógica para el modal del carrusel Ficha de Procesos ---
         const fichaProcesosModal = document.getElementById("fichaProcesosModal");
         const openFichaProcesosBtn = document.getElementById("openFichaProcesosBtn");
@@ -238,6 +346,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (openFichaProcesosBtn && fichaProcesosModal) {
             openFichaProcesosBtn.onclick = () => {
                 fichaProcesosModal.style.display = "block";
+                // Inicializar el carrusel cuando se abra el modal
+                setTimeout(() => initializeCarousel('#fichaProcesosModal'), 100);
                 incrementInteraction();
             }
         }
@@ -295,63 +405,6 @@ document.addEventListener('DOMContentLoaded', function() {
             element.addEventListener('click', incrementInteraction);
         });
         
-        // --- Lógica para la funcionalidad del Carrusel de Ficha de Procesos ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const carousel = document.querySelector('#fichaProcesosModal .carousel-container');
-            // Si el carrusel no está en la página, no hacer nada para evitar errores
-            if (!carousel) return;
-
-            // Seleccionar los elementos del DOM específicos de este carrusel
-            const slidesContainer = carousel.querySelector('.carousel-slides');
-            const slides = carousel.querySelectorAll('.carousel-slide');
-            const prevButton = carousel.querySelector('.carousel-button.prev');
-            const nextButton = carousel.querySelector('.carousel-button.next');
-            const dotsContainer = carousel.querySelector('.carousel-dots');
-
-            let currentIndex = 0;
-            const totalSlides = slides.length;
-
-            // Crear los puntos indicadores dinámicamente
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('span');
-                dot.classList.add('dot');
-                dot.addEventListener('click', () => {
-                    goToSlide(i);
-                });
-                dotsContainer.appendChild(dot);
-            }
-
-            const dots = carousel.querySelectorAll('.dot');
-
-            // Función para actualizar el carrusel
-            function updateCarousel() {
-                slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
-                });
-            }
-            
-            // Función para ir a una diapositiva específica
-            function goToSlide(slideIndex) {
-                currentIndex = slideIndex;
-                updateCarousel();
-            }
-
-            // Event Listeners para los botones
-            nextButton.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % totalSlides;
-                updateCarousel();
-            });
-
-            prevButton.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-                updateCarousel();
-            });
-            
-            // Inicializar el carrusel en la primera diapositiva
-            updateCarousel();
-        });
-
 
         // --- Lógica para el Tour Interactivo ---
         const tourOverlay = document.getElementById('tour-overlay');
@@ -3644,7 +3697,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <h3 class="directory-name">${judge.nombre}</h3>
                                 <p class="directory-cargo">${judge.cargo}</p>
                             </div>
-                            <div class="directory-card-correlativo">#${judge.correlativo}</div>
+                            <div class="directory-card-correlativo">${judge.correlativo}</div>
                         </div>
                         <div class="directory-card-body">
                             <div class="directory-detail-group"><strong>Dependencia:</strong><p>${judge.dependencia}</p></div>
@@ -3700,8 +3753,84 @@ document.addEventListener('DOMContentLoaded', function() {
 
         //INSERTA AQUÍ EL RESTO DE CÓDIGO 
 
+        // ===== FUNCIONALIDAD BOTONES "VER DOCUMENTO" =====
+        function initViewDocumentButtons() {
+            // Botón para ver Política de Calidad
+            const viewPoliticaBtn = document.getElementById('viewPoliticaImageBtn');
+            const politicaModal = document.getElementById('politicaImageModal');
+            const politicaModalImage = document.getElementById('politicaModalImage');
+            const closePoliticaModal = document.getElementById('closePoliticaImageModal');
 
+            // Botón para ver Objetivos de Calidad
+            const viewObjetivosBtn = document.getElementById('viewObjetivosImageBtn');
+            const objetivosModal = document.getElementById('objetivosImageModal');
+            const objetivosModalImage = document.getElementById('objetivosModalImage');
+            const closeObjetivosModal = document.getElementById('closeObjetivosImageModal');
 
+            // Funcionalidad para Política de Calidad
+            if (viewPoliticaBtn && politicaModal && politicaModalImage) {
+                viewPoliticaBtn.addEventListener('click', function() {
+                    politicaModalImage.src = './img/Politica_de_Calidad_V3.jpg';
+                    politicaModal.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // Evitar scroll en el fondo
+                });
+
+                // Cerrar modal de Política
+                if (closePoliticaModal) {
+                    closePoliticaModal.addEventListener('click', function() {
+                        politicaModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    });
+                }
+
+                // Cerrar modal al hacer clic fuera de la imagen
+                politicaModal.addEventListener('click', function(e) {
+                    if (e.target === politicaModal) {
+                        politicaModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+
+            // Funcionalidad para Objetivos de Calidad
+            if (viewObjetivosBtn && objetivosModal && objetivosModalImage) {
+                viewObjetivosBtn.addEventListener('click', function() {
+                    objetivosModalImage.src = './img/Objetivos_Calidad_V4.jpg';
+                    objetivosModal.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // Evitar scroll en el fondo
+                });
+
+                // Cerrar modal de Objetivos
+                if (closeObjetivosModal) {
+                    closeObjetivosModal.addEventListener('click', function() {
+                        objetivosModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    });
+                }
+
+                // Cerrar modal al hacer clic fuera de la imagen
+                objetivosModal.addEventListener('click', function(e) {
+                    if (e.target === objetivosModal) {
+                        objetivosModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+
+            // Cerrar modales con la tecla Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (politicaModal && politicaModal.style.display === 'block') {
+                        politicaModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                    if (objetivosModal && objetivosModal.style.display === 'block') {
+                        objetivosModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            });
+        }
 
         //HASTA AQUÌ
 
@@ -3711,6 +3840,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initDirectoryCompleto();
         initHoverEffects();
         initRiaejSlider();
+        initViewDocumentButtons();
 
 //esto no se quita
 });

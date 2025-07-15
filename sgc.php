@@ -38,16 +38,17 @@ require_once 'session_check.php';
             <img src="https://raw.githubusercontent.com/djsalazar/aa/b74e56ed5e3c0105afd0613626877ac3e2f56563/logo%20-%20Blanco.png" alt="Escuela Estudios Judiciales Logo">
         </div>
         <ul>            <li><a href="#escuela" class="active">Escuela de Estudios Judiciales</a></li>
-            <li><a href="#sgc">Norrma ISO 9001:2015</a></li>
+            <li><a href="#sgc">¿Qué es ISO 9001:2015?</a></li>
             <li><a href="#roles">Comité de Calidad</a></li>
             <li><a href="#politica">Política de Calidad</a></li> <!-- REORDENADO -->
             <li><a href="#objetivos">Objetivos de Calidad</a></li> <!-- REORDENADO -->
-            <li><a href="#procesos">Procesos Misionales y de Apoyo</a></li>
-            <li><a href="#beneficios">Beneficios del Sistema de Gestión de Calidad</a></li>        
-            <li><a href="#eej-sgc">ESEJ en el SGC</a></li>        
-            <li><a href="#riaej">RIAEJ</a></li>            <li><a href="#recursos">Recursos</a></li>
-        <li><a href="#red-docente" style="color: var(--accent-gold);">Red Docente</a></li>
-        <li><a href="#directorio-completo" style="color: var(--accent-gold);">Directorio Completo</a></li>
+            <li><a href="#procesos">Procesos Estratégicos</a></li>
+            <li><a href="#beneficios">Beneficios del SGC</a></li>
+            <li><a href="#eej-sgc">Gestión ESEJ en SGC</a></li>
+            <li><a href="#riaej">Red de Escuelas Judiciales (RIAEJ)</a></li>
+            <li><a href="#recursos">Documentos y Recursos</a></li>
+        <li><a href="#red-docente" style="color: var(--accent-gold);">Jueces y Magistrados Docentes</a></li>
+        <li><a href="#directorio-completo" style="color: var(--accent-gold);">Docentes externos</a></li>
         <li>
             <form action="logout.php" method="post" style="margin:0;padding:0;">
                 <button type="submit" class="header-logout-btn" style="background-color:#dc3545;color:white;font-weight:bold;text-align:center;border-radius:4px;margin:5px 5px;display:block;width:60%;cursor:pointer;">↪ Cerrar</button>
@@ -59,7 +60,7 @@ require_once 'session_check.php';
     <header>
         <div class="header-container">
             <div class="header-titles">
-                <h1>Escuela de Estudios Judiciales del Organismo Judicial</h1>
+                <h1>Escuela de Estudios Judiciales</h1>
                 <h2 class="sgc-subtitle"><strong>Sistema de Gestión de Calidad NTC ISO 9001:2015</strong></h2>
             </div>
             <div class="header-right-stack">
@@ -78,9 +79,9 @@ require_once 'session_check.php';
         <section id="escuela">
             <div class="container">
                 <h2>Escuela de Estudios Judiciales</h2>
-                <p>La Escuela de Estudios Judiciales es la Unidad de Capacitación Institucional del Organismo Judicial y se constituye en un instrumento que contribuye al desarrollo de la Carrera Judicial, manteniendo una oferta de programas de formación y capacitación integral.</p>
+                <p style="text-align: justify;">La Escuela de Estudios Judiciales es la Unidad de Capacitación Institucional del Organismo Judicial y se constituye en un instrumento que contribuye al desarrollo de la Carrera Judicial, manteniendo una oferta de programas de formación y capacitación integral.</p>
                 <br>
-                <p>Es el órgano auxiliar del Consejo de la Carrera Judicial encargado de planificar, ejecutar y facilitar la capacitación y formación técnica y profesional de jueces, magistrados, funcionarios, auxiliares judiciales y empleados del Organismo Judicial con el fin de asegurar la excelencia y la actualización profesional para el eficiente desempeño de sus funciones.</p>
+                <p style="text-align: justify;">Es el órgano auxiliar del Consejo de la Carrera Judicial encargado de planificar, ejecutar y facilitar la capacitación y formación técnica y profesional de jueces, magistrados, funcionarios, auxiliares judiciales y empleados del Organismo Judicial con el fin de asegurar la excelencia y la actualización profesional para el eficiente desempeño de sus funciones.</p>
             </div>
         </section>
 
@@ -717,7 +718,7 @@ require_once 'session_check.php';
                         </summary>
                         <div class="sgc-lineamientos-content">
                             <p><strong>Archivo:</strong><br>Lineamientos del SGC del Organismo Judicial.</p>
-                            <p><a href="https://github.com/giovanni-1990/Lineamientos-SGC/raw/main/LINEAMIENTOS%20DEL%20SISTEMA%20DE%20GESTI%C3%93N%20DE%20CALIDAD%202024.pdf" target="_blank" style="color: var(--accent-blue-main); text-decoration: underline;">Descargar Lineamientos del SGC</a></p>
+                            <p><a href="https://github.com/giovanni-1990/Lineamientos-SGC/raw/main/DG-PE-01%20Lineamientos%20del%20SGC%202025.pdf" target="_blank" style="color: var(--accent-blue-main); text-decoration: underline;">Descargar Lineamientos del SGC</a></p>
                         </div>
                     </details>
                     
@@ -764,7 +765,7 @@ require_once 'session_check.php';
                 <div class="section-title-wrapper">
                     <h3 style="font-size: 2em; color: var(--accent-blue-darker); border-left: 4px solid var(--accent-gold); padding-left: 15px; margin: 0; display: flex; align-items: center;">
                         <i class="fas fa-chalkboard-teacher" style="margin-right: 15px;"></i>
-                        Red Docente de la Escuela de Estudios Judiciales
+                        Jueces y Magistrados docentes del Organismo Judicial
                     </h3>
                 </div>
                 <p style="margin-top:15px; margin-bottom: 30px; text-align: justify;">La Escuela cuenta con una red de profesionales de alto nivel, incluyendo magistrados, jueces y expertos en diversas áreas, que garantizan una formación de excelencia. Utilice el siguiente directorio interactivo para explorar los perfiles de los docentes, filtrar por área de especialidad y conocer sus competencias.</p>
@@ -799,7 +800,7 @@ require_once 'session_check.php';
                 <div class="section-title-wrapper">
                     <h3 style="font-size: 2em; color: var(--accent-blue-darker); border-left: 4px solid var(--accent-gold); padding-left: 15px; margin: 0; display: flex; align-items: center;">
                         <i class="fas fa-users" style="margin-right: 15px;"></i>
-                        Directorio Interactivo Completo de Docentes
+                        Docentes externos del Organismo Judicial
                     </h3>
                 </div>
                 <p style="margin-top:15px; margin-bottom: 30px; text-align: justify;">Explore el directorio completo de jueces y magistrados docentes de la Escuela de Estudios Judiciales. Este sistema interactivo le permite filtrar por múltiples criterios y obtener información detallada de cada profesional.</p>
@@ -873,7 +874,7 @@ require_once 'session_check.php';
     <!-- MODIFICADO: Pie de página del autor (ahora fijo) -->
     <div class="version-footer">
         <div class="container">
-             Creado por: Giovanni Arias – Gestor de Calidad: Versión: 5.0
+             Creado por: Giovanni Arias – Gestor de Calidad: Versión: 8.0
         </div>
     </div>
 
