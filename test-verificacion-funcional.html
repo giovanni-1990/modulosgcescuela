@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Funcionalidad - Botones Ver Documento</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Estilos adicionales para la prueba */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #fafafa;
+        }
+        
+        .test-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #2c5aa0;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .test-button:hover {
+            background-color: #1e3f73;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        .status-success {
+            background-color: #4CAF50;
+        }
+        
+        .status-error {
+            background-color: #f44336;
+        }
+        
+        .status-warning {
+            background-color: #ff9800;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔍 Verificación Funcional - Botones "Ver Documento"</h1>
+        
+        <div class="test-section">
+            <h2>1. Botón "Ver Documento" - Política de Calidad</h2>
+            <p>Imagen esperada: <code>./img/Politica_de_Calidad_V3.jpg</code></p>
+            <button id="viewPoliticaImageBtn" class="test-button view-image-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; margin-right: 5px;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                Ver Documento - Política
+            </button>
+            <span id="politica-status" class="status-indicator status-warning"></span>
+        </div>
+        
+        <div class="test-section">
+            <h2>2. Botón "Ver Documento" - Objetivos de Calidad</h2>
+            <p>Imagen esperada: <code>./img/Objetivos_Calidad_V4.jpg</code></p>
+            <button id="viewObjetivosImageBtn" class="test-button view-image-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; margin-right: 5px;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                Ver Documento - Objetivos
+            </button>
+            <span id="objetivos-status" class="status-indicator status-warning"></span>
+        </div>
+        
+        <div class="test-section">
+            <h2>3. Botón "Ver Ficha de Procesos" - Carrusel</h2>
+            <p>Carrusel con 3 imágenes de GitHub</p>
+            <button id="openFichaProcesosBtn" class="test-button risk-details-button">
+                Ver Ficha de Procesos
+            </button>
+            <span id="ficha-status" class="status-indicator status-warning"></span>
+        </div>
+        
+        <div class="test-section">
+            <h2>4. Verificación de Elementos DOM</h2>
+            <div id="dom-check-results"></div>
+            <button onclick="checkDOMElements()" class="test-button">Verificar Elementos DOM</button>
+        </div>
+        
+        <div class="test-section">
+            <h2>5. Prueba de Carga de Imágenes</h2>
+            <div id="image-check-results"></div>
+            <button onclick="checkImages()" class="test-button">Verificar Imágenes</button>
+        </div>
+    </div>
+
+    <!-- MODAL PARA IMAGEN DE POLÍTICA DE CALIDAD -->
+    <div id="politicaImageModal" class="image-modal">
+        <div class="image-modal-content">
+            <span class="image-modal-close" id="closePoliticaImageModal">&times;</span>
+            <img id="politicaModalImage" src="" alt="Política de Calidad del Organismo Judicial" class="modal-image-display">
+        </div>
+    </div>
+
+    <!-- MODAL PARA IMAGEN DE OBJETIVOS DE CALIDAD -->
+    <div id="objetivosImageModal" class="image-modal">
+        <div class="image-modal-content">
+            <span class="image-modal-close" id="closeObjetivosImageModal">&times;</span>
+            <img id="objetivosModalImage" src="" alt="Objetivos de Calidad del Organismo Judicial" class="modal-image-display">
+        </div>
+    </div>
+
+    <!-- MODAL PARA CARRUSEL FICHA DE PROCESOS -->
+    <div id="fichaProcesosModal" class="image-modal">
+        <div class="image-modal-content">
+            <span class="image-modal-close" id="closeFichaProcesosModal">&times;</span>
+            <!-- Estructura del Carrusel -->
+            <div class="carousel-container">
+                <div class="carousel-slides">
+                    <!-- Diapositiva 1 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/giovanni-1990/objetivos-y-politicas/refs/heads/main/FICHA%20DE%20PROCESOS%20-%202025-1-3_page-0001.jpg" alt="Ficha de Procesos Página 1">
+                    </div>
+                    <!-- Diapositiva 2 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/giovanni-1990/objetivos-y-politicas/refs/heads/main/FICHA%20DE%20PROCESOS%20-%202025-1-3_page-0002.jpg" alt="Ficha de Procesos Página 2">
+                    </div>
+                    <!-- Diapositiva 3 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/giovanni-1990/objetivos-y-politicas/refs/heads/main/FICHA%20DE%20PROCESOS%20-%202025-1-3_page-0003.jpg" alt="Ficha de Procesos Página 3">
+                    </div>
+                </div>
+                <!-- Botones de navegación -->
+                <button class="carousel-button prev">&#10094;</button>
+                <button class="carousel-button next">&#10095;</button>
+                <!-- Puntos indicadores -->
+                <div class="carousel-dots"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Funciones de verificación para la prueba
+        function checkDOMElements() {
+            const results = document.getElementById('dom-check-results');
+            const elements = [
+                { id: 'viewPoliticaImageBtn', name: 'Botón Política' },
+                { id: 'viewObjetivosImageBtn', name: 'Botón Objetivos' },
+                { id: 'openFichaProcesosBtn', name: 'Botón Ficha Procesos' },
+                { id: 'politicaImageModal', name: 'Modal Política' },
+                { id: 'objetivosImageModal', name: 'Modal Objetivos' },
+                { id: 'fichaProcesosModal', name: 'Modal Ficha Procesos' },
+                { id: 'politicaModalImage', name: 'Imagen Modal Política' },
+                { id: 'objetivosModalImage', name: 'Imagen Modal Objetivos' },
+                { id: 'closePoliticaImageModal', name: 'Botón Cerrar Política' },
+                { id: 'closeObjetivosImageModal', name: 'Botón Cerrar Objetivos' },
+                { id: 'closeFichaProcesosModal', name: 'Botón Cerrar Ficha' }
+            ];
+            
+            let html = '<ul>';
+            elements.forEach(element => {
+                const exists = document.getElementById(element.id) !== null;
+                const status = exists ? '✅' : '❌';
+                html += `<li>${status} ${element.name}: ${exists ? 'Encontrado' : 'No encontrado'}</li>`;
+            });
+            html += '</ul>';
+            results.innerHTML = html;
+        }
+        
+        function checkImages() {
+            const results = document.getElementById('image-check-results');
+            const images = [
+                './img/Politica_de_Calidad_V3.jpg',
+                './img/Objetivos_Calidad_V4.jpg',
+                'https://raw.githubusercontent.com/giovanni-1990/objetivos-y-politicas/refs/heads/main/FICHA%20DE%20PROCESOS%20-%202025-1-3_page-0001.jpg'
+            ];
+            
+            let html = '<ul>';
+            let completed = 0;
+            
+            images.forEach((src, index) => {
+                const img = new Image();
+                img.onload = function() {
+                    const listItem = document.getElementById(`img-${index}`);
+                    if (listItem) {
+                        listItem.innerHTML = `✅ ${src}: Cargada correctamente (${this.width}x${this.height})`;
+                    }
+                    completed++;
+                    if (completed === images.length) {
+                        updateStatusIndicators();
+                    }
+                };
+                img.onerror = function() {
+                    const listItem = document.getElementById(`img-${index}`);
+                    if (listItem) {
+                        listItem.innerHTML = `❌ ${src}: Error al cargar`;
+                    }
+                    completed++;
+                    if (completed === images.length) {
+                        updateStatusIndicators();
+                    }
+                };
+                img.src = src;
+                html += `<li id="img-${index}">🔄 ${src}: Verificando...</li>`;
+            });
+            
+            html += '</ul>';
+            results.innerHTML = html;
+        }
+        
+        function updateStatusIndicators() {
+            // Actualizar indicadores de estado basados en las verificaciones
+            const politicaStatus = document.getElementById('politica-status');
+            const objetivosStatus = document.getElementById('objetivos-status');
+            const fichaStatus = document.getElementById('ficha-status');
+            
+            // Verificar si los elementos existen y funcionan
+            if (document.getElementById('viewPoliticaImageBtn') && document.getElementById('politicaImageModal')) {
+                politicaStatus.className = 'status-indicator status-success';
+            } else {
+                politicaStatus.className = 'status-indicator status-error';
+            }
+            
+            if (document.getElementById('viewObjetivosImageBtn') && document.getElementById('objetivosImageModal')) {
+                objetivosStatus.className = 'status-indicator status-success';
+            } else {
+                objetivosStatus.className = 'status-indicator status-error';
+            }
+            
+            if (document.getElementById('openFichaProcesosBtn') && document.getElementById('fichaProcesosModal')) {
+                fichaStatus.className = 'status-indicator status-success';
+            } else {
+                fichaStatus.className = 'status-indicator status-error';
+            }
+        }
+        
+        // Ejecutar verificaciones al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                checkDOMElements();
+                checkImages();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
