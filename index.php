@@ -51,20 +51,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
+            background: linear-gradient(135deg, #f0f2f5 0%, #e8ecf0 100%);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Imagen de fondo que ocupa toda la pantalla */
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://raw.githubusercontent.com/giovanni-1990/objetivos-y-politicas/refs/heads/main/Escuela%20Edit-02.png');
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.75;
+            z-index: 1;
+            pointer-events: none;
+            filter: brightness(1.1) contrast(1.1);
         }
         .login-container {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.95);
             padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         .form-group {
             margin-bottom: 1rem;
@@ -99,9 +122,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin-top: 1rem;
             text-align: center;
         }
+
+        /* Mejoras adicionales */
+        h2 {
+            color: #003366;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .background-image {
+                background-size: cover;
+                opacity: 0.35;
+            }
+            
+            .login-container {
+                max-width: 350px;
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .background-image {
+                background-size: cover;
+                opacity: 0.30;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Imagen de fondo -->
+    <div class="background-image"></div>
+    
     <div class="login-container">
         <h2 style="text-align: center;">Sistema de Gestión de Calidad</h2>
         <form method="POST" action="">
