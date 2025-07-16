@@ -156,7 +156,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="background-image"></div>
     
     <div class="login-container">
-        <h2 style="text-align: center;">Sistema de Gestión de Calidad</h2>
+        <h2 style="text-align: center;">Escuela de Estudios Judiciales</h2>
+        <h3 style="text-align: center; margin-top: 0; margin-bottom: 1.5rem; color: #003366;">Sistema de Gestión de Calidad</h3>
         <form method="POST" action="">
             <div class="form-group">
                 <label for="password">Contraseña:</label>
