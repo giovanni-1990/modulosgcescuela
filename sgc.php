@@ -79,9 +79,20 @@ require_once 'session_check.php';
         <section id="escuela">
             <div class="container">
                 <h2>Escuela de Estudios Judiciales</h2>
-                <p style="text-align: justify;">La Escuela de Estudios Judiciales es la Unidad de Capacitación Institucional del Organismo Judicial y se constituye en un instrumento que contribuye al desarrollo de la Carrera Judicial, manteniendo una oferta de programas de formación y capacitación integral.</p>
+                <p style="text-align: justify;">La Escuela de Estudios Judiciales es la unidad encargada de planificar, ejecutar y facilitar la capacitación y formación técnica y profesional de jueces, magistrados, funcionarios y empleados del Organismo Judicial, con el fin de asegurar la excelencia y actualización profesional para el eficiente desempeño de sus cargos.</p>
                 <br>
-                <p style="text-align: justify;">Es el órgano auxiliar del Consejo de la Carrera Judicial encargado de planificar, ejecutar y facilitar la capacitación y formación técnica y profesional de jueces, magistrados, funcionarios, auxiliares judiciales y empleados del Organismo Judicial con el fin de asegurar la excelencia y la actualización profesional para el eficiente desempeño de sus funciones.</p>
+                <p style="text-align: justify;">La Escuela de Estudios Judiciales ofrece distintos programas de formación, con base en la detección de necesidades de capacitación de funcionarios judiciales, auxiliares judiciales y personal administrativo y técnico del Organismo Judicial, y se presenta de la forma siguiente:</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px; margin-bottom: 25px;">
+                    <button class="programa-formacion-btn" style="background-color: #0056b3; color: white; padding: 12px 20px; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; flex: 1; min-width: 200px; max-width: 250px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                        Programas de Formación Inicial
+                    </button>
+                    <button class="programa-formacion-btn" style="background-color: #0056b3; color: white; padding: 12px 20px; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; flex: 1; min-width: 200px; max-width: 250px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                        Programas de Formación Continua
+                    </button>
+                    <button class="programa-formacion-btn" style="background-color: #0056b3; color: white; padding: 12px 20px; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; flex: 1; min-width: 200px; max-width: 250px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                        Programas de Especialización
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -133,7 +144,7 @@ require_once 'session_check.php';
                     </div>
                 </div>
                 <h3 class="alcance-title">Alcance del Sistema de Gestión en el Organismo Judicial</h3>
-                <p style="text-align: justify; font-size: 1.1em;">Trámite y resolución en segunda instancia en las ramas del derecho Penal, Civil, Mercantil, Laboral, Familia, Constitucional, Niñez y Adolescentes en: La Sala Sexta Penal de Cobán, Sala Regional Mixta de Quiché, Sala Regional Mixta de Huehuetenango, Sala Regional Mixta de Cobán, Sala Primera Civil de Guatemala y Sala Segunda Civil de Guatemala. Trámites Antejuicio..</p>
+                <p style="text-align: justify; font-size: 1.1em;">Trámite y resolución en segunda instancia en las ramas del derecho Penal, Civil, Mercantil, Laboral, Familia, Constitucional, Niñez y Adolescentes en: La Sala Sexta Penal de Cobán, Sala Regional Mixta de Quiché, Sala Regional Mixta de Huehuetenango, Sala Regional Mixta de Cobán, Sala Primera Civil de Guatemala y Sala Segunda Civil de Guatemala. Trámites Antejuicio.</p>
             </div>
         </section>
 
@@ -669,6 +680,9 @@ require_once 'session_check.php';
                 <h2 class="content-section__title" id="riaej-heading"><i class="fas fa-globe-americas fa-icon" aria-hidden="true"></i> Red Iberoamericana de Escuelas Judiciales (RIAEJ)</h2>
                 <p class="text-justify" style="max-width: 800px; margin-left:auto; margin-right:auto; margin-bottom: var(--spacing-xl);">
                     La Escuela de Estudios Judiciales (EEJ) es un miembro activo de la Red Iberoamericana de Escuelas Judiciales (RIAEJ), una comunidad de instituciones dedicadas a la formación y capacitación judicial en el ámbito iberoamericano. Esta red facilita la cooperación, el intercambio de conocimientos y la promoción de buenas prácticas entre las escuelas judiciales de la región.
+                </p>
+                <p class="text-justify" style="max-width: 800px; margin-left:auto; margin-right:auto; margin-bottom: var(--spacing-xl);">
+                    La RIAEJ cuenta con una Junta Directiva integrada por nueve miembros elegidos por la Asamblea General para cada período. Actualmente, para el período 2025–2027, la Secretaría General está a cargo de la Escuela Nacional de la Judicatura de la República Dominicana. Los países de Uruguay, Argentina, Guatemala y República Dominicana integran actualmente la Junta Directiva de la RIAEJ, participando activamente en los procesos de toma de decisiones y en la consolidación de iniciativas para el fortalecimiento de la formación judicial en Iberoamérica.
                 </p>
 
                 <!-- SLIDER DE PROGRAMAS RIAEJ -->
