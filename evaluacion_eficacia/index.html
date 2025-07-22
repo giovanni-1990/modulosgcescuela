@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Interactivo de Eficacia de Capacitación - EEJ</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #0056b3;
+            --accent-color: #28a745; 
+            --light-bg: #f8f9fa;
+            --white-color: #ffffff;
+            --text-color: #343a40;
+            --gray-color: #6c757d;
+            --border-color: #dee2e6;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --success-bg: rgba(40, 167, 69, 0.1);
+            --warning-bg: rgba(255, 193, 7, 0.1);
+            --danger-bg: rgba(220, 53, 69, 0.1);
+        }
+
+        body { font-family: 'Poppins', sans-serif; background-color: var(--light-bg); color: var(--text-color); margin: 0; line-height: 1.7; }
+        .container { max-width: 1400px; margin: 20px auto; padding: 20px; }
+        h1 { text-align: center; color: var(--primary-color); font-weight: 700; margin-bottom: 10px; }
+        .header-subtitle { text-align: center; color: var(--gray-color); font-size: 1.1em; margin-bottom: 40px; }
+        p, li, .kpi-description, .course-body p { text-align: justify; }
+
+        .tab-nav { display: flex; border-bottom: 2px solid var(--border-color); margin-bottom: 30px; }
+        .tab-btn { padding: 15px 30px; cursor: pointer; border: none; background-color: transparent; font-size: 1.1em; font-weight: 600; color: var(--gray-color); position: relative; transition: color 0.3s ease; }
+        .tab-btn::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 3px; background-color: var(--secondary-color); transform: scaleX(0); transition: transform 0.3s ease; }
+        .tab-btn.active { color: var(--primary-color); }
+        .tab-btn.active::after { transform: scaleX(1); }
+        .tab-content { display: none; animation: fadeIn 0.8s; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 30px; }
+        .kpi-card { background: var(--white-color); padding: 25px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); border-left: 5px solid; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .kpi-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .kpi-card.success { border-color: var(--success-color); background-color: var(--success-bg); }
+        .kpi-card.warning { border-color: var(--warning-color); background-color: var(--warning-bg); }
+        .kpi-card.danger { border-color: var(--danger-color); background-color: var(--danger-bg); }
+        .kpi-title { font-size: 1em; font-weight: 600; color: var(--text-color); margin: 0 0 10px 0; display: flex; align-items: center; text-align: left; }
+        .kpi-title i { margin-right: 10px; font-size: 1.2em; }
+        .kpi-card.success .kpi-title i { color: var(--success-color); }
+        .kpi-card.warning .kpi-title i { color: var(--warning-color); }
+        .kpi-card.danger .kpi-title i { color: var(--danger-color); }
+        .kpi-value { font-size: 2.5em; font-weight: 700; color: var(--primary-color); margin: 0; text-align: left; }
+        
+        h2, h3 { color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px; margin-top: 40px; margin-bottom: 20px; }
+        h4 { color: var(--secondary-color); margin-top: 25px; margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid var(--border-color); }
+        ul { padding-left: 20px; list-style: none; }
+        li { padding-left: 25px; position: relative; margin-bottom: 15px; }
+        li::before { font-family: "Font Awesome 6 Free"; font-weight: 900; content: "\f058"; color: var(--secondary-color); position: absolute; left: 0; top: 2px; text-align: center; }
+        li.warning::before { content: "\f071"; color: var(--warning-color); }
+        
+        .filter-controls { margin-bottom: 30px; display: flex; gap: 10px; flex-wrap: wrap; }
+        .filter-btn { padding: 8px 16px; cursor: pointer; border: 2px solid var(--border-color); background-color: var(--white-color); border-radius: 20px; font-weight: 600; color: var(--gray-color); transition: all 0.3s ease; }
+        .filter-btn:hover { border-color: var(--secondary-color); color: var(--secondary-color); }
+        .filter-btn.active { background-color: var(--secondary-color); color: var(--white-color); border-color: var(--secondary-color); }
+        
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .course-card { background: var(--white-color); border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease; animation: fadeIn 0.5s; }
+        .course-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .course-header { padding: 20px; background-color: #e9ecef; font-weight: 600; color: var(--text-color); text-align: left; }
+        .course-body { padding: 20px; flex-grow: 1; }
+        .course-body p { margin: 0 0 15px 0; color: var(--gray-color); }
+        .course-body strong { color: var(--text-color); }
+        .course-footer { padding: 15px 20px; background-color: var(--light-bg); text-align: right; }
+        .btn-details { padding: 10px 20px; background-color: var(--secondary-color); color: var(--white-color); border: none; border-radius: 5px; font-weight: 600; cursor: pointer; transition: background-color 0.3s ease; }
+        .btn-details:hover { background-color: var(--primary-color); }
+
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); animation: fadeIn 0.3s; }
+        .modal-content { background-color: var(--white-color); margin: 5% auto; padding: 0; border: 1px solid var(--border-color); width: 80%; max-width: 800px; border-radius: 10px; box-shadow: 0 5px 25px rgba(0,0,0,0.2); animation: slideIn 0.5s; }
+        @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .modal-header { padding: 20px 30px; background-color: var(--primary-color); color: var(--white-color); border-bottom: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center; border-radius: 10px 10px 0 0; }
+        .modal-header h3 { margin: 0; font-size: 1.5em; text-align: left; }
+        .close-btn { color: var(--white-color); font-size: 28px; font-weight: bold; transition: color 0.3s ease; }
+        .close-btn:hover, .close-btn:focus { color: var(--warning-color); text-decoration: none; cursor: pointer; }
+        .modal-body { padding: 30px; }
+        .modal-body h4 { color: var(--secondary-color); margin-top: 20px; text-align: left; }
+        .badge { display: inline-block; padding: .35em .65em; font-size: 75%; font-weight: 700; line-height: 1; text-align: center; white-space: nowrap; vertical-align: baseline; border-radius: .25rem; }
+        .badge-warning { color: #212529; background-color: var(--warning-color); }
+        .badge-danger { color: #fff; background-color: var(--danger-color); }
+        .badge-success { color: #fff; background-color: var(--success-color); }
+        .chart-container { position: relative; margin: 40px auto; height: 50vh; width: 100%; max-width: 900px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Análisis Interactivo de Eficacia de la Capacitación</h1>
+    <p class="header-subtitle">Hallazgos y Resultados del Proceso de Medición (Período 2024-2025)</p>
+
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard Ejecutivo</button>
+        <button class="tab-btn" data-tab="global-analysis"><i class="fas fa-globe-americas"></i> Análisis Global Detallado</button>
+        <button class="tab-btn" data-tab="individual-analysis"><i class="fas fa-book-open"></i> Análisis Individual por Curso</button>
+    </div>
+
+    <div id="dashboard" class="tab-content active">
+        <div class="kpi-grid">
+            <div class="kpi-card warning"><div class="kpi-header"><h3 class="kpi-title"><i class="fas fa-sitemap"></i>Hallazgo Clave del Proceso</h3></div><div class="kpi-body"><p class="kpi-value">Falta de Respuesta</p><p class="kpi-description">El uso frecuente del procedimiento para registrar "eficacia" ante la falta de respuesta del evaluador, indica que el método de recolección de datos primario requiere mejora.</p></div></div>
+            <div class="kpi-card warning"><div class="kpi-header"><h3 class="kpi-title"><i class="fas fa-chart-line"></i>Tasa de Respuesta (Jefes)</h3></div><div class="kpi-body"><p class="kpi-value">&lt;50%</p><p class="kpi-description">Promedio de respuesta, por debajo del 80% definido como umbral para una muestra válida. Este resultado activa el procedimiento alternativo.</p></div></div>
+            <div class="kpi-card success"><div class="kpi-header"><h3 class="kpi-title"><i class="fas fa-thumbs-up"></i>Fortaleza del Contenido</h3></div><div class="kpi-body"><p class="kpi-value">&gt;90%</p><p class="kpi-description">Percepción positiva de aplicabilidad en las pocas encuestas respondidas, demostrando que el contenido de los cursos es útil y valorado.</p></div></div>
+            <div class="kpi-card success"><div class="kpi-header"><h3 class="kpi-title"><i class="fas fa-lightbulb"></i>Oportunidad de Mejora</h3></div><div class="kpi-body"><p class="kpi-value">Evaluación al Discente</p><p class="kpi-description">La migración de la evaluación hacia el participante es una tendencia positiva y una vía viable para obtener datos reales y fiables, reduciendo la dependencia del criterio por falta de respuesta.</p></div></div>
+        </div>
+    </div>
+
+    <div id="global-analysis" class="tab-content">
+        <h2>Análisis Global Detallado</h2>
+        <h3>Síntesis de Observaciones del Proceso de Medición</h3>
+        <ul>
+            <li class="warning"><strong>Aplicación de Procedimiento por Falta de Respuesta:</strong> Se observa el uso recurrente de un criterio aprobado (Oficio 904-2022/AFAR) que permite registrar la eficacia cuando el responsable de la evaluación (jefe) no responde. Su uso frecuente es un resultado medible que indica una debilidad en el mecanismo de recolección de datos.</li>
+            <li><strong>Incumplimiento del Umbral de Muestra Válida:</strong> La tasa de respuesta de supervisores (promedio <50%) no alcanza el 80% establecido (Oficio 16-2021/GGQJ/AGCP) para asegurar la representatividad de los datos. Este es el evento que activa el uso del procedimiento alternativo.</li>
+            <li><strong>Potencial en la Evaluación al Participante:</strong> Se identifica una tendencia positiva en migrar la evaluación hacia el participante (discente), lo cual representa la oportunidad más clara para obtener datos fiables y mejorar el proceso.</li>
+            <li><strong>Criterios de Exclusión Definidos:</strong> El SGC ha definido de manera deliberada no medir la eficacia de cursos cortos (Memorando 5-2022/AFAR), lo que demuestra un enfoque selectivo y gestionado en la aplicación de este proceso, lo que constituye una buena práctica.</li>
+        </ul>
+        <h3>Síntesis de Conclusiones y Resultados del Proceso</h3>
+        <ul>
+            <li class="warning"><strong>El Proceso de Medición Requiere Mejora:</strong> El hallazgo principal es que el proceso de evaluación de eficacia, tal como está diseñado, no está generando la data necesaria para un análisis profundo. La dependencia en el procedimiento que se aplica por falta de respuesta del evaluador cumple con cerrar administrativamente los expedientes, pero no con el objetivo técnico de medir el impacto para la mejora continua. El resultado del proceso actual es la falta de evidencia, no la confirmación de la eficacia.</li>
+            <li><strong>Contenidos de Calidad con Medición Deficiente:</strong> Los datos parciales obtenidos sugieren que los cursos son de alto valor para quienes los toman. Esto crea una paradoja positiva: la calidad del contenido es alta, lo que justifica la inversión en mejorar su sistema de medición para poder demostrarlo formalmente.</li>
+        </ul>
+        <h3>Gráfico Comparativo de Percepción (Cursos ISO 9001)</h3>
+        <p>Los informes del programa "Interpretación de la Norma ISO 9001" son los únicos que proporcionan datos cuantitativos detallados que permiten una comparación. El siguiente gráfico compara los resultados de dos grupos evaluados de forma independiente. Esta consistencia en los resultados refuerza la validez de los hallazgos.</p>
+        <div class="chart-container"><canvas id="isoComparisonChart"></canvas></div>
+        <h3>Propuesta Mejorada para la Evaluación de Eficacia de la Formación</h3>
+        <p>Con base en los hallazgos, el objetivo principal debe ser fortalecer el mecanismo de recolección de datos para que la aplicación del procedimiento por falta de respuesta se convierta en una rara excepción. Se detalla a continuación una propuesta de proceso rediseñado:</p>
+        <h4>1. Rediseño del Proceso de Evaluación (Enfoque en el Discente)</h4>
+        <p><strong>1.1. Desarrollo de Evaluaciones Diagnósticas (Pre y Post):</strong> Crear un par de evaluaciones (pre-test y post-test) para cada curso, diseñadas para medir objetivamente el incremento en el conocimiento o habilidades alineadas a los objetivos de aprendizaje.</p>
+        <p><strong>1.2. Implementación Obligatoria:</strong> Administrar el pre-test como requisito para iniciar el curso y el post-test (junto a una encuesta de satisfacción) como requisito indispensable para la emisión de la constancia. Esto garantiza una tasa de respuesta cercana al 100% por parte del discente, eliminando el problema de la falta de datos.</p>
+        <h4>2. Rol Facilitador de la Red Docente</h4>
+        <p>Capacitar a la red docente para que actúen como facilitadores activos del proceso, guiando a los discentes y reforzando la importancia y obligatoriedad de completar las evaluaciones para obtener su acreditación.</p>
+        <h4>3. Análisis y Utilización de Datos para la Mejora Continua</h4>
+        <p>Utilizar la comparación entre los resultados del pre y post-test para obtener una métrica clara de la eficacia. Analizar los datos de satisfacción para mejorar el diseño de los cursos y generar informes periódicos que retroalimenten a los diseñadores de contenido y docentes.</p>
+        <h4>4. Sistematización y Automatización (Acción Estratégica)</h4>
+        <p><strong>4.1. Solicitud de un "Módulo de Evaluación de Eficacia":</strong> Para asegurar la sostenibilidad y eficiencia de este nuevo proceso, se propone gestionar y solicitar formalmente la inclusión de un **"Módulo de Evaluación de Eficacia"** como un componente integral del nuevo **Sistema de Registro y Control Académico** que actualmente se encuentra en desarrollo.</p>
+        <ul>
+            <li><strong>Funcionalidad Clave:</strong> Este módulo deberá permitir la creación y asignación de pre y post-tests, automatizar el control de su completitud como requisito para avanzar y generar reportes comparativos automáticos.</li>
+            <li><strong>Beneficios:</strong> La integración con el sistema académico centralizará la información, reducirá la carga administrativa, mejorará la experiencia del usuario y garantizará la recolección sistemática de datos de alta calidad para la toma de decisiones.</li>
+        </ul>
+    </div>
+
+    <div id="individual-analysis" class="tab-content">
+        <div class="filter-controls">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="2024">Año 2024</button>
+            <button class="filter-btn" data-filter="2025">Año 2025</button>
+        </div>
+        <div class="course-grid"></div>
+        <p id="no-results" style="display: none; text-align: center; color: var(--gray-color); margin-top: 20px;">No se encontraron cursos que coincidan con el filtro seleccionado.</p>
+    </div>
+</div>
+
+<div id="modal-container"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Single Source of Truth for all data
+    const coursesData = [
+        { year: 2024, id: 'procesos', title: 'Curso: Enfoque por Procesos', date: '31 de julio 2024', status: 'Datos insuficientes', summary: 'Resultados divididos en la implementación de proyectos (56% sí vs 43% no).', badge: 'warning', modalHTML: '<h4>Observaciones</h4><p>Se realizaron dos intentos de comunicación para recabar datos. El informe no especifica la tasa de respuesta. Se preguntó si surgieron proyectos para eficientar labores, con un resultado dividido (56.1% \'sí\' vs 43% \'no\').</p><h4>Conclusiones del Informe</h4><p>Se registra la actividad como eficaz. Un 24.4% de los encuestados indicó que se necesita mejorar, sugiriendo mayor contexto en procesos legales y más asesoría en ISO 9001.</p><h4>Análisis del Proceso</h4><p>La falta de una tasa de respuesta clara y los resultados divididos son indicadores de que se necesita un método de recolección más robusto.</p>' },
+        { year: 2024, id: 'iso-fundamentos', title: 'Programa: Interpretación Norma ISO 9001 (Fundamentos)', date: '30 de octubre 2024', status: 'Datos Positivos', summary: 'Percepción del jefe 100% satisfactoria. No se menciona tasa de respuesta.', badge: 'success', modalHTML: '<h4>Observaciones</h4><p>Evaluación basada en la percepción del jefe inmediato. Se reporta un 100% de satisfacción en la modificación del desempeño. No se menciona la tasa de respuesta.</p><h4>Conclusiones del Informe</h4><p>La percepción de los jefes que respondieron fue unánimemente positiva, destacando mejoras concretas como ordenamiento de expedientes y plan piloto de expedientes digitales.</p><h4>Análisis del Proceso</h4><p>Aunque los datos son positivos, la omisión de la tasa de respuesta es un área de mejora en el reporte para cumplir con el SGC.</p>' },
+        { year: 2024, id: 'indicadores', title: 'Curso: Indicadores de Gestión en el SGC', date: '06 de diciembre 2024', status: 'Eficacia por Falta de Respuesta (50% Resp.)', summary: 'No se alcanzó el 80%. Se registra eficacia según procedimiento.', badge: 'warning', modalHTML: '<h4>Observaciones</h4><p>Se obtuvo solo el <strong>50%</strong> de las respuestas esperadas de los jefes responsables de la evaluación, lo cual es inferior al umbral del 80% para una muestra válida.</p><h4>Aplicación de Criterio del SGC</h4><p>Debido a la falta de respuesta de la mitad de los evaluadores, se aplicó el procedimiento aprobado en el <strong>Oficio 904-2022/AFAR</strong>, que permite registrar la actividad como eficaz para fines administrativos.</p><h4>Propuesta de Mejora</h4><p>Este caso es un claro ejemplo que justifica la necesidad de mejorar el proceso de recolección de datos, ya que los resultados del 50% que sí respondió fueron muy positivos, pero no se pueden extrapolar con validez estadística.</p>' },
+        { year: 2024, id: 'riesgos', title: 'Curso: Gestión de Riesgos (NTC 31000:2018)', date: '10 de diciembre 2024', status: 'Eficacia por Falta de Respuesta (40% Resp.)', summary: 'Se cambió a evaluación por discente. Se registra eficacia sin cumplir el 80%.', badge: 'warning', modalHTML: '<h4>Observaciones</h4><p>Se modificó la modalidad de evaluación al participante (discente). La tasa de respuesta fue del <strong>40%</strong>, insuficiente para el umbral de validez del 80%.</p><h4>Aplicación de Criterio del SGC</h4><p>El informe registra la eficacia en aplicación del procedimiento por la falta de respuesta de la mayoría de los evaluadores (Oficio 904-2022/AFAR). El cambio a evaluación por discente es una acción de mejora en sí misma, pero aún requiere estrategias para aumentar la participación.</p>' },
+        { year: 2025, id: 'desarrollo', title: 'Taller: Estrategias de Desarrollo Personal y Laboral', date: '12 de marzo 2025', status: 'Eficacia por Falta de Respuesta (<80% Resp.)', summary: 'Se registra eficacia según procedimiento. Se usó para DNC.', badge: 'warning', modalHTML: '<h4>Observaciones</h4><p>El informe menciona no haber alcanzado el 80% de respuestas. Se usó la evaluación también para DNC, lo cual es una buena práctica.</p><h4>Aplicación de Criterio del SGC</h4><p>Se registra la eficacia del taller en aplicación del procedimiento por falta de respuesta del evaluador. Los datos parciales obtenidos fueron muy positivos (>90% de mejora), reforzando la necesidad de un mejor sistema de medición.</p>' },
+        { year: 2025, id: 'admin', title: 'Curso: Administración Pública y Financiera', date: '17 de julio 2025', status: 'Eficacia por Falta de Respuesta (<80% Resp.)', summary: 'No se alcanzó el 80%. Se registra eficacia por procedimiento.', badge: 'warning', modalHTML: '<h4>Observaciones</h4><p>Se cambió el método de evaluación a la percepción directa del participante, pero no se alcanzó el 80% de respuestas.</p><h4>Aplicación de Criterio del SGC</h4><p>La conclusión de eficacia se basa en el procedimiento aprobado para casos de respuesta insuficiente por parte de los responsables de evaluar.</p>' },
+        { year: 2025, id: 'backend', title: 'Curso: Backend', date: '17 de julio 2025', status: 'Eficacia por Falta de Respuesta (0% Resp.)', summary: 'Sin respuestas. Se registró eficacia por procedimiento. Desalineación de perfiles.', badge: 'danger', modalHTML: '<h4>Observaciones</h4><p>Se detectaron dificultades de participación y designación de personal sin la experiencia técnica suficiente.</p><h4>Aplicación de Criterio del SGC</h4><p>Con 0% de respuesta, la eficacia se registra únicamente en aplicación del procedimiento por la ausencia total de evaluación por parte de los responsables. Este es un caso extremo que evidencia la urgencia de mejorar el proceso.</p>' },
+        { year: 2025, id: 'frontend', title: 'Curso: Frontend', date: '17 de julio 2025', status: 'Eficacia por Falta de Respuesta (0% Resp.)', summary: 'Idéntico a Backend. Eficacia registrada por procedimiento.', badge: 'danger', modalHTML: '<h4>Observaciones</h4><p>Idénticas a las del curso "Backend".</p><h4>Aplicación de Criterio del SGC</h4><p>Con 0% de respuesta, la eficacia se registra únicamente en aplicación del procedimiento por falta de respuesta del evaluador. Refuerza la necesidad de una acción correctiva sobre el proceso de medición.</p>' },
+        { year: 2025, id: 'iso-general', title: 'Programa: Interpretación Norma ISO 9001 (Grupo 1)', date: '22 de mayo 2025', status: 'Datos Válidos', summary: 'Datos de participantes muy positivos. Oportunidad en "propuestas de mejora".', badge: 'success', modalHTML: '<h4>Observaciones</h4><p>Se añadió un apartado para DNC. La evaluación se basó en datos de los participantes.</p><h4>Conclusiones del Informe</h4><p>Resultados muy positivos (>90% de calificaciones altas). Área con menor puntaje: "Contribución con propuestas concretas" (86.7%). Este informe es un ejemplo de una medición con datos útiles.</p>' },
+        { year: 2025, id: 'iso-gerencial', title: 'Programa: Interpretación Norma ISO 9001 (Grupo 2)', date: '17 de julio 2025', status: 'Eficacia por Falta de Respuesta (66.7% Resp.)', summary: 'Tasa de respuesta insuficiente. Datos recibidos excelentes.', badge: 'warning', modalHTML: '<h4>Observaciones</h4><p>La tasa de respuesta fue del 66.7%, por debajo del 80% requerido.</p><h4>Aplicación de Criterio del SGC</h4><p>Aunque la muestra no es válida, los datos del 66.7% que sí respondió son excelentes. La eficacia se registra por procedimiento debido a la falta de respuesta del tercio restante de evaluadores. Este caso muestra que se está perdiendo la oportunidad de documentar formalmente el éxito por un fallo en la recolección.</p>' }
+    ];
+
+    const individualAnalysisTab = document.getElementById('individual-analysis');
+    const modalContainer = document.getElementById('modal-container');
+
+    const renderCourses = (filter = 'all') => {
+        const courseGrid = individualAnalysisTab.querySelector('.course-grid');
+        const noResultsMsg = document.getElementById('no-results');
+        const filteredCourses = coursesData.filter(course => filter === 'all' || course.year.toString() === filter);
+        
+        if (filteredCourses.length === 0) {
+            courseGrid.innerHTML = '';
+            noResultsMsg.style.display = 'block';
+        } else {
+            noResultsMsg.style.display = 'none';
+            courseGrid.innerHTML = filteredCourses.map(course => `
+                <div class="course-card" data-year="${course.year}">
+                    <div class="course-header">${course.title}</div>
+                    <div class="course-body">
+                        <p><strong>Fecha Evaluación:</strong> ${course.date}</p>
+                        <p><strong>Resultado Medición:</strong> <span class="badge badge-${course.badge}">${course.status}</span></p>
+                        <p>${course.summary}</p>
+                    </div>
+                    <div class="course-footer">
+                        <button class="btn-details" data-modal-id="${course.id}">Ver Detalles</button>
+                    </div>
+                </div>`
+            ).join('');
+        }
+    };
+
+    const renderModals = () => {
+        modalContainer.innerHTML = coursesData.map(course => `
+            <div id="modal-${course.id}" class="modal">
+                <div class="modal-content">
+                   <div class="modal-header"><h3>${course.title}</h3><span class="close-btn">&times;</span></div>
+                   <div class="modal-body">${course.modalHTML}</div>
+                </div>
+            </div>`
+        ).join('');
+    };
+
+    const init = () => {
+        renderCourses();
+        renderModals();
+
+        document.querySelector('.tab-nav').addEventListener('click', e => {
+            const clicked = e.target.closest('.tab-btn');
+            if (!clicked) return;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            clicked.classList.add('active');
+            document.getElementById(clicked.dataset.tab).classList.add('active');
+        });
+
+        individualAnalysisTab.addEventListener('click', e => {
+            const filterBtn = e.target.closest('.filter-btn');
+            if (filterBtn) {
+                individualAnalysisTab.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                filterBtn.classList.add('active');
+                renderCourses(filterBtn.dataset.filter);
+            }
+
+            const detailsBtn = e.target.closest('.btn-details');
+            if (detailsBtn) {
+                const modalId = `modal-${detailsBtn.dataset.modalId}`;
+                document.getElementById(modalId).style.display = 'block';
+            }
+        });
+
+        modalContainer.addEventListener('click', e => {
+            if (e.target.classList.contains('modal') || e.target.classList.contains('close-btn')) {
+                e.target.closest('.modal').style.display = 'none';
+            }
+        });
+
+        new Chart(document.getElementById('isoComparisonChart'), {
+            type: 'bar',
+            data: { 
+                labels: ['Aplica conocimientos', 'Participa en mejora', 'Contribuye propuestas', 'Identifica riesgos', 'Usa herramientas SGC', 'Identifica requisitos', 'Asume responsabilidad', 'Colabora', 'Actitud proactiva'], 
+                datasets: [
+                    { label: 'Grupo 1 (Evaluación Mayo 2025)', data: [96.7, 96.6, 86.7, 93.3, 96.7, 96.6, 96.7, 96.6, 96.7], backgroundColor: 'rgba(0, 86, 179, 0.7)', borderColor: 'rgba(0, 86, 179, 1)', borderWidth: 1, borderRadius: 5 }, 
+                    { label: 'Grupo 2 (Evaluación Julio 2025)', data: [100, 100, 91.7, 91.7, 91.7, 100, 83.3, 100, 91.7], backgroundColor: 'rgba(40, 167, 69, 0.7)', borderColor: 'rgba(40, 167, 69, 1)', borderWidth: 1, borderRadius: 5 }
+                ] 
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: 'Comparativa de Percepción de Eficacia (ISO 9001) entre Dos Grupos de Evaluación', font: { size: 18, weight: '600' }, color: '#333' }, legend: { position: 'top' }, tooltip: { callbacks: { label: (context) => `${context.dataset.label}: ${context.parsed.y}%` }, backgroundColor: '#333', titleFont: { size: 14 }, bodyFont: { size: 12 }, padding: 10, cornerRadius: 5 } }, scales: { y: { beginAtZero: true, max: 100, title: { display: true, text: 'Porcentaje de Respuestas Positivas (%)', font: { weight: '600' } }, grid: { color: '#e9ecef' } }, x: { grid: { display: false } } } }
+        });
+    };
+
+    init();
+});
+</script>
+
+</body>
+</html>
