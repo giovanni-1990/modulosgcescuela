@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cronograma Interactivo | Dotación de Personal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary-dark: #0d3b66; /* Azul corporativo profundo */
+    --color-accent: #6aebc4;       /* Verde menta vibrante */
+    --color-bg: #f8f9fa;           /* Gris muy claro de fondo */
+    --color-card: #ffffff;
+    --color-text: #495057;
+    --color-heading: #212529;
+    --shadow-color: rgba(13, 59, 102, 0.1);
+    --border-color: #e9ecef;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.7;
+    padding: 20px;
+  }
+
+  .container { max-width: 1400px; margin: 20px auto; padding: 20px; }
+
+  /* Estilos para el encabezado universitario */
+  .university-header {
+    text-align: center;
+    background: linear-gradient(135deg, var(--color-primary-dark), #1a5490);
+    color: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 25px var(--shadow-color);
+  }
+
+  .university-header h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+
+  .university-header h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--color-accent);
+  }
+
+  .university-header h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    opacity: 0.95;
+  }
+
+  .university-header h4:last-child {
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--color-accent);
+  }
+
+  .main-title {
+    text-align: center; font-size: 2.8rem; font-weight: 700;
+    color: transparent;
+    background: linear-gradient(45deg, var(--color-primary-dark), var(--color-accent));
+    background-clip: text; -webkit-background-clip: text;
+    margin-bottom: 40px;
+  }
+
+  .tabs-container { display: flex; justify-content: center; margin-bottom: 50px; flex-wrap: wrap; gap: 15px; }
+
+  .tab-link {
+    padding: 12px 30px; cursor: pointer; border: 2px solid transparent;
+    background-color: var(--color-card); border-radius: 8px; font-size: 1.1rem;
+    font-weight: 600; color: var(--color-primary-dark);
+    transition: all 0.3s ease; box-shadow: 0 4px 15px var(--shadow-color);
+  }
+
+  .tab-link:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-accent);
+    box-shadow: 0 6px 20px var(--shadow-color);
+  }
+
+  .tab-link.active {
+    background-color: var(--color-primary-dark);
+    color: white; border-color: var(--color-primary-dark);
+  }
+
+  .tab-content { display: none; animation: fadeIn 0.8s ease-in-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  .session-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+  }
+
+  .session-card {
+    background-color: var(--color-card); border-radius: 12px; box-shadow: 0 8px 25px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; display: flex; flex-direction: column;
+  }
+
+  .session-card:hover { transform: translateY(-8px); box-shadow: 0 12px 35px rgba(13, 59, 102, 0.15); }
+  .card-header {
+    background-color: var(--color-primary-dark); color: white; padding: 15px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .card-header .session-number { font-size: 1.5rem; font-weight: 700; }
+  .card-header .session-date { font-size: 0.9rem; font-weight: 400; opacity: 0.8; }
+  .card-body { padding: 25px; flex-grow: 1; }
+  .card-body h3 { font-size: 1.3rem; color: var(--color-heading); margin-bottom: 15px; }
+  .card-body ul { list-style-type: none; padding-left: 0; }
+  .card-body ul li {
+    padding-left: 28px; margin-bottom: 10px;
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%236aebc4" viewBox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg>') no-repeat left 4px;
+    background-size: 20px;
+  }
+  
+  .event-card {
+    background: linear-gradient(135deg, var(--color-accent), #4ed9b4); color: var(--color-primary-dark);
+    align-items: center; justify-content: center; text-align: center;
+    padding: 30px; min-height: 250px;
+  }
+
+  /* --- Sección y Tarjetas de Tareas --- */
+  .tasks-section { margin-top: 60px; padding-top: 40px; border-top: 2px solid var(--border-color); }
+  .tasks-section h2 { text-align: center; font-size: 2rem; color: var(--color-primary-dark); margin-bottom: 40px; }
+  .tasks-section .project-intro { text-align: center; max-width: 800px; margin: -20px auto 40px; font-size: 1.1rem; color: var(--color-text); }
+  .task-card {
+    background-color: var(--color-card); border-radius: 12px; box-shadow: 0 8px 25px var(--shadow-color);
+    padding: 25px; border-top: 4px solid var(--color-accent);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; flex-direction: column;
+  }
+  .task-card:hover { transform: translateY(-8px); box-shadow: 0 12px 35px rgba(13, 59, 102, 0.15); }
+  .task-card h4 { font-size: 1.2rem; color: var(--color-heading); margin-bottom: 15px; }
+  .task-card p { flex-grow: 1; margin-bottom: 12px; font-size: 0.95rem; }
+  .task-meta { font-size: 0.9rem; }
+  .task-meta-visible { border-top: none; padding-top: 0; margin-top: 0; margin-bottom: 15px; }
+  .task-meta span { display: block; margin-bottom: 5px; }
+  .task-meta strong { color: var(--color-primary-dark); }
+  .task-criteria { font-size: 0.85rem; color: #6c757d; font-style: italic; margin-top: 20px;}
+
+  /* Botón para abrir modal */
+  .modal-button {
+    background-color: var(--color-primary-dark); color: white; border: none; padding: 10px 20px;
+    border-radius: 6px; cursor: pointer; font-weight: 600; font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease; margin-top: auto;
+  }
+  .modal-button:hover { background-color: #0b2f50; }
+
+  /* --- Estilos del Modal --- */
+  .modal {
+    display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+    width: 100%; height: 100%; overflow: auto; background-color: rgba(13, 59, 102, 0.7);
+    justify-content: center; align-items: center;
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .modal.active { display: flex; opacity: 1; }
+  .modal-content {
+    background-color: var(--color-card); margin: auto; padding: 30px 40px;
+    border-radius: 12px; width: 90%; max-width: 800px; position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    transform: scale(0.95); transition: transform 0.3s ease;
+    max-height: 90vh; overflow-y: auto;
+  }
+  .modal-content h4, .modal-content h3 { color: var(--color-primary-dark); margin-bottom: 15px; }
+  .modal-content h3 { font-size: 1.8rem; } .modal-content h4 { font-size: 1.3rem; }
+  .modal.active .modal-content { transform: scale(1); }
+  .modal-close {
+    color: #aaa; position: absolute; top: 15px; right: 25px;
+    font-size: 28px; font-weight: bold; cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  .modal-close:hover, .modal-close:focus { color: var(--color-primary-dark); text-decoration: none; }
+  .modal-content ul, .modal-content ol { padding-left: 20px; margin-top: 10px; }
+  .modal-content ul li, .modal-content ol li { margin-bottom: 8px; }
+  .modal-content table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+  .modal-content th, .modal-content td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+  .modal-content thead tr { background-color: var(--color-primary-dark); color: white; }
+  .modal-content td:nth-child(2) { text-align: center; font-weight: bold; }
+
+  /* --- Cuadro Resumen de Evaluación --- */
+  .summary-box {
+    margin-top: 40px; padding: 25px; background-color: var(--color-card);
+    border-radius: 12px; border-left: 5px solid var(--color-primary-dark);
+    box-shadow: 0 8px 25px var(--shadow-color); grid-column: 1 / -1;
+  }
+  .summary-box table { width: 100%; border-collapse: collapse; }
+  .summary-box th, .summary-box td { padding: 12px; border-bottom: 1px solid var(--border-color); text-align: left; }
+  .summary-box .total-row td { font-weight: bold; color: var(--color-primary-dark); border-bottom: none; }
+  .summary-box td:last-child { text-align: right; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="university-header">
+    <h2>UNIVERSIDAD REGIONAL DE GUATEMALA</h2>
+    <h3>LICENCIATURA EN PSICOLOGÍA INDUSTRIAL</h3>
+    <h4>SEXTO SEMESTRE</h4>
+    <h4>CURSO: DOTACIÓN DE PERSONAL</h4>
+    <h4>LIC. HERBERTH GIOVANNI ARIAS GARCÍA</h4>
+  </div>
+  
+  <h1 class="main-title">Programa: Dotación de Personal</h1>
+  <div class="tabs-container">
+    <button class="tab-link active" onclick="openUnit(event, 'Unidad1')">Unidad 1: Fundamentos</button>
+    <button class="tab-link" onclick="openUnit(event, 'Unidad2')">Unidad 2: Reclutamiento</button>
+    <button class="tab-link" onclick="openUnit(event, 'Unidad3')">Unidad 3: Decisión</button>
+  </div>
+
+  <div id="Unidad1" class="tab-content">
+    <div class="session-grid">
+      <!-- Sesiones 1 a 5 y Parcial no cambian -->
+      <div class="session-card"><div class="card-header"><span class="session-number">S.1</span><span class="session-date">26/Jul/2025</span></div><div class="card-body"><h3>1. Introducción a la Dotación</h3><ul><li>1.1 Conceptos: dotación, reclutamiento.</li><li>1.2 Proceso como sistema integral de talento.</li><li>1.3 Importancia en la competitividad.</li><li>1.4 Evolución histórica de la selección.</li><li>1.5 Rol del psicólogo industrial en dotación.</li></ul></div></div>
+      <div class="session-card"><div class="card-header"><span class="session-number">S.2</span><span class="session-date">02/Ago/2025</span></div><div class="card-body"><h3>2. Planificación Estratégica de RRHH</h3><ul><li>2.1 Análisis de necesidades y demanda.</li><li>2.2 Planificación cuantitativa y cualitativa.</li><li>2.3 Inventario de RRHH y brechas de talento.</li><li>2.4 Factores internos y externos influyentes.</li><li>2.5 Modelos de planificación de RRHH.</li></ul></div></div>
+      <div class="session-card"><div class="card-header"><span class="session-number">S.3</span><span class="session-date">09/Ago/2025</span></div><div class="card-body"><h3>3. Análisis de Puestos de Trabajo</h3><ul><li>3.1 Metodologías: observación, entrevista.</li><li>3.2 Descripción: funciones, responsabilidades.</li><li>3.3 Especificaciones: competencias, habilidades.</li><li>3.4 Perfiles psicológicos y conductuales.</li><li>3.5 Análisis en contextos modernos y remotos.</li></ul></div></div>
+      <div class="session-card"><div class="card-header"><span class="session-number">S.4</span><span class="session-date">16/Ago/2025</span></div><div class="card-body"><h3>4. Marco Legal y Ético</h3><ul><li>4.1 Legislación laboral aplicable.</li><li>4.2 Principios de no discriminación.</li><li>4.3 Confidencialidad y protección de datos.</li><li>4.4 Ética del psicólogo en evaluación.</li><li>4.5 Responsabilidad social en la dotación.</li></ul></div></div>
+      <div class="session-card"><div class="card-header"><span class="session-number">S.5</span><span class="session-date">23/Ago/2025</span></div><div class="card-body"><h3>5. Diversidad e Inclusión</h3><ul><li>5.1 Gestión de la diversidad en el proceso.</li><li>5.2 Mitigación de sesgos inconscientes.</li><li>5.3 Inclusión de personas con discapacidad.</li><li>5.4 Equidad de género y generacional.</li><li>5.5 Adaptaciones culturales en procesos globales.</li></ul></div></div>
+      <div class="session-card event-card"><svg class="event-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM208,48V72H48V48Zm0,160H48V88H208V208Zm-88-88a8,8,0,0,1,8,8v56a8,8,0,0,1-16,0V128A8,8,0,0,1,120,120Z"></path></svg><p>30/Ago/2025</p><h3>Primer Parcial</h3></div>
+    </div>
+    
+    <div class="tasks-section">
+      <h2>🔶 Proyecto Integrador – Fase 1</h2>
+      <p class="project-intro">Para esta fase, las actividades se integran en un <strong>proyecto grupal (4-5 personas)</strong> con entregas semanales. El objetivo es diseñar un proceso de dotación estratégico, ético e inclusivo para un puesto en una empresa real.</p>
+      <div class="session-grid">
+        <div class="task-card">
+          <h4>Entrega 1: Fundamentación y Análisis del Puesto 🎯</h4>
+          <div class="task-meta task-meta-visible">
+            <span><strong>Entrega:</strong> 09/Ago/2025</span>
+            <span><strong>🟢 Valor:</strong> 8 puntos</span>
+          </div>
+          <p>Selección de una empresa, justificación de la necesidad estratégica del puesto y desarrollo del análisis y la descripción completos del cargo.</p>
+          <button class="modal-button" data-modal-target="#modal-task-s1">Ver Detalles de la Entrega 🔎</button>
+        </div>
+        <div class="task-card">
+          <h4>Entrega 2: Estrategia de Reclutamiento y Marco Legal 📜</h4>
+          <div class="task-meta task-meta-visible">
+            <span><strong>Entrega:</strong> 16/Ago/2025</span>
+            <span><strong>🟢 Valor:</strong> 8 puntos</span>
+          </div>
+          <p>Diseño del mapa del viaje del candidato, redacción de una oferta de empleo atractiva y un checklist de cumplimiento legal y ético.</p>
+          <button class="modal-button" data-modal-target="#modal-task-s2">Ver Detalles de la Entrega 🔎</button>
+        </div>
+        <div class="task-card">
+          <h4>Entrega 3: Diseño de un Proceso Inclusivo 🧩</h4>
+          <div class="task-meta task-meta-visible">
+            <span><strong>Entrega:</strong> 23/Ago/2025</span>
+            <span><strong>🟢 Valor:</strong> 7 puntos</span>
+          </div>
+          <p>Propuesta de tres estrategias concretas para la diversidad y la inclusión, fundamentadas en el análisis de un caso de éxito guatemalteco.</p>
+          <button class="modal-button" data-modal-target="#modal-task-s3">Ver Detalles de la Entrega 🔎</button>
+        </div>
+        <div class="task-card">
+          <h4>Entrega 4: Presentación Ejecutiva en Video 🎬</h4>
+          <div class="task-meta task-meta-visible">
+            <span><strong>Entrega:</strong> 30/Ago/2025</span>
+            <span><strong>🟢 Valor:</strong> 7 puntos</span>
+          </div>
+          <p>Grabación de un video-pitch profesional "vendiendo" la propuesta de dotación a la gerencia de la empresa, destacando sus fortalezas.</p>
+          <button class="modal-button" data-modal-target="#modal-task-s4">Ver Detalles de la Entrega 🔎</button>
+        </div>
+        
+        <!-- === CÓDIGO MODIFICADO AQUÍ === -->
+        <div class="summary-box">
+           <h3>Resumen de Ponderación - Fase 1</h3>
+          <table>
+            <thead><tr><th>Actividad</th><th>Valor</th></tr></thead>
+            <tbody>
+              <tr><td>Entrega 1: Fundamentación y Análisis</td><td>8 pts</td></tr>
+              <tr><td>Entrega 2: Estrategia y Marco Legal</td><td>8 pts</td></tr>
+              <tr><td>Entrega 3: Diseño de Proceso Inclusivo</td><td>7 pts</td></tr>
+              <tr><td>Entrega 4: Presentación Ejecutiva en Video</td><td>7 pts</td></tr>
+              <tr class="total-row"><td>✅ Total Proyecto Integrador</td><td>30 pts</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- === FIN DEL CÓDIGO MODIFICADO === -->
+
+      </div>
+    </div>
+  </div>
+
+  <div id="Unidad2" class="tab-content">...</div>
+  <div id="Unidad3" class="tab-content">...</div>
+</div>
+
+<!-- ========= MODALES ========= -->
+<div class="modal" id="modal-task-s1">
+  <div class="modal-content">
+    <span class="modal-close" data-modal-close>&times;</span>
+    <h3>Proyecto Integrador – Entrega 1: Fundamentación y Análisis del Puesto</h3>
+    <p>Esta es la primera fase del proyecto grupal. El objetivo es sentar las bases estratégicas del proceso de dotación.</p>
+    
+    <h4>Actividades a Realizar:</h4>
+    <ol>
+      <li><strong>Selección y Justificación:</strong> Como grupo, elijan una empresa guatemalteca real (pública, privada o sin fines de lucro) y un puesto de nivel medio para el cual diseñarán el proceso. Redacten una justificación (1-2 párrafos) explicando la necesidad estratégica de este puesto en la organización.</li>
+      <li><strong>Análisis y Descripción del Puesto:</strong> Desarrollen un documento que contenga:
+          <ul>
+            <li><strong>Descripción del Puesto:</strong> Nombre del puesto, departamento, a quién reporta, funciones principales y responsabilidades.</li>
+            <li><strong>Especificaciones del Puesto:</strong> Perfil detallado del candidato ideal, incluyendo formación académica, años de experiencia, habilidades técnicas (duras) y competencias conductuales (blandas).</li>
+          </ul>
+      </li>
+    </ol>
+
+    <h4>Rúbrica de Evaluación:</h4>
+    <table>
+      <thead><tr><th>Criterio</th><th>Puntos</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Justificación Estratégica</td><td>3 pts</td><td>El grupo justifica de forma clara y coherente por qué el puesto es necesario para la empresa seleccionada.</td>
+        </tr>
+        <tr>
+          <td>Descripción del Puesto</td><td>3 pts</td><td>Las funciones y responsabilidades son claras, detalladas y realistas para el puesto y la empresa.</td>
+        </tr>
+        <tr>
+          <td>Especificaciones del Puesto</td><td>2 pts</td><td>El perfil de competencias, habilidades y experiencia es coherente con la descripción del puesto.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="task-criteria">📌 <strong>Entrega:</strong> Documento único en formato PDF que contenga la justificación y el análisis/descripción del puesto.</p>
+  </div>
+</div>
+
+<div class="modal" id="modal-task-s2">
+  <div class="modal-content">
+    <span class="modal-close" data-modal-close>&times;</span>
+    <h3>Proyecto Integrador – Entrega 2: Estrategia de Reclutamiento y Marco Legal</h3>
+    <p>Basándose en el puesto definido en la Entrega 1, el grupo diseñará las primeras herramientas de atracción de talento, asegurando el cumplimiento normativo.</p>
+    
+    <h4>Actividades a Realizar:</h4>
+    <ol>
+      <li><strong>Mapa del Viaje del Candidato:</strong> Diseñen un diagrama de flujo o mapa mental que visualice las fases que recorrerá un candidato en su proceso (ej: atracción, aplicación, preselección, entrevistas, pruebas, oferta, contratación).</li>
+      <li><strong>Redacción de Oferta de Empleo:</strong> Elaboren un anuncio de empleo atractivo, claro y no discriminatorio, listo para ser publicado. Debe incluir: título, resumen, funciones, requisitos y un llamado a la acción.</li>
+      <li><strong>Checklist Legal y Ético:</strong> Creen una tabla simple que verifique que la oferta y el proceso propuesto cumplen con al menos 5 puntos clave de la legislación laboral y la ética profesional (ej: no discriminación por edad/género, confidencialidad de datos, etc.).</li>
+    </ol>
+
+    <h4>Rúbrica de Evaluación:</h4>
+    <table>
+      <thead><tr><th>Criterio</th><th>Puntos</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Mapa del Viaje del Candidato</td><td>2 pts</td><td>El mapa es visualmente claro, lógico y muestra las etapas principales del proceso propuesto.</td>
+        </tr>
+        <tr>
+          <td>Redacción de Oferta de Empleo</td><td>4 pts</td><td>La oferta es atractiva, coherente con el análisis del puesto, y está redactada de forma profesional y sin sesgos.</td>
+        </tr>
+        <tr>
+          <td>Checklist Legal y Ético</td><td>2 pts</td><td>El checklist identifica correctamente puntos clave y demuestra una revisión consciente de la normativa y la ética.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="task-criteria">📌 <strong>Entrega:</strong> Documento único en formato PDF que incluya el mapa (puede ser una imagen), la oferta de empleo y el checklist.</p>
+  </div>
+</div>
+
+<div class="modal" id="modal-task-s3">
+  <div class="modal-content">
+    <span class="modal-close" data-modal-close>&times;</span>
+    <h3>Proyecto Integrador – Entrega 3: Diseño de un Proceso Inclusivo</h3>
+    <p>El objetivo es asegurar que el proceso de dotación diseñado no solo sea eficiente, sino también justo, equitativo y abierto a la diversidad.</p>
+    
+    <h4>Actividades a Realizar:</h4>
+    <ol>
+      <li><strong>Propuesta de Estrategias de Inclusión:</strong> Redacten un documento que detalle tres (3) estrategias concretas que implementarán para mitigar sesgos y fomentar la diversidad en su proceso. Para cada estrategia, expliquen en qué consiste y cómo ayuda a la inclusión (ej: diversificar fuentes de reclutamiento, usar lenguaje inclusivo, estandarizar entrevistas, etc.).</li>
+      <li><strong>Análisis de Caso Aplicado:</strong> Investiguen una iniciativa de inclusión laboral real en Guatemala (pueden usar el caso de Walmart u otro que encuentren). En un párrafo, expliquen cómo las lecciones de ese caso real inspiraron o validaron las estrategias que su grupo propuso.</li>
+    </ol>
+
+    <h4>Rúbrica de Evaluación:</h4>
+    <table>
+      <thead><tr><th>Criterio</th><th>Puntos</th><th>Descripción</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Propuesta de Estrategias</td><td>4 pts</td><td>Se proponen 3 estrategias claras, aplicables y bien justificadas en su contribución a la inclusión.</td>
+        </tr>
+        <tr>
+          <td>Análisis de Caso Aplicado</td><td>3 pts</td><td>El grupo demuestra investigación y conecta de manera significativa un caso real con su propia propuesta.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="task-criteria">📌 <strong>Entrega:</strong> Documento en formato PDF con la propuesta de estrategias y el análisis del caso aplicado.</p>
+  </div>
+</div>
+
+<div class="modal" id="modal-task-s4">
+    <div class="modal-content">
+      <span class="modal-close" data-modal-close>&times;</span>
+      <h3>Proyecto Integrador – Entrega 4: Presentación Ejecutiva en Video</h3>
+      <p>Esta es la entrega final donde consolidan y presentan todo el trabajo de la fase de una manera profesional y persuasiva.</p>
+      
+      <h4>Actividad a Realizar:</h4>
+      <p>Graben una presentación en video (formato <em>pitch</em> de 7 a 10 minutos). En el video, el grupo debe "vender" su propuesta de dotación a la gerencia de la empresa. Deben explicar el proceso diseñado, destacar sus fortalezas (eficiencia, ética, inclusión) y justificar por qué es la mejor opción para la organización.</p>
+  
+      <h4>Rúbrica de Evaluación (Total: 7 puntos):</h4>
+      <table>
+        <thead><tr><th>Criterio</th><th>Puntos</th><th>Descripción</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Claridad y Estructura</td><td>3 pts</td><td>La presentación tiene una estructura lógica (intro, desarrollo, cierre), es fácil de seguir y se respeta el tiempo estipulado.</td>
+          </tr>
+          <tr>
+            <td>Calidad del Contenido</td><td>2 pts</td><td>Se exponen claramente las fortalezas del proceso (eficiencia, ética, inclusión) con argumentos persuasivos basados en el trabajo previo.</td>
+          </tr>
+          <tr>
+            <td>Calidad Técnica y Profesionalismo</td><td>2 pts</td><td>El video tiene buena calidad de audio y video. Los expositores se comunican de manera clara y profesional.</td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <p class="task-criteria">📌 <strong>Entrega:</strong> El enlace al video final (subido como no listado a YouTube, Loom, etc.).</p>
+    </div>
+</div>
+
+<script>
+  // --- Lógica para Pestañas de Unidades ---
+  function openUnit(evt, unitName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tab-link");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(unitName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+  // Activa la primera pestaña al cargar
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector('.tab-link').click();
+  });
+
+  // --- Lógica para los Modales ---
+  const openModalButtons = document.querySelectorAll('[data-modal-target]');
+  const closeModalButtons = document.querySelectorAll('[data-modal-close]');
+  const modals = document.querySelectorAll('.modal');
+
+  function openModal(modal) {
+    if (modal == null) return;
+    modal.classList.add('active');
+  }
+
+  function closeModal(modal) {
+    if (modal == null) return;
+    modal.classList.remove('active');
+  }
+
+  openModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const modal = document.querySelector(button.dataset.modalTarget);
+      openModal(modal);
+    });
+  });
+
+  closeModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const modal = button.closest('.modal');
+      closeModal(modal);
+    });
+  });
+
+  modals.forEach(modal => {
+    modal.addEventListener('click', e => {
+      if (e.target === modal) {
+        closeModal(modal);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
