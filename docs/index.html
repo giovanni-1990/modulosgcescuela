@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Documentos - Escuela de Estudios Judiciales</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <!-- CORREGIDO: Enlace al favicon local -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <header>
+        <!-- CORREGIDO: Enlace al logo local -->
+        <img src="https://legaltech.com.gt/themeoj/img/logoBlanco.png" alt="Logo Organismo Judicial" class="logo">
+        <h1>Catálogo de Documentos</h1>
+        <p>Escuela de Estudios Judiciales - Sistema de Gestión de Calidad</p>
+    </header>
+
+    <main>
+        <div class="buscador-container">
+            <input type="text" id="buscador" placeholder="Buscar por código o nombre del documento..." autofocus>
+        </div>
+
+        <div class="tabla-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre del Documento</th>
+                        <th>Versión</th>
+                        <th>Última Revisión</th>
+                        <th>Descargar</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-cuerpo">
+                    <!-- El contenido se generará con JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>Organismo Judicial de Guatemala, C.A.</p>
+    </footer>
+
+    <!-- 
+      CORREGIDO: El orden es crucial. 
+      Primero cargamos los datos y LUEGO el script que los usa. 
+    -->
+    <script src="js/datos.js"></script>
+    <script src="js/catalogo.js"></script>
+
+</body>
+</html>
