@@ -892,6 +892,10 @@ require_once 'session_check.php';
         </div>
     </div>
 
+    <!-- Botón flotante personalizado -->
+    <a href="#" id="boton-flotante" title="Ir a otra página">
+        Ir a página
+    </a>
     <!-- MODIFICADO: Contador de interacciones (ahora fijo sobre el footer del autor) -->
     <div id="viewCounter">
         Vistas: <span id="views">0</span> | Interacciones: <span id="interactions">0</span>
