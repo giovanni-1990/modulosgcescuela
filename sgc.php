@@ -888,13 +888,13 @@ require_once 'session_check.php';
     <!-- MODIFICADO: Pie de página del autor (ahora fijo) -->
     <div class="version-footer">
         <div class="container">
-             Creado por: Giovanni Arias – Gestor de Calidad: Versión: 8.0
+             Creado por: Giovanni Arias – Gestor de Calidad: Versión: 9.0
         </div>
     </div>
 
     <!-- Botón flotante personalizado -->
-    <a href="#" id="boton-flotante" title="Ir a otra página">
-        Ir a página
+    <a href="https://legaltech.com.gt/escuelasgc/docs/" id="boton-flotante" title="Documentos codificados" target="_blank" rel="noopener">
+    Documentos codificados
     </a>
     <!-- MODIFICADO: Contador de interacciones (ahora fijo sobre el footer del autor) -->
     <div id="viewCounter">
