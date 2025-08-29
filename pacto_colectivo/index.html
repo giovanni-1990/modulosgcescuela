@@ -229,11 +229,102 @@
         <div class="tabs">
             <button class="tab-link active" onclick="openTab(event, 'principal')">Análisis y Propuesta</button>
             <button class="tab-link" onclick="openTab(event, 'evaluacion')">Evaluación de Prueba</button>
+            <button class="tab-link" onclick="openTab(event, 'agrupacion')">Agrupación de Dimensiones en dos bloques</button>
             <button class="tab-link" onclick="openTab(event, 'reevaluacion')">Formulario de Reevaluación</button>
             <button class="tab-link" onclick="openTab(event, 'analisis')">Análisis del Flujograma</button>
+        <!-- Contenido de la Pestaña Agrupación de Dimensiones -->
         </div>
 
         <!-- Contenido de la Pestaña Principal -->
+        <!-- Contenido de la Pestaña Agrupación de Dimensiones en dos bloques -->
+        <div id="agrupacion" class="tab-content">
+            <h1 style="font-size:1.5em; color:#1a5a96; margin-bottom:18px;">Agrupación de Dimensiones en dos bloques</h1>
+            <div style="overflow-x:auto; margin-bottom: 30px;">
+                <table style="min-width: 500px; border-radius:8px; overflow:hidden; box-shadow:0 2px 8px #e3e8ee;">
+                    <thead>
+                        <tr style="background:#e6fffa; color:#1a5a96;">
+                            <th style="padding:10px 8px;">Bloque de Evaluación</th>
+                            <th style="padding:10px 8px;">Dimensiones incluidas</th>
+                            <th style="padding:10px 8px;">Ítems</th>
+                            <th style="padding:10px 8px;">Total de puntos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background:#fff;">
+                            <td style="font-weight:600;">Competencias técnicas</td>
+                            <td>Conocimiento (4) + Productividad (4) + Iniciativa (4)</td>
+                            <td>12</td>
+                            <td>60 pts</td>
+                        </tr>
+                        <tr style="background:#f8fafc;">
+                            <td style="font-weight:600;">Valores y comportamiento</td>
+                            <td>Responsabilidad (4) + Orientación al servicio (4)</td>
+                            <td>8</td>
+                            <td>40 pts</td>
+                        </tr>
+                        <tr style="background:#f0fff4; font-weight:bold;">
+                            <td>TOTAL</td>
+                            <td>—</td>
+                            <td>20</td>
+                            <td>100 pts</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h2 style="font-size:1.15em; color:#007bff; margin-bottom:12px;">🔹 Reorganización de las Preguntas</h2>
+            <div style="display:flex; flex-wrap:wrap; gap:32px;">
+                <div style="flex:1 1 340px; min-width:320px; background:#f8fafc; border-radius:8px; box-shadow:0 1px 4px #e3e8ee; padding:18px 20px;">
+                    <h3 style="color:#1a5a96; font-size:1.1em; margin-top:0;">A. Competencias Técnicas <span style='font-weight:normal;'>(12 ítems – 60 pts)</span></h3>
+                    <ol style="margin-bottom: 0; padding-left: 18px;">
+                        <li><b>Conocimiento</b>
+                            <ul style="margin:0 0 8px 0; padding-left:18px;">
+                                <li>¿Domina los aspectos técnicos y el conocimiento necesarios para el puesto?</li>
+                                <li>¿Aplica correctamente los procedimientos internos de la unidad en su trabajo diario?</li>
+                                <li>¿Utiliza sus conocimientos para resolver problemas cotidianos de manera efectiva?</li>
+                                <li>¿Se actualiza de manera continua en relación con los conocimientos y competencias que requiere su puesto?</li>
+                            </ul>
+                        </li>
+                        <li><b>Productividad</b>
+                            <ul style="margin:0 0 8px 0; padding-left:18px;">
+                                <li>¿Cumple con las tareas asignadas dentro de los plazos establecidos?</li>
+                                <li>¿Organiza de forma adecuada sus actividades diarias para cumplir con sus responsabilidades?</li>
+                                <li>¿Entrega su trabajo de manera oportuna y con la calidad esperada?</li>
+                                <li>¿Prioriza sus actividades de acuerdo con la urgencia e importancia de las tareas asignadas?</li>
+                            </ul>
+                        </li>
+                        <li><b>Iniciativa</b>
+                            <ul style="margin:0 0 8px 0; padding-left:18px;">
+                                <li>¿Se anticipa a los problemas y propone soluciones prácticas?</li>
+                                <li>¿Demuestra interés en mejorar continuamente los procesos de trabajo?</li>
+                                <li>¿Asume de manera proactiva las tareas que le competen y propone mejoras en su ejecución?</li>
+                                <li>¿Busca nuevas formas de optimizar su trabajo y mejorar la eficiencia en sus tareas?</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <div style="flex:1 1 340px; min-width:320px; background:#f8fafc; border-radius:8px; box-shadow:0 1px 4px #e3e8ee; padding:18px 20px;">
+                    <h3 style="color:#1a5a96; font-size:1.1em; margin-top:0;">B. Valores y Comportamiento <span style='font-weight:normal;'>(8 ítems – 40 pts)</span></h3>
+                    <ol style="margin-bottom: 0; padding-left: 18px;">
+                        <li><b>Responsabilidad</b>
+                            <ul style="margin:0 0 8px 0; padding-left:18px;">
+                                <li>¿Cumple puntualmente con los horarios laborales y de asistencia establecidos?</li>
+                                <li>¿Respeta y aplica las normas institucionales en el desarrollo de sus funciones?</li>
+                                <li>¿Maneja con confidencialidad la información sensible a la que tiene acceso?</li>
+                                <li>¿Muestra compromiso y responsabilidad en el cumplimiento de sus funciones?</li>
+                            </ul>
+                        </li>
+                        <li><b>Orientación al Servicio</b>
+                            <ul style="margin:0 0 8px 0; padding-left:18px;">
+                                <li>¿Escucha con atención y responde adecuadamente a las necesidades de los usuarios internos y externos?</li>
+                                <li>¿Mantiene un trato cortés y profesional incluso en situaciones difíciles?</li>
+                                <li>¿Fomenta relaciones de respeto y colaboración con sus compañeros y usuarios?</li>
+                                <li>¿Mantiene una actitud positiva que favorece el clima laboral?</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
         <div id="principal" class="tab-content active home-content">
             <div class="hero-title-section">
                 <h1>Análisis Comparativo y Modernización del Proceso de Evaluación</h1>
@@ -294,45 +385,109 @@
 
             <h2>SECCIÓN I: EVALUACIÓN DE COMPETENCIAS</h2>
             
-            <h3>1. Conocimiento y Ejecución Técnica</h3>
+
+            <h3 style="display:inline-block;">1. Conocimiento</h3><span style="margin-left:10px; color:#1a5a96; font-weight:bold;">(20 puntos)</span>
             <div class="table-responsive-wrapper">
                 <table class="rating-table">
-                    <thead><tr><th>Indicador de Conducta Observable</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th style="width: 30%;">Comentarios / Evidencias Concretas</th></tr></thead>
+                    <thead><tr><th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
                     <tbody>
-                        <tr><td>Demuestra comprensión y dominio de los conocimientos técnicos básicos requeridos para su puesto.</td><td><input type="radio" name="comp1_1"></td><td><input type="radio" name="comp1_1"></td><td><input type="radio" name="comp1_1"></td><td><input type="radio" name="comp1_1"></td><td><input type="radio" name="comp1_1"></td><td></td></tr>
-                        <tr><td>Aplica correctamente los procedimientos y normativas internas de la Unidad en sus tareas diarias.</td><td><input type="radio" name="comp1_2"></td><td><input type="radio" name="comp1_2"></td><td><input type="radio" name="comp1_2"></td><td><input type="radio" name="comp1_2"></td><td><input type="radio" name="comp1_2"></td><td></td></tr>
-                        <tr><td>Utiliza su conocimiento para resolver problemas cotidianos del puesto de manera eficaz.</td><td><input type="radio" name="comp1_3"></td><td><input type="radio" name="comp1_3"></td><td><input type="radio" name="comp1_3"></td><td><input type="radio" name="comp1_3"></td><td><input type="radio" name="comp1_3"></td><td></td></tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <h3>2. Productividad y Calidad del Trabajo</h3>
-            <div class="table-responsive-wrapper">
-                <table class="rating-table">
-                     <thead><tr><th>Indicador de Conducta Observable</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th style="width: 30%;">Comentarios / Evidencias Concretas</th></tr></thead>
-                    <tbody>
-                        <tr><td>Finaliza sus tareas asignadas dentro de los plazos establecidos, gestionando su tiempo adecuadamente.</td><td><input type="radio" name="comp2_1"></td><td><input type="radio" name="comp2_1"></td><td><input type="radio" name="comp2_1"></td><td><input type="radio" name="comp2_1"></td><td><input type="radio" name="comp2_1"></td><td></td></tr>
-                        <tr><td>Entrega un trabajo preciso, con atención al detalle y cumpliendo los estándares de calidad esperados.</td><td><input type="radio" name="comp2_2"></td><td><input type="radio" name="comp2_2"></td><td><input type="radio" name="comp2_2"></td><td><input type="radio" name="comp2_2"></td><td><input type="radio" name="comp2_2"></td><td></td></tr>
-                        <tr><td>Organiza sus actividades diarias de forma lógica para cumplir con sus responsabilidades.</td><td><input type="radio" name="comp2_3"></td><td><input type="radio" name="comp2_3"></td><td><input type="radio" name="comp2_3"></td><td><input type="radio" name="comp2_3"></td><td><input type="radio" name="comp2_3"></td><td></td></tr>
+                        <tr><td>¿Domina los aspectos técnicos y el conocimiento necesarios para el puesto?</td><td><input type="radio" name="comp1_1"></td><td><input type="radio" name="comp1_1"></td><td><input type="radio" name="comp1_1"></td><td><input type="radio" name="comp1_1"></td><td><input type="radio" name="comp1_1"></td></tr>
+                        <tr><td>¿Aplica correctamente los procedimientos internos de la unidad en su trabajo diario?</td><td><input type="radio" name="comp1_2"></td><td><input type="radio" name="comp1_2"></td><td><input type="radio" name="comp1_2"></td><td><input type="radio" name="comp1_2"></td><td><input type="radio" name="comp1_2"></td></tr>
+                        <tr><td>¿Utiliza sus conocimientos para resolver problemas cotidianos de manera efectiva?</td><td><input type="radio" name="comp1_3"></td><td><input type="radio" name="comp1_3"></td><td><input type="radio" name="comp1_3"></td><td><input type="radio" name="comp1_3"></td><td><input type="radio" name="comp1_3"></td></tr>
+                        <tr><td>¿Se actualiza de manera continua en relación con los conocimientos y competencias que requiere su puesto?</td><td><input type="radio" name="comp1_4"></td><td><input type="radio" name="comp1_4"></td><td><input type="radio" name="comp1_4"></td><td><input type="radio" name="comp1_4"></td><td><input type="radio" name="comp1_4"></td></tr>
                     </tbody>
                 </table>
             </div>
 
-            <h3>3. Responsabilidad y Compromiso</h3>
+            <h3 style="display:inline-block;">2. Productividad</h3><span style="margin-left:10px; color:#1a5a96; font-weight:bold;">(20 puntos)</span>
             <div class="table-responsive-wrapper">
                 <table class="rating-table">
-                    <thead><tr><th>Indicador de Conducta Observable</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th style="width: 30%;">Comentarios / Evidencias Concretas</th></tr></thead>
+                    <thead><tr><th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
                     <tbody>
-                        <tr><td>Cumple consistentemente con el horario laboral y las políticas de asistencia de la institución.</td><td><input type="radio" name="comp3_1"></td><td><input type="radio" name="comp3_1"></td><td><input type="radio" name="comp3_1"></td><td><input type="radio" name="comp3_1"></td><td><input type="radio" name="comp3_1"></td><td></td></tr>
-                        <tr><td>Asume la responsabilidad por sus tareas y resultados, mostrando compromiso con sus funciones.</td><td><input type="radio" name="comp3_2"></td><td><input type="radio" name="comp3_2"></td><td><input type="radio" name="comp3_2"></td><td><input type="radio" name="comp3_2"></td><td><input type="radio" name="comp3_2"></td><td></td></tr>
-                        <tr><td>Maneja la información sensible o confidencial con la discreción y profesionalismo requeridos.</td><td><input type="radio" name="comp3_3"></td><td><input type="radio" name="comp3_3"></td><td><input type="radio" name="comp3_3"></td><td><input type="radio" name="comp3_3"></td><td><input type="radio" name="comp3_3"></td><td></td></tr>
+                        <tr><td>¿Cumple con las tareas asignadas dentro de los plazos establecidos?</td><td><input type="radio" name="comp2_1"></td><td><input type="radio" name="comp2_1"></td><td><input type="radio" name="comp2_1"></td><td><input type="radio" name="comp2_1"></td><td><input type="radio" name="comp2_1"></td></tr>
+                        <tr><td>¿Organiza de forma adecuada sus actividades diarias para cumplir con sus responsabilidades?</td><td><input type="radio" name="comp2_2"></td><td><input type="radio" name="comp2_2"></td><td><input type="radio" name="comp2_2"></td><td><input type="radio" name="comp2_2"></td><td><input type="radio" name="comp2_2"></td></tr>
+                        <tr><td>¿Entrega su trabajo de manera oportuna y con la calidad esperada?</td><td><input type="radio" name="comp2_3"></td><td><input type="radio" name="comp2_3"></td><td><input type="radio" name="comp2_3"></td><td><input type="radio" name="comp2_3"></td><td><input type="radio" name="comp2_3"></td></tr>
+                        <tr><td>¿Prioriza sus actividades de acuerdo con la urgencia e importancia de las tareas asignadas?</td><td><input type="radio" name="comp2_4"></td><td><input type="radio" name="comp2_4"></td><td><input type="radio" name="comp2_4"></td><td><input type="radio" name="comp2_4"></td><td><input type="radio" name="comp2_4"></td></tr>
                     </tbody>
                 </table>
+            </div>
+
+            <h3 style="display:inline-block;">3. Responsabilidad</h3><span style="margin-left:10px; color:#1a5a96; font-weight:bold;">(20 puntos)</span>
+            <div class="table-responsive-wrapper">
+                <table class="rating-table">
+                    <thead><tr><th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+                    <tbody>
+                        <tr><td>¿Cumple puntualmente con los horarios laborales y de asistencia establecidos?</td><td><input type="radio" name="comp3_1"></td><td><input type="radio" name="comp3_1"></td><td><input type="radio" name="comp3_1"></td><td><input type="radio" name="comp3_1"></td><td><input type="radio" name="comp3_1"></td></tr>
+                        <tr><td>¿Respeta y aplica las normas institucionales en el desarrollo de sus funciones?</td><td><input type="radio" name="comp3_2"></td><td><input type="radio" name="comp3_2"></td><td><input type="radio" name="comp3_2"></td><td><input type="radio" name="comp3_2"></td><td><input type="radio" name="comp3_2"></td></tr>
+                        <tr><td>¿Maneja con confidencialidad la información sensible a la que tiene acceso?</td><td><input type="radio" name="comp3_3"></td><td><input type="radio" name="comp3_3"></td><td><input type="radio" name="comp3_3"></td><td><input type="radio" name="comp3_3"></td><td><input type="radio" name="comp3_3"></td></tr>
+                        <tr><td>¿Muestra compromiso y responsabilidad en el cumplimiento de sus funciones?</td><td><input type="radio" name="comp3_4"></td><td><input type="radio" name="comp3_4"></td><td><input type="radio" name="comp3_4"></td><td><input type="radio" name="comp3_4"></td><td><input type="radio" name="comp3_4"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="display:inline-block;">4. Iniciativa</h3><span style="margin-left:10px; color:#1a5a96; font-weight:bold;">(20 puntos)</span>
+            <div class="table-responsive-wrapper">
+                <table class="rating-table">
+                    <thead><tr><th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+                    <tbody>
+                        <tr><td>¿Se anticipa a los problemas y propone soluciones prácticas?</td><td><input type="radio" name="comp4_1"></td><td><input type="radio" name="comp4_1"></td><td><input type="radio" name="comp4_1"></td><td><input type="radio" name="comp4_1"></td><td><input type="radio" name="comp4_1"></td></tr>
+                        <tr><td>¿Demuestra interés en mejorar continuamente los procesos de trabajo?</td><td><input type="radio" name="comp4_2"></td><td><input type="radio" name="comp4_2"></td><td><input type="radio" name="comp4_2"></td><td><input type="radio" name="comp4_2"></td><td><input type="radio" name="comp4_2"></td></tr>
+                        <tr><td>¿Asume de manera proactiva las tareas que le competen y propone mejoras en su ejecución?</td><td><input type="radio" name="comp4_3"></td><td><input type="radio" name="comp4_3"></td><td><input type="radio" name="comp4_3"></td><td><input type="radio" name="comp4_3"></td><td><input type="radio" name="comp4_3"></td></tr>
+                        <tr><td>¿Busca nuevas formas de optimizar su trabajo y mejorar la eficiencia en sus tareas?</td><td><input type="radio" name="comp4_4"></td><td><input type="radio" name="comp4_4"></td><td><input type="radio" name="comp4_4"></td><td><input type="radio" name="comp4_4"></td><td><input type="radio" name="comp4_4"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="display:inline-block;">5. Orientación al Servicio</h3><span style="margin-left:10px; color:#1a5a96; font-weight:bold;">(20 puntos)</span>
+            <div class="table-responsive-wrapper">
+                <table class="rating-table">
+                    <thead><tr><th>Pregunta</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+                    <tbody>
+                        <tr><td>¿Escucha con atención y responde adecuadamente a las necesidades de los usuarios internos y externos?</td><td><input type="radio" name="comp5_1"></td><td><input type="radio" name="comp5_1"></td><td><input type="radio" name="comp5_1"></td><td><input type="radio" name="comp5_1"></td><td><input type="radio" name="comp5_1"></td></tr>
+                        <tr><td>¿Mantiene un trato cortés y profesional incluso en situaciones difíciles?</td><td><input type="radio" name="comp5_2"></td><td><input type="radio" name="comp5_2"></td><td><input type="radio" name="comp5_2"></td><td><input type="radio" name="comp5_2"></td><td><input type="radio" name="comp5_2"></td></tr>
+                        <tr><td>¿Fomenta relaciones de respeto y colaboración con sus compañeros y usuarios?</td><td><input type="radio" name="comp5_3"></td><td><input type="radio" name="comp5_3"></td><td><input type="radio" name="comp5_3"></td><td><input type="radio" name="comp5_3"></td><td><input type="radio" name="comp5_3"></td></tr>
+                        <tr><td>¿Mantiene una actitud positiva que favorece el clima laboral?</td><td><input type="radio" name="comp5_4"></td><td><input type="radio" name="comp5_4"></td><td><input type="radio" name="comp5_4"></td><td><input type="radio" name="comp5_4"></td><td><input type="radio" name="comp5_4"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Card de Total de Puntuación -->
+            <div style="max-width: 600px; margin: 20px auto 0 auto; background: #f8fafc; border-radius: 8px; box-shadow: 0 2px 8px #e3e8ee; padding: 0.7rem 1rem; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: #1a5a96; gap: 10px;">
+                <span style="font-weight: bold;">Total de Puntuación</span>
+                <span style="font-size: 1.1rem; color: #007bff; font-weight: bold;">/ 100 puntos</span>
+                <span style="color: #555; font-size: 0.98rem;">Suma de las cinco dimensiones evaluadas</span>
             </div>
 
             <h2>SECCIÓN II: RESUMEN Y RECOMENDACIÓN FINAL</h2>
             <h3>Fortalezas Principales Demostradas</h3><textarea placeholder="Resumen de los puntos más destacados del desempeño..."></textarea>
-            <h3>Áreas de Mejora Críticas / Aspectos No Logrados</h3><textarea placeholder="Enumerar las áreas donde el desempeño fue deficiente..."></textarea>
+            <h3>Áreas de Mejora Críticas / Aspectos No Logrados <span style="color:#e74c3c; font-size:0.95em;">(Obligatorio si la puntuación es 59 o menos)</span></h3>
+            <textarea id="mejora-critica" placeholder="Enumerar las áreas donde el desempeño fue deficiente..." required style="border:2px solid #e74c3c;"></textarea>
+            <div style="margin: 10px 0 20px 0;">
+                <label for="adjuntos-mejora" style="font-size:0.98em; color:#333;">Adjuntar información relevante (oficios, imágenes, otros):</label>
+                <input type="file" id="adjuntos-mejora" name="adjuntos-mejora" multiple style="margin-left:10px;">
+            </div>
+            <script>
+            // Lógica para hacer obligatorio el campo si la puntuación es 59 o menos
+            document.addEventListener('DOMContentLoaded', function() {
+                const totalCard = document.querySelector('div[style*="Total de Puntuación"]');
+                const textarea = document.getElementById('mejora-critica');
+                // Suponiendo que el total se calcula y se muestra en algún lado, aquí solo ejemplo:
+                // Debes conectar esto con el cálculo real de la puntuación total
+                function checkRequired() {
+                    // Reemplaza esto por la obtención real del total
+                    let total = 0; // <-- Aquí debe ir el valor real
+                    if(total <= 59) {
+                        textarea.setAttribute('required', 'required');
+                        textarea.style.border = '2px solid #e74c3c';
+                    } else {
+                        textarea.removeAttribute('required');
+                        textarea.style.border = '';
+                    }
+                }
+                // Llama a checkRequired() cuando cambie el total (debes conectar con tu lógica de cálculo)
+                // checkRequired();
+            });
+            </script>
             <h3>Comentarios del Colaborador</h3><textarea placeholder="Espacio para que el colaborador exprese su punto de vista..."></textarea>
 
             <div class="recommendation">
@@ -352,7 +507,7 @@
         <!-- Contenido de la Pestaña de Reevaluación -->
         <div id="reevaluacion" class="tab-content">
             <h1>Formulario de Revisión de Evaluación</h1>
-            <p><strong>Principios Rectores:</strong> Este proceso se rige por la equidad, objetividad y debido proceso. Su única finalidad es auditar si la evaluación original se condujo de manera justa y si la recomendación de no confirmar el puesto se fundamenta en evidencia verificable. Este formulario debe ser presentado ante la <strong>Escuela de Estudios Judiciales</strong>, entidad encargada de conducir el proceso de revisión. La decisión de esta revisión es definitiva y de efecto inmediato.</p>
+            <p><strong>Principios Rectores:</strong> Este proceso se rige por la equidad, objetividad y debido proceso. Su finalidad es auditar si la evaluación original fue justa y si la recomendación de no confirmar el puesto se fundamenta en evidencia verificable. Además, se incorpora una <strong>entrevista</strong> con el colaborador y, según el bloque de evaluación de menor ponderación, se podrá requerir una <strong>prueba psicométrica</strong> o una <strong>prueba de competencias</strong> para profundizar en la valoración.</p>
             
             <h2>SECCIÓN I: DATOS GENERALES</h2>
             <div class="table-responsive-wrapper">
@@ -376,24 +531,57 @@
                     </tbody>
                 </table>
             </div>
-
-            <h2>SECCIÓN IV: VERIFICACIÓN DE LA EQUIDAD PROCESAL</h2>
-             <div class="table-responsive-wrapper">
-                 <table>
-                    <thead><tr><th>Pregunta de Verificación</th><th>Sí</th><th>No</th><th>Observaciones</th></tr></thead>
+            <h2>SECCIÓN III: ENTREVISTA DE REVISIÓN</h2>
+            <p><strong>Entrevista:</strong> El revisor o comité debe realizar una entrevista estructurada con el colaborador para profundizar en los puntos de desacuerdo y obtener información adicional relevante.</p>
+            <div class="table-responsive-wrapper">
+                <table>
+                    <thead><tr><th>Pregunta de Entrevista</th><th>Respuesta del Colaborador</th></tr></thead>
                     <tbody>
-                        <tr><td>1. ¿Las expectativas de desempeño fueron claras para el colaborador?</td><td></td><td></td><td></td></tr>
-                        <tr><td>2. ¿Se le notificó sobre áreas de bajo desempeño con tiempo para corregir?</td><td></td><td></td><td></td></tr>
-                        <tr><td>3. ¿Existe evidencia de retroalimentación previa del evaluador?</td><td></td><td></td><td></td></tr>
-                        <tr><td>4. ¿La evaluación parece estar libre de sesgos personales?</td><td></td><td></td><td></td></tr>
-                        <tr><td>5. ¿La decisión final es consistente con las evidencias presentadas?</td><td></td><td></td><td></td></tr>
+                        <tr><td>¿Cuáles considera que fueron sus principales logros durante el periodo evaluado?</td><td></td></tr>
+                        <tr><td>¿Qué factores cree que influyeron en las áreas de bajo desempeño?</td><td></td></tr>
+                        <tr><td>¿Qué apoyo o recursos adicionales considera que habrían mejorado su desempeño?</td><td></td></tr>
+                        <tr><td>¿Desea aportar información adicional relevante para la revisión?</td><td></td></tr>
+                        <tr><td>¿Las expectativas de desempeño fueron claras para el colaborador?</td><td></td></tr>
+                        <tr><td>¿Se le notificó sobre áreas de bajo desempeño con tiempo para corregir?</td><td></td></tr>
+                        <tr><td>¿Existe evidencia de retroalimentación previa del evaluador?</td><td></td></tr>
+                        <tr><td>¿La evaluación parece estar libre de sesgos personales?</td><td></td></tr>
+                        <tr><td>¿La decisión final es consistente con las evidencias presentadas?</td><td></td></tr>
                     </tbody>
                 </table>
-             </div>
+            </div>
+
+            <h2>SECCIÓN IV: ANÁLISIS DE BLOQUES DE EVALUACIÓN</h2>
+            <p>Con base en la <strong>Evaluación de Prueba</strong> y la <strong>Agrupación de Dimensiones en dos bloques</strong>, identifique el bloque con menor puntuación. Si el bloque de menor ponderación corresponde a <strong>Competencias Técnicas</strong>, se recomienda aplicar una <strong>prueba de competencias</strong>. Si corresponde a <strong>Valores y Comportamiento</strong>, se recomienda aplicar una <strong>prueba psicométrica</strong>.</p>
+            <div class="table-responsive-wrapper">
+                <table>
+                    <thead><tr><th>Bloque de Evaluación</th><th>Puntuación Obtenida</th><th>¿Requiere Prueba Adicional?</th><th>Tipo de Prueba Recomendada</th></tr></thead>
+                    <tbody>
+                        <tr><td>Competencias Técnicas</td><td></td><td></td><td>Prueba de Competencias</td></tr>
+                        <tr><td>Valores y Comportamiento</td><td></td><td></td><td>
+                            Prueba Psicométrica
+                            <button type="button" onclick="togglePsicoOptions()" style="margin-left:8px; padding:2px 8px; font-size:0.95em;">Ver opciones</button>
+                            <div id="psico-options" style="display:none; margin-top:8px; background:#f8fafc; border:1px solid #cce; border-radius:6px; padding:8px 12px;">
+                                <strong>Selecciona una prueba psicométrica:</strong>
+                                <ul style="margin:8px 0 0 0; padding-left:18px;">
+                                    <li><input type="radio" name="psico-test" value="honestidad"> Test de Honestidad e Integridad</li>
+                                    <li><input type="radio" name="psico-test" value="adaptacion"> Test de Adaptación y Resiliencia</li>
+                                    <li><input type="radio" name="psico-test" value="valores"> Test de Valores y Ética Laboral</li>
+                                </ul>
+                            </div>
+                        </td></tr>
+    <script>
+    function togglePsicoOptions() {
+        var div = document.getElementById('psico-options');
+        div.style.display = (div.style.display === 'none' || div.style.display === '') ? 'block' : 'none';
+    }
+    </script>
+                    </tbody>
+                </table>
+            </div>
             
-            <h2>SECCIÓN V: DICTAMEN FINAL Y ACCIONES ADMINISTRATIVAS</h2>
+            <h2>SECCIÓN VI: DICTAMEN FINAL Y ACCIONES ADMINISTRATIVAS</h2>
             <h3>Resumen de Hallazgos de la Revisión:</h3>
-            <textarea placeholder="Análisis global basado en la evidencia y el proceso..."></textarea>
+            <textarea placeholder="Análisis global basado en la evidencia, la entrevista y las pruebas adicionales..."></textarea>
             <h3>Dictamen Final:</h3>
             <div class="recommendation">
                 <label><input type="radio" name="dictamen" value="ratificar"> <strong>RATIFICAR la decisión original de no confirmar en el puesto.</strong></label>
@@ -410,36 +598,209 @@
         
         <!-- NUEVA PESTAÑA: ANÁLISIS DEL FLUJOGRAMA -->
         <div id="analisis" class="tab-content analysis-content">
-            <h1>Análisis y Propuesta de Mejora del Flujograma</h1>
-            <div class="analysis-grid">
-                <div class="analysis-column">
-                    <h2>Análisis del Proceso Original</h2>
-                    <p>El diagrama de flujo existente describe un proceso administrativo-logístico. Sus fases son:</p>
-                    <ul>
-                        <li><strong>Iniciación y Preparación:</strong> El área de Desempeño recopila datos y envía el formulario en PDF al jefe inmediato.</li>
-                        <li><strong>Ejecución y Seguimiento:</strong> El jefe evalúa, devuelve el formulario y el área de Desempeño hace seguimiento para asegurar la entrega.</li>
-                        <li><strong>Verificación y Cierre:</strong> Se verifica que el formulario esté completo y se archiva el resultado.</li>
-                    </ul>
-                    <div class="conclusion-box">
-                        <strong>Interpretación del Proceso</strong>
-                        <p>El flujo actual está diseñado principalmente como un mecanismo de registro y archivo. Su enfoque principal es el movimiento y la gestión de documentos, desde la recopilación de datos hasta su almacenamiento final. Este proceso prioriza la logística administrativa y culmina con el registro del resultado de una evaluación.</p>
+            <div class="container">
+                <h1>Diagrama de Proceso de Evaluación y Revisión</h1>
+                <p class="instructions">Haz clic en cada paso para ver los detalles.</p>
+
+                <!-- MÓDULO 1: Proceso de Evaluación de Periodo de Prueba -->
+                <section id="module1">
+                    <h2>Módulo 1: Evaluación de Periodo de Prueba</h2>
+                    <div class="swimlane-container">
+                        <div class="swimlane rrhh">
+                            <div class="swimlane-header">Administrador (RRHH)</div>
+                            <div class="swimlane-body">
+                                <div class="process-step" id="step1">
+                                    <div class="step-header"><span><i class="fa-solid fa-play"></i> 1. Iniciar Proceso</span><span class="toggle-icon"></span></div>
+                                    <div class="step-details"><p>El administrador de RRHH inicia un nuevo proceso, ingresando:</p><ul><li>Datos del Colaborador</li><li>Nombre del Evaluador</li><li>Fechas del periodo de prueba</li></ul></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swimlane sistema">
+                            <div class="swimlane-header">Sistema</div>
+                            <div class="swimlane-body">
+                                <div class="process-step" id="step2"><div class="step-header"><span><i class="fa-solid fa-bell"></i> Notificar a Evaluador</span><span class="toggle-icon"></span></div><div class="step-details"><p>El sistema envía automáticamente una notificación por correo y/o en la plataforma al Evaluador asignado.</p></div></div>
+                                <div class="arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                                <div class="process-step" id="step5"><div class="step-header"><span><i class="fa-solid fa-bell"></i> Notificar a Colaborador</span><span class="toggle-icon"></span></div><div class="step-details"><p>Una vez el evaluador envía el formulario, el sistema notifica al colaborador para que revise su evaluación y añada comentarios.</p></div></div>
+                                <div class="arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                                <div class="process-step" id="step7"><div class="step-header"><span><i class="fa-solid fa-flag-checkered"></i> Proceso Finalizado</span><span class="toggle-icon"></span></div><div class="step-details"><p>Cuando el colaborador guarda sus comentarios, el proceso se marca como "Finalizado". Se notifica a RRHH y al Evaluador.</p></div></div>
+                                <div class="arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                                <div class="process-step decision" id="step8"><div class="step-header"><span><i class="fa-solid fa-question-circle"></i> ¿Recomendación fue "No Confirmar"?</span><span class="toggle-icon"></span></div><div class="step-details"><p>El sistema verifica la recomendación final. Si es "No Confirmar", activa la opción de revisión para el colaborador. En caso contrario, el proceso termina aquí.</p></div></div>
+                            </div>
+                        </div>
+                        <div class="swimlane evaluador">
+                            <div class="swimlane-header">Evaluador</div>
+                            <div class="swimlane-body">
+                                <div class="process-step" id="step3"><div class="step-header"><span><i class="fa-solid fa-file-pen"></i> 2. Completar Evaluación</span><span class="toggle-icon"></span></div><div class="step-details"><p>El evaluador accede al formulario digital y completa:</p><ul><li>Calificación de 1 a 5 para cada indicador.</li><li>Comentarios y evidencias obligatorias por indicador.</li><li>Fortalezas y áreas de mejora.</li></ul></div></div>
+                                <div class="arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                                <div class="process-step decision" id="step4"><div class="step-header"><span><i class="fa-solid fa-check-double"></i> 3. Seleccionar Recomendación</span><span class="toggle-icon"></span></div><div class="step-details"><p>Elige entre "Confirmar" o "No Confirmar". Si elige "No Confirmar", debe llenar un campo de justificación obligatoria antes de poder enviar.</p></div></div>
+                            </div>
+                        </div>
+                        <div class="swimlane colaborador">
+                            <div class="swimlane-header">Colaborador</div>
+                            <div class="swimlane-body">
+                                <div class="process-step" id="step6"><div class="step-header"><span><i class="fa-solid fa-comments"></i> 4. Revisar y Comentar</span><span class="toggle-icon"></span></div><div class="step-details"><p>El colaborador accede a su evaluación en modo de solo lectura y añade sus comentarios en el campo designado. Luego, guarda para finalizar.</p></div></div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="analysis-column">
-                    <h2>Integración del Proceso de Reevaluación</h2>
-                    <p>Para asegurar el debido proceso, es crucial extender el flujograma con una nueva rama que se activa si el resultado es "No Confirmar". Los nuevos pasos son:</p>
-                    <ol>
-                        <li><strong>Notificación Formal al Colaborador:</strong> Entregar la evaluación y notificar oficialmente la decisión, activando el plazo de apelación.</li>
-                        <li><strong>Inicio del Plazo de Apelación:</strong> El colaborador tiene un plazo fijo (ej. 3 días hábiles) para presentar su inconformidad.</li>
-                        <li><strong>Recepción de la Solicitud:</strong> El formulario de revisión se presenta ante la <strong>Escuela de Estudios Judiciales</strong>, que actúa como <strong>instancia imparcial</strong>.</li>
-                        <li><strong>Asignación del Caso:</strong> La Escuela de Estudios Judiciales designa un revisor o comité y notifica a las partes.</li>
-                        <li><strong>Auditoría del Caso:</strong> El comité revisor analiza la evidencia de ambas partes y verifica la equidad del proceso original.</li>
-                        <li><strong>Emisión de Dictamen Final:</strong> El comité emite una decisión fundamentada: <strong>Ratificar</strong> o <strong>Revocar</strong> la decisión original.</li>
-                        <li><strong>Comunicación y Cierre:</strong> Se notifica el dictamen final a todas las partes involucradas (colaborador, evaluador, RRHH).</li>
-                        <li><strong>Ejecución Administrativa:</strong> Se actualizan los registros y se ejecuta la acción final (confirmación o no confirmación).</li>
-                    </ol>
-                </div>
+                </section>
+
+                <!-- MÓDULO 2: Proceso de Revisión de Evaluación -->
+                <section id="module2">
+                    <h2>Módulo 2: Proceso de Revisión de Evaluación</h2>
+                    <div class="swimlane-container">
+                        <div class="swimlane colaborador">
+                            <div class="swimlane-header">Colaborador</div>
+                            <div class="swimlane-body">
+                                <div class="process-step" id="m2_step1">
+                                    <div class="step-header"><span><i class="fa-solid fa-file-signature"></i> 5. Presentar Argumentos (Sección II)</span><span class="toggle-icon"></span></div>
+                                    <div class="step-details">
+                                        <p><strong>SECCIÓN II: ARGUMENTOS ESPECÍFICOS DEL COLABORADOR</strong></p>
+                                        <p>El colaborador inicia la solicitud y completa el formulario con sus desacuerdos, llenando una fila por cada punto:</p>
+                                        <ul>
+                                            <li><strong>Punto en Desacuerdo:</strong> Identificar el indicador o comentario específico.</li>
+                                            <li><strong>Su Argumento / Versión de los Hechos:</strong> Explicar su perspectiva detalladamente.</li>
+                                            <li><strong>Evidencia de Soporte:</strong> Adjuntar archivos (PDF, JPG, etc.) que respalden su argumento.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swimlane rrhh">
+                            <div class="swimlane-header">RRHH / EEJ</div>
+                            <div class="swimlane-body">
+                                <div class="process-step" id="m2_step3">
+                                    <div class="step-header"><span><i class="fa-solid fa-user-check"></i> 6. Asignar Revisor / Comité</span><span class="toggle-icon"></span></div>
+                                    <div class="step-details"><p>La Escuela de Estudios Judiciales (EEJ) designa a un Revisor o Comité imparcial para auditar el caso, garantizando el debido proceso.</p></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swimlane revisor">
+                            <div class="swimlane-header">Revisor / Comité</div>
+                            <div class="swimlane-body">
+                                <div class="process-step" id="m2_step4">
+                                    <div class="step-header"><span><i class="fa-solid fa-microphone-lines"></i> 7. Realizar Entrevista (Sección III)</span><span class="toggle-icon"></span></div>
+                                    <div class="step-details">
+                                        <p><strong>SECCIÓN III: ENTREVISTA DE REVISIÓN</strong></p>
+                                        <p>El Revisor conduce una entrevista estructurada con el colaborador para profundizar y auditar el proceso. Se abordan temas como:</p>
+                                        <ul>
+                                            <li>Logros y factores que influyeron en el desempeño.</li>
+                                            <li>Apoyo o recursos que habrían mejorado su rendimiento.</li>
+                                            <li>Claridad de las expectativas y retroalimentación previa.</li>
+                                            <li>Posibles sesgos en la evaluación.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                                <div class="process-step decision" id="m2_step5">
+                                    <div class="step-header"><span><i class="fa-solid fa-clipboard-question"></i> 8. Análisis de Bloques (Sección IV)</span><span class="toggle-icon"></span></div>
+                                    <div class="step-details">
+                                        <p><strong>SECCIÓN IV: ANÁLISIS DE BLOQUES DE EVALUACIÓN</strong></p>
+                                        <p>Se identifica el bloque de evaluación con menor puntuación para determinar si se requiere una prueba adicional que aporte objetividad:</p>
+                                        <ul>
+                                            <li>Si es <strong>Competencias Técnicas</strong>: Se recomienda una prueba de competencias.</li>
+                                            <li>Si es <strong>Valores y Comportamiento</strong>: Se recomienda una prueba psicométrica.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                                <div class="process-step" id="m2_step6">
+                                    <div class="step-header"><span><i class="fa-solid fa-gavel"></i> 9. Emitir Dictamen Final (Sección VI)</span><span class="toggle-icon"></span></div>
+                                    <div class="step-details">
+                                        <p><strong>SECCIÓN VI: DICTAMEN FINAL Y ACCIONES ADMINISTRATIVAS</strong></p>
+                                        <p>Basado en toda la evidencia (argumentos, entrevista, pruebas), el Revisor emite un dictamen con fundamentación obligatoria:</p>
+                                        <ul>
+                                            <li><strong>RATIFICAR:</strong> "La revisión concluye que la evaluación original fue objetiva, justa, y se basó en evidencia suficiente."</li>
+                                            <li><strong>REVOCAR:</strong> "La revisión ha determinado que la evaluación original tuvo fallos procesales o se basó en evidencia insuficiente/refutada."</li>
+                                        </ul>
+                                        <p>El dictamen es firmado por el Revisor y el Colaborador.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swimlane sistema">
+                            <div class="swimlane-header">Sistema</div>
+                            <div class="swimlane-body">
+                                <div class="process-step" id="m2_step2">
+                                    <div class="step-header"><span><i class="fa-solid fa-bell"></i> Notificar Solicitud</span><span class="toggle-icon"></span></div>
+                                    <div class="step-details"><p>Cuando el colaborador envía la solicitud, el sistema alerta a la Escuela de Estudios Judiciales (EEJ) para que designe un revisor.</p></div>
+                                </div>
+                                <div class="arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                                <div class="process-step" id="m2_step7">
+                                    <div class="step-header"><span><i class="fa-solid fa-power-off"></i> 10. Cierre y Notificación Final</span><span class="toggle-icon"></span></div>
+                                    <div class="step-details">
+                                        <p>Tras el dictamen del Revisor, el sistema:</p>
+                                        <ul>
+                                            <li>Actualiza el estado final del colaborador.</li>
+                                            <li>Genera un PDF no editable del dictamen completo.</li>
+                                            <li>Notifica a todas las partes (Colaborador, Evaluador, RRHH, EEJ) adjuntando el PDF.</li>
+                                        </ul>
+                                        <p><strong>El proceso de revisión concluye.</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+            <style>
+                :root {
+                    --color-rrhh: #e0f7fa;
+                    --color-evaluador: #e8f5e9;
+                    --color-colaborador: #fff3e0;
+                    --color-revisor: #f3e5f5;
+                    --color-sistema: #f1f8e9;
+                    --color-decision: #fff9c4;
+                    --border-color: #ddd;
+                    --text-color: #333;
+                    --header-bg: #4a4a4a;
+                    --header-text: #fff;
+                }
+                .swimlane-container { display: flex; gap: 20px; width: 100%; }
+                .swimlane { flex: 1; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); overflow: hidden; border-top: 5px solid; }
+                .swimlane.rrhh { border-color: #00acc1; }
+                .swimlane.evaluador { border-color: #43a047; }
+                .swimlane.colaborador { border-color: #ffa726; }
+                .swimlane.sistema { border-color: #7cb342; }
+                .swimlane.revisor { border-color: #8e24aa; }
+                .swimlane-header { padding: 15px; color: var(--header-text); font-weight: bold; font-size: 1.1em; text-align: center; }
+                .swimlane.rrhh .swimlane-header { background-color: #00acc1; }
+                .swimlane.evaluador .swimlane-header { background-color: #43a047; }
+                .swimlane.colaborador .swimlane-header { background-color: #ffa726; }
+                .swimlane.sistema .swimlane-header { background-color: #7cb342; }
+                .swimlane.revisor .swimlane-header { background-color: #8e24aa; }
+                .swimlane-body { padding: 15px; }
+                .process-step { margin-bottom: 15px; border: 1px solid var(--border-color); border-radius: 6px; cursor: pointer; transition: all 0.3s ease; overflow: hidden; }
+                .process-step:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
+                .step-header { padding: 12px 15px; font-weight: 600; display: flex; align-items: center; justify-content: space-between; }
+                .step-header i { margin-right: 10px; width: 20px; text-align: center; }
+                .rrhh .process-step { background-color: var(--color-rrhh); }
+                .evaluador .process-step { background-color: var(--color-evaluador); }
+                .colaborador .process-step { background-color: var(--color-colaborador); }
+                .sistema .process-step { background-color: var(--color-sistema); }
+                .revisor .process-step { background-color: var(--color-revisor); }
+                .decision { background-color: var(--color-decision); border-left: 4px solid #fbc02d; }
+                .step-details { display: none; padding: 0 15px 15px 15px; font-size: 0.9em; color: #555; border-top: 1px solid var(--border-color); margin-top: 10px; }
+                .step-details ul { padding-left: 20px; margin: 0; }
+                .step-details p strong { color: #333; }
+                .process-step.active { border-color: #333; }
+                .process-step.active .step-details { display: block; }
+                .arrow { text-align: center; font-size: 2em; color: #999; margin: 10px 0; }
+                .toggle-icon::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; transition: transform 0.3s ease; }
+                .process-step.active .toggle-icon::after { transform: rotate(180deg); }
+                @media (max-width: 992px) { .swimlane-container { flex-direction: column; } }
+            </style>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const steps = document.querySelectorAll('.process-step');
+                    steps.forEach(step => {
+                        step.addEventListener('click', function () {
+                            this.classList.toggle('active');
+                        });
+                    });
+                });
+            </script>
         </div>
 
     </div>
