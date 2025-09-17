@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuela de Estudios Judiciales – Formación Continua Móvil | Dashboard Estratégico</title>
+    <!-- Versión mejorada: estratégica y gerencial -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #052f73;
+            --light-blue: #dbeafe;
+            --gold: #3b82f6;
+            --light-gold: #dbeafe;
+            --white: #ffffff;
+            --light-gray: #f8fafc;
+            --medium-gray: #6b7280;
+            --dark-gray: #374151;
+            --soft-red: #fef2f2;
+            --red-text: #f87171;
+            --shadow-light: rgba(30, 64, 175, 0.15);
+            --shadow-medium: rgba(30, 64, 175, 0.25);
+            --gradient-primary: linear-gradient(135deg, #1e40af 0%, #154da9 100%);
+            --gradient-gold: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 50%, var(--light-blue) 100%);
+            min-height: 100vh;
+            color: var(--dark-gray);
+        }
+
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .executive-header {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px var(--shadow-medium);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            animation: slideInDown 0.8s ease-out;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .header-logo {
+            flex-shrink: 0;
+            width: 160px;
+            height: 160px;
+            z-index: 2;
+        }
+
+        .header-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: brightness(1.1);
+        }
+
+        .header-content {
+            flex: 1;
+            text-align: center;
+            z-index: 2;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .executive-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="10" cy="10" r="1" fill="%23f59e0b" opacity="0.3"><animate attributeName="opacity" dur="3s" values="0.3;0.8;0.3" repeatCount="indefinite"/></circle><circle cx="90" cy="20" r="1.5" fill="%23f59e0b" opacity="0.4"><animate attributeName="opacity" dur="2s" values="0.4;0.9;0.4" repeatCount="indefinite"/></circle><circle cx="20" cy="90" r="1" fill="%23f59e0b" opacity="0.3"><animate attributeName="opacity" dur="4s" values="0.3;0.7;0.3" repeatCount="indefinite"/></circle></svg>');
+        }
+
+        .executive-header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 1px;
+        }
+
+        .executive-header .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 8px;
+        }
+
+        .executive-header .subtitle:last-child {
+            font-size: 1.5rem;
+            margin-top: 15px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .metric-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            border: 1px solid rgba(30, 64, 175, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px var(--shadow-medium);
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-gold);
+        }
+
+        .metric-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .metric-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .critical-highlight {
+            background: var(--soft-red) !important;
+            border-left: 4px solid var(--red-text);
+        }
+
+        .critical-text {
+            color: var(--red-text);
+            font-weight: 600;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .sidebar-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .strategic-card {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(30, 64, 175, 0.1);
+        }
+
+        .strategic-card:hover {
+            box-shadow: 0 15px 35px var(--shadow-medium);
+        }
+
+        .card-header {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 25px;
+            position: relative;
+        }
+
+        .card-header h2 {
+            font-size: 1.5rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-content {
+            padding: 30px;
+        }
+
+        .expandable-section {
+            border: 1px solid var(--light-blue);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .expandable-header {
+            background: var(--light-blue);
+            padding: 18px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .expandable-header:hover {
+            background: rgba(59, 130, 246, 0.15);
+        }
+
+        .expandable-header h3 {
+            margin: 0;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .expand-icon {
+            color: var(--primary-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: var(--white);
+        }
+
+        .expandable-content.expanded {
+            max-height: 1000px;
+        }
+
+        .expandable-inner {
+            padding: 25px;
+        }
+
+        .feature-list {
+            display: grid;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            border-left: 4px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: var(--light-blue);
+            transform: translateX(5px);
+        }
+
+        .feature-icon {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            width: 20px;
+        }
+
+        .progress-section {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            margin-bottom: 25px;
+        }
+
+        .progress-bar {
+            background: var(--light-gray);
+            border-radius: 10px;
+            height: 12px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-gold);
+            border-radius: 10px;
+            transition: width 2s ease;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            background: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-light);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 25px;
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 3px var(--primary-blue);
+        }
+
+        .executive-footer {
+            background: var(--gradient-primary);
+            color: var(--white);
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .executive-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .header-logo {
+                width: 110px;
+                height: 110px;
+            }
+            
+            .executive-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .executive-header .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .executive-header .subtitle:last-child {
+                font-size: 1.3rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .slide-up {
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.6s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<<body>
+    <div class="dashboard-container">
+        <!-- Executive Header -->
+        <div class="executive-header">
+            <div class="header-logo">
+                <img src="../img/logo_Blanco.png" alt="Logotipo Organismo Judicial">
+            </div>
+            <div class="header-content">
+                <h1>CORTE SUPREMA DE JUSTICIA</h1>
+                <p class="subtitle">A través de la</p>
+                <p class="subtitle"><strong>ESCUELA DE ESTUDIOS JUDICIALES</strong></p>
+                <p class="subtitle">Iniciativa Estratégica: Formación Continua Móvil</p>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            <!-- Left Column: Main Content -->
+            <div class="main-content">
+                <!-- Strategic Objective -->
+                <div class="strategic-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-bullseye"></i> Objetivo Estratégico</h2>
+                    </div>
+                    <div class="card-content">
+                        <p style="font-size: 1.1rem; line-height: 1.8; text-align: justify;">
+                            Convertir los buses que fueron juzgados móviles en <strong>aulas permanentes de capacitación itinerante</strong>, garantizando <strong>la formación continua</strong> para <strong>Funcionarios Judiciales</strong>, <strong>Auxiliares Judiciales</strong> y <strong>Personal Administrativo</strong>. El bus se utiliza siempre como <strong>aula cerrada</strong>, con equipamiento básico y acceso a internet cuando sea necesario, pudiendo también adaptarse como <strong>aula abierta</strong> según la cantidad de participantes, y emplearse además como <strong>medio de transporte</strong> para docentes, personal de apoyo e insumos necesarios para el desarrollo de las actividades académicas.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Equipment and Infrastructure -->
+                <div class="strategic-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-cogs"></i> Infraestructura y Equipamiento</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-chair"></i></div>
+                                <div><strong>Mobiliario Ergonómico:</strong> 12-15 sillas premium con mesas portátiles</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-projector"></i></div>
+                                <div><strong>Sistema Audiovisual:</strong> Proyector HD con pantalla retráctil frontal</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-laptop"></i></div>
+                                <div><strong>Tecnología Integrada:</strong> Laptop, impresora, scanner y conectividad</div>
+                            </div>
+                            <div class="feature-item critical-highlight">
+                                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                                <div class="critical-text"><strong>Energía Autónoma:</strong> Planta eléctrica y aire acondicionado</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-wifi"></i></div>
+                                <div><strong>Conectividad:</strong> Internet de alta velocidad y respaldo</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Training Programs -->
+                <div class="strategic-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-graduation-cap"></i> Programas de Capacitación</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="expandable-section">
+                            <div class="expandable-header" onclick="toggleSection(this)">
+                                <h3>Modalidad: Actualización Exprés (2-3 horas)</h3>
+                                <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+                            </div>
+                            <div class="expandable-content">
+                                <div class="expandable-inner">
+                                    <div style="margin-bottom: 20px;">
+                                        <strong>Público Objetivo:</strong> Jueces, Auxiliares Judiciales y Personal Administrativo
+                                    </div>
+                                    <div class="timeline">
+                                        <div class="timeline-item">
+                                            <strong>08:00 - 10:00</strong><br>
+                                            Primer turno
+                                        </div>
+                                        <div class="timeline-item">
+                                            <strong>11:00 - 13:00</strong><br>
+                                            Segundo turno
+                                        </div>
+                                        <div class="timeline-item">
+                                            <strong>14:00 - 16:00</strong><br>
+                                            Tercer turno
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="expandable-section">
+                            <div class="expandable-header" onclick="toggleSection(this)">
+                                <h3>Catálogo de Formación Especializada</h3>
+                                <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+                            </div>
+                            <div class="expandable-content">
+                                <div class="expandable-inner">
+                                    <div style="margin-bottom: 25px;">
+                                        <h4 style="color: var(--primary-blue); margin-bottom: 15px; font-size: 1.1rem;">
+                                            <i class="fas fa-graduation-cap"></i> Cursos Académicos
+                                        </h4>
+                                        <div class="feature-list">
+                                            <div class="feature-item">
+                                                <div class="feature-icon"><i class="fas fa-gavel"></i></div>
+                                                <div>
+                                                    <strong>Procedimiento para delitos menos graves y sus incidencias</strong>
+                                                    <div style="font-size: 0.9rem; color: var(--medium-gray); margin-top: 5px;">Actualización normativa y procedimental</div>
+                                                </div>
+                                            </div>
+                                            <div class="feature-item">
+                                                <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+                                                <div>
+                                                    <strong>Actualización en el marco jurídico de la prueba y la evidencia digital en el sistema de justicia</strong>
+                                                    <div style="font-size: 0.9rem; color: var(--medium-gray); margin-top: 5px;">Tecnología aplicada al derecho procesal</div>
+                                                </div>
+                                            </div>
+                                            <div class="feature-item">
+                                                <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                                                <div>
+                                                    <strong>Bienestar emocional en la labor judicial</strong>
+                                                    <div style="font-size: 0.9rem; color: var(--medium-gray); margin-top: 5px;">Desarrollo humano y salud mental</div>
+                                                </div>
+                                            </div>
+                                            <div class="feature-item">
+                                                <div class="feature-icon"><i class="fas fa-users"></i></div>
+                                                <div>
+                                                    <strong>Justicia con enfoque multicultural: principios y práctica en la atención a los pueblos indígenas</strong>
+                                                    <div style="font-size: 0.9rem; color: var(--medium-gray); margin-top: 5px;">Diversidad cultural y derechos humanos</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <h4 style="color: var(--gold); margin-bottom: 15px; font-size: 1.1rem;">
+                                            <i class="fas fa-tools"></i> Talleres Prácticos
+                                        </h4>
+                                        <div class="feature-list">
+                                            <div class="feature-item critical-highlight">
+                                                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                                                <div>
+                                                    <strong class="critical-text">Oposición a las medidas de seguridad para víctimas de violencia intrafamiliar y violencia contra la mujer</strong>
+                                                    <div style="font-size: 0.9rem; color: var(--medium-gray); margin-top: 5px;">Protección integral y género</div>
+                                                </div>
+                                            </div>
+                                            <div class="feature-item">
+                                                <div class="feature-icon"><i class="fas fa-first-aid"></i></div>
+                                                <div>
+                                                    <strong>Primeros auxilios y uso de botiquín</strong>
+                                                    <div style="font-size: 0.9rem; color: var(--medium-gray); margin-top: 5px;">Atención médica básica y seguridad</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Sidebar -->
+            <div class="sidebar-content">
+                <!-- Bus Image -->
+                <div class="strategic-card">
+                    <div class="card-content" style="padding: 0;">
+                        <img src="https://raw.githubusercontent.com/giovanni-1990/bus/refs/heads/main/Gemini_Generated_Image_dqm813dqm813dqm8%20(2).png" 
+                             alt="Bus de Formación Móvil" 
+                             style="width: 100%; height: auto; border-radius: 15px; box-shadow: 0 10px 30px var(--shadow-light);">
+                    </div>
+                </div>
+
+                <!-- Regional Coverage -->
+                <div class="strategic-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-map"></i> Cobertura Regional</h2>
+                    </div>
+                    <div class="card-content">
+                        <div style="background: var(--light-blue); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                            <h4 style="color: var(--primary-blue); margin-bottom: 15px;">
+                                <i class="fas fa-star"></i> Sede Quetzaltenango
+                            </h4>
+                            <p><strong>Zona de Impacto:</strong> Occidente y Norte</p>
+                            <p class="critical-text" style="font-weight: 600;">
+                                <i class="fas fa-exclamation-circle"></i> 
+                                Prioridad: Huehuetenango
+                            </p>
+                            <p style="margin-top: 15px; font-size: 0.95rem; line-height: 1.6; text-align: justify;">
+                                Se deben definir los municipios o puntos de encuentro viables para que pueda instalarse el bus y permita que el discente pueda abocarse a dicho punto.
+                            </p>
+                        </div>
+                        
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-map-pin"></i></div>
+                                <div><strong>Ubicación del bus:</strong> Identificación de puntos estratégicos</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-handshake"></i></div>
+                                <div><strong>Gestión de permisos:</strong> Municipalidades, Universidades, Centros Educativos para aparcar el bus</div>
+                            </div>
+                            <div class="feature-item critical-highlight">
+                                <div class="feature-icon"><i class="fas fa-bed"></i></div>
+                                <div class="critical-text"><strong>Hoteles y viáticos:</strong> Personal de apoyo logístico y docente</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+                                <div><strong>Permanencia:</strong> Cantidad de días que estará el bus en cada municipio</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-shield"></i></div>
+                                <div><strong>Guardia de seguridad:</strong> Protección permanente del equipo</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Budget Overview -->
+                <div class="strategic-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-chart-pie"></i> Presupuesto</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="feature-list">
+                            <div class="feature-item critical-highlight">
+                                <div class="feature-icon"><i class="fas fa-plane"></i></div>
+                                <div class="critical-text"><strong>Viáticos:</strong> Capacitador + Logística</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-gas-pump"></i></div>
+                                <div><strong>Operación:</strong> Combustible + Mantenimiento</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-wifi"></i></div>
+                                <div><strong>Conectividad:</strong> Esquema híbrido</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+                                <div><strong>Materiales:</strong> Prioritariamente digital</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expected Impact -->
+        <div class="strategic-card">
+            <div class="card-header">
+                <h2><i class="fas fa-rocket"></i> Impacto Estratégico Esperado</h2>
+            </div>
+            <div class="card-content">
+                <div class="metrics-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-infinity"></i></div>
+                        <div><strong>Uso Permanente:</strong> Aula móvil en operación continua</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-balance-scale"></i></div>
+                        <div><strong>Equidad Territorial:</strong> Acceso a formación en regiones remotas</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-network-wired"></i></div>
+                        <div><strong>Flexibilidad Tecnológica:</strong> Soluciones adaptables de conectividad</div>
+                    </div>
+                    <div class="feature-item critical-highlight">
+                        <div class="feature-icon"><i class="fas fa-coins"></i></div>
+                        <div class="critical-text"><strong>Optimización de Recursos:</strong> gasto concentrado en viáticos y combustible, sin contrataciones adicionales.</div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-building"></i></div>
+                        <div><strong>Fortalecimiento Institucional:</strong> Expansión territorial sostenible</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Executive Footer -->
+        <div class="executive-footer">
+            <p><i class="fas fa-copyright"></i> 2025 Escuela de Estudios Judiciales | Iniciativa Estratégica de Formación Móvil</p>
+        </div>
+    </div>
+
+    <script>
+        // Animation and Interaction JavaScript
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.expand-icon i');
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('expanded');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Animate elements on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.strategic-card, .metric-card');
+            const windowHeight = window.innerHeight;
+
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('fade-in');
+                }
+            });
+        }
+
+        // Initialize animations
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', () => {
+            animateOnScroll();
+            
+            // Animate progress bars
+            setTimeout(() => {
+                document.querySelectorAll('.progress-fill').forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 300);
+                });
+            }, 1000);
+        });
+
+        // Add hover effects for metric cards
+        document.querySelectorAll('.metric-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
