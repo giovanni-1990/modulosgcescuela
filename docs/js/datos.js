@@ -93,29 +93,29 @@ const listaDocumentos = [
   {
     "codigo": "FO-EEJ-14",
     "nombre": "Diploma Aprobación (Digital)",
-    "version": "6",
-    "fecha": "sep-25",
+    "version": "5",
+    "fecha": "feb-25",
     "archivo": "DIPLOMAS DE LA ESCUELA DE ESTUDIOS JUDICIALES/FO-EEJ-14 DIPLOMA POR APROBACIÓN/DIGITAL - FO-EEJ-14 DIPLOMA POR APROBACIÓN.doc"
   },
   {
     "codigo": "FO-EEJ-14",
     "nombre": "Diploma Aprobación (Impreso)",
-    "version": "6",
-    "fecha": "sep-25",
+    "version": "5",
+    "fecha": "feb-25",
     "archivo": "DIPLOMAS DE LA ESCUELA DE ESTUDIOS JUDICIALES/FO-EEJ-14 DIPLOMA POR APROBACIÓN/IMPRESO - FO-EEJ-14 DIPLOMA POR APROBACIÓN.doc"
   },
   {
     "codigo": "FO-EEJ-15",
     "nombre": "Diploma Participación (Impreso)",
-    "version": "6",
-    "fecha": "sep-25",
+    "version": "5",
+    "fecha": "feb-25",
     "archivo": "DIPLOMAS DE LA ESCUELA DE ESTUDIOS JUDICIALES/FO-EEJ-15 DIPLOMA POR PARTICIPACIÓN/IMPRESO- FO-EEJ-15 DIPLOMA POR PARTICIPACIÓN.doc"
   },
   {
     "codigo": "FO-EEJ-15",
     "nombre": "Diploma Participación (Virtual)",
-    "version": "6",
-    "fecha": "sep-25",
+    "version": "5",
+    "fecha": "feb-25",
     "archivo": "DIPLOMAS DE LA ESCUELA DE ESTUDIOS JUDICIALES/FO-EEJ-15 DIPLOMA POR PARTICIPACIÓN/VIRTUAL - FO-EEJ-15 DIPLOMA POR PARTICIPACIÓN.doc"
   },
   {
