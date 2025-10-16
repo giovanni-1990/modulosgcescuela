@@ -897,6 +897,16 @@ header("Expires: 0");
         </div>
     </div>
 
+    <!-- Botón flotante PEI 2026 - 2030 -->
+    <a href="https://drive.google.com/file/d/1lidz7HL0a-IcucHCPc8OOI2gE4ZMArS0/view?usp=sharing" 
+       id="boton-flotante-pei" 
+       title="PEI 2026 - 2030" 
+       target="_blank" 
+       rel="noopener"
+       style="position: fixed; right: 32px; bottom: 200px; z-index: 1000; background: #d4af37; color: #000; padding: 16px 28px; border-radius: 30px 0 0 30px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); font-size: 1.1rem; font-weight: 600; text-decoration: none; transition: background 0.2s, transform 0.2s; display: flex; align-items: center; gap: 8px;">
+    PEI 2026 - 2030
+    </a>
+
     <!-- Botón flotante personalizado -->
     <a href="https://legaltech.com.gt/escuelasgc/docs/" id="boton-flotante" title="Documentos codificados" target="_blank" rel="noopener">
     Documentos codificados

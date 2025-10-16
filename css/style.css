@@ -1,3 +1,29 @@
+/* Botón flotante PEI 2026 - 2030 */
+#boton-flotante-pei {
+    position: fixed;
+    right: 32px;
+    bottom: 200px;
+    z-index: 1000;
+    background: var(--accent-gold, #d4af37);
+    color: #000;
+    padding: 16px 28px;
+    border-radius: 30px 0 0 30px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#boton-flotante-pei:hover {
+    background: #c29d2e;
+    transform: translateY(-4px) scale(1.04);
+    text-decoration: underline;
+}
+
 /* Botón flotante personalizado */
 #boton-flotante {
     position: fixed;
