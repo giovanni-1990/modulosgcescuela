@@ -3359,6 +3359,37 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // --- FIN: LÓGICA DIRECTORIO DOCENTES --- //
 
+        // --- ANIMACIONES DE ENTRADA PARA OPTIMIZACIONES GRADUALES --- //
+        const initFadeInAnimations = () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -10% 0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            
+            // Observar elementos con animaciones de entrada
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+        };
+
+        // Inicializar animaciones cuando el DOM esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initFadeInAnimations);
+        } else {
+            initFadeInAnimations();
+        }
+
         // --- INICIO: FUNCIONES PARA MODALES DEL NUEVO APARTADO --- //
         function abrirModalNuevo(modalId) {
             document.getElementById(modalId).style.display = 'block';

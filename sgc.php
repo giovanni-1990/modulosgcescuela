@@ -36,9 +36,9 @@ header("Expires: 0");
     
 </head>
 <body>
-    <button id="mobile-nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">&#9776;</button>
+    <button id="mobile-nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" style="display:none;">&#9776;</button>
 
-    <nav id="main-nav">
+    <nav id="main-nav" tabindex="-1">
         <div class="sidebar-logo-container">
             <img src="https://raw.githubusercontent.com/djsalazar/aa/b74e56ed5e3c0105afd0613626877ac3e2f56563/logo%20-%20Blanco.png" alt="Escuela Estudios Judiciales Logo">
         </div>
@@ -80,44 +80,77 @@ header("Expires: 0");
         </div>
     </header>
 
+    <!-- Botón flotante de socialización ISO 9001:2015 -->
+    <a href="#" id="boton-socializacion-iso" title="Información de Socialización">
+        <span class="iso-icon">📋</span>
+        <span class="iso-text">Socialización ISO 9001</span>
+    </a>
+
+    <!-- Modal de información de socialización -->
+    <div id="modal-socializacion-iso" class="modal-overlay-iso" style="display: none;">
+        <div class="modal-content-iso">
+            <button class="modal-close-iso" id="close-modal-iso">&times;</button>
+            <div class="modal-header-iso">
+                <h3>📋 Socialización del Sistema de Gestión de Calidad</h3>
+            </div>
+            <div class="modal-body-iso">
+                <p><strong>Escuela de Estudios Judiciales</strong></p>
+                <p><strong>Programa de Formación Judicial y Administrativa</strong></p>
+                <p class="modal-description-iso">
+                    Procesos Misionales y de Apoyo conforme a la Norma NTC ISO 9001:2015
+                </p>
+                <div class="modal-action-iso">
+                    <a href="https://clases.legaltech.com.gt/gio/eej-2026/pfjya_iso/" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="btn-acceder-socializacion">
+                        Acceder a la Socialización
+                        <span class="arrow-icon">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <main>
-        <section id="escuela">
+        <section id="escuela" class="section-spacing">
             <div class="container">
-                <h2>Escuela de Estudios Judiciales</h2>
-                <p style="text-align: justify;">La Escuela de Estudios Judiciales es la unidad encargada de planificar, ejecutar y facilitar la capacitación y formación técnica y profesional de jueces, magistrados, funcionarios y empleados del Organismo Judicial, con el fin de asegurar la excelencia y actualización profesional para el eficiente desempeño de sus cargos.</p>
-                <br>
-                <p style="text-align: justify;">La Escuela de Estudios Judiciales ofrece distintos programas de formación, con base en la detección de necesidades de capacitación de funcionarios judiciales, auxiliares judiciales y personal administrativo y técnico del Organismo Judicial, y se presenta de la forma siguiente:</p>
-                <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px; margin-bottom: 25px;">
-                    <button class="programa-formacion-btn" style="background-color: #0056b3; color: white; padding: 12px 20px; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; flex: 1; min-width: 200px; max-width: 250px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                <h2 class="fade-in-up">Escuela de Estudios Judiciales</h2>
+                <p class="text-justified section-paragraph fade-in-up">La Escuela de Estudios Judiciales es la unidad encargada de planificar, ejecutar y facilitar la capacitación y formación técnica y profesional de jueces, magistrados, funcionarios y empleados del Organismo Judicial, con el fin de asegurar la excelencia y actualización profesional para el eficiente desempeño de sus cargos.</p>
+                
+                <p class="text-justified section-paragraph fade-in-up">La Escuela de Estudios Judiciales ofrece distintos programas de formación, con base en la detección de necesidades de capacitación de funcionarios judiciales, auxiliares judiciales y personal administrativo y técnico del Organismo Judicial, y se presenta de la forma siguiente:</p>
+                
+                <div class="programas-formacion-container fade-in-up">
+                    <button class="programa-formacion-btn">
                         Programas de Formación Inicial
                     </button>
-                    <button class="programa-formacion-btn" style="background-color: #0056b3; color: white; padding: 12px 20px; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; flex: 1; min-width: 200px; max-width: 250px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                    <button class="programa-formacion-btn">
                         Programas de Formación Continua
                     </button>
-                    <button class="programa-formacion-btn" style="background-color: #0056b3; color: white; padding: 12px 20px; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; flex: 1; min-width: 200px; max-width: 250px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                    <button class="programa-formacion-btn">
                         Programas de Especialización
                     </button>
                 </div>
             </div>
         </section>
 
-        <section id="sgc">
+        <section id="sgc" class="section-spacing">
             <div class="container">
-                <h2>Sistema de Calidad bajo la Norma Técnica ISO 9001:2015</h2>
+                <h2 class="fade-in-up">Sistema de Calidad bajo la Norma Técnica ISO 9001:2015</h2>
 
-                <div class="sgc-subsection">
+                <div class="sgc-subsection fade-in-up">
                     <h3>Definición</h3>
-                    <p>El Sistema de Gestión de la Calidad (SGC) bajo la norma ISO 9001:2015 es un conjunto de políticas, procesos y procedimientos organizacionales diseñados para cumplir con los requisitos de calidad establecidos por dicha norma internacional.</p>
+                    <p class="text-justified">El Sistema de Gestión de la Calidad (SGC) bajo la norma ISO 9001:2015 es un conjunto de políticas, procesos y procedimientos organizacionales diseñados para cumplir con los requisitos de calidad establecidos por dicha norma internacional.</p>
                 </div>
 
-                <div class="sgc-subsection">
+                <div class="sgc-subsection fade-in-up">
                     <h3>Objetivo Principal del SGC</h3>
-                    <p>Asegurar que la organización pueda proporcionar productos y servicios que cumplan consistentemente con las expectativas del cliente y los requisitos legales y regulatorios aplicables.</p>
+                    <p class="text-justified">Asegurar que la organización pueda proporcionar productos y servicios que cumplan consistentemente con las expectativas del cliente y los requisitos legales y regulatorios aplicables.</p>
                 </div>
 
-                <div class="sgc-subsection">
+                <div class="sgc-subsection fade-in-up">
                     <h3>Componentes Clave del SGC bajo ISO 9001:2015</h3>
-                    <div class="card-container">
+                    <div class="card-container fade-in-up">
                         <div class="card">
                             <h4><span class="card-icon">👥</span>Enfoque en el cliente</h4>
                             <p>Promover la satisfacción del cliente mediante el cumplimiento de sus necesidades y expectativas.</p>
@@ -148,8 +181,8 @@ header("Expires: 0");
                         </div>
                     </div>
                 </div>
-                <h3 class="alcance-title">Alcance del Sistema de Gestión en el Organismo Judicial</h3>
-                <p style="text-align: justify; font-size: 1.1em;">Trámite y resolución en segunda instancia en las ramas del derecho Penal, Civil, Mercantil, Laboral, Familia, Constitucional, Niñez y Adolescentes en: La Sala Sexta Penal de Cobán, Sala Regional Mixta de Quiché, Sala Regional Mixta de Huehuetenango, Sala Regional Mixta de Cobán, Sala Primera Civil de Guatemala y Sala Segunda Civil de Guatemala. Trámites Antejuicio.</p>
+                <h3 class="alcance-title fade-in-up">Alcance del Sistema de Gestión en el Organismo Judicial</h3>
+                <p class="text-justified-large fade-in-up">Trámite y resolución en segunda instancia en las ramas del derecho Penal, Civil, Mercantil, Laboral, Familia, Constitucional, Niñez y Adolescentes en: La Sala Sexta Penal de Cobán, Sala Regional Mixta de Quiché, Sala Regional Mixta de Huehuetenango, Sala Regional Mixta de Cobán, Sala Primera Civil de Guatemala y Sala Segunda Civil de Guatemala. Trámites Antejuicio.</p>
             </div>
         </section>
 
@@ -979,6 +1012,40 @@ header("Expires: 0");
     <!-- LINEA PARA IMPORTAR EL SCRIPT -->
     <!-- LINEA PARA IMPORTAR EL SCRIPT -->
     <script src="js/script.js"></script>
+    <script>
+    // Fallback para mostrar el botón hamburguesa si JS carga después del DOM
+    document.addEventListener('DOMContentLoaded', function() {
+        var mobileNavToggle = document.getElementById('mobile-nav-toggle');
+        if (window.innerWidth <= 768 && mobileNavToggle) {
+            mobileNavToggle.style.display = 'block';
+        }
+
+        // Script para el modal de socialización ISO
+        var btnSocializacion = document.getElementById('boton-socializacion-iso');
+        var modalSocializacion = document.getElementById('modal-socializacion-iso');
+        var closeModalIso = document.getElementById('close-modal-iso');
+
+        if (btnSocializacion && modalSocializacion) {
+            btnSocializacion.addEventListener('click', function(e) {
+                e.preventDefault();
+                modalSocializacion.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+
+            closeModalIso.addEventListener('click', function() {
+                modalSocializacion.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+
+            modalSocializacion.addEventListener('click', function(e) {
+                if (e.target === modalSocializacion) {
+                    modalSocializacion.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+    });
+    </script>
     <!-- LINEA PARA IMPORTAR EL SCRIPT -->
 
 </body>

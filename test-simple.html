@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST - Cambios Visuales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        
+        /* TÍTULO VERDE - COMO SOLICITASTE */
+        .titulo-verde {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 32px;
+            background: linear-gradient(135deg, #228B22 0%, #32CD32 100%) !important;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* SECCIÓN CON GRADIENTES MODERNOS */
+        .seccion-moderna {
+            background: linear-gradient(135deg, rgba(0,51,102,0.1) 0%, rgba(74,144,226,0.1) 100%);
+            border: 2px solid #4a90e2;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        /* TARJETAS CON EFECTOS HOVER */
+        .tarjetas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .tarjeta {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .tarjeta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-color: #4a90e2;
+        }
+        
+        .boton-moderno {
+            background: linear-gradient(135deg, #4a90e2 0%, #003366 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .boton-moderno:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(74,144,226,0.3);
+        }
+        
+        .mensaje-exito {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="titulo-verde">Escuela de Estudios Judiciales</h1>
+    
+    <div class="mensaje-exito">
+        ✅ ¡CAMBIOS APLICADOS CORRECTAMENTE! ✅<br>
+        Si puedes ver este texto, los estilos CSS están funcionando.
+    </div>
+    
+    <div class="seccion-moderna">
+        <h2>Rediseño Completado</h2>
+        <p>Estos son los cambios que implementé según tu solicitud:</p>
+        <ul>
+            <li>✅ <strong>Título en verde</strong> - "Escuela de Estudios Judiciales"</li>
+            <li>✅ <strong>Optimización de espacio</strong> - Grid layout responsive</li>
+            <li>✅ <strong>Mejora visual</strong> - Gradientes modernos y sombras</li>
+            <li>✅ <strong>Interacción mejorada</strong> - Efectos hover en tarjetas</li>
+            <li>✅ <strong>Gama de colores</strong> - Paleta azul/verde actualizada</li>
+        </ul>
+        
+        <div class="tarjetas">
+            <div class="tarjeta">
+                <h3>Formación Académica</h3>
+                <p>Programas de formación continua para el fortalecimiento de competencias judiciales.</p>
+                <button class="boton-moderno">Ver Más</button>
+            </div>
+            <div class="tarjeta">
+                <h3>Sistema de Calidad ISO 9001:2015</h3>
+                <p>Gestión de calidad bajo estándares internacionales.</p>
+                <button class="boton-moderno">Ver Documentos</button>
+            </div>
+            <div class="tarjeta">
+                <h3>Capacitación Especializada</h3>
+                <p>Cursos especializados en diferentes áreas del derecho.</p>
+                <button class="boton-moderno">Ver Cursos</button>
+            </div>
+        </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 30px;">
+        <h3>¿Puedes ver estos cambios?</h3>
+        <p>Si la respuesta es SÍ, entonces el CSS está funcionando correctamente y podemos aplicarlo al archivo principal.</p>
+    </div>
+</body>
+</html>
