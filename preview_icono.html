@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista Previa - Icono de Ojo Minimalista</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            padding: 40px;
+            background: #f8f9fa;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .preview-card {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            background: #fff;
+        }
+        
+        .preview-card h3 {
+            color: #495057;
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .icon-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 20px 0;
+        }
+        
+        /* Estilo del botón como en tu proyecto */
+        .info-toggle-button {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+            gap: 4px;
+            white-space: nowrap;
+        }
+        
+        .info-toggle-button:hover {
+            background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+        }
+        
+        /* Diferentes tamaños para comparar */
+        .size-12 { width: 12px; height: 12px; }
+        .size-14 { width: 14px; height: 14px; }
+        .size-16 { width: 16px; height: 16px; }
+        
+        .comparison {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .code-preview {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        
+        .emoji-comparison {
+            font-size: 12px;
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            background: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>👁️ Vista Previa - Icono de Ojo Minimalista</h1>
+        
+        <div class="preview-grid">
+            <div class="preview-card">
+                <h3>Icono Solo - Tamaño 12px</h3>
+                <div class="icon-display">
+                    <svg class="size-12" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z" 
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="preview-card">
+                <h3>Icono Solo - Tamaño 14px</h3>
+                <div class="icon-display">
+                    <svg class="size-14" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z" 
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="preview-card">
+                <h3>Icono Solo - Tamaño 16px</h3>
+                <div class="icon-display">
+                    <svg class="size-16" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z" 
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        
+        <h2>🔄 Comparación: Emoji vs SVG en Botón</h2>
+        <div class="comparison">
+            <div>
+                <p><strong>Actual (Emoji):</strong></p>
+                <button class="info-toggle-button">👁️ Fuente</button>
+            </div>
+            
+            <div>
+                <p><strong>Nuevo (SVG 12px):</strong></p>
+                <button class="info-toggle-button">
+                    <svg class="size-12" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z" 
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Fuente
+                </button>
+            </div>
+            
+            <div>
+                <p><strong>Nuevo (SVG 14px):</strong></p>
+                <button class="info-toggle-button">
+                    <svg class="size-14" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z" 
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Fuente
+                </button>
+            </div>
+        </div>
+        
+        <h2>📋 Características del Icono SVG</h2>
+        <ul>
+            <li>✅ <strong>Minimalista:</strong> Solo contornos esenciales</li>
+            <li>✅ <strong>Líneas delgadas:</strong> stroke-width="1.5" para elegancia</li>
+            <li>✅ <strong>Geometría limpia:</strong> Perfectamente simétrico</li>
+            <li>✅ <strong>Profesional:</strong> Ideal para interfaces corporativas</li>
+            <li>✅ <strong>Monocromático:</strong> Se adapta al color del texto</li>
+            <li>✅ <strong>Escalable:</strong> Mantiene nitidez en cualquier tamaño</li>
+            <li>✅ <strong>Sin ornamentos:</strong> Diseño sobrio y ejecutivo</li>
+        </ul>
+        
+        <div class="code-preview">
+&lt;svg width="12" height="12" viewBox="0 0 24 24" fill="none"&gt;
+  &lt;path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z" 
+        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/&gt;
+  &lt;circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/&gt;
+&lt;/svg&gt;
+        </div>
+        
+        <p style="text-align: center; margin-top: 30px; color: #6c757d;">
+            <em>Haz hover sobre los botones para ver el efecto interactivo</em>
+        </p>
+    </div>
+</body>
+</html>

@@ -20,7 +20,13 @@ require_once 'session_check.php';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <!-- LINEA PARA IMPORTAR EL CSS -->
+    <!-- LINEA PARA IMPORTAR EL CSS -->
+    <!-- LINEA PARA IMPORTAR EL CSS -->    
     <link rel="stylesheet" href="./css/style.css">
+    <!-- LINEA PARA IMPORTAR EL CSS -->
+     <!-- LINEA PARA IMPORTAR EL CSS -->
+      <!-- LINEA PARA IMPORTAR EL CSS -->
     
     
 </head>
@@ -931,8 +937,10 @@ require_once 'session_check.php';
          <button id="tour-end" style="width:100%; margin-top:15px; background-color: var(--text-secondary); color: var(--bg-primary);">Finalizar Tour</button>
     </div>
 
-
+    <!-- LINEA PARA IMPORTAR EL SCRIPT -->
+    <!-- LINEA PARA IMPORTAR EL SCRIPT -->
     <script src="js/script.js"></script>
+    <!-- LINEA PARA IMPORTAR EL SCRIPT -->
 
 </body>
 </html>
