@@ -156,12 +156,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             right: 32px;
             bottom: 40px;
             z-index: 1000;
-            background: linear-gradient(135deg, #d4af37 0%, #f4cf5a 100%);
-            color: #1a1a2e;
+            background: linear-gradient(135deg, #ffffff 0%, #e8f0fe 100%);
+            color: #0056b3;
             padding: 14px 24px;
             border-radius: 30px;
-            border: 3px solid #0056b3;
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45);
+            border: 3px solid #d4af37;
+            box-shadow: 0 6px 20px rgba(0, 86, 179, 0.3);
             font-size: 1rem;
             font-weight: 700;
             text-decoration: none;
@@ -173,9 +173,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         #boton-socializacion-iso:hover {
-            background: linear-gradient(135deg, #f4cf5a 0%, #d4af37 100%);
+            background: linear-gradient(135deg, #e8f0fe 0%, #d4e3fc 100%);
             transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 8px 28px rgba(212, 175, 55, 0.6), 0 0 0 2px #0056b3;
+            box-shadow: 0 8px 28px rgba(0, 86, 179, 0.45), 0 0 0 3px #d4af37;
         }
 
         #boton-socializacion-iso .iso-icon {
@@ -383,8 +383,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- Botón flotante de socialización ISO 9001:2015 -->
     <a href="#" id="boton-socializacion-iso" title="Información de Socialización">
-        <span class="iso-icon">📋</span>
-        <span class="iso-text">Socialización ISO 9001</span>
+        <span class="iso-icon"></span>
+        <span class="iso-text">PROGRAMACIÓN ANUAL 2026</span>
     </a>
 
     <!-- Modal de información de socialización -->
@@ -392,20 +392,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="modal-content-iso">
             <button class="modal-close-iso" id="close-modal-iso">&times;</button>
             <div class="modal-header-iso">
-                <h3>📋 Socialización del Sistema de Gestión de Calidad</h3>
+                <h3>Escuela de Estudios Judiciales</h3>
             </div>
             <div class="modal-body-iso">
-                <p><strong>Escuela de Estudios Judiciales</strong></p>
-                <p><strong>Programa de Formación Judicial y Administrativa</strong></p>
+                <p><strong>Programa de Formación Judicial y Administrativo 2026 </strong></p>
                 <p class="modal-description-iso">
                     Procesos Misionales y de Apoyo conforme a la Norma NTC ISO 9001:2015
+                </p>
+                <p style="font-size: 0.9rem; color: #0056b3; margin-top: 12px; font-weight: 700;">
+                    <strong>Nota:</strong> La Programación Preliminar Anual está sujeta a cambios de fecha, modificaciones y/o cancelaciones.
                 </p>
                 <div class="modal-action-iso">
                     <a href="https://clases.legaltech.com.gt/gio/eej-2026/pfjya_iso/" 
                        target="_blank" 
                        rel="noopener noreferrer" 
                        class="btn-acceder-socializacion">
-                        Acceder a la Socialización
+                        Acceder a la programación
                         <span class="arrow-icon">→</span>
                     </a>
                 </div>

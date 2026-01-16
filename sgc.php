@@ -43,7 +43,7 @@ header("Expires: 0");
             <img src="https://raw.githubusercontent.com/djsalazar/aa/b74e56ed5e3c0105afd0613626877ac3e2f56563/logo%20-%20Blanco.png" alt="Escuela Estudios Judiciales Logo">
         </div>
         <ul>            <li><a href="#escuela" class="active">Escuela de Estudios Judiciales</a></li>
-            <li><a href="#sgc">¿Qué es ISO 9001:2015?</a></li>
+            <li><a href="#sgc">¿Qué es ISO 9001:2015ajsdhfkjashaksj?</a></li>
             <li><a href="#roles">Comité de Calidad</a></li>
             <li><a href="#politica">Política de Calidad</a></li> <!-- REORDENADO -->
             <li><a href="#objetivos">Objetivos de Calidad</a></li> <!-- REORDENADO -->
@@ -79,38 +79,6 @@ header("Expires: 0");
             </div>
         </div>
     </header>
-
-    <!-- Botón flotante de socialización ISO 9001:2015 -->
-    <a href="#" id="boton-socializacion-iso" title="Información de Socialización">
-        <span class="iso-icon">📋</span>
-        <span class="iso-text">Socialización ISO 9001</span>
-    </a>
-
-    <!-- Modal de información de socialización -->
-    <div id="modal-socializacion-iso" class="modal-overlay-iso" style="display: none;">
-        <div class="modal-content-iso">
-            <button class="modal-close-iso" id="close-modal-iso">&times;</button>
-            <div class="modal-header-iso">
-                <h3>📋 Socialización del Sistema de Gestión de Calidad</h3>
-            </div>
-            <div class="modal-body-iso">
-                <p><strong>Escuela de Estudios Judiciales</strong></p>
-                <p><strong>Programa de Formación Judicial y Administrativa</strong></p>
-                <p class="modal-description-iso">
-                    Procesos Misionales y de Apoyo conforme a la Norma NTC ISO 9001:2015
-                </p>
-                <div class="modal-action-iso">
-                    <a href="https://clases.legaltech.com.gt/gio/eej-2026/pfjya_iso/" 
-                       target="_blank" 
-                       rel="noopener noreferrer" 
-                       class="btn-acceder-socializacion">
-                        Acceder a la Socialización
-                        <span class="arrow-icon">→</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <main>
         <section id="escuela" class="section-spacing">
@@ -1018,31 +986,6 @@ header("Expires: 0");
         var mobileNavToggle = document.getElementById('mobile-nav-toggle');
         if (window.innerWidth <= 768 && mobileNavToggle) {
             mobileNavToggle.style.display = 'block';
-        }
-
-        // Script para el modal de socialización ISO
-        var btnSocializacion = document.getElementById('boton-socializacion-iso');
-        var modalSocializacion = document.getElementById('modal-socializacion-iso');
-        var closeModalIso = document.getElementById('close-modal-iso');
-
-        if (btnSocializacion && modalSocializacion) {
-            btnSocializacion.addEventListener('click', function(e) {
-                e.preventDefault();
-                modalSocializacion.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            });
-
-            closeModalIso.addEventListener('click', function() {
-                modalSocializacion.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
-
-            modalSocializacion.addEventListener('click', function(e) {
-                if (e.target === modalSocializacion) {
-                    modalSocializacion.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
         }
     });
     </script>
