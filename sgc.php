@@ -30,10 +30,8 @@ header("Expires: 0");
     <!-- LINEA PARA IMPORTAR EL CSS -->    
     <link rel="stylesheet" href="./css/style.css">
     <!-- LINEA PARA IMPORTAR EL CSS -->
-     <!-- LINEA PARA IMPORTAR EL CSS -->
-      <!-- LINEA PARA IMPORTAR EL CSS -->
-    
-    
+    <!-- LINEA PARA IMPORTAR EL CSS -->
+    <!-- LINEA PARA IMPORTAR EL CSS -->    
 </head>
 <body>
     <button id="mobile-nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" style="display:none;">&#9776;</button>
@@ -42,8 +40,9 @@ header("Expires: 0");
         <div class="sidebar-logo-container">
             <img src="https://raw.githubusercontent.com/djsalazar/aa/b74e56ed5e3c0105afd0613626877ac3e2f56563/logo%20-%20Blanco.png" alt="Escuela Estudios Judiciales Logo">
         </div>
-        <ul>            <li><a href="#escuela" class="active">Escuela de Estudios Judiciales</a></li>
-            <li><a href="#sgc">¿Qué es ISO 9001:2015ajsdhfkjashaksj?</a></li>
+        <ul>            
+            <li><a href="#escuela" class="active">Escuela de Estudios Judiciales</a></li>
+            <li><a href="#sgc">¿Qué es ISO 9001:2015</a></li>   
             <li><a href="#roles">Comité de Calidad</a></li>
             <li><a href="#politica">Política de Calidad</a></li> <!-- REORDENADO -->
             <li><a href="#objetivos">Objetivos de Calidad</a></li> <!-- REORDENADO -->
@@ -52,14 +51,14 @@ header("Expires: 0");
             <li><a href="#eej-sgc">Gestión ESEJ en SGC</a></li>
             <li><a href="#riaej">Red de Escuelas Judiciales (RIAEJ)</a></li>
             <li><a href="#recursos">Documentos y Recursos</a></li>
-        <li><a href="#red-docente" style="color: var(--accent-gold);">Jueces y Magistrados Docentes</a></li>
-        <li><a href="#directorio-completo" style="color: var(--accent-gold);">Docentes externos</a></li>
-        <li>
-            <form action="logout.php" method="post" style="margin:0;padding:0;">
-                <button type="submit" class="header-logout-btn" style="background-color:#dc3545;color:white;font-weight:bold;text-align:center;border-radius:4px;margin:5px 5px;display:block;width:60%;cursor:pointer;">↪ Cerrar</button>
-            </form>
-        </li>
-    </ul>
+            <li><a href="#red-docente" style="color: var(--accent-gold);">Jueces y Magistrados Docentes</a></li>
+            <li><a href="#directorio-completo" style="color: var(--accent-gold);">Docentes externos</a></li>
+            <li>
+                <form action="logout.php" method="post" style="margin:0;padding:0;">
+                    <button type="submit" class="header-logout-btn" style="background-color:#dc3545;color:white;font-weight:bold;text-align:center;border-radius:4px;margin:5px 5px;display:block;width:60%;cursor:pointer;">↪ Cerrar</button>
+                </form>
+            </li>
+        </ul>
     </nav>
 
     <header>
@@ -72,7 +71,7 @@ header("Expires: 0");
                 <button id="startTourBtn">Iniciar Tour</button>
                 <div class="theme-switch-wrapper">
                     <label class="theme-switch" for="theme-checkbox">
-                        <input type="checkbox" id="theme-checkbox" />
+                        <input type="checkbox" id="theme-checkbox"/>
                         <div class="slider"></div>
                     </label>
                 </div>
@@ -313,7 +312,7 @@ header("Expires: 0");
                     </svg>
                     Ver Documento                </button>
                 <p>En el Organismo Judicial de Guatemala proporcionamos un servicio de administración de justicia aplicando la Constitución Política de la República de Guatemala y demás leyes vigentes, procurando la prontitud y la celeridad en cada gestión, la independencia en nuestras resoluciones, todo esto bajo una conducta ética y el compromiso social por parte del personal que forma parte del SGC.</p>
-                <p>La administración eficiente de los recursos, la <strong>capacitación constante de nuestros colaboradores</strong> y su desempeño eficiente nos permite mejorar continuamente la Gestión de Calidad de la Institución. Es así como logramos satisfacer las necesidades y expectativas de los usuarios y partes interesadas.
+                <p>La administración eficiente de los recursos, la <strong>capacitación constante de nuestros colaboradores</strong> y su desempeño eficiente nos permite mejorar continuamente la Gestión de Calidad de la Institución. Es así como logramos satisfacer las necesidades y expectativas de los usuarios y partes interesadas.</p>
             </div>
         </section>        <!-- SECCIÓN OBJETIVOS DE CALIDAD -->        <section id="objetivos">
             <div class="container">
@@ -375,49 +374,8 @@ header("Expires: 0");
                         </div>
                     </div>
                 </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">2. Lograr que el 75% de las Ejecutorias en Materia Civil y Penal sean realizadas en un plazo no mayor de 18 días.</div>
-                        <div class="accordion-content">
-                            <p>Se enfoca en la celeridad de la ejecución de sentencias firmes en áreas clave, buscando reducir los tiempos para materializar las decisiones judiciales y garantizar la efectividad del sistema.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">3. Lograr que 3 procedimientos de las Salas de la Corte de Apelaciones dentro del alcance del SGC se estandaricen.</div>
-                        <div class="accordion-content">
-                            <p>Busca la uniformidad y optimización de procesos específicos en las Salas de Apelaciones, lo que puede llevar a una mayor previsibilidad, eficiencia y calidad en la tramitación de casos.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">4. Mejorar en un 3% en el manejo de insumos y recursos humanos.</div>
-                        <div class="accordion-content">
-                            <p>Este objetivo se centra en la optimización de la gestión de recursos materiales y del personal, buscando una mayor eficiencia administrativa y un mejor aprovechamiento de los medios disponibles.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">5. Lograr el 85% de cumplimiento del programa de capacitación en áreas técnicas – Escuela de Estudios Judiciales.</div>
-                        <div class="accordion-content">
-                            <p>Destaca la importancia de la formación continua del personal judicial, con una meta específica de cumplimiento para los programas técnicos ofrecidos por la Escuela, asegurando la actualización de conocimientos y habilidades.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">6. Dar seguimiento a la oportunidad organizacional proveniente de la evaluación del desempeño anual.</div>
-                        <div class="accordion-content">
-                            <p>Implica un compromiso con la mejora continua basada en los resultados de las evaluaciones de desempeño, identificando áreas de oportunidad y tomando acciones para fortalecer la organización.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">7. Lograr un mínimo de 85% de eficacia del Sistema de Gestión de Calidad.</div>
-                        <div class="accordion-content">
-                            <p>Establece una meta global para la efectividad del SGC, indicando que se espera que el sistema en su conjunto funcione de manera óptima y cumpla con sus propósitos establecidos.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">8. Incrementar la satisfacción de los usuarios.</div>
-                        <div class="accordion-content">
-                            <p>Este es un objetivo fundamental de cualquier sistema de calidad, enfocado en mejorar la percepción y experiencia de quienes utilizan los servicios judiciales, buscando una mayor confianza y legitimidad.</p>
-                        </div>
-                    </div>
-                </div>
+                    
+            </div>
             </div>        </section>        <section id="procesos">            <div class="container">
                 <h2>¿Quiénes forman parte del Sistema de Gestión de Calidad?</h2>
 
@@ -512,7 +470,9 @@ header("Expires: 0");
                                 <li>Archivo Personal</li>
                             </ul>
                         </div>
-
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="beneficios">
