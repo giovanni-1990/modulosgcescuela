@@ -30,57 +30,57 @@ const listaDocumentos = [
   {
     "codigo": "FO-EEJ-05",
     "nombre": "Programa de Formación Judicial y Administrativo Auxiliares Judiciales",
-    "version": "5",
-    "fecha": "ene-24",
+    "version": "06",
+    "fecha": "oct-25",
     "archivo": "FO-EEJ-05 PROGRAMA DE FORMACIÓN JUDICIAL Y ADMINISTRATIVO AUXILIARES JUDICIALES v5.docx"
   },
   {
     "codigo": "FO-EEJ-06",
     "nombre": "Programa de Formación Judicial y Administrativo Funcionarios y Funcionarias Judiciales",
-    "version": "5",
-    "fecha": "ene-24",
+    "version": "06",
+    "fecha": "oct-25",
     "archivo": "FO-EEJ-06  PROGRAMA DE FORMACIÓN JUDICIAL Y ADMINISTRATIVO FUNCIONARIOS Y FUNCIONARIAS JUDICIALES v5.docx"
   },
   {
     "codigo": "FO-EEJ-07",
     "nombre": "Programa de Formación Judicial y Administrativo Personal Administrativo Técnico",
-    "version": "5",
-    "fecha": "ene-24",
+    "version": "06",
+    "fecha": "oct-25",
     "archivo": "FO-EEJ-07 PROGRAMA DE FORMACIÓN JUDICIAL Y ADMINISTRATIVO PERSONAL ADMINISTRATIVO Y TÉCNICO v5.docx"
   },
   {
     "codigo": "FO-EEJ-08",
     "nombre": "Programa de Formación Judicial y Administrativo Área de Formación para todo el Personal del Organismo Judicial",
-    "version": "5",
-    "fecha": "ene-24",
+    "version": "06",
+    "fecha": "oct-25",
     "archivo": "FO-EEJ-08  PROGRAMA DE FORMACIÓN JUDICIAL Y ADMINISTRATIVO TODO EL PERSONAL DEL ORGANISMO JUDICIAL v5.docx"
   },
   {
     "codigo": "FO-EEJ-09",
     "nombre": "Programa de Formación Judicial y Administrativo Área Género",
-    "version": "5",
-    "fecha": "ene-24",
+    "version": "06",
+    "fecha": "oct-25",
     "archivo": "FO-EEJ-09  PROGRAMA DE FORMACIÓN JUDICIAL Y ADMINISTRATIVO GÉNERO v5.docx"
   },
   {
     "codigo": "FO-EEJ-10",
     "nombre": "Programa De Formación Judicial Y Administrativo Personal Administrativo de las Unidades del Sistema de Gestión de Calidad",
-    "version": "5",
-    "fecha": "ene-24",
+    "version": "06",
+    "fecha": "oct-25",
     "archivo": "FO-EEJ-10 PROGRAMA DE FORMACIÓN JUDICIAL Y ADMINISTRATIVO PERSONAL ADMINISTRATIVO DEPENDENCIAS ISO v5.docx"
   },
   {
     "codigo": "FO-EEJ-11",
     "nombre": "Programa De Formación Judicial Y Administrativo Salas de la Corte de Apelaciones Certificadas Norma ISO",
-    "version": "5",
-    "fecha": "ene-24",
+    "version": "06",
+    "fecha": "oct-25",
     "archivo": "FO-EEJ-11  PROGRAMA DE FORMACIÓN JUDICIAL Y ADMINISTRATIVO SALAS CERTIFICADAS ISO v5.docx"
   },
   {
     "codigo": "FO-EEJ-12",
     "nombre": "Consolidado de Requerimientos de Capacitación Unidades del Sistema de Gestión de Calidad del Organismo Judicial",
-    "version": "4",
-    "fecha": "ene-24",
+    "version": "05",
+    "fecha": "oct-25",
     "archivo": "FO-EEJ-12 Consolidado de Requerimientos de Capacitación Unidades del SGC V.4.xlsx"
   },
   {
@@ -289,8 +289,8 @@ const listaDocumentos = [
   {
     "codigo": "FO-EEJ-41",
     "nombre": "Cronograma de Actividades de Mantenimiento y Reparación de Infraestructura",
-    "version": "4",
-    "fecha": "ene-24",
+    "version": "5",
+    "fecha": "ene-25",
     "archivo": "FO-EEJ-41 CRONOGRAMA DE ACTIVIDADES DE MANTENIMIENTO Y REPARACIÓN DE INFRAESTRUCTURA.xls"
   },
   {
@@ -534,8 +534,8 @@ const listaDocumentos = [
   {
     "codigo": "FO-EEJ-77",
     "nombre": "Programa de Formación Judicial y Administrativo Programas de Especialización",
-    "version": "1",
-    "fecha": "oct-24",
+    "version": "02",
+    "fecha": "oct-25",
     "archivo": "FO-EEJ-77 PROGRAMA DE FORMACIÓN JUDICIAL Y ADMIN DE ESPECIALIZACIONES.docx"
   },
   {
