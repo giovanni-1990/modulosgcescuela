@@ -119,31 +119,31 @@ header("Expires: 0");
                     <h3>Componentes Clave del SGC bajo ISO 9001:2015</h3>
                     <div class="card-container fade-in-up">
                         <div class="card">
-                            <h4><span class="card-icon">👥</span>Enfoque en el cliente</h4>
+                            <h4><span class="card-icon"></span>Enfoque en el cliente</h4>
                             <p>Promover la satisfacción del cliente mediante el cumplimiento de sus necesidades y expectativas.</p>
                         </div>
                         <div class="card">
-                            <h4><span class="card-icon">🧭</span>Liderazgo</h4>
+                            <h4><span class="card-icon"></span>Liderazgo</h4>
                             <p>Los líderes deben establecer una visión clara y un compromiso con la calidad, integrándola en la cultura organizacional.</p>
                         </div>
                         <div class="card">
-                            <h4><span class="card-icon">🤝</span>Participación del personal</h4>
+                            <h4><span class="card-icon"></span>Participación del personal</h4>
                             <p>La norma destaca la importancia de involucrar a todos los empleados en el sistema de gestión de la calidad.</p>
                         </div>
                         <div class="card">
-                            <h4><span class="card-icon">⚙️</span>Enfoque basado en procesos</h4>
+                            <h4><span class="card-icon"></span>Enfoque basado en procesos</h4>
                             <p>La organización debe identificar y gestionar sus actividades interrelacionadas como procesos para optimizar su desempeño.</p>
                         </div>
                         <div class="card">
-                            <h4><span class="card-icon">📈</span>Mejora continua</h4>
+                            <h4><span class="card-icon"></span>Mejora continua</h4>
                             <p>El SGC debe estar en constante evolución para mejorar su eficiencia y eficacia.</p>
                         </div>
                         <div class="card">
-                            <h4><span class="card-icon">📊</span>Toma de decisiones basada en la evidencia</h4>
+                            <h4><span class="card-icon"></span>Toma de decisiones basada en la evidencia</h4>
                             <p>Las decisiones deben fundamentarse en datos y análisis precisos.</p>
                         </div>
                         <div class="card">
-                            <h4><span class="card-icon">🔗</span>Gestión de relaciones</h4>
+                            <h4><span class="card-icon"></span>Gestión de relaciones</h4>
                             <p>La norma promueve la gestión efectiva de las relaciones con partes interesadas, como proveedores y clientes, para generar valor sostenible.</p>
                         </div>
                     </div>
@@ -480,23 +480,23 @@ header("Expires: 0");
                 <h2>Beneficios de Adoptar el Sistema de Gestión de Calidad NTC ISO 9001:2015</h2>
                 <div class="card-container">
                     <div class="card">
-                        <h4><span class="benefit-icon">😊</span> Mejora la satisfacción del cliente.</h4>
+                        <h4><span class="benefit-icon"></span> Mejora la satisfacción del cliente.</h4>
                         <p>Al centrarse en los requisitos del cliente y buscar superarlos, se incrementa la confianza y lealtad de los usuarios hacia la organización.</p>
                     </div>
                     <div class="card">
-                        <h4><span class="benefit-icon">📈</span> Incrementa la eficiencia operativa.</h4>
+                        <h4><span class="benefit-icon"></span> Incrementa la eficiencia operativa.</h4>
                         <p>La estandarización de procesos y la identificación de áreas de mejora conducen a una utilización más eficaz de los recursos y a la reducción de errores.</p>
                     </div>
                     <div class="card">
-                        <h4><span class="benefit-icon">🛡️</span> Facilita el cumplimiento de requisitos legales y reglamentarios.</h4>
+                        <h4><span class="benefit-icon"></span> Facilita el cumplimiento de requisitos legales y reglamentarios.</h4>
                         <p>Un SGC robusto ayuda a asegurar que la organización se mantenga al día y cumpla con todas las normativas aplicables a sus actividades.</p>
                     </div>
                     <div class="card">
-                        <h4><span class="benefit-icon">🌟</span> Mejora la imagen y reputación de la organización.</h4>
+                        <h4><span class="benefit-icon"></span> Mejora la imagen y reputación de la organización.</h4>
                         <p>La certificación ISO 9001 es un reconocimiento internacional que demuestra el compromiso de la organización con la calidad y la excelencia.</p>
                     </div>
                     <div class="card">
-                        <h4><span class="benefit-icon">🔄</span> Fomenta la mejora continua y la toma de decisiones más informada.</h4>
+                        <h4><span class="benefit-icon"></span> Fomenta la mejora continua y la toma de decisiones más informada.</h4>
                          <p>El ciclo PHVA (Planificar-Hacer-Verificar-Actuar) inherente a la norma promueve una cultura de aprendizaje y adaptación constante basada en datos y evidencias.</p>
                     </div>
                 </div>
@@ -512,27 +512,27 @@ header("Expires: 0");
 
                 <div class="card-container">
                     <div class="card">
-                        <h4><span class="card-icon">📄</span>Ficha de procesos</h4>
+                        <h4><span class="card-icon"></span>Ficha de procesos</h4>
                         <p>Resume los elementos, finalidad y controles de un proceso. Se identifica con el formato <strong>FICHA DE CARACTERIZACIÓN PROCESO FP-GC-01</strong> y es clave para la estandarización y auditoría dentro del SGC.</p>
                         <!-- ===== BOTÓN AÑADIDO AQUÍ ===== -->
                         <span class="risk-details-button" id="openFichaProcesosBtn">Ver Ficha de Procesos</span>
                     </div>
                     <div class="card">
-                        <h4><span class="card-icon">🎯</span>Análisis de FODA</h4>
+                        <h4><span class="card-icon"></span>Análisis de FODA</h4>
                         <p>Técnica de planificación estratégica que analiza Debilidades, Fortalezas (internas), Amenazas y Oportunidades (externas). Esta evaluación ayuda a la institución a mejorar sus puntos débiles y a capitalizar sus ventajas y las oportunidades del entorno.</p>
                         <span class="risk-details-button" id="openFodaModalButton">Ver FODA</span>
                     </div>
                     <div class="card clickable-card" id="openRiskModalCard">
-                        <h4><span class="card-icon">⚠️</span>Gestión de Riesgos</h4>
+                        <h4><span class="card-icon"></span>Gestión de Riesgos</h4>
                         <p>La <strong>MATRIZ DE IDENTIFICACIÓN DE RIESGOS FO-PE-03</strong> es un instrumento utilizado durante el análisis de riesgo. Su aplicación efectiva es fundamental para mejorar el control de los riesgos identificados y la seguridad general del proceso evaluado.</p>
-                        <span class="risk-details-button">Ver Riesgos</span>
+                        <a class="risk-details-button" href="https://clases.legaltech.com.gt/gio/eej-2026/riaej-2026/NCR_6/MATRIZ%20%20DE%20RIESGOS/" target="_blank" rel="noopener" onclick="event.stopPropagation();">Ver Riesgos</a>
                     </div>
                     <div class="card">
-                        <h4><span class="card-icon">🗂️</span>Control de documentos</h4>
+                        <h4><span class="card-icon"></span>Control de documentos</h4>
                         <p>Para el control documental de los procesos del SGC, se utiliza el formato <strong>LISTA MAESTRA DE DOCUMENTOS FO-GC-02</strong>. Este contiene información detallada de cada documento (código, nombre, versión, revisión, responsable, ubicación, etc.), asegurando la trazabilidad y el uso de versiones correctas.</p>
                     </div>
                      <div class="card">
-                        <h4><span class="card-icon">📊</span>Indicador de la Escuela de Estudios Judiciales</h4>
+                        <h4><span class="card-icon"></span>Indicador de la Escuela de Estudios Judiciales</h4>
                         <p>Se mide el Porcentaje de Ejecución del Programa Ordinario y Extraordinario de Capacitaciones dirigido a las dependencias ISO. El objetivo es cumplir con el 85% de ejecución del programa de capacitaciones, garantizando la formación continua en las dependencias ISO.</p>
                     </div>
                 </div>
@@ -587,54 +587,50 @@ header("Expires: 0");
                     <div id="foda-fortalezas" class="foda-category active">
                         <h4>FORTALEZAS (F)</h4>
                         <ul>
-                            <li>Apoyo de la Corte Suprema de Justicia y del Consejo de la Carrera Judicial.</li>
-                            <li>Reacreditación Internacional mediante certificación de Normas de Calidad NCR 1000:2019 de la Red Iberoamericana de Escuelas Judiciales-RIAEJ-.</li>
-                            <li>Miembro de la Red Iberoamericana de Escuelas Judiciales-RIAEJ-.</li>                            <li>Procedimiento establecido para la detección de necesidades de capacitación para la construcción del Programa de Formación Judicial y Administrativo.</li>
-                            <li>Plataforma virtual educativa para desarrollo de cursos e-learning y b-learning.</li>
-                            <li>Licencias de uso de plataformas de comunicación para la realización de reuniones virtuales.</li>
-                            <li>Espacio físico idóneo en la Sede Central para el desarrollo de capacitaciones (juzgado modelo, sala de debates, laboratorios de computación).</li>
-                            <li>Personal competente, identificado con la institution y con vocación de servicio.</li>
-                            <li>Biblioteca física y virtual.</li>
-                            <li>Sedes regionales en Chiquimula y Quetzaltenango.</li>
+                            <li><strong>F1</strong> Se cuenta con el apoyo de la Corte Suprema de Justicia y del Consejo de la Carrera Judicial en la gestión de aprobación del Programa de Formación Judicial y Administrativo.</li>
+                            <li><strong>F2</strong> Se cuenta con la Reacreditación Internacional mediante certificación de Normas de Calidad NCR 1000:2019 de la Red Iberoamericana de Escuelas Judiciales -RIAEJ-, fortaleciendo la excelencia institucional.</li>
+                            <li><strong>F3</strong> Se cuenta con la certificación como Miembro de la Red Iberoamericana de Escuelas Judiciales -RIAEJ-, que promueve el intercambio de experiencias y de información sobre programas, metodologías y sistemas de capacitación judicial.</li>
+                            <li><strong>F4</strong> Se cuenta con el procedimiento establecido para la detección de necesidades de capacitación, para la adecuada planificación y construcción del Programa de Formación Judicial y Administrativo.</li>
+                            <li><strong>F5</strong> Se cuenta con una red docente conformada por Jueces, Magistrados y docentes externos, debidamente aprobados por el Consejo de la Carrera Judicial.</li>
+                            <li><strong>F6</strong> Se cuenta con una plataforma virtual educativa para desarrollo de cursos e-learning y b-learning, fortaleciendo la modernización y accesibilidad de los procesos formativos.</li>
+                            <li><strong>F7</strong> Se cuenta con licencias de uso de plataformas de comunicación para la realización de reuniones virtuales, lo que garantiza una interacción efectiva y la optimización de los procesos de coordinación y capacitación virtual.</li>
+                            <li><strong>F8</strong> Existe personal competente, identificado con la institución y con vocación de servicio al usuario.</li>
+                            <li><strong>F9</strong> Se cuenta con una Biblioteca virtual, que proporciona acceso a material actualizado y relevante, promoviendo el aprendizaje autónomo al personal y discentes.</li>
+                            <li><strong>F10</strong> Se cuenta con disponibilidad de sedes regionales en Chiquimula y Quetzaltenango, que permite ampliar la cobertura de los programas de formación.</li>
+                            <li><strong>F11</strong> Se cuenta con el proyecto denominado "FORMACIÓN CONTINUA MOVIL", aprobado por el Pleno de la Corte Suprema de Justicia, para mejor alcance en la formación del personal del Organismo Judicial.</li>
+                            <li><strong>F12</strong> Existen políticas de la Escuela de Estudios Judiciales aprobadas que incluyen el Eje Transversal de Tecnología.</li>
                         </ul>
                     </div>
                     <div id="foda-oportunidades" class="foda-category">
                         <h4>OPORTUNIDADES (O)</h4>
                         <ul>
-                            <li>Organismos internacionales interesados en dar apoyo a instituciones gubernamentales.</li>
-                            <li>Programas académicos con Escuelas de Iberoamérica por medio de programas conjuntos con RIAEJ y SICA.</li>
-                            <li>Apoyo de las autoridades.</li>
-                            <li>Acceso a la tecnología para resguardo digital de documentación.</li>
-                            <li>Digitalización de expedientes de actividades académicas y almacenamiento en la nube del Organismo Judicial.</li>
+                            <li><strong>O1</strong> Se cuenta con Organismos internacionales interesados en dar apoyo a instituciones gubernamentales, representando una oportunidad para fortalecer la institución.</li>
+                            <li><strong>O2</strong> Se cuenta con programas académicos con Escuelas de Iberoamérica por medio de programas conjuntos con RIAEJ y SICA, contribuyendo al fortalecimiento de la formación judicial y administrativa.</li>
+                            <li><strong>O3</strong> Posee el respaldo de las autoridades en la gestión institucional para acelerar la ejecución de proyectos estratégicos y expandir la capacidad operativa de la institución.</li>
+                            <li><strong>O4</strong> Dispone de acceso a la tecnología y servidores institucionales para el resguardo digital de documentación.</li>
+                            <li><strong>O5</strong> Se observa que la digitalización de expedientes de actividades académicas y almacenamiento en la nube del Organismo Judicial, permitiría garantizar la información y facilitar el acceso remoto y oportuno.</li>
                         </ul>
                     </div>
                     <div id="foda-debilidades" class="foda-category">
                         <h4>DEBILIDADES (D)</h4>
                         <ul>
-                            <li>Registro masivo de discentes realizado de forma manual en el Sistema de Convocatorias.</li>
-                            <li>No contar con planta eléctrica en la Sede Central.</li>
-                            <li>Bodega llena con material obsoleto (sillas, escritorios, entre otros).</li>
-                            <li>Sistema informático para el registro y control académico, desactualizado.</li>
-                            <li>Insuficiencia en el equipo electrónico de videoconferencia, cámaras web y equipo de cómputo de escritorio desactualizado.</li>
-                            <li>No contar con espacio para el archivo general de documentación.</li>
-                            <li>No contar con vehículos suficientes para mensajería y traslado de discentes.</li>
-                            <li>No contar con una herramienta informática para la Detección de Necesidades de Capacitación.</li>
-                            <li>Inexistencia de suficiente espacio para parqueo de los discentes.</li>
-                            <li>Limitación de espacio físico en las instalaciones de la ESEJ, para retornar completamente con actividades presenciales (Personal administrativo y discentes)</li>
-                            <li>Infraestructura de la Escuela de Estudios Judiciales deteriorada por falta de mantenimiento y las inclemencias del tiempo debido al cambio climático.</li>
+                            <li><strong>D1</strong> Se evidencia la falta de una planta eléctrica en la Sede Central, lo cual puede afectar el desarrollo de actividades académicas y administrativas ante los cortes de suministro eléctrico.</li>
+                            <li><strong>D2</strong> Se identifica una bodega llena con material obsoleto (sillas, escritorios, entre otros), reduciendo la disponibilidad de recursos útiles y afectando el espacio para el archivo general de documentación.</li>
+                            <li><strong>D3</strong> Se cuenta con un Sistema de Convocatorias desactualizado, dificulta el manejo eficiente del registro masivo, la precisión de los datos y aumenta el riesgo de errores manuales.</li>
+                            <li><strong>D4</strong> Se observa insuficiencia en el equipo electrónico de videoconferencia, cámaras web y equipo de cómputo de escritorio desactualizado, afecta la gestión administrativa y limita la efectividad de los procesos de formación y las actividades académicas.</li>
+                            <li><strong>D5</strong> Se identifica la falta de una herramienta informática para la Detección de Necesidades de Capacitación que permita la agilización del proceso de recolección de insumos.</li>
+                            <li><strong>D6</strong> Se detecta la falta de espacio para parqueo de los discentes y personal de la Escuela, limita la accesibilidad y comodidad a las instalaciones al realizarse actividades académicas conjuntas en modalidad presencial.</li>
+                            <li><strong>D7</strong> Se observa deterioro progresivo de la infraestructura física de la Escuela de Estudios Judiciales, debido a la atención parcial y demorada de la Unidad de Mantenimiento e Infraestructura pese a los reiterados requerimientos, dentro de los cuales se incluye la urgente reparación del techo general, lo cual limita la capacidad institucional para enfrentar adecuadamente las inclemencias del clima.</li>                        
                         </ul>
                     </div>
                     <div id="foda-amenazas" class="foda-category">
                         <h4>AMENAZAS (A)</h4>
                         <ul>
-                            <li>Asignación presupuestaria limitada para el Organismo Judicial.</li>
-                            <li>Inestabilidad del servidor informático Institucional.</li>
-                            <li>Limitación en el acceso a servicios de internet por parte de los discentes para acceder a las capacitaciones.</li>
-                            <li>Requerimientos de capacitación emergentes y con plazos muy cortos para su ejecución que pongan en riesgo su implementación.</li>
-                            <li>Inasistencia de discentes por la programación de capacitaciones fuera de horario de oficina.</li>
-                            <li>Limitación de presupuesto para acceder a los Avances tecnológicos (Moodle, laptops, cámaras de vigilancia, cámaras web, proyectores, inteligencia artificial, entre otros).</li>
-                            <li>Daño del equipo de la Escuela por la inestabilidad en el servicio eléctrico.</li>
-                            <li>Proceso de contratación y/o asignación de personal a la Escuela, para el apoyo de Coordinaciones, Sedes Regionales, Áreas de Mantenimiento y correspondencia.</li>
+                            <li><strong>A1</strong> Se observa una limitada asignación presupuestaria y dificultad en los procesos burocráticos de compra, lo cual compromete la eficiencia operativa de la EEJ al impedir la adquisición de avances tecnológicos clave (como Moodle, equipos de cómputo y vigilancia, e Inteligencia Artificial) y la dotación oportuna de suministros administrativos, afectando directamente la modernización y el funcionamiento administrativo de la institución.</li>
+                            <li><strong>A2</strong> Se evidencia inestabilidad en los servidores informáticos institucionales, lo cual pone en riesgo la seguridad y disponibilidad de los sistemas judiciales.</li>
+                            <li><strong>A3</strong> Se identifican limitaciones en el acceso a servicios de conectividad a internet por parte de los discentes, lo cual obstaculiza su participación efectiva en los procesos de capacitación virtual.</li>
+                            <li><strong>A4</strong> Existen requerimientos de capacitación extraordinarios caracterizados por plazos de ejecución reducidos, lo cual dificulta una planificación y desarrollo oportuno, comprometiendo su implementación efectiva.</li>
+                            <li><strong>A5</strong> Se observa inasistencia de los discentes debido a la programación de actividades de capacitación fuera del horario laboral, lo cual limita la participación y el cumplimiento de los objetivos formativos y el alcance de competencias laborales.</li>  
                         </ul>
                     </div>
                 </div>

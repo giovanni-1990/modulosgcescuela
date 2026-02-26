@@ -890,6 +890,38 @@
             filter: drop-shadow(2px 2px 4px rgba(212, 175, 55, 0.3)) !important;
             transition: all 0.3s ease !important;
         }
+
+        #eej-sgc .card h4 {
+            font-family: 'Lato', sans-serif !important;
+            font-size: 1.2rem !important;
+            font-weight: 700 !important;
+            text-align: center !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 10px !important;
+            width: 100% !important;
+        }
+
+        #eej-sgc .card h4 .card-icon {
+            margin-right: 0 !important;
+            font-size: 1.25em !important;
+        }
+
+        #beneficios .card h4 {
+            font-family: 'Lato', sans-serif !important;
+            font-size: 1.2rem !important;
+            font-weight: 700 !important;
+            text-align: center !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 10px !important;
+            width: 100% !important;
+        }
+
+        #beneficios .card h4 .benefit-icon {
+            margin-right: 0 !important;
+            font-size: 1.25em !important;
+        }
         
         .card:hover h4 .benefit-icon, .card:hover h4 .card-icon {
             transform: scale(1.15) rotate(5deg) !important;
@@ -4283,18 +4315,65 @@ body.dark-theme .card:hover {
     background: linear-gradient(135deg, #2a2a2a 0%, rgba(212, 175, 55, 0.15) 100%) !important;
 }
 
-/* Forzar color verde para el título Escuela de Estudios Judiciales */
+/* Estándar para el título de la sección Escuela */
 #escuela h2 {
-    background: linear-gradient(135deg, #228B22 0%, #32CD32 100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    background-clip: text !important;
+    color: #060A52 !important;
+    background: none !important;
+    -webkit-text-fill-color: #060A52 !important;
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
 }
 
 #escuela h2::after {
-    background: linear-gradient(90deg, #228B22 0%, #32CD32 100%) !important;
+    background: #060A52 !important;
 }
 
 #escuela::before {
-    background: linear-gradient(90deg, #228B22 0%, #32CD32 50%, #228B22 100%) !important;
+    background: #060A52 !important;
+}
+
+/* Estándar global: títulos y subtítulos en todo el sitio */
+:root {
+    --color-titulos-estandar: #060A52;
+}
+
+h1, h2, h3, h4, h5, h6,
+.subtitle, .subtitulo, .section-subtitle, .sgc-subtitle {
+    color: var(--color-titulos-estandar) !important;
+    background: none !important;
+    -webkit-text-fill-color: var(--color-titulos-estandar) !important;
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
+}
+
+/* Asegurar el estándar también dentro de todas las cards */
+.card h1, .card h2, .card h3, .card h4, .card h5, .card h6,
+.card .subtitle, .card .subtitulo, .card .section-subtitle, .card .sgc-subtitle {
+    color: var(--color-titulos-estandar) !important;
+    background: none !important;
+    -webkit-text-fill-color: var(--color-titulos-estandar) !important;
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
+}
+
+/* Excepción: título y subtítulo del header en blanco */
+header h1,
+header h2,
+header h2.sgc-subtitle,
+header h2.sgc-subtitle strong {
+    color: #ffffff !important;
+    background: none !important;
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
+}
+
+/* Encabezados solicitados en sección SGC */
+#sgc .sgc-subsection h3,
+#sgc .alcance-title {
+    color: #060A52 !important;
+    background: none !important;
+    -webkit-text-fill-color: #060A52 !important;
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
 }
