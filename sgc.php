@@ -525,7 +525,7 @@ header("Expires: 0");
                     <div class="card clickable-card" id="openRiskModalCard">
                         <h4><span class="card-icon"></span>Gestión de Riesgos</h4>
                         <p>La <strong>MATRIZ DE IDENTIFICACIÓN DE RIESGOS FO-PE-03</strong> es un instrumento utilizado durante el análisis de riesgo. Su aplicación efectiva es fundamental para mejorar el control de los riesgos identificados y la seguridad general del proceso evaluado.</p>
-                        <a class="risk-details-button" href="https://clases.legaltech.com.gt/gio/eej-2026/riaej-2026/NCR_6/MATRIZ%20%20DE%20RIESGOS/" target="_blank" rel="noopener" onclick="event.stopPropagation();">Ver Riesgos</a>
+                        <a class="risk-details-button" href="https://clases.legaltech.com.gt/gio/eej-2026/riaej-2026/NCR_6/MATRIZ%20%20DE%20RIESGOS/" target="_self" rel="noopener" onclick="event.stopPropagation();">Ver Riesgos</a>
                     </div>
                     <div class="card">
                         <h4><span class="card-icon"></span>Control de documentos</h4>
