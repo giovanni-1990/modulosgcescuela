@@ -39,26 +39,36 @@ header("Expires: 0");
     <nav id="main-nav" tabindex="-1">
         <div class="sidebar-logo-container">
             <img src="https://raw.githubusercontent.com/djsalazar/aa/b74e56ed5e3c0105afd0613626877ac3e2f56563/logo%20-%20Blanco.png" alt="Escuela Estudios Judiciales Logo">
+            <p class="sidebar-version">SGC · ISO 9001:2015</p>
         </div>
-        <ul>            
+
+        <div class="sidebar-section-label">Institución</div>
+        <ul>
             <li><a href="#escuela" class="active">Escuela de Estudios Judiciales</a></li>
-            <li><a href="#sgc">¿Qué es ISO 9001:2015</a></li>   
+        </ul>
+
+        <div class="sidebar-section-label">Sistema de Calidad</div>
+        <ul>
+            <li><a href="#sgc">¿Qué es ISO 9001:2015?</a></li>
             <li><a href="#roles">Comité de Calidad</a></li>
-            <li><a href="#politica">Política de Calidad</a></li> <!-- REORDENADO -->
-            <li><a href="#objetivos">Objetivos de Calidad</a></li> <!-- REORDENADO -->
+            <li><a href="#politica">Política de Calidad</a></li>
+            <li><a href="#objetivos">Objetivos de Calidad</a></li>
             <li><a href="#procesos">Procesos Estratégicos</a></li>
             <li><a href="#beneficios">Beneficios del SGC</a></li>
-            <li><a href="#eej-sgc">Gestión ESEJ en SGC</a></li>
-            <li><a href="#riaej">Red de Escuelas Judiciales (RIAEJ)</a></li>
-            <li><a href="#recursos">Documentos y Recursos</a></li>
-            <li><a href="#red-docente" style="color: var(--accent-gold);">Jueces y Magistrados Docentes</a></li>
-            <li><a href="#directorio-completo" style="color: var(--accent-gold);">Docentes externos</a></li>
-            <li>
-                <form action="logout.php" method="post" style="margin:0;padding:0;">
-                    <button type="submit" class="header-logout-btn" style="background-color:#dc3545;color:white;font-weight:bold;text-align:center;border-radius:4px;margin:5px 5px;display:block;width:60%;cursor:pointer;">↪ Cerrar</button>
-                </form>
-            </li>
         </ul>
+
+        <div class="sidebar-section-label">Gestión EEJ</div>
+        <ul>
+            <li><a href="#eej-sgc">Gestión EEJ en SGC</a></li>
+            <li><a href="#riaej">Red RIAEJ</a></li>
+            <li><a href="#recursos">Documentos y Recursos</a></li>
+        </ul>
+
+        <div class="sidebar-logout-area">
+            <form action="logout.php" method="post">
+                <button type="submit">&larr; Cerrar sesión</button>
+            </form>
+        </div>
     </nav>
 
     <header>
@@ -101,108 +111,270 @@ header("Expires: 0");
             </div>
         </section>
 
-        <section id="sgc" class="section-spacing">
+        <!-- ══ SGC — ISO 9001:2015 EDITORIAL REDESIGN ══ -->
+        <section id="sgc" class="section-spacing" style="background: var(--white-soft); padding: 70px 20px;">
             <div class="container">
-                <h2 class="fade-in-up">Sistema de Calidad bajo la Norma Técnica ISO 9001:2015</h2>
 
-                <div class="sgc-subsection fade-in-up">
-                    <h3>Definición</h3>
-                    <p class="text-justified">El Sistema de Gestión de la Calidad (SGC) bajo la norma ISO 9001:2015 es un conjunto de políticas, procesos y procedimientos organizacionales diseñados para cumplir con los requisitos de calidad establecidos por dicha norma internacional.</p>
+                <!-- Encabezado institucional -->
+                <div class="fade-in-up" style="text-align:center; margin-bottom: 48px;">
+                    <span style="display:inline-block; background: var(--gold-dim); color: var(--gold); font-size:0.8rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:6px 18px; border-radius:20px; margin-bottom:14px;">ISO 9001 : 2015</span>
+                    <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem); color: var(--navy-deep); margin-bottom:12px; font-weight:800;">Sistema de Gestión de la Calidad</h2>
+                    <p style="font-size:1.1rem; color: var(--text-secondary); max-width:700px; margin:0 auto; line-height:1.7;">Marco normativo internacional que transforma la excelencia en metodología medible y la mejora continua en cultura institucional.</p>
                 </div>
 
-                <div class="sgc-subsection fade-in-up">
-                    <h3>Objetivo Principal del SGC</h3>
-                    <p class="text-justified">Asegurar que la organización pueda proporcionar productos y servicios que cumplan consistentemente con las expectativas del cliente y los requisitos legales y regulatorios aplicables.</p>
-                </div>
-
-                <div class="sgc-subsection fade-in-up">
-                    <h3>Componentes Clave del SGC bajo ISO 9001:2015</h3>
-                    <div class="card-container fade-in-up">
-                        <div class="card">
-                            <h4><span class="card-icon"></span>Enfoque en el cliente</h4>
-                            <p>Promover la satisfacción del cliente mediante el cumplimiento de sus necesidades y expectativas.</p>
+                <!-- Definición + Objetivo en dos columnas -->
+                <div class="fade-in-up" style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:40px;">
+                    <div style="background:#fff; border-radius:16px; padding:32px 28px; border-left:4px solid var(--gold); box-shadow: var(--shadow-sm);">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                            <span style="font-size:1.8rem;"></span>
+                            <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy-mid); margin:0;">Definición</h3>
                         </div>
-                        <div class="card">
-                            <h4><span class="card-icon"></span>Liderazgo</h4>
-                            <p>Los líderes deben establecer una visión clara y un compromiso con la calidad, integrándola en la cultura organizacional.</p>
+                        <p style="color:var(--text-secondary); line-height:1.7; margin:0; font-size:0.97rem;">El SGC bajo ISO 9001:2015 es un conjunto de políticas, procesos y procedimientos organizacionales diseñados para cumplir con los requisitos de calidad establecidos por la norma internacional, garantizando coherencia y confianza institucional.</p>
+                    </div>
+                    <div style="background:#fff; border-radius:16px; padding:32px 28px; border-left:4px solid var(--blue-main); box-shadow: var(--shadow-sm);">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+                            <span style="font-size:1.8rem;"></span>
+                            <h3 style="font-size:1.1rem; font-weight:700; color:var(--navy-mid); margin:0;">Objetivo Principal</h3>
                         </div>
-                        <div class="card">
-                            <h4><span class="card-icon"></span>Participación del personal</h4>
-                            <p>La norma destaca la importancia de involucrar a todos los empleados en el sistema de gestión de la calidad.</p>
-                        </div>
-                        <div class="card">
-                            <h4><span class="card-icon"></span>Enfoque basado en procesos</h4>
-                            <p>La organización debe identificar y gestionar sus actividades interrelacionadas como procesos para optimizar su desempeño.</p>
-                        </div>
-                        <div class="card">
-                            <h4><span class="card-icon"></span>Mejora continua</h4>
-                            <p>El SGC debe estar en constante evolución para mejorar su eficiencia y eficacia.</p>
-                        </div>
-                        <div class="card">
-                            <h4><span class="card-icon"></span>Toma de decisiones basada en la evidencia</h4>
-                            <p>Las decisiones deben fundamentarse en datos y análisis precisos.</p>
-                        </div>
-                        <div class="card">
-                            <h4><span class="card-icon"></span>Gestión de relaciones</h4>
-                            <p>La norma promueve la gestión efectiva de las relaciones con partes interesadas, como proveedores y clientes, para generar valor sostenible.</p>
-                        </div>
+                        <p style="color:var(--text-secondary); line-height:1.7; margin:0; font-size:0.97rem;">Asegurar que la institución proporcione servicios que cumplan consistentemente con las expectativas ciudadanas y los requisitos legales y regulatorios aplicables al Organismo Judicial.</p>
                     </div>
                 </div>
-                <h3 class="alcance-title fade-in-up">Alcance del Sistema de Gestión en el Organismo Judicial</h3>
-                <p class="text-justified-large fade-in-up">Trámite y resolución en segunda instancia en las ramas del derecho Penal, Civil, Mercantil, Laboral, Familia, Constitucional, Niñez y Adolescentes en: La Sala Sexta Penal de Cobán, Sala Regional Mixta de Quiché, Sala Regional Mixta de Huehuetenango, Sala Regional Mixta de Cobán, Sala Primera Civil de Guatemala y Sala Segunda Civil de Guatemala. Trámites Antejuicio.</p>
+
+                <!-- 7 Ejes del SGC -->
+                <h3 class="fade-in-up" style="text-align:center; font-size:1.3rem; color:var(--navy-deep); margin-bottom:28px; font-weight:700; letter-spacing:0.3px;">Los 7 Principios de la Gestión de Calidad</h3>
+                <div class="sgc-ejes-grid fade-in-up" style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-bottom:40px;">
+                    <div class="sgc-eje-card" style="background:#fff; border-radius:14px; padding:24px 20px; text-align:center; box-shadow:var(--shadow-sm); border-top:3px solid var(--blue-main); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="font-size:2.2rem; margin-bottom:10px;"></div>
+                        <h4 style="font-size:0.95rem; font-weight:700; color:var(--navy-mid); margin:0 0 8px;">Enfoque en el Cliente</h4>
+                        <p style="font-size:0.82rem; color:var(--text-secondary); margin:0; line-height:1.5;">Satisfacer necesidades y expectativas ciudadanas como norte estratégico.</p>
+                    </div>
+                    <div class="sgc-eje-card" style="background:#fff; border-radius:14px; padding:24px 20px; text-align:center; box-shadow:var(--shadow-sm); border-top:3px solid var(--blue-main); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="font-size:2.2rem; margin-bottom:10px;"></div>
+                        <h4 style="font-size:0.95rem; font-weight:700; color:var(--navy-mid); margin:0 0 8px;">Liderazgo</h4>
+                        <p style="font-size:0.82rem; color:var(--text-secondary); margin:0; line-height:1.5;">Visión clara y compromiso institucional integrado en todos los niveles.</p>
+                    </div>
+                    <div class="sgc-eje-card" style="background:#fff; border-radius:14px; padding:24px 20px; text-align:center; box-shadow:var(--shadow-sm); border-top:3px solid var(--blue-main); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="font-size:2.2rem; margin-bottom:10px;"></div>
+                        <h4 style="font-size:0.95rem; font-weight:700; color:var(--navy-mid); margin:0 0 8px;">Participación del Personal</h4>
+                        <p style="font-size:0.82rem; color:var(--text-secondary); margin:0; line-height:1.5;">Todo el equipo comprometido activamente con la calidad institucional.</p>
+                    </div>
+                    <div class="sgc-eje-card" style="background:#fff; border-radius:14px; padding:24px 20px; text-align:center; box-shadow:var(--shadow-sm); border-top:3px solid var(--blue-main); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="font-size:2.2rem; margin-bottom:10px;"></div>
+                        <h4 style="font-size:0.95rem; font-weight:700; color:var(--navy-mid); margin:0 0 8px;">Enfoque por Procesos</h4>
+                        <p style="font-size:0.82rem; color:var(--text-secondary); margin:0; line-height:1.5;">Gestión de actividades interrelacionadas para optimizar el desempeño.</p>
+                    </div>
+                    <div class="sgc-eje-card" style="background:#fff; border-radius:14px; padding:24px 20px; text-align:center; box-shadow:var(--shadow-sm); border-top:3px solid var(--gold); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="font-size:2.2rem; margin-bottom:10px;"></div>
+                        <h4 style="font-size:0.95rem; font-weight:700; color:var(--navy-mid); margin:0 0 8px;">Mejora Continua</h4>
+                        <p style="font-size:0.82rem; color:var(--text-secondary); margin:0; line-height:1.5;">Evolución permanente de eficiencia y eficacia en cada ciclo PHVA.</p>
+                    </div>
+                    <div class="sgc-eje-card" style="background:#fff; border-radius:14px; padding:24px 20px; text-align:center; box-shadow:var(--shadow-sm); border-top:3px solid var(--gold); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="font-size:2.2rem; margin-bottom:10px;"></div>
+                        <h4 style="font-size:0.95rem; font-weight:700; color:var(--navy-mid); margin:0 0 8px;">Decisiones Basadas en Evidencia</h4>
+                        <p style="font-size:0.82rem; color:var(--text-secondary); margin:0; line-height:1.5;">Análisis de datos como único fundamento de decisiones estratégicas.</p>
+                    </div>
+                    <div class="sgc-eje-card" style="background:#fff; border-radius:14px; padding:24px 20px; text-align:center; box-shadow:var(--shadow-sm); border-top:3px solid var(--gold); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="font-size:2.2rem; margin-bottom:10px;"></div>
+                        <h4 style="font-size:0.95rem; font-weight:700; color:var(--navy-mid); margin:0 0 8px;">Gestión de Relaciones</h4>
+                        <p style="font-size:0.82rem; color:var(--text-secondary); margin:0; line-height:1.5;">Relaciones estratégicas con partes interesadas para valor sostenible.</p>
+                    </div>
+                    <!-- Celda decorativa de cierre -->
+                    <div style="background: linear-gradient(135deg, var(--navy-deep) 0%, var(--blue-main) 100%); border-radius:14px; padding:24px 20px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                        <div style="font-size:2rem; margin-bottom:8px; color:#fff;"></div>
+                        <p style="colorrgba(255,255,255,0.9); font-size:0.85rem; font-weight:600; margin:0; line-height:1.4;">Excelencia<br>Institucional</p>
+                    </div>
+                </div>
+
+                <!-- Alcance -->
+                <div class="fade-in-up dark-card" style="background: linear-gradient(135deg, var(--navy-deepest) 0%, var(--navy-mid) 100%); border-radius:16px; padding:36px 36px; border-left:5px solid var(--gold);">
+                    <h3 style="color:#fff; font-size:1.15rem; font-weight:700; margin:0 0 14px; display:flex; align-items:center; gap:10px;">
+                        <span style="color:var(--gold);"></span> Alcance del Sistema de Gestión — Organismo Judicial
+                    </h3>
+                    <p style="color:rgba(255,255,255,0.88); line-height:1.8; margin:0; font-size:0.97rem;">Trámite y resolución en <strong style="color:var(--gold-light);">segunda instancia</strong> en las ramas del derecho Penal, Civil, Mercantil, Laboral, Familia, Constitucional, Niñez y Adolescentes en: <em>Sala Sexta Penal de Cobán · Sala Regional Mixta de Quiché · Sala Regional Mixta de Huehuetenango · Sala Regional Mixta de Cobán · Sala Primera Civil de Guatemala · Sala Segunda Civil de Guatemala.</em> Trámites Antejuicio.</p>
+                </div>
+
             </div>
         </section>
 
-        <!-- SECCIÓN ROLES Y FUNCIONES -->
-        <section id="roles">
+        <!-- ══ ROLES — COMITÉ DE CALIDAD REDESIGN ══ -->
+        <section id="roles" style="background:#fff; padding:70px 20px;">
             <div class="container">
-                <h2>Comité de Calidad</h2>
-                <div class="sgc-subsection">
-                    <div class="card-container">
-                        <p>Es la máxima autoridad del Sistema de Gestión de Calidad, encargado de dar las directrices estratégicas para la consecución de los objetivos planteados, por medio de la asignación de recursos necesarios.</p>
-                    </div>
+
+                <!-- Header -->
+                <div class="fade-in-up" style="text-align:center; margin-bottom:40px;">
+                    <span style="display:inline-block; background: var(--gold-dim); color: var(--gold); font-size:0.8rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:6px 18px; border-radius:20px; margin-bottom:14px;">Gobierno del SGC</span>
+                    <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem); color: var(--navy-deep); margin-bottom:12px; font-weight:800;">Comité de Calidad</h2>
+                    <p style="font-size:1rem; color:var(--text-secondary); max-width:680px; margin:0 auto; line-height:1.7;">Es la máxima autoridad del Sistema de Gestión de Calidad, encargado de dar las directrices estratégicas para la consecución de los objetivos planteados, por medio de la asignación de recursos necesarios.</p>
                 </div>
-                
-                <!-- START OF INTEGRATED CODE (DIAGRAM) -->
-                <section class="quality-committee-section">
-                    <h3>Estructura del Comité de Calidad</h3>
-                    <p class="section-subtitle">
-                    </p>
-            
-                    <div class="flowchart-container-grid">
-                        <div class="flow-inputs-grid">
-                            <!-- Se añade el atributo data-role para identificar cada nodo -->
-                            <div class="flow-node flow-node-base" data-role="presidente-oj">
-                                <p>Presidente del Organismo Judicial</p>
+
+                <!-- ── Estructura del Comité de Calidad — Pirámide Jerárquica ── -->
+                <div class="fade-in-up" style="margin-bottom:52px;">
+
+                    <!-- Header -->
+                    <div style="text-align:center; margin-bottom:36px;">
+                        <span style="display:inline-block; background:var(--gold-dim); color:var(--gold); font-size:0.75rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:5px 16px; border-radius:20px; margin-bottom:12px;">Organigrama Institucional</span>
+                        <h3 style="font-size:clamp(1.3rem,2.5vw,1.8rem); color:var(--navy-deep); font-weight:800; margin:0 0 6px;">Estructura del Comité de Calidad</h3>
+                        <p style="font-size:0.82rem; color:var(--text-secondary); margin:0;">Organismo Judicial · Sistema de Gestión de Calidad ISO 9001:2015</p>
+                    </div>
+
+                    <!-- ═══════════════ PIRÁMIDE ═══════════════ -->
+                    <div style="display:flex; flex-direction:column; align-items:center; gap:0; max-width:860px; margin:0 auto;">
+
+                        <!-- NIVEL 1 · Presidencia del OJ -->
+                        <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+                            <div data-role="presidente-oj"
+                                 style="background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%);
+                                        color:var(--navy-deepest); border-radius:10px; padding:14px 32px;
+                                        font-size:0.85rem; font-weight:800; text-align:center;
+                                        box-shadow:0 4px 18px rgba(201,168,76,0.35);
+                                        letter-spacing:0.5px; min-width:280px; max-width:360px;
+                                        cursor:pointer; transition:box-shadow 0.2s, transform 0.2s;"
+                                 onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 24px rgba(201,168,76,0.5)'"
+                                 onmouseout="this.style.transform='';this.style.boxShadow='0 4px 18px rgba(201,168,76,0.35)'">
+                                <div style="font-size:1.2rem; margin-bottom:4px;"></div>
+                                Presidente del Organismo Judicial
+                                <div style="font-size:0.7rem; font-weight:600; margin-top:3px; opacity:0.75; text-transform:uppercase; letter-spacing:1px;"></div>
                             </div>
-                            <div class="flow-node flow-node-base" data-role="camara-penal">
-                                <p>Presidente Cámara Penal</p>
+                            <!-- connector down -->
+                            <div style="width:2px; height:28px; background:linear-gradient(to bottom,var(--gold),var(--blue-main));"></div>
+                        </div>
+
+                        <!-- NIVEL 2 · Tres Cámaras -->
+                        <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+                            <!-- horizontal bar spanning the 3 nodes -->
+                            <div style="position:relative; width:100%; display:flex; justify-content:center;">
+                                <div style="position:absolute; top:0; left:18%; right:18%; height:2px; background:var(--blue-main);"></div>
                             </div>
-                            <div class="flow-node flow-node-base" data-role="camara-civil">
-                                <p>Presidente Cámara Civil</p>
+                            <div style="display:flex; justify-content:center; gap:16px; width:100%; padding-top:0;">
+                                <!-- left tick -->
+                                <div style="display:flex; flex-direction:column; align-items:center; flex:1; max-width:220px;">
+                                    <div style="width:2px; height:20px; background:var(--blue-main);"></div>
+                                    <div data-role="camara-penal"
+                                         style="background:#fff; border:2px solid var(--blue-main); border-top:4px solid var(--blue-main);
+                                                border-radius:10px; padding:12px 14px; text-align:center; width:100%;
+                                                font-size:0.78rem; font-weight:700; color:var(--navy-deep);
+                                                box-shadow:var(--shadow-sm); cursor:pointer; transition:box-shadow 0.2s,transform 0.2s;"
+                                         onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-md)'"
+                                         onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                                        <div style="font-size:1rem; margin-bottom:4px; color:var(--blue-main);"></div>
+                                        Presidente Cámara Penal
+                                        <div style="font-size:0.65rem; color:var(--text-secondary); margin-top:3px; text-transform:uppercase; letter-spacing:0.8px;"></div>
+                                    </div>
+                                </div>
+                                <!-- center tick -->
+                                <div style="display:flex; flex-direction:column; align-items:center; flex:1; max-width:220px;">
+                                    <div style="width:2px; height:20px; background:var(--blue-main);"></div>
+                                    <div data-role="camara-civil"
+                                         style="background:#fff; border:2px solid var(--blue-main); border-top:4px solid var(--blue-main);
+                                                border-radius:10px; padding:12px 14px; text-align:center; width:100%;
+                                                font-size:0.78rem; font-weight:700; color:var(--navy-deep);
+                                                box-shadow:var(--shadow-sm); cursor:pointer; transition:box-shadow 0.2s,transform 0.2s;"
+                                         onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-md)'"
+                                         onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                                        <div style="font-size:1rem; margin-bottom:4px; color:var(--blue-main);"></div>
+                                        Presidente Cámara Civil
+                                        <div style="font-size:0.65rem; color:var(--text-secondary); margin-top:3px; text-transform:uppercase; letter-spacing:0.8px;"></div>
+                                    </div>
+                                </div>
+                                <!-- right tick -->
+                                <div style="display:flex; flex-direction:column; align-items:center; flex:1; max-width:220px;">
+                                    <div style="width:2px; height:20px; background:var(--blue-main);"></div>
+                                    <div data-role="camara-amparo"
+                                         style="background:#fff; border:2px solid var(--blue-main); border-top:4px solid var(--blue-main);
+                                                border-radius:10px; padding:12px 14px; text-align:center; width:100%;
+                                                font-size:0.78rem; font-weight:700; color:var(--navy-deep);
+                                                box-shadow:var(--shadow-sm); cursor:pointer; transition:box-shadow 0.2s,transform 0.2s;"
+                                         onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-md)'"
+                                         onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                                        <div style="font-size:1rem; margin-bottom:4px; color:var(--blue-main);"></div>
+                                        Presidente Cámara de Amparo y Antejuicios
+                                        <div style="font-size:0.65rem; color:var(--text-secondary); margin-top:3px; text-transform:uppercase; letter-spacing:0.8px;"></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="flow-node flow-node-base" data-role="camara-amparo">
-                                <p>Presidente Cámara de Amparo y Antejuicios</p>
+                            <!-- connector bar pointing down to level 3 -->
+                            <div style="width:2px; height:28px; background:linear-gradient(to bottom,var(--blue-main),var(--blue-light));"></div>
+                        </div>
+
+                        <!-- NIVEL 3 · Secretaría + Gerente -->
+                        <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+                            <div style="position:relative; width:100%; display:flex; justify-content:center;">
+                                <div style="position:absolute; top:0; left:30%; right:30%; height:2px; background:var(--blue-light);"></div>
                             </div>
-                            <div class="flow-node flow-node-base" data-role="planificacion">
-                                <p>Secretaría de Planificación</p>
+                            <div style="display:flex; justify-content:center; gap:16px; padding-top:0;">
+                                <div style="display:flex; flex-direction:column; align-items:center; max-width:240px;">
+                                    <div style="width:2px; height:20px; background:var(--blue-light);"></div>
+                                    <div data-role="planificacion"
+                                         style="background:#fff; border:2px solid var(--blue-light); border-top:4px solid var(--blue-light);
+                                                border-radius:10px; padding:12px 18px; text-align:center; width:100%;
+                                                font-size:0.78rem; font-weight:700; color:var(--navy-deep);
+                                                box-shadow:var(--shadow-sm); cursor:pointer; transition:box-shadow 0.2s,transform 0.2s;"
+                                         onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-md)'"
+                                         onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                                        <div style="font-size:1rem; margin-bottom:4px; color:var(--blue-light);"></div>
+                                        Secretaría de Planificación
+                                        <div style="font-size:0.65rem; color:var(--text-secondary); margin-top:3px; text-transform:uppercase; letter-spacing:0.8px;"></div>
+                                    </div>
+                                </div>
+                                <div style="display:flex; flex-direction:column; align-items:center; max-width:240px;">
+                                    <div style="width:2px; height:20px; background:var(--blue-light);"></div>
+                                    <div data-role="gerente-general"
+                                         style="background:#fff; border:2px solid var(--blue-light); border-top:4px solid var(--blue-light);
+                                                border-radius:10px; padding:12px 18px; text-align:center; width:100%;
+                                                font-size:0.78rem; font-weight:700; color:var(--navy-deep);
+                                                box-shadow:var(--shadow-sm); cursor:pointer; transition:box-shadow 0.2s,transform 0.2s;"
+                                         onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='var(--shadow-md)'"
+                                         onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                                        <div style="font-size:1rem; margin-bottom:4px; color:var(--blue-light);"></div>
+                                        Gerente General
+                                        <div style="font-size:0.65rem; color:var(--text-secondary); margin-top:3px; text-transform:uppercase; letter-spacing:0.8px;"></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="flow-node flow-node-base" data-role="gerente-general">
-                                <p>Gerente General</p>
+                            <!-- connector down -->
+                            <div style="width:2px; height:28px; background:linear-gradient(to bottom,var(--blue-light),var(--navy-mid));"></div>
+                        </div>
+
+                        <!-- HUB · COMITÉ DE CALIDAD -->
+                        <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+                            <div data-role="comite-calidad"
+                                 style="background:linear-gradient(135deg, var(--navy-deepest) 0%, var(--navy-mid) 100%);
+                                        border:2px solid var(--gold); border-radius:14px;
+                                        padding:20px 48px; text-align:center;
+                                        box-shadow:0 6px 28px rgba(10,22,40,0.38), 0 0 0 4px rgba(201,168,76,0.12);
+                                        min-width:320px; max-width:480px; cursor:pointer;
+                                        transition:box-shadow 0.2s, transform 0.2s;"
+                                 onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 36px rgba(10,22,40,0.5), 0 0 0 4px rgba(201,168,76,0.25)'"
+                                 onmouseout="this.style.transform='';this.style.boxShadow='0 6px 28px rgba(10,22,40,0.38), 0 0 0 4px rgba(201,168,76,0.12)'">
+                                <div style="font-size:1.5rem; margin-bottom:6px;"></div>
+                                <div style="color:var(--gold); font-size:0.7rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:6px;"></div>
+                                <div style="color:#fff; font-size:1.05rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase;">Comité de Calidad</div>
+                                <div style="width:48px; height:2px; background:var(--gold); margin:10px auto 6px; border-radius:2px;"></div>
+                                <div style="color:rgba(255,255,255,0.65); font-size:0.72rem; letter-spacing:0.5px;">Sistema de Gestión de Calidad · OJ</div>
                             </div>
                         </div>
-            
-                        <div class="flow-connector"></div>
-            
-                        <div class="flow-output-grid">
-                            <div class="flow-process flow-node-base" data-role="comite-calidad">
-                                <p>COMITÉ DE CALIDAD</p>
-                            </div>
+
+                    </div><!-- /pirámide -->
+
+                    <!-- Leyenda -->
+                    <div style="display:flex; justify-content:center; gap:24px; margin-top:28px; flex-wrap:wrap;">
+                        <div style="display:flex; align-items:center; gap:6px; font-size:0.72rem; color:var(--text-secondary);">
+                            <span style="display:inline-block; width:12px; height:12px; background:linear-gradient(135deg,var(--gold),var(--gold-light)); border-radius:3px;"></span> Presidencia
+                        </div>
+                        <div style="display:flex; align-items:center; gap:6px; font-size:0.72rem; color:var(--text-secondary);">
+                            <span style="display:inline-block; width:12px; height:12px; background:var(--blue-main); border-radius:3px;"></span> Salas y Cámaras
+                        </div>
+                        <div style="display:flex; align-items:center; gap:6px; font-size:0.72rem; color:var(--text-secondary);">
+                            <span style="display:inline-block; width:12px; height:12px; background:var(--blue-light); border-radius:3px;"></span> Coordinación y Administración
+                        </div>
+                        <div style="display:flex; align-items:center; gap:6px; font-size:0.72rem; color:var(--text-secondary);">
+                            <span style="display:inline-block; width:12px; height:12px; background:var(--navy-mid); border:1px solid var(--gold); border-radius:3px;"></span> Comité de Calidad
                         </div>
                     </div>
-                </section>
-        
-                <!-- ===== MODAL FOR DIAGRAM (Inicialmente oculto) ===== -->
+
+                </div>
+
+                <!-- Modal for diagram (kept for JS compatibility) -->
                 <div id="committee-modal" class="modal-overlay" aria-hidden="true">
                     <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
                         <button id="modal-close" class="modal-close-btn" aria-label="Cerrar ventana">&times;</button>
@@ -210,338 +382,635 @@ header("Expires: 0");
                         <div id="modal-description"></div>
                     </div>
                 </div>
-                <!-- END OF INTEGRATED CODE (DIAGRAM) -->
-                
-                <!-- START: NEW CONTENT FROM roles y funciones.html -->
-                <div class="roles-accordion-wrapper">
-                    <!-- Acordeón para COMITÉ DE CALIDAD -->
-                    <div class="roles-accordion-item">
-                        <button class="roles-accordion-button">COMITÉ DE CALIDAD</button>
-                        <div class="roles-accordion-content">
-                            <div class="text-content">
-                                <h3>FUNCIONES:</h3>
-                                <ol>
-                                    <li>Aprobar y divulgar la Política y Objetivos de Calidad del Sistema de Gestión de Calidad y gestionar las acciones necesarias para su implementación.</li>
-                                    <li>Determinar el alcance del Sistema de Gestión de Calidad.</li>
-                                    <li>Reunirse, preferentemente al finalizar cada cuatrimestre del año en curso, para verificar los avances del Sistema de Gestión de Calidad del Organismo Judicial, identificar necesidades de cambios, oportunidades de mejora y los recursos necesarios para optimizar su funcionamiento y asegurarse de su conveniencia con la planificación estratégica de esta institución. Las dependencias que forman parte del Sistema de Gestión de Calidad deben cumplir los requerimientos del Comité de Calidad y con la documentación pertinente para el correcto funcionamiento del Sistema.</li>
-                                    <li>Instruir a las unidades administrativas para el cumplimiento de los plazos, planes y la documentación pertinente para el correcto funcionamiento del Sistema de Gestión de Calidad.</li>
-                                    <li>Analizar la inclusión de más órganos jurisdiccionales y dependencias administrativas al Sistema de Gestión de Calidad, tomando en cuenta el alcance establecido, previo análisis que considere la carga de trabajo, clima laboral, estructura organizacional, condición de la infraestructura y el compromiso del personal para determinar su conveniencia.</li>
-                                </ol>
-                            </div>
+
+                <!-- ── Interactive Role Cards ─────────────────────────── -->
+                <h3 class="fade-in-up" style="text-align:center; color:var(--navy-deep); font-size:1.25rem; font-weight:700; margin:48px 0 28px;">Roles y Responsabilidades del SGC</h3>
+                <div class="roles-cards-grid fade-in-up" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:20px;">
+
+                    <!-- Card 1: Comité de Calidad -->
+                    <div class="role-card" style="background:var(--white-soft); border-radius:16px; padding:28px 24px; border-top:4px solid var(--navy-mid); box-shadow:var(--shadow-sm); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+                            <div style="width:44px; height:44px; background:linear-gradient(135deg,var(--navy-deep),var(--blue-main)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0;">🏛️</div>
+                            <h4 style="font-size:1rem; font-weight:700; color:var(--navy-mid); margin:0; line-height:1.3;">Comité de Calidad</h4>
+                        </div>
+                        <p style="font-size:0.82rem; color:var(--text-secondary); margin:0 0 14px; line-height:1.6;">Máxima autoridad del SGC. Aprueba la Política, Objetivos y lineamientos estratégicos.</p>
+                        <details style="font-size:0.82rem; color:var(--text-secondary);">
+                            <summary style="cursor:pointer; font-weight:600; color:var(--blue-main); margin-bottom:8px; list-style:none; display:flex; align-items:center; gap:6px;"><span>▶</span> Ver funciones</summary>
+                            <ol style="padding-left:16px; margin:8px 0 0; line-height:1.6;">
+                                <li>Aprobar y divulgar la Política y Objetivos de Calidad.</li>
+                                <li>Determinar el alcance del SGC.</li>
+                                <li>Reunirse cuatrimestralmente para verificar avances.</li>
+                                <li>Instruir a unidades para el cumplimiento del SGC.</li>
+                                <li>Analizar la inclusión de nuevas dependencias.</li>
+                            </ol>
+                        </details>
+                    </div>
+
+                    <!-- Card 2: Secretaría de Planificación -->
+                    <div class="role-card" style="background:var(--white-soft); border-radius:16px; padding:28px 24px; border-top:4px solid var(--blue-main); box-shadow:var(--shadow-sm); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+                            <div style="width:44px; height:44px; background:linear-gradient(135deg,var(--blue-main),var(--blue-light)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0;">📋</div>
+                            <h4 style="font-size:1rem; font-weight:700; color:var(--navy-mid); margin:0; line-height:1.3;">Secretaría de Planificación</h4>
+                        </div>
+                        <p style="font-size:0.82rem; color:var(--text-secondary); margin:0 0 14px; line-height:1.6;">Ente coordinador del SGC a través del área de Desarrollo Administrativo y Mejora Continua.</p>
+                        <details style="font-size:0.82rem; color:var(--text-secondary);">
+                            <summary style="cursor:pointer; font-weight:600; color:var(--blue-main); margin-bottom:8px; list-style:none; display:flex; align-items:center; gap:6px;"><span>▶</span> Ver funciones</summary>
+                            <ol style="padding-left:16px; margin:8px 0 0; line-height:1.6;">
+                                <li>Coordinar la elaboración de la Política de Calidad.</li>
+                                <li>Elaborar el cronograma anual de actividades del SGC.</li>
+                                <li>Realizar reuniones periódicas con unidades involucradas.</li>
+                                <li>Dar seguimiento a informes de Auditoría Interna y Externa.</li>
+                                <li>Proponer mejoras en la documentación del SGC.</li>
+                            </ol>
+                        </details>
+                    </div>
+
+                    <!-- Card 3: Dueños de Proceso -->
+                    <div class="role-card" style="background:var(--white-soft); border-radius:16px; padding:28px 24px; border-top:4px solid var(--blue-celeste); box-shadow:var(--shadow-sm); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+                            <div style="width:44px; height:44px; background:linear-gradient(135deg,var(--blue-light),var(--blue-celeste)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0;">👔</div>
+                            <h4 style="font-size:1rem; font-weight:700; color:var(--navy-mid); margin:0; line-height:1.3;">Dueños de Proceso</h4>
+                        </div>
+                        <p style="font-size:0.82rem; color:var(--text-secondary); margin:0 0 14px; line-height:1.6;">Máxima autoridad de la Unidad u Órgano Jurisdiccional. Dirección estratégica y toma de decisiones.</p>
+                        <details style="font-size:0.82rem; color:var(--text-secondary);">
+                            <summary style="cursor:pointer; font-weight:600; color:var(--blue-main); margin-bottom:8px; list-style:none; display:flex; align-items:center; gap:6px;"><span>▶</span> Ver funciones</summary>
+                            <ol style="padding-left:16px; margin:8px 0 0; line-height:1.6;">
+                                <li>Aprobar la documentación referente a su proceso.</li>
+                                <li>Diseñar y brindar apoyo al Gestor Titular y de Apoyo.</li>
+                                <li>Brindar herramientas para la correcta implementación.</li>
+                                <li>Revisión y monitoreo de controles e indicadores.</li>
+                            </ol>
+                        </details>
+                    </div>
+
+                    <!-- Card 4: Gestor Titular -->
+                    <div class="role-card" style="background:var(--white-soft); border-radius:16px; padding:28px 24px; border-top:4px solid var(--gold); box-shadow:var(--shadow-sm); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+                            <div style="width:44px; height:44px; background:linear-gradient(135deg,var(--gold),var(--gold-light)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0;">🗂️</div>
+                            <h4 style="font-size:1rem; font-weight:700; color:var(--navy-mid); margin:0; line-height:1.3;">Gestor Titular</h4>
+                        </div>
+                        <p style="font-size:0.82rem; color:var(--text-secondary); margin:0 0 14px; line-height:1.6;">Representante designado del órgano jurisdiccional. Enlace principal con la Secretaría de Planificación.</p>
+                        <details style="font-size:0.82rem; color:var(--text-secondary);">
+                            <summary style="cursor:pointer; font-weight:600; color:var(--blue-main); margin-bottom:8px; list-style:none; display:flex; align-items:center; gap:6px;"><span>▶</span> Ver funciones</summary>
+                            <ol style="padding-left:16px; margin:8px 0 0; line-height:1.6;">
+                                <li>Control de la documentación del SGC.</li>
+                                <li>Participar en auditorías internas y externas.</li>
+                                <li>Análisis y seguimiento de Acciones de Mejora y Correctivas.</li>
+                            </ol>
+                        </details>
+                    </div>
+
+                    <!-- Card 5: Gestor de Apoyo -->
+                    <div class="role-card" style="background:var(--white-soft); border-radius:16px; padding:28px 24px; border-top:4px solid var(--gold-light); box-shadow:var(--shadow-sm); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+                            <div style="width:44px; height:44px; background:linear-gradient(135deg,var(--gold-light),var(--gold)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0;">🤝</div>
+                            <h4 style="font-size:1rem; font-weight:700; color:var(--navy-mid); margin:0; line-height:1.3;">Gestor de Apoyo</h4>
+                        </div>
+                        <p style="font-size:0.82rem; color:var(--text-secondary); margin:0 0 14px; line-height:1.6;">Suplente del Gestor Titular. Asegura la continuidad de las gestiones del SGC en cualquier circunstancia.</p>
+                        <details style="font-size:0.82rem; color:var(--text-secondary);">
+                            <summary style="cursor:pointer; font-weight:600; color:var(--blue-main); margin-bottom:8px; list-style:none; display:flex; align-items:center; gap:6px;"><span>▶</span> Ver funciones</summary>
+                            <ol style="padding-left:16px; margin:8px 0 0; line-height:1.6;">
+                                <li>Apoyar al Gestor Titular en la documentación del SGC.</li>
+                                <li>Continuidad en ausencia del Gestor Titular.</li>
+                                <li>Participar en auditorías y seguimiento de acciones correctivas.</li>
+                            </ol>
+                        </details>
+                    </div>
+
+                    <!-- Card 6: Base normativa -->
+                    <div class="dark-card" style="background: linear-gradient(135deg, var(--navy-deepest) 0%, var(--navy-mid) 100%); border-radius:16px; padding:28px 24px; box-shadow:var(--shadow-md); display:flex; flex-direction:column; justify-content:space-between;">
+                        <div>
+                            <div style="font-size:1.8rem; margin-bottom:12px;">📜</div>
+                            <h4 style="color:#fff; font-size:0.95rem; font-weight:700; margin:0 0 10px;">Base Legal</h4>
+                            <p style="color:rgba(255,255,255,0.82); font-size:0.82rem; line-height:1.6; margin:0;">Acuerdo 8-2022, Artículo 7.Bis: <em>"Los órganos jurisdiccionales y unidades administrativas que forman parte del Sistema deberán designar a una persona que le represente, a quien se le denominará <strong style="color:var(--gold-light);">'gestor'</strong>."</em></p>
                         </div>
                     </div>
-            
-                    <!-- Acordeón para SECRETARÍA DE PLANIFICACIÓN -->
-                    <div class="roles-accordion-item">
-                        <button class="roles-accordion-button">SECRETARÍA DE PLANIFICACIÓN Y DESARROLLO INSTITUCIONAL</button>
-                        <div class="roles-accordion-content">
-                            <div class="text-content">
-                                <p>El ente coordinador del Sistema de Gestión de Calidad, a través del área de Desarrollo Administrativo y Mejora Continúa.</p>
-                                <h3>FUNCIONES:</h3>
-                                <ol>
-                                    <li>Coordinar la elaboración de la política y objetivos de Calidad del Sistema de Gestión de Calidad, implementado y someterlo a la aprobación del Comité de Calidad.</li>
-                                    <li>Elaborar el cronograma de actividades generales anuales del Sistema de Gestión de Calidad implementado.</li>
-                                    <li>Realizar reuniones periódicas con las unidades involucradas en el Sistema de Gestión de Calidad para determinar el nivel de cumplimiento con la documentación necesaria según los criterios de la norma ISO 9001:2015.</li>
-                                    <li>Dar seguimiento a las recomendaciones de los informes de Auditoría Interna y Externa realizados al Sistema de Gestión de Calidad.</li>
-                                    <li>Dar seguimiento a las Acciones Correctivas y de Mejora de cada proceso que integra el Sistema de Gestión de Calidad.</li>
-                                    <li>Coordinar reuniones presenciales o virtuales con los gestores designados en cada proceso para verificar el cumplimiento de las tareas asignadas.</li>
-                                    <li>Proponer mejoras en la documentación generada del Sistema de Gestión de Calidad.</li>
-                                    <li>Proponer lineamientos para la adecuada gestión del Sistema de Gestión de Calidad del Organismo Judicial.</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-            
-                    <!-- Acordeón para DUEÑOS DE PROCESO -->
-                    <div class="roles-accordion-item">
-                        <button class="roles-accordion-button">DUEÑOS DE PROCESO</button>
-                        <div class="roles-accordion-content">
-                            <div class="text-content">
-                                <p>Máxima autoridad de la Unidad u Órgano Jurisdiccional, encargado de la dirección estratégica y la toma de decisiones.</p>
-                                <h3>FUNCIONES:</h3>
-                                <ol>
-                                    <li>Aprobar la documentación referente a su proceso.</li>
-                                    <li>Diseñar y brindar apoyo al Gestor Titular y Gestor de Apoyo.</li>
-                                    <li>Brindar las herramientas para la correcta implementación del Sistema, en temas de tecnología, insumos y tiempo que sean necesarios para la ejecución de las actividades.</li>
-                                    <li>Revisión y monitoreo de los controles e indicadores de su proceso.</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Acordeón para GESTORES -->
-                    <div class="roles-accordion-item">
-                        <button class="roles-accordion-button">GESTORES</button>
-                        <div class="roles-accordion-content">
-                            <div class="text-content">
-                                <blockquote>"Los órganos jurisdiccionales y unidades administrativas, que forman parte del Sistema deberá designar a una persona que le represente, a quien se le denominará 'gestor'; para el desarrollo de las gestiones del Sistema podrá actuar en forma conjunta o separada con la máxima autoridad de su órgano jurisdiccional o de su unidad administrativa y tendrá la función de enlace con la Secretaría de Planificación y Desarrollo Institucional para el traslado y envío de información."<br><em>(Acuerdo 8-2022. Artículo 7.Bis)</em></blockquote>
-                                <blockquote>"Es compromiso del personal de los órganos jurisdiccionales y unidades administrativas, la documentación y las gestiones necesarias para el cumplimiento de los requisitos del Sistema de Gestión de Calidad".<br><em>(Acuerdo 8-2022. Artículo 7.Bis)</em></blockquote>
-                                <div class="gestor-container">
-                                    <div class="gestor-column">
-                                        <h4>TITULAR:</h4>
-                                        <ol>
-                                            <li>Control de la documentación del SGC.</li>
-                                            <li>Participar en auditorías.</li>
-                                            <li>Realizar el análisis y seguimiento de las Acciones de Mejora y Correctivas.</li>
-                                        </ol>
-                                    </div>
-                                    <div class="gestor-column">
-                                        <h4>APOYO:</h4>
-                                        <ol>
-                                            <li>Apoyar al Gestor Titular respecto a la documentación relativa al SGC.</li>
-                                            <li>Darle el seguimiento oportuno en ausencia del Gestor Titular.</li>
-                                            <li>Participar en auditorías.</li>
-                                            <li>Dar seguimiento de las acciones correctivas y de mejora que se encuentren abiertas.</li>
-                                        </ol>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
-                <!-- END: NEW CONTENT -->
 
             </div>
-        </section><!-- SECCIÓN POLÍTICA DE CALIDAD -->        <section id="politica">
+
+
+        <!-- ══ POLÍTICA DE CALIDAD REDESIGN ══ -->
+        <section id="politica" style="background:var(--white-soft); padding:70px 20px;">
             <div class="container">
-                <h2>Política de Calidad del Organismo Judicial</h2>
-                <button id="viewPoliticaImageBtn" class="view-image-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
-                    Ver Documento                </button>
-                <p>En el Organismo Judicial de Guatemala proporcionamos un servicio de administración de justicia aplicando la Constitución Política de la República de Guatemala y demás leyes vigentes, procurando la prontitud y la celeridad en cada gestión, la independencia en nuestras resoluciones, todo esto bajo una conducta ética y el compromiso social por parte del personal que forma parte del SGC.</p>
-                <p>La administración eficiente de los recursos, la <strong>capacitación constante de nuestros colaboradores</strong> y su desempeño eficiente nos permite mejorar continuamente la Gestión de Calidad de la Institución. Es así como logramos satisfacer las necesidades y expectativas de los usuarios y partes interesadas.</p>
-            </div>
-        </section>        <!-- SECCIÓN OBJETIVOS DE CALIDAD -->        <section id="objetivos">
-            <div class="container">
-                <h2>Objetivos de Calidad del Organismo Judicial</h2>
-                 <button id="viewObjetivosImageBtn" class="view-image-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
-                    Ver Documento   
-                </button>
-                <div class="accordion-container">
-                    <div class="accordion-item">
-                        <div class="accordion-header">1. Lograr que el 82% de las resoluciones emitidas cumplan con los plazos establecidos.</div>
-                        <div class="accordion-content">
-                            <p>Este objetivo busca mejorar la eficiencia en la emisión de resoluciones judiciales, asegurando que la mayoría se entreguen dentro de los tiempos legalmente estipulados, contribuyendo a una justicia más pronta.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">2. Lograr que el 75% de las Ejecutorias en Materia Civil y Penal sean realizadas en un plazo no mayor de 18 días.</div>
-                        <div class="accordion-content">
-                            <p>Se enfoca en la celeridad de la ejecución de sentencias firmes en áreas clave, buscando reducir los tiempos para materializar las decisiones judiciales y garantizar la efectividad del sistema.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">3. Lograr que 3 procedimientos de las Salas de la Corte de Apelaciones dentro del alcance del SGC se estandaricen.</div>
-                        <div class="accordion-content">
-                            <p>Busca la uniformidad y optimización de procesos específicos en las Salas de Apelaciones, lo que puede llevar a una mayor previsibilidad, eficiencia y calidad en la tramitación de casos.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">4. Mejorar en un 3% en el manejo de insumos y recursos humanos.</div>
-                        <div class="accordion-content">
-                            <p>Este objetivo se centra en la optimización de la gestión de recursos materiales y del personal, buscando una mayor eficiencia administrativa y un mejor aprovechamiento de los medios disponibles.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">5. Lograr el 85% de cumplimiento del programa de capacitación en áreas técnicas – Escuela de Estudios Judiciales.</div>
-                        <div class="accordion-content">
-                            <p>Destaca la importancia de la formación continua del personal judicial, con una meta específica de cumplimiento para los programas técnicos ofrecidos por la Escuela, asegurando la actualización de conocimientos y habilidades.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">6. Dar seguimiento a la oportunidad organizacional proveniente de la evaluación del desempeño anual.</div>
-                        <div class="accordion-content">
-                            <p>Implica un compromiso con la mejora continua basada en los resultados de las evaluaciones de desempeño, identificando áreas de oportunidad y tomando acciones para fortalecer la organización.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">7. Lograr un mínimo de 85% de eficacia del Sistema de Gestión de Calidad.</div>
-                        <div class="accordion-content">
-                            <p>Establece una meta global para la efectividad del SGC, indicando que se espera que el sistema en su conjunto funcione de manera óptima y cumpla con sus propósitos establecidos.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">8. Incrementar la satisfacción de los usuarios.</div>
-                        <div class="accordion-content">
-                            <p>Este es un objetivo fundamental de cualquier sistema de calidad, enfocado en mejorar la percepción y experiencia de quienes utilizan los servicios judiciales, buscando una mayor confianza y legitimidad.</p>
-                        </div>
-                    </div>
-                </div>
-                    
-            </div>
-            </div>        </section>        <section id="procesos">            <div class="container">
-                <h2>¿Quiénes forman parte del Sistema de Gestión de Calidad?</h2>
 
-                <div class="section-title-wrapper">
-                    <h3>Procesos Misionales</h3>
-                </div>
-                <div class="accordion-container">
-                    <div class="accordion-item">
-                        <div class="accordion-header">Sala Sexta de la Corte de Apelaciones del Ramo Penal, Narcoactividad y Delitos contra el Ambiente de Cobán, Alta Verapaz</div>
-                        <div class="accordion-content">
-                            <p><span class="process-contact">📞 Teléfono: 22904308 (2290-4444 Ext. 83796/7)</span></p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">Sala Regional Mixta de la Corte de Apelaciones de Quiché</div>
-                        <div class="accordion-content">
-                             <p><span class="process-contact">📞 Teléfono: 22904665 (2290-4444 Ext. 80101/2)</span></p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">Sala Regional Mixta de la Corte de Apelaciones de Cobán, Alta Verapaz</div>
-                        <div class="accordion-content">
-                             <p><span class="process-contact">📞 Teléfono: 22904665 (2290-4444 Ext. 83931/2)</span></p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">Sala Regional Mixta de la Corte de Apelaciones de Huehuetenango</div>
-                        <div class="accordion-content">
-                            <p><span class="process-contact">📞 Teléfono: 22904578 (2290-4444 Ext. 80721)</span></p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">Sección de Antejuicios de la Cámara de Amparo de la Corte Suprema de Justicia</div>
-                        <div class="accordion-content">
-                            <p><span class="process-contact">📞 Teléfono: 22904044 Ext. 4188</span></p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">Sala Primera de la Corte de Apelaciones del Ramo Civil y Mercantil</div>
-                        <div class="accordion-content">
-                            <p><span class="process-contact">📞 Teléfono: 22905044/45 EXT. 89636/37</span></p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">Sala Segunda de la Corte de Apelaciones del Ramo Civil y Mercantil</div>
-                        <div class="accordion-content">
-                           <p><span class="process-contact">📞 Teléfono: 22905551 (2290-4444)</span></p>
-                        </div>
-                    </div>
+                <div class="fade-in-up" style="text-align:center; margin-bottom:44px;">
+                    <span style="display:inline-block; background:var(--gold-dim); color:var(--gold); font-size:0.8rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:6px 18px; border-radius:20px; margin-bottom:14px;">Compromiso Institucional</span>
+                    <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem); color:var(--navy-deep); margin-bottom:10px; font-weight:800;">Política de Calidad</h2>
+                    <p style="color:var(--text-secondary); font-size:0.95rem;">Organismo Judicial de Guatemala</p>
                 </div>
 
-                <div class="section-title-wrapper" style="margin-top: 50px;">
-                     <a href="http://directorio.oj.gob.gt/" target="_blank" class="directory-link-inline">
-                        <img src="https://raw.githubusercontent.com/djsalazar/aa/main/search-icon.png" alt="Buscar en directorio">
-                        Directorio OJ
-                    </a>
-                    <h3>Procesos de Apoyo</h3>
-                </div>
-                <div class="accordion-container">
-                    <div class="accordion-item">
-                        <div class="accordion-header">Unidad de Administración de Edificios</div>
-                        <div class="accordion-content"><p>Responsable de la gestión y mantenimiento de las infraestructuras edilicias.</p></div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">Escuela de Estudios Judiciales</div>
-                        <div class="accordion-content"><p>Encargada de la capacitación y formación del personal judicial.</p></div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">Unidad de Mantenimiento Correctivo y Servicios Técnicos</div>
-                        <div class="accordion-content"><p>Provee soluciones y reparaciones técnicas para el equipamiento e instalaciones.</p></div>
-                    </div>
-                     <div class="accordion-item">
-                        <div class="accordion-header">Gerencia de Informática</div>
-                        <div class="accordion-content"><p>Administra los sistemas y recursos tecnológicos de la institución.</p></div>
-                    </div>
-                     <div class="accordion-item">
-                        <div class="accordion-header">Unidad de Adquisiciones de Bienes y Servicios</div>
-                        <div class="accordion-content"><p>Gestiona la compra de insumos y contratación de servicios necesarios.</p></div>
-                    </div>
-                     <div class="accordion-item">
-                        <div class="accordion-header">Unidad de Transportes y Taller Mecánico</div>
-                        <div class="accordion-content"><p>Coordina la logística de transporte y el mantenimiento vehicular.</p></div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-header">Unidades de Recursos Humanos</div>
-                        <div class="accordion-content">
-                            <ul class="process-list-accordion-content">
-                                <li>Unidad de Administración de RRHH</li>
-                                <li>Unidad de Clasificación de Puestos y Administración de Sueldos</li>
-                                <li>Unidad de Desarrollo Integral de RRHH</li>
-                                <li>Unidad de Dotación de RRHH</li>
-                                <li>Archivo Personal</li>
-                            </ul>
+                <div class="politica-layout fade-in-up" style="display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start; margin-bottom:32px;">
+
+                    <!-- Quote principal -->
+                    <div style="background:linear-gradient(135deg,var(--navy-deepest) 0%,var(--navy-mid) 100%); border-radius:20px; padding:40px 36px; position:relative; overflow:hidden;">
+                        <div style="position:absolute; top:-20px; left:20px; font-size:8rem; color:rgba(255,255,255,0.05); line-height:1; font-family:Georgia,serif;">"</div>
+                        <p class="politica-quote" style="color:rgba(255,255,255,0.95); font-size:1.15rem; line-height:1.85; margin:0; position:relative; z-index:1; font-style:italic;">En el Organismo Judicial de Guatemala proporcionamos un servicio de administración de justicia aplicando la <strong style="color:var(--gold-light);">Constitución Política de la República de Guatemala</strong> y demás leyes vigentes, procurando la prontitud y la celeridad en cada gestión, la independencia en nuestras resoluciones, todo esto bajo una <strong style="color:var(--gold-light);">conducta ética</strong> y el compromiso social por parte del personal que forma parte del SGC.</p>
+                        <div style="margin-top:24px; padding-top:20px; border-top:1px solid rgba(201,168,76,0.3);">
+                            <p style="color:rgba(255,255,255,0.8); font-size:0.9rem; margin:0; line-height:1.6;">La administración eficiente de los recursos, la <strong style="color:var(--gold-light);">capacitación constante de nuestros colaboradores</strong> y su desempeño eficiente nos permite mejorar continuamente la Gestión de Calidad de la Institución, logrando satisfacer las necesidades y expectativas de los usuarios y partes interesadas.</p>
+                        </div>
+                        <div style="margin-top:20px;">
+                            <button id="viewPoliticaImageBtn" class="view-image-button" style="background:rgba(201,168,76,0.2); color:var(--gold-light); border:1px solid var(--gold); padding:10px 20px; border-radius:8px; font-size:0.85rem; cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                Ver Documento Oficial
+                            </button>
                         </div>
                     </div>
+
+                    <!-- Valores institucionales -->
+                    <div>
+                        <h3 style="color:var(--navy-mid); font-size:1.1rem; font-weight:700; margin:0 0 20px; padding-bottom:10px; border-bottom:2px solid var(--gold);">Valores que Orientan la Política</h3>
+                        <div style="display:flex; flex-direction:column; gap:12px;">
+                            <div class="politica-value-item" style="display:flex; align-items:flex-start; gap:14px; background:#fff; border-radius:12px; padding:16px 18px; box-shadow:var(--shadow-sm); border-left:3px solid var(--blue-main);">
+                                <span style="font-size:1.4rem; flex-shrink:0;">⚖️</span>
+                                <div><h4 style="color:var(--navy-mid); font-size:0.95rem; font-weight:700; margin:0 0 4px;">Prontitud y Celeridad</h4><p style="color:var(--text-secondary); font-size:0.82rem; margin:0; line-height:1.5;">Resoluciones dentro de plazos establecidos para garantizar acceso a la justicia.</p></div>
+                            </div>
+                            <div class="politica-value-item" style="display:flex; align-items:flex-start; gap:14px; background:#fff; border-radius:12px; padding:16px 18px; box-shadow:var(--shadow-sm); border-left:3px solid var(--blue-main);">
+                                <span style="font-size:1.4rem; flex-shrink:0;">🏛️</span>
+                                <div><h4 style="color:var(--navy-mid); font-size:0.95rem; font-weight:700; margin:0 0 4px;">Independencia Judicial</h4><p style="color:var(--text-secondary); font-size:0.82rem; margin:0; line-height:1.5;">Resoluciones basadas exclusivamente en la ley, sin presiones externas.</p></div>
+                            </div>
+                            <div class="politica-value-item" style="display:flex; align-items:flex-start; gap:14px; background:#fff; border-radius:12px; padding:16px 18px; box-shadow:var(--shadow-sm); border-left:3px solid var(--gold);">
+                                <span style="font-size:1.4rem; flex-shrink:0;">🎓</span>
+                                <div><h4 style="color:var(--navy-mid); font-size:0.95rem; font-weight:700; margin:0 0 4px;">Capacitación Continua</h4><p style="color:var(--text-secondary); font-size:0.82rem; margin:0; line-height:1.5;">Formación permanente del talento humano como motor de la mejora continua.</p></div>
+                            </div>
+                            <div class="politica-value-item" style="display:flex; align-items:flex-start; gap:14px; background:#fff; border-radius:12px; padding:16px 18px; box-shadow:var(--shadow-sm); border-left:3px solid var(--gold);">
+                                <span style="font-size:1.4rem; flex-shrink:0;">🤝</span>
+                                <div><h4 style="color:var(--navy-mid); font-size:0.95rem; font-weight:700; margin:0 0 4px;">Conducta Ética</h4><p style="color:var(--text-secondary); font-size:0.82rem; margin:0; line-height:1.5;">Compromiso social e integridad en cada proceso de la administración de justicia.</p></div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
         </section>
 
-        <section id="beneficios">
+        <!-- ══ OBJETIVOS DE CALIDAD REDESIGN ══ -->
+        <section id="objetivos" style="background:#fff; padding:70px 20px;">
             <div class="container">
-                <h2>Beneficios de Adoptar el Sistema de Gestión de Calidad NTC ISO 9001:2015</h2>
-                <div class="card-container">
-                    <div class="card">
-                        <h4><span class="benefit-icon"></span> Mejora la satisfacción del cliente.</h4>
-                        <p>Al centrarse en los requisitos del cliente y buscar superarlos, se incrementa la confianza y lealtad de los usuarios hacia la organización.</p>
-                    </div>
-                    <div class="card">
-                        <h4><span class="benefit-icon"></span> Incrementa la eficiencia operativa.</h4>
-                        <p>La estandarización de procesos y la identificación de áreas de mejora conducen a una utilización más eficaz de los recursos y a la reducción de errores.</p>
-                    </div>
-                    <div class="card">
-                        <h4><span class="benefit-icon"></span> Facilita el cumplimiento de requisitos legales y reglamentarios.</h4>
-                        <p>Un SGC robusto ayuda a asegurar que la organización se mantenga al día y cumpla con todas las normativas aplicables a sus actividades.</p>
-                    </div>
-                    <div class="card">
-                        <h4><span class="benefit-icon"></span> Mejora la imagen y reputación de la organización.</h4>
-                        <p>La certificación ISO 9001 es un reconocimiento internacional que demuestra el compromiso de la organización con la calidad y la excelencia.</p>
-                    </div>
-                    <div class="card">
-                        <h4><span class="benefit-icon"></span> Fomenta la mejora continua y la toma de decisiones más informada.</h4>
-                         <p>El ciclo PHVA (Planificar-Hacer-Verificar-Actuar) inherente a la norma promueve una cultura de aprendizaje y adaptación constante basada en datos y evidencias.</p>
+
+                <div class="fade-in-up" style="text-align:center; margin-bottom:44px;">
+                    <span style="display:inline-block; background:var(--gold-dim); color:var(--gold); font-size:0.8rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:6px 18px; border-radius:20px; margin-bottom:14px;">Plan Estratégico</span>
+                    <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem); color:var(--navy-deep); margin-bottom:10px; font-weight:800;">Objetivos de Calidad</h2>
+                    <div style="display:flex; justify-content:center; gap:14px; margin-top:16px; flex-wrap:wrap;">
+                        <button id="viewObjetivosImageBtn" class="view-image-button" style="background:var(--navy-deep); color:#fff; border:none; padding:10px 22px; border-radius:8px; font-size:0.88rem; cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            Ver Documento Oficial
+                        </button>
                     </div>
                 </div>
+
+                <div class="objetivos-grid fade-in-up" style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
+
+                    <div class="objetivo-card" style="background:var(--white-soft); border-radius:16px; padding:24px 20px; box-shadow:var(--shadow-sm); border-top:4px solid var(--blue-main); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                            <span style="background:var(--navy-deep); color:#fff; font-size:1rem; font-weight:800; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">1</span>
+                            <span style="font-size:1.5rem;">📋</span>
+                        </div>
+                        <div style="background:var(--blue-main); color:#fff; font-size:1.6rem; font-weight:800; padding:8px 14px; border-radius:8px; display:inline-block; margin-bottom:10px;">82%</div>
+                        <h4 style="color:var(--navy-mid); font-size:0.92rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Resoluciones dentro del plazo</h4>
+                        <p style="color:var(--text-secondary); font-size:0.8rem; margin:0; line-height:1.5;">Emisión de resoluciones judiciales dentro de los tiempos legalmente estipulados.</p>
+                    </div>
+
+                    <div class="objetivo-card" style="background:var(--white-soft); border-radius:16px; padding:24px 20px; box-shadow:var(--shadow-sm); border-top:4px solid var(--blue-main); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                            <span style="background:var(--navy-deep); color:#fff; font-size:1rem; font-weight:800; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">2</span>
+                            <span style="font-size:1.5rem;">⚖️</span>
+                        </div>
+                        <div style="background:var(--blue-main); color:#fff; font-size:1.6rem; font-weight:800; padding:8px 14px; border-radius:8px; display:inline-block; margin-bottom:10px;">75%</div>
+                        <h4 style="color:var(--navy-mid); font-size:0.92rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Ejecutorias Civil y Penal ≤ 18 días</h4>
+                        <p style="color:var(--text-secondary); font-size:0.8rem; margin:0; line-height:1.5;">Ejecución de sentencias firmes en áreas clave dentro del plazo máximo.</p>
+                    </div>
+
+                    <div class="objetivo-card" style="background:var(--white-soft); border-radius:16px; padding:24px 20px; box-shadow:var(--shadow-sm); border-top:4px solid var(--blue-light); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                            <span style="background:var(--navy-deep); color:#fff; font-size:1rem; font-weight:800; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">3</span>
+                            <span style="font-size:1.5rem;">📊</span>
+                        </div>
+                        <div style="background:var(--blue-light); color:#fff; font-size:1.6rem; font-weight:800; padding:8px 14px; border-radius:8px; display:inline-block; margin-bottom:10px;">3</div>
+                        <h4 style="color:var(--navy-mid); font-size:0.92rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Procedimientos estandarizados</h4>
+                        <p style="color:var(--text-secondary); font-size:0.8rem; margin:0; line-height:1.5;">Salas de la Corte de Apelaciones dentro del alcance del SGC.</p>
+                    </div>
+
+                    <div class="objetivo-card" style="background:var(--white-soft); border-radius:16px; padding:24px 20px; box-shadow:var(--shadow-sm); border-top:4px solid var(--blue-light); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                            <span style="background:var(--navy-deep); color:#fff; font-size:1rem; font-weight:800; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">4</span>
+                            <span style="font-size:1.5rem;">🔧</span>
+                        </div>
+                        <div style="background:var(--blue-light); color:#fff; font-size:1.6rem; font-weight:800; padding:8px 14px; border-radius:8px; display:inline-block; margin-bottom:10px;">+3%</div>
+                        <h4 style="color:var(--navy-mid); font-size:0.92rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Eficiencia en recursos e insumos</h4>
+                        <p style="color:var(--text-secondary); font-size:0.8rem; margin:0; line-height:1.5;">Optimización de gestión de recursos materiales y del personal administrativo.</p>
+                    </div>
+
+                    <div class="objetivo-card" style="background:var(--white-soft); border-radius:16px; padding:24px 20px; box-shadow:var(--shadow-sm); border-top:4px solid var(--gold); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                            <span style="background:var(--navy-deep); color:#fff; font-size:1rem; font-weight:800; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">5</span>
+                            <span style="font-size:1.5rem;">🎓</span>
+                        </div>
+                        <div style="background:var(--gold); color:var(--navy-deepest); font-size:1.6rem; font-weight:800; padding:8px 14px; border-radius:8px; display:inline-block; margin-bottom:10px;">85%</div>
+                        <h4 style="color:var(--navy-mid); font-size:0.92rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Programa de capacitación EEJ</h4>
+                        <p style="color:var(--text-secondary); font-size:0.8rem; margin:0; line-height:1.5;">Cumplimiento del programa técnico de la Escuela de Estudios Judiciales.</p>
+                    </div>
+
+                    <div class="objetivo-card" style="background:var(--white-soft); border-radius:16px; padding:24px 20px; box-shadow:var(--shadow-sm); border-top:4px solid var(--gold); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                            <span style="background:var(--navy-deep); color:#fff; font-size:1rem; font-weight:800; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">6</span>
+                            <span style="font-size:1.5rem;">📈</span>
+                        </div>
+                        <div style="background:var(--gold); color:var(--navy-deepest); font-size:1rem; font-weight:800; padding:8px 14px; border-radius:8px; display:inline-block; margin-bottom:10px;">Anual</div>
+                        <h4 style="color:var(--navy-mid); font-size:0.92rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Evaluación del desempeño</h4>
+                        <p style="color:var(--text-secondary); font-size:0.8rem; margin:0; line-height:1.5;">Seguimiento a las oportunidades organizacionales identificadas en la evaluación anual.</p>
+                    </div>
+
+                    <div class="objetivo-card" style="background:var(--white-soft); border-radius:16px; padding:24px 20px; box-shadow:var(--shadow-sm); border-top:4px solid var(--navy-mid); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                            <span style="background:var(--navy-deep); color:#fff; font-size:1rem; font-weight:800; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">7</span>
+                            <span style="font-size:1.5rem;">🏆</span>
+                        </div>
+                        <div style="background:var(--navy-mid); color:#fff; font-size:1.6rem; font-weight:800; padding:8px 14px; border-radius:8px; display:inline-block; margin-bottom:10px;">85%</div>
+                        <h4 style="color:var(--navy-mid); font-size:0.92rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Eficacia del SGC</h4>
+                        <p style="color:var(--text-secondary); font-size:0.8rem; margin:0; line-height:1.5;">Efectividad global del sistema cumpliendo sus propósitos estratégicos establecidos.</p>
+                    </div>
+
+                    <div class="objetivo-card dark-card" style="background:linear-gradient(135deg,var(--navy-deep) 0%,var(--blue-main) 100%); border-radius:16px; padding:24px 20px; box-shadow:var(--shadow-md); display:flex; flex-direction:column; justify-content:space-between;">
+                        <div>
+                            <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+                                <span style="background:rgba(255,255,255,0.2); color:#fff; font-size:1rem; font-weight:800; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">8</span>
+                                <span style="font-size:1.5rem;">😊</span>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.15); color:#fff; font-size:1rem; font-weight:800; padding:8px 14px; border-radius:8px; display:inline-block; margin-bottom:10px;">Meta Central</div>
+                            <h4 style="color:#fff; font-size:0.92rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Satisfacción de los Usuarios</h4>
+                            <p style="color:rgba(255,255,255,0.82); font-size:0.8rem; margin:0; line-height:1.5;">Mejora continua de la percepción ciudadana sobre los servicios de administración de justicia.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>        <!-- ══ PROCESOS — DASHBOARD GRID REDESIGN ══ -->
+        <section id="procesos" style="background:var(--white-soft); padding:70px 20px;">
+            <div class="container">
+
+                <div class="fade-in-up" style="text-align:center; margin-bottom:40px;">
+                    <span style="display:inline-block; background:var(--gold-dim); color:var(--gold); font-size:0.8rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:6px 18px; border-radius:20px; margin-bottom:14px;">Dependencias del SGC</span>
+                    <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem); color:var(--navy-deep); margin-bottom:12px; font-weight:800;">¿Quiénes forman parte del SGC?</h2>
+                    <p style="color:var(--text-secondary); max-width:660px; margin:0 auto; line-height:1.7; font-size:0.97rem;">Órganos jurisdiccionales y unidades administrativas que integran el Sistema de Gestión de Calidad del Organismo Judicial.</p>
+                </div>
+
+                <!-- Filter chips -->
+                <div class="procesos-filters fade-in-up" style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:36px;">
+                    <button class="filter-chip active" data-filter="all" onclick="filtrarProcesos('all',this)" style="background:var(--navy-deep); color:#fff; border:none; padding:8px 18px; border-radius:20px; font-size:0.85rem; font-weight:600; cursor:pointer; transition:all 0.2s;">Todos <span id="count-all"></span></button>
+                    <button class="filter-chip" data-filter="misional" onclick="filtrarProcesos('misional',this)" style="background:#fff; color:var(--blue-main); border:2px solid var(--blue-main); padding:8px 18px; border-radius:20px; font-size:0.85rem; font-weight:600; cursor:pointer; transition:all 0.2s;">⚖️ Misionales</button>
+                    <button class="filter-chip" data-filter="apoyo" onclick="filtrarProcesos('apoyo',this)" style="background:#fff; color:var(--gold); border:2px solid var(--gold); padding:8px 18px; border-radius:20px; font-size:0.85rem; font-weight:600; cursor:pointer; transition:all 0.2s;">🔧 Apoyo</button>
+                </div>
+
+                <!-- Dashboard grid -->
+                <div class="procesos-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:18px;">
+
+                    <!-- ─── MISIONALES ─────────────────────────────── -->
+                    <div class="proceso-card" data-cat="misional" style="background:#fff; border-radius:14px; padding:22px 20px; box-shadow:var(--shadow-sm); border-left:4px solid var(--blue-main); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                            <span style="background:var(--blue-main); color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:1px; padding:3px 10px; border-radius:10px;">MISIONAL</span>
+                            <span style="font-size:1.2rem;">⚖️</span>
+                        </div>
+                        <h4 style="color:var(--navy-mid); font-size:0.88rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Sala Sexta Penal — Cobán, Alta Verapaz</h4>
+                        <p style="color:var(--text-secondary); font-size:0.78rem; margin:0; line-height:1.5;">Corte de Apelaciones del Ramo Penal, Narcoactividad y Delitos contra el Ambiente</p>
+                        <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--white-mid); font-size:0.75rem; color:var(--text-secondary);">📞 22904308 · Ext. 83796/7</div>
+                    </div>
+
+                    <div class="proceso-card" data-cat="misional" style="background:#fff; border-radius:14px; padding:22px 20px; box-shadow:var(--shadow-sm); border-left:4px solid var(--blue-main); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                            <span style="background:var(--blue-main); color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:1px; padding:3px 10px; border-radius:10px;">MISIONAL</span>
+                            <span style="font-size:1.2rem;">⚖️</span>
+                        </div>
+                        <h4 style="color:var(--navy-mid); font-size:0.88rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Sala Regional Mixta — Quiché</h4>
+                        <p style="color:var(--text-secondary); font-size:0.78rem; margin:0; line-height:1.5;">Corte de Apelaciones de Quiché</p>
+                        <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--white-mid); font-size:0.75rem; color:var(--text-secondary);">📞 22904665 · Ext. 80101/2</div>
+                    </div>
+
+                    <div class="proceso-card" data-cat="misional" style="background:#fff; border-radius:14px; padding:22px 20px; box-shadow:var(--shadow-sm); border-left:4px solid var(--blue-main); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                            <span style="background:var(--blue-main); color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:1px; padding:3px 10px; border-radius:10px;">MISIONAL</span>
+                            <span style="font-size:1.2rem;">⚖️</span>
+                        </div>
+                        <h4 style="color:var(--navy-mid); font-size:0.88rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Sala Regional Mixta — Cobán, Alta Verapaz</h4>
+                        <p style="color:var(--text-secondary); font-size:0.78rem; margin:0; line-height:1.5;">Corte de Apelaciones de Cobán</p>
+                        <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--white-mid); font-size:0.75rem; color:var(--text-secondary);">📞 22904665 · Ext. 83931/2</div>
+                    </div>
+
+                    <div class="proceso-card" data-cat="misional" style="background:#fff; border-radius:14px; padding:22px 20px; box-shadow:var(--shadow-sm); border-left:4px solid var(--blue-main); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                            <span style="background:var(--blue-main); color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:1px; padding:3px 10px; border-radius:10px;">MISIONAL</span>
+                            <span style="font-size:1.2rem;">⚖️</span>
+                        </div>
+                        <h4 style="color:var(--navy-mid); font-size:0.88rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Sala Regional Mixta — Huehuetenango</h4>
+                        <p style="color:var(--text-secondary); font-size:0.78rem; margin:0; line-height:1.5;">Corte de Apelaciones de Huehuetenango</p>
+                        <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--white-mid); font-size:0.75rem; color:var(--text-secondary);">📞 22904578 · Ext. 80721</div>
+                    </div>
+
+                    <div class="proceso-card" data-cat="misional" style="background:#fff; border-radius:14px; padding:22px 20px; box-shadow:var(--shadow-sm); border-left:4px solid var(--blue-main); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                            <span style="background:var(--blue-main); color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:1px; padding:3px 10px; border-radius:10px;">MISIONAL</span>
+                            <span style="font-size:1.2rem;">⚖️</span>
+                        </div>
+                        <h4 style="color:var(--navy-mid); font-size:0.88rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Sección Antejuicios — Cámara de Amparo CSJ</h4>
+                        <p style="color:var(--text-secondary); font-size:0.78rem; margin:0; line-height:1.5;">Corte Suprema de Justicia · Trámites Antejuicio</p>
+                        <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--white-mid); font-size:0.75rem; color:var(--text-secondary);">📞 22904044 · Ext. 4188</div>
+                    </div>
+
+                    <div class="proceso-card" data-cat="misional" style="background:#fff; border-radius:14px; padding:22px 20px; box-shadow:var(--shadow-sm); border-left:4px solid var(--blue-main); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                            <span style="background:var(--blue-main); color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:1px; padding:3px 10px; border-radius:10px;">MISIONAL</span>
+                            <span style="font-size:1.2rem;">⚖️</span>
+                        </div>
+                        <h4 style="color:var(--navy-mid); font-size:0.88rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Sala Primera Civil y Mercantil — Guatemala</h4>
+                        <p style="color:var(--text-secondary); font-size:0.78rem; margin:0; line-height:1.5;">Corte de Apelaciones del Ramo Civil y Mercantil</p>
+                        <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--white-mid); font-size:0.75rem; color:var(--text-secondary);">📞 22905044/45 · Ext. 89636/37</div>
+                    </div>
+
+                    <div class="proceso-card" data-cat="misional" style="background:#fff; border-radius:14px; padding:22px 20px; box-shadow:var(--shadow-sm); border-left:4px solid var(--blue-main); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                            <span style="background:var(--blue-main); color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:1px; padding:3px 10px; border-radius:10px;">MISIONAL</span>
+                            <span style="font-size:1.2rem;">⚖️</span>
+                        </div>
+                        <h4 style="color:var(--navy-mid); font-size:0.88rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Sala Segunda Civil y Mercantil — Guatemala</h4>
+                        <p style="color:var(--text-secondary); font-size:0.78rem; margin:0; line-height:1.5;">Corte de Apelaciones del Ramo Civil y Mercantil</p>
+                        <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--white-mid); font-size:0.75rem; color:var(--text-secondary);">📞 22905551 · 2290-4444</div>
+                    </div>
+
+                    <!-- ─── APOYO ───────────────────────────────────── -->
+                    <div class="proceso-card" data-cat="apoyo" style="background:#fff; border-radius:14px; padding:22px 20px; box-shadow:var(--shadow-sm); border-left:4px solid var(--gold); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                            <span style="background:var(--gold); color:var(--navy-deepest); font-size:0.7rem; font-weight:700; letter-spacing:1px; padding:3px 10px; border-radius:10px;">APOYO</span>
+                            <span style="font-size:1.2rem;">🏢</span>
+                        </div>
+                        <h4 style="color:var(--navy-mid); font-size:0.88rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Unidad de Administración de Edificios</h4>
+                        <p style="color:var(--text-secondary); font-size:0.78rem; margin:0; line-height:1.5;">Gestión y mantenimiento de las infraestructuras edilicias del OJ.</p>
+                    </div>
+
+                    <div class="proceso-card" data-cat="apoyo" style="background:#fff; border-radius:14px; padding:22px 20px; box-shadow:var(--shadow-sm); border-left:4px solid var(--gold); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                            <span style="background:var(--gold); color:var(--navy-deepest); font-size:0.7rem; font-weight:700; letter-spacing:1px; padding:3px 10px; border-radius:10px;">APOYO</span>
+                            <span style="font-size:1.2rem;">🎓</span>
+                        </div>
+                        <h4 style="color:var(--navy-mid); font-size:0.88rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Escuela de Estudios Judiciales</h4>
+                        <p style="color:var(--text-secondary); font-size:0.78rem; margin:0; line-height:1.5;">Capacitación y formación continua del personal judicial, institución emblema.</p>
+                    </div>
+
+                    <div class="proceso-card" data-cat="apoyo" style="background:#fff; border-radius:14px; padding:22px 20px; box-shadow:var(--shadow-sm); border-left:4px solid var(--gold); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                            <span style="background:var(--gold); color:var(--navy-deepest); font-size:0.7rem; font-weight:700; letter-spacing:1px; padding:3px 10px; border-radius:10px;">APOYO</span>
+                            <span style="font-size:1.2rem;">🔩</span>
+                        </div>
+                        <h4 style="color:var(--navy-mid); font-size:0.88rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Unidad de Mantenimiento Correctivo y Servicios Técnicos</h4>
+                        <p style="color:var(--text-secondary); font-size:0.78rem; margin:0; line-height:1.5;">Soluciones y reparaciones técnicas para equipamiento e instalaciones.</p>
+                    </div>
+
+                    <div class="proceso-card" data-cat="apoyo" style="background:#fff; border-radius:14px; padding:22px 20px; box-shadow:var(--shadow-sm); border-left:4px solid var(--gold); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                            <span style="background:var(--gold); color:var(--navy-deepest); font-size:0.7rem; font-weight:700; letter-spacing:1px; padding:3px 10px; border-radius:10px;">APOYO</span>
+                            <span style="font-size:1.2rem;">💻</span>
+                        </div>
+                        <h4 style="color:var(--navy-mid); font-size:0.88rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Gerencia de Informática</h4>
+                        <p style="color:var(--text-secondary); font-size:0.78rem; margin:0; line-height:1.5;">Administración de sistemas y recursos tecnológicos de la institución.</p>
+                    </div>
+
+                    <div class="proceso-card" data-cat="apoyo" style="background:#fff; border-radius:14px; padding:22px 20px; box-shadow:var(--shadow-sm); border-left:4px solid var(--gold); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                            <span style="background:var(--gold); color:var(--navy-deepest); font-size:0.7rem; font-weight:700; letter-spacing:1px; padding:3px 10px; border-radius:10px;">APOYO</span>
+                            <span style="font-size:1.2rem;">🛒</span>
+                        </div>
+                        <h4 style="color:var(--navy-mid); font-size:0.88rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Unidad de Adquisiciones de Bienes y Servicios</h4>
+                        <p style="color:var(--text-secondary); font-size:0.78rem; margin:0; line-height:1.5;">Gestión de compras e insumos para las dependencias del SGC.</p>
+                    </div>
+
+                    <div class="proceso-card" data-cat="apoyo" style="background:#fff; border-radius:14px; padding:22px 20px; box-shadow:var(--shadow-sm); border-left:4px solid var(--gold); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                            <span style="background:var(--gold); color:var(--navy-deepest); font-size:0.7rem; font-weight:700; letter-spacing:1px; padding:3px 10px; border-radius:10px;">APOYO</span>
+                            <span style="font-size:1.2rem;">🚗</span>
+                        </div>
+                        <h4 style="color:var(--navy-mid); font-size:0.88rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Unidad de Transportes y Taller Mecánico</h4>
+                        <p style="color:var(--text-secondary); font-size:0.78rem; margin:0; line-height:1.5;">Logística de transporte y mantenimiento vehicular institucional.</p>
+                    </div>
+
+                    <div class="proceso-card" data-cat="apoyo" style="background:#fff; border-radius:14px; padding:22px 20px; box-shadow:var(--shadow-sm); border-left:4px solid var(--blue-celeste); transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                            <span style="background:var(--blue-celeste); color:#fff; font-size:0.7rem; font-weight:700; letter-spacing:1px; padding:3px 10px; border-radius:10px;">RRHH</span>
+                            <span style="font-size:1.2rem;">👥</span>
+                        </div>
+                        <h4 style="color:var(--navy-mid); font-size:0.88rem; font-weight:700; margin:0 0 8px; line-height:1.4;">Unidades de Recursos Humanos</h4>
+                        <p style="color:var(--text-secondary); font-size:0.78rem; margin:0; line-height:1.5;">Administración · Clasificación de Puestos · Desarrollo Integral · Dotación · Archivo Personal</p>
+                    </div>
+
+                    <!-- ── Enlace directorio OJ ── -->
+                    <div style="background:linear-gradient(135deg,var(--navy-deepest) 0%,var(--blue-main) 100%); border-radius:14px; padding:22px 20px; box-shadow:var(--shadow-md); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; grid-column:span 2;">
+                        <span style="font-size:2rem; margin-bottom:10px;">🔍</span>
+                        <p style="color:rgba(255,255,255,0.9); font-size:0.9rem; margin:0 0 16px; line-height:1.5;">¿Necesita contactar a una dependencia específica?<br>Consulte el <strong style="color:var(--gold-light);">Directorio Oficial</strong> del Organismo Judicial.</p>
+                        <a href="http://directorio.oj.gob.gt/" target="_blank" rel="noopener" style="background:rgba(255,255,255,0.15); color:#fff; border:1px solid rgba(255,255,255,0.3); padding:10px 24px; border-radius:8px; font-size:0.88rem; font-weight:600; text-decoration:none; transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">Ir al Directorio OJ →</a>
+                    </div>
+
+                </div><!-- /procesos-grid -->
+
             </div>
         </section>
 
-        <section id="eej-sgc">
+        <script>
+        function filtrarProcesos(cat, btn) {
+            document.querySelectorAll('.filter-chip').forEach(function(c) {
+                c.style.background = '#fff';
+                c.style.color = c.dataset.filter === 'misional' ? 'var(--blue-main)' : (c.dataset.filter === 'apoyo' ? 'var(--gold)' : 'var(--navy-deep)');
+                c.style.border = '2px solid ' + (c.dataset.filter === 'misional' ? 'var(--blue-main)' : (c.dataset.filter === 'apoyo' ? 'var(--gold)' : 'var(--navy-deep)'));
+            });
+            btn.style.background = cat === 'all' ? 'var(--navy-deep)' : (cat === 'misional' ? 'var(--blue-main)' : 'var(--gold)');
+            btn.style.color = cat === 'apoyo' ? 'var(--navy-deepest)' : '#fff';
+            btn.style.border = 'none';
+            document.querySelectorAll('.proceso-card').forEach(function(card) {
+                card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+            });
+        }
+        </script>
+
+        <!-- ══ BENEFICIOS — HOJA DE RUTA REDESIGN ══ -->
+        <section id="beneficios" style="background:#fff; padding:70px 20px;">
             <div class="container">
-                <h2>Escuela de Estudios Judiciales en el SGC</h2>
-                <p>Como parte del Sistema de Gestión de Calidad, la Escuela de Estudios Judiciales cumple una función de apoyo. Por esta razón, debe contar con ciertos documentos que pueden ser revisados y evaluados durante auditorías. Estos documentos son:</p>
 
-                <br> <!-- Añadido: Espacio adicional -->
+                <div class="fade-in-up" style="text-align:center; margin-bottom:48px;">
+                    <span style="display:inline-block; background:var(--gold-dim); color:var(--gold); font-size:0.8rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:6px 18px; border-radius:20px; margin-bottom:14px;">ISO 9001 · Impacto Institucional</span>
+                    <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem); color:var(--navy-deep); margin-bottom:12px; font-weight:800;">Beneficios del Sistema de Gestión de Calidad</h2>
+                    <p style="color:var(--text-secondary); max-width:660px; margin:0 auto; line-height:1.7; font-size:0.97rem;">Cada beneficio del SGC es un eslabón en la cadena de excelencia del Organismo Judicial.</p>
+                </div>
 
-                <div class="card-container">
-                    <div class="card">
-                        <h4><span class="card-icon"></span>Ficha de procesos</h4>
-                        <p>Resume los elementos, finalidad y controles de un proceso. Se identifica con el formato <strong>FICHA DE CARACTERIZACIÓN PROCESO FP-GC-01</strong> y es clave para la estandarización y auditoría dentro del SGC.</p>
-                        <!-- ===== BOTÓN AÑADIDO AQUÍ ===== -->
-                        <span class="risk-details-button" id="openFichaProcesosBtn">Ver Ficha de Procesos</span>
+                <div class="beneficios-roadmap fade-in-up" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:40px;">
+
+                    <div class="beneficio-card" style="background:var(--white-soft); border-radius:16px; padding:28px 24px; box-shadow:var(--shadow-sm); position:relative; overflow:hidden; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="position:absolute; top:-10px; right:-10px; font-size:5rem; color:var(--blue-main); opacity:0.06; font-weight:900; line-height:1;">01</div>
+                        <div style="font-size:2.2rem; margin-bottom:14px;">🤝</div>
+                        <h4 style="color:var(--navy-mid); font-size:1rem; font-weight:700; margin:0 0 10px;">Satisfacción del Ciudadano</h4>
+                        <p style="color:var(--text-secondary); font-size:0.85rem; margin:0; line-height:1.6;">Al centrarse en los requisitos del usuario y superarlos, se incrementa la confianza y legitimidad del sistema judicial ante la ciudadanía.</p>
+                        <div style="margin-top:14px; height:3px; background:linear-gradient(90deg, var(--blue-main), var(--blue-celeste)); border-radius:2px;"></div>
                     </div>
-                    <div class="card">
-                        <h4><span class="card-icon"></span>Análisis de FODA</h4>
-                        <p>Técnica de planificación estratégica que analiza Debilidades, Fortalezas (internas), Amenazas y Oportunidades (externas). Esta evaluación ayuda a la institución a mejorar sus puntos débiles y a capitalizar sus ventajas y las oportunidades del entorno.</p>
-                        <span class="risk-details-button" id="openFodaModalButton">Ver FODA</span>
+
+                    <div class="beneficio-card" style="background:var(--white-soft); border-radius:16px; padding:28px 24px; box-shadow:var(--shadow-sm); position:relative; overflow:hidden; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="position:absolute; top:-10px; right:-10px; font-size:5rem; color:var(--blue-main); opacity:0.06; font-weight:900; line-height:1;">02</div>
+                        <div style="font-size:2.2rem; margin-bottom:14px;">⚡</div>
+                        <h4 style="color:var(--navy-mid); font-size:1rem; font-weight:700; margin:0 0 10px;">Eficiencia Operativa</h4>
+                        <p style="color:var(--text-secondary); font-size:0.85rem; margin:0; line-height:1.6;">La estandarización de procesos y la identificación de áreas de mejora conducen a una utilización más eficaz de los recursos y a la reducción de errores.</p>
+                        <div style="margin-top:14px; height:3px; background:linear-gradient(90deg, var(--blue-main), var(--blue-celeste)); border-radius:2px;"></div>
                     </div>
-                    <div class="card clickable-card" id="openRiskModalCard">
-                        <h4><span class="card-icon"></span>Gestión de Riesgos</h4>
-                        <p>La <strong>MATRIZ DE IDENTIFICACIÓN DE RIESGOS FO-PE-03</strong> es un instrumento utilizado durante el análisis de riesgo. Su aplicación efectiva es fundamental para mejorar el control de los riesgos identificados y la seguridad general del proceso evaluado.</p>
-                        <a class="risk-details-button" href="https://clases.legaltech.com.gt/gio/eej-2026/riaej-2026/NCR_6/MATRIZ%20%20DE%20RIESGOS/" target="_self" rel="noopener" onclick="event.stopPropagation();">Ver Riesgos</a>
+
+                    <div class="beneficio-card" style="background:var(--white-soft); border-radius:16px; padding:28px 24px; box-shadow:var(--shadow-sm); position:relative; overflow:hidden; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="position:absolute; top:-10px; right:-10px; font-size:5rem; color:var(--gold); opacity:0.08; font-weight:900; line-height:1;">03</div>
+                        <div style="font-size:2.2rem; margin-bottom:14px;">⚖️</div>
+                        <h4 style="color:var(--navy-mid); font-size:1rem; font-weight:700; margin:0 0 10px;">Cumplimiento Normativo</h4>
+                        <p style="color:var(--text-secondary); font-size:0.85rem; margin:0; line-height:1.6;">Un SGC robusto asegura que la institución se mantenga al día y cumpla con todas las normativas legales y regulatorias aplicables.</p>
+                        <div style="margin-top:14px; height:3px; background:linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius:2px;"></div>
                     </div>
-                    <div class="card">
-                        <h4><span class="card-icon"></span>Control de documentos</h4>
-                        <p>Para el control documental de los procesos del SGC, se utiliza el formato <strong>LISTA MAESTRA DE DOCUMENTOS FO-GC-02</strong>. Este contiene información detallada de cada documento (código, nombre, versión, revisión, responsable, ubicación, etc.), asegurando la trazabilidad y el uso de versiones correctas.</p>
+
+                    <div class="beneficio-card" style="background:var(--white-soft); border-radius:16px; padding:28px 24px; box-shadow:var(--shadow-sm); position:relative; overflow:hidden; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="position:absolute; top:-10px; right:-10px; font-size:5rem; color:var(--gold); opacity:0.08; font-weight:900; line-height:1;">04</div>
+                        <div style="font-size:2.2rem; margin-bottom:14px;">🏆</div>
+                        <h4 style="color:var(--navy-mid); font-size:1rem; font-weight:700; margin:0 0 10px;">Imagen y Reputación Institucional</h4>
+                        <p style="color:var(--text-secondary); font-size:0.85rem; margin:0; line-height:1.6;">La certificación ISO 9001 es reconocimiento internacional que demuestra el compromiso con la excelencia, elevando el prestigio del OJ.</p>
+                        <div style="margin-top:14px; height:3px; background:linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius:2px;"></div>
                     </div>
-                     <div class="card">
-                        <h4><span class="card-icon"></span>Indicador de la Escuela de Estudios Judiciales</h4>
-                        <p>Se mide el Porcentaje de Ejecución del Programa Ordinario y Extraordinario de Capacitaciones dirigido a las dependencias ISO. El objetivo es cumplir con el 85% de ejecución del programa de capacitaciones, garantizando la formación continua en las dependencias ISO.</p>
+
+                    <div class="beneficio-card" style="background:var(--white-soft); border-radius:16px; padding:28px 24px; box-shadow:var(--shadow-sm); position:relative; overflow:hidden; transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="position:absolute; top:-10px; right:-10px; font-size:5rem; color:var(--navy-mid); opacity:0.06; font-weight:900; line-height:1;">05</div>
+                        <div style="font-size:2.2rem; margin-bottom:14px;">📈</div>
+                        <h4 style="color:var(--navy-mid); font-size:1rem; font-weight:700; margin:0 0 10px;">Mejora Continua & Decisiones Informadas</h4>
+                        <p style="color:var(--text-secondary); font-size:0.85rem; margin:0; line-height:1.6;">El ciclo <strong>PHVA</strong> inherente a la norma promueve una cultura de aprendizaje y adaptación constante basada en datos y evidencias.</p>
+                        <div style="margin-top:14px; height:3px; background:linear-gradient(90deg, var(--navy-mid), var(--blue-main)); border-radius:2px;"></div>
+                    </div>
+
+                    <!-- PHVA visual badge -->
+                    <div style="background:linear-gradient(135deg,var(--navy-deepest) 0%,var(--navy-mid) 100%); border-radius:16px; padding:28px 24px; box-shadow:var(--shadow-md); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                        <h4 style="color:var(--gold-light); font-size:0.9rem; font-weight:700; margin:0 0 16px; letter-spacing:1px; text-transform:uppercase;">Ciclo de Excelencia</h4>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; width:100%;">
+                            <div style="background:rgba(37,99,168,0.4); border-radius:8px; padding:10px 8px; text-align:center;">
+                                <div style="color:var(--gold-light); font-weight:800; font-size:1rem;">P</div>
+                                <div style="color:rgba(255,255,255,0.75); font-size:0.72rem; margin-top:2px;">Planificar</div>
+                            </div>
+                            <div style="background:rgba(37,99,168,0.4); border-radius:8px; padding:10px 8px; text-align:center;">
+                                <div style="color:var(--gold-light); font-weight:800; font-size:1rem;">H</div>
+                                <div style="color:rgba(255,255,255,0.75); font-size:0.72rem; margin-top:2px;">Hacer</div>
+                            </div>
+                            <div style="background:rgba(37,99,168,0.4); border-radius:8px; padding:10px 8px; text-align:center;">
+                                <div style="color:var(--gold-light); font-weight:800; font-size:1rem;">V</div>
+                                <div style="color:rgba(255,255,255,0.75); font-size:0.72rem; margin-top:2px;">Verificar</div>
+                            </div>
+                            <div style="background:rgba(37,99,168,0.4); border-radius:8px; padding:10px 8px; text-align:center;">
+                                <div style="color:var(--gold-light); font-weight:800; font-size:1rem;">A</div>
+                                <div style="color:rgba(255,255,255,0.75); font-size:0.72rem; margin-top:2px;">Actuar</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Cierre institucional -->
+                <div class="fade-in-up" style="text-align:center; padding:36px 40px; background:var(--white-soft); border-radius:16px; border-top:3px solid var(--gold);">
+                    <p style="color:var(--navy-mid); font-size:1.1rem; font-style:italic; line-height:1.8; margin:0; max-width:680px; margin:0 auto;">"La calidad no es un acto, es un hábito institucional que se construye día a día con el compromiso de cada persona que forma parte del Sistema."</p>
+                    <div style="margin-top:12px; color:var(--gold); font-size:0.85rem; font-weight:600; letter-spacing:1px; text-transform:uppercase;">SGC · Organismo Judicial · ISO 9001:2015</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ══ EEJ EN EL SGC REDESIGN ══ -->
+        <section id="eej-sgc" style="background:var(--white-soft); padding:70px 20px;">
+            <div class="container">
+
+                <!-- Section header -->
+                <div class="fade-in-up" style="text-align:center; margin-bottom:44px;">
+                    <span style="display:inline-block; background:var(--gold-dim); color:var(--gold); font-size:0.8rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:6px 18px; border-radius:20px; margin-bottom:14px;">ISO 9001:2015</span>
+                    <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem); color:var(--navy-deep); margin-bottom:12px; font-weight:800;">Escuela de Estudios Judiciales en el SGC</h2>
+                    <p style="font-size:1rem; color:var(--text-secondary); max-width:700px; margin:0 auto; line-height:1.7;">Como parte del Sistema de Gestión de Calidad, la EEJ cumple una función de apoyo y debe contar con documentos clave revisables durante auditorías internas y externas.</p>
+                </div>
+
+                <!-- Document cards grid (3 cols) -->
+                <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-bottom:28px;">
+
+                    <!-- Card 1: Ficha de Procesos -->
+                    <div style="background:#fff; border-radius:16px; padding:28px 24px; border-top:4px solid var(--blue-main); box-shadow:var(--shadow-sm); transition:transform 0.2s,box-shadow 0.2s; display:flex; flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+                            <div style="width:44px; height:44px; background:linear-gradient(135deg,var(--navy-deep),var(--blue-main)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; flex-shrink:0;">📄</div>
+                            <div>
+                                <span style="font-size:0.7rem; font-weight:700; color:var(--blue-main); text-transform:uppercase; letter-spacing:1px;">FP-GC-01</span>
+                                <h4 style="font-size:0.95rem; font-weight:700; color:var(--navy-mid); margin:2px 0 0; line-height:1.3;">Ficha de Procesos</h4>
+                            </div>
+                        </div>
+                        <p style="font-size:0.83rem; color:var(--text-secondary); line-height:1.6; margin:0 0 18px; flex-grow:1;">Resume los elementos, finalidad y controles de un proceso. Clave para la estandarización y auditoría dentro del SGC.</p>
+                        <span id="openFichaProcesosBtn" style="display:inline-block; background:var(--blue-main); color:#fff; font-size:0.78rem; font-weight:700; padding:8px 16px; border-radius:8px; cursor:pointer; text-align:center; transition:background 0.2s;" onmouseover="this.style.background='var(--blue-light)'" onmouseout="this.style.background='var(--blue-main)'">Ver Ficha de Procesos</span>
+                    </div>
+
+                    <!-- Card 2: Análisis FODA -->
+                    <div style="background:#fff; border-radius:16px; padding:28px 24px; border-top:4px solid var(--blue-main); box-shadow:var(--shadow-sm); transition:transform 0.2s,box-shadow 0.2s; display:flex; flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+                            <div style="width:44px; height:44px; background:linear-gradient(135deg,var(--blue-main),var(--blue-light)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; flex-shrink:0;">🔍</div>
+                            <div>
+                                <span style="font-size:0.7rem; font-weight:700; color:var(--blue-main); text-transform:uppercase; letter-spacing:1px;">FO-PE-01</span>
+                                <h4 style="font-size:0.95rem; font-weight:700; color:var(--navy-mid); margin:2px 0 0; line-height:1.3;">Análisis de FODA</h4>
+                            </div>
+                        </div>
+                        <p style="font-size:0.83rem; color:var(--text-secondary); line-height:1.6; margin:0 0 18px; flex-grow:1;">Técnica de planificación estratégica que analiza Fortalezas, Oportunidades, Debilidades y Amenazas institucionales.</p>
+                        <span id="openFodaModalButton" style="display:inline-block; background:var(--blue-main); color:#fff; font-size:0.78rem; font-weight:700; padding:8px 16px; border-radius:8px; cursor:pointer; text-align:center; transition:background 0.2s;" onmouseover="this.style.background='var(--blue-light)'" onmouseout="this.style.background='var(--blue-main)'">Ver FODA</span>
+                    </div>
+
+                    <!-- Card 3: Gestión de Riesgos -->
+                    <div id="openRiskModalCard" class="clickable-card" style="background:#fff; border-radius:16px; padding:28px 24px; border-top:4px solid var(--gold); box-shadow:var(--shadow-sm); transition:transform 0.2s,box-shadow 0.2s; display:flex; flex-direction:column; cursor:pointer;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+                            <div style="width:44px; height:44px; background:linear-gradient(135deg,var(--gold),var(--gold-light)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; flex-shrink:0;">⚠️</div>
+                            <div>
+                                <span style="font-size:0.7rem; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:1px;">FO-PE-03</span>
+                                <h4 style="font-size:0.95rem; font-weight:700; color:var(--navy-mid); margin:2px 0 0; line-height:1.3;">Gestión de Riesgos</h4>
+                            </div>
+                        </div>
+                        <p style="font-size:0.83rem; color:var(--text-secondary); line-height:1.6; margin:0 0 18px; flex-grow:1;">Matriz de identificación de riesgos. Instrumento fundamental para mejorar el control de riesgos identificados en los procesos.</p>
+                        <a class="risk-details-button" href="https://clases.legaltech.com.gt/gio/eej-2026/riaej-2026/NCR_6/MATRIZ%20%20DE%20RIESGOS/" target="_self" rel="noopener" onclick="event.stopPropagation();" style="display:inline-block; background:var(--gold); color:var(--navy-deepest); font-size:0.78rem; font-weight:700; padding:8px 16px; border-radius:8px; text-decoration:none; text-align:center; transition:background 0.2s;" onmouseover="this.style.background='var(--gold-light)'" onmouseout="this.style.background='var(--gold)'">Ver Riesgos</a>
+                    </div>
+
+                    <!-- Card 4: Control de Documentos -->
+                    <div style="background:#fff; border-radius:16px; padding:28px 24px; border-top:4px solid var(--gold); box-shadow:var(--shadow-sm); transition:transform 0.2s,box-shadow 0.2s; display:flex; flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+                            <div style="width:44px; height:44px; background:linear-gradient(135deg,var(--gold-light),var(--gold)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; flex-shrink:0;">🗂️</div>
+                            <div>
+                                <span style="font-size:0.7rem; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:1px;">FO-GC-02</span>
+                                <h4 style="font-size:0.95rem; font-weight:700; color:var(--navy-mid); margin:2px 0 0; line-height:1.3;">Control de Documentos</h4>
+                            </div>
+                        </div>
+                        <p style="font-size:0.83rem; color:var(--text-secondary); line-height:1.6; margin:0; flex-grow:1;">Lista Maestra de Documentos con información detallada de cada documento: código, nombre, versión, revisión, responsable y ubicación. Garantiza la trazabilidad y el uso de versiones correctas.</p>
+                    </div>
+
+                    <!-- Card 5: Indicador EEJ — dark metric card spanning 2 cols -->
+                    <div class="dark-card" style="grid-column:span 2; background:linear-gradient(135deg,var(--navy-deepest) 0%,var(--navy-mid) 100%); border-radius:16px; padding:28px 28px; box-shadow:var(--shadow-md); display:flex; align-items:center; gap:28px;">
+                        <div style="flex-shrink:0; text-align:center;">
+                            <div style="font-size:2.8rem; font-weight:900; color:var(--gold); line-height:1;">85%</div>
+                            <div style="font-size:0.7rem; color:rgba(255,255,255,0.65); font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-top:4px;">Meta SGC</div>
+                        </div>
+                        <div>
+                            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                                <div style="width:38px; height:38px; background:rgba(201,168,76,0.2); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;">📈</div>
+                                <h4 style="color:#fff; font-size:0.95rem; font-weight:700; margin:0; line-height:1.3;">Indicador de la Escuela de Estudios Judiciales</h4>
+                            </div>
+                            <p style="color:rgba(255,255,255,0.8); font-size:0.83rem; line-height:1.6; margin:0;">Porcentaje de Ejecución del Programa Ordinario y Extraordinario de Capacitaciones dirigido a las dependencias ISO. El objetivo es alcanzar el <strong style="color:var(--gold-light);">85% de ejecución</strong>, garantizando la formación continua en las dependencias ISO.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Important note block -->
+                <div style="background:linear-gradient(135deg,var(--navy-deepest),var(--navy-mid)); border-radius:16px; padding:28px 32px; border-left:5px solid var(--gold); box-shadow:var(--shadow-md);">
+                    <div style="display:flex; align-items:flex-start; gap:16px;">
+                        <div style="font-size:1.6rem; flex-shrink:0; margin-top:2px;">📌</div>
+                        <div>
+                            <p style="color:var(--gold-light); font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:2px; margin:0 0 8px;">IMPORTANTE</p>
+                            <p style="color:rgba(255,255,255,0.88); font-size:0.88rem; line-height:1.7; margin:0 0 10px;">La Escuela de Estudios Judiciales, como parte del proceso de apoyo dentro del Sistema de Gestión de Calidad del Organismo Judicial, debe ser <strong style="color:#fff;">evaluada al menos una vez al año</strong>, tanto de forma interna como externa.</p>
+                            <p style="color:rgba(255,255,255,0.75); font-size:0.85rem; line-height:1.7; margin:0;">Estas evaluaciones se realizan mediante auditorías internas llevadas a cabo por la Secretaría de Planificación y Desarrollo Institucional, con el objetivo de preparar a las dependencias del SGC para la auditoría externa realizada por los delegados del ente certificador.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="highlight-modification-note">
-                    <strong>IMPORTANTE</strong>
-                    <p>La Escuela de Estudios Judiciales, como parte del proceso de apoyo dentro del Sistema de Gestión de Calidad del Organismo Judicial, debe ser evaluada al menos una vez al año, tanto de forma interna como externa.</p>
-                    <p>Estas evaluaciones realizadas mediante auditorías internas llevadas a cabo por la Secretaría de Planificación y Desarrollo Institucional, con el objetivo de preparar a las dependencias incorporadas al Sistema de Gestión de Calidad para la auditoría externa, la cual es realizada por los delegados del ente certificador.</p>
-                </div>
             </div>
         </section>
 
@@ -735,115 +1204,50 @@ header("Expires: 0");
             </div>
         </section>
 
-        <!-- INICIO: SECCIÓN DE DIRECTORIO DE DOCENTES (INTEGRADA) -->
-        <section id="red-docente" class="content-section">
-            <div class="container">
-                <div class="section-title-wrapper">
-                    <h3 style="font-size: 2em; color: var(--accent-blue-darker); border-left: 4px solid var(--accent-gold); padding-left: 15px; margin: 0; display: flex; align-items: center;">
-                        <i class="fas fa-chalkboard-teacher" style="margin-right: 15px;"></i>
-                        Jueces y Magistrados docentes del Organismo Judicial
-                    </h3>
-                </div>
-                <p style="margin-top:15px; margin-bottom: 30px; text-align: justify;">La Escuela cuenta con una red de profesionales de alto nivel, incluyendo magistrados, jueces y expertos en diversas áreas, que garantizan una formación de excelencia. Utilice el siguiente directorio interactivo para explorar los perfiles de los docentes, filtrar por área de especialidad y conocer sus competencias.</p>
-                
-                <div id="docentes-directory">
-                    <div class="summary-panel">
-                        <div class="summary-box total-box"><div id="total-judges" class="summary-number"></div><div class="summary-label">Total de Registros</div></div>
-                        <div class="summary-box list-box"><h3 class="summary-title">Registros por Cargo</h3><ul id="cargo-stats-list" class="summary-list"></ul></div>
-                        <div class="summary-box list-box"><h3 class="summary-title">Top 15 Áreas de Docencia</h3><ul id="expertise-stats-list" class="summary-list"></ul></div>
-                    </div>
-                    <div class="filters-container">
-                        <h4 class="filters-header">Filtros de Búsqueda</h4>
-                        <div class="filter-grid">
-                            <div class="filter-group"><label for="filter-name">Nombre</label><input type="text" id="filter-name" placeholder="Buscar por nombre..."></div>
-                            <div class="filter-group"><label for="filter-cargo">Cargo</label><select id="filter-cargo"><option value="">Todos los Cargos</option></select></div>
-                            <div class="filter-group"><label for="filter-judicatura">Judicatura</label><select id="filter-judicatura"><option value="">Todas las Judicaturas</option></select></div>
-                            <div class="filter-group"><label for="filter-docencia">Área de Docencia</label><select id="filter-docencia"><option value="">Todas las Áreas</option></select></div>
-                            <div class="filter-group"><label for="filter-estado">Estado</label><select id="filter-estado"><option value="">Todos</option><option value="ACTIVO">Activo</option><option value="BAJA">Baja</option></select></div>
-                        </div>
-                        <div class="filter-buttons"><button id="reset-filters">Limpiar Filtros</button></div>
-                    </div>
-                    <div id="results-count"></div>
-                    <div id="judges-container"></div>
-                </div>
-                <!-- FIN: SECCIÓN DE DIRECTORIO DE DOCENTES (INTEGRADA) -->
-            </div>
-        </section>
-
-        <!-- INICIO: SECCIÓN DIRECTORIO INTERACTIVO COMPLETO -->
-        <section id="directorio-completo" class="content-section">
-            <div class="container">
-                <div class="section-title-wrapper">
-                    <h3 style="font-size: 2em; color: var(--accent-blue-darker); border-left: 4px solid var(--accent-gold); padding-left: 15px; margin: 0; display: flex; align-items: center;">
-                        <i class="fas fa-users" style="margin-right: 15px;"></i>
-                        Docentes externos del Organismo Judicial
-                    </h3>
-                </div>
-                <p style="margin-top:15px; margin-bottom: 30px; text-align: justify;">Explore el directorio completo de jueces y magistrados docentes de la Escuela de Estudios Judiciales. Este sistema interactivo le permite filtrar por múltiples criterios y obtener información detallada de cada profesional.</p>
-                
-                <!-- Estadísticas Generales -->
-                <div class="directory-summary-panel">
-                    <div class="directory-summary-box directory-total-box">
-                        <div id="directory-total-judges" class="directory-summary-number"></div>
-                        <div class="directory-summary-label">Total de Registros</div>
-                    </div>
-                    <div class="directory-summary-box directory-expertise-box">
-                        <h3 class="directory-summary-title">Top 15 Áreas de Docencia</h3>
-                        <ul id="directory-expertise-stats-list" class="directory-summary-list"></ul>
-                    </div>
-                </div>
-
-                <!-- Filtros de Búsqueda -->
-                <div class="directory-filters-container">
-                    <h4 class="directory-filters-header">Filtros de Búsqueda Avanzada</h4>
-                    <div class="directory-filter-grid">
-                        <div class="directory-filter-group">
-                            <label for="directory-filter-name">Nombre</label>
-                            <input type="text" id="directory-filter-name" placeholder="Buscar por nombre...">
-                        </div>
-                        <div class="directory-filter-group">
-                            <label for="directory-filter-judicatura">Profesión / Especialidad</label>
-                            <select id="directory-filter-judicatura">
-                                <option value="">Todas las Profesiones</option>
-                            </select>
-                        </div>
-                        <div class="directory-filter-group">
-                            <label for="directory-filter-docencia">Área de Docencia</label>
-                            <select id="directory-filter-docencia">
-                                <option value="">Todas las Áreas</option>
-                            </select>
-                        </div>
-                        <div class="directory-filter-group">
-                            <label for="directory-filter-estado">Estado</label>
-                            <select id="directory-filter-estado">
-                                <option value="">Todos</option>
-                                <option value="ACTIVO">Activo</option>
-                                <option value="BAJA">Baja</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="directory-filter-buttons">
-                        <button id="directory-reset-filters">Limpiar Filtros</button>
-                    </div>
-                </div>
-
-                <!-- Contador de Resultados -->
-                <div id="directory-results-count"></div>
-
-                <!-- Contenedor de Tarjetas -->
-                <div id="directory-judges-container"></div>
-            </div>
-        </section>
-        <!-- FIN: SECCIÓN DIRECTORIO INTERACTIVO COMPLETO -->
     </main>
 
     <footer>
-        <div class="container">
-            <p><strong>Escuela de Estudios Judiciales</strong></p>
-            <p><em>“Formación para la Justicia y la Paz”</em></p>
-            <p>Reacreditación Internacional Norma de Calidad RIAEJ 1000:2019</p>
-            <p>Lote 12, finca San Gaspar, aldea Santa Rosita, zona 16, ciudad de Guatemala, C.A.</p>
-            <p>PBX: 2290-3939 | <a href="http://www.oj.gob.gt/esej" target="_blank">www.oj.gob.gt/esej</a></p>
+        <div class="footer-inner">
+
+            <!-- Col 1: Identidad institucional -->
+            <div class="footer-col footer-brand">
+                <p class="footer-name">Escuela de Estudios Judiciales</p>
+                <p class="footer-motto">"Formación para la Justicia y la Paz"</p>
+            </div>
+
+            <!-- Separador vertical -->
+            <div class="footer-divider"></div>
+
+            <!-- Col 2: Datos de contacto -->
+            <div class="footer-col footer-contact">
+                <p class="footer-col-title">Contacto</p>
+                <p>&#128205; Lote 12, finca San Gaspar, aldea Santa Rosita,<br>zona 16, Ciudad de Guatemala, C.A.</p>
+                <p>&#128222; PBX: 2290-3939</p>
+                <p>&#127760; <a href="http://www.oj.gob.gt/esej" target="_blank" rel="noopener">www.oj.gob.gt/esej</a></p>
+            </div>
+
+            <!-- Separador vertical -->
+            <div class="footer-divider"></div>
+
+            <!-- Col 3: Certificación -->
+            <div class="footer-col footer-cert">
+                <p class="footer-col-title">Certificación</p>
+                <div class="footer-cert-badge">
+                    <span class="footer-cert-icon">&#127942;</span>
+                    <span>Reacreditación Internacional<br><strong>Norma de Calidad RIAEJ 1000:2019</strong></span>
+                </div>
+                <div class="footer-cert-badge" style="margin-top:10px;">
+                    <span class="footer-cert-icon">&#9989;</span>
+                    <span>Sistema de Gestión de Calidad<br><strong>NTC ISO 9001:2015</strong></span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="footer-bottom">
+            <span>&copy; <?php echo date('Y'); ?> Organismo Judicial de Guatemala &nbsp;&middot;&nbsp; Escuela de Estudios Judiciales</span>
+            <span>SGC &nbsp;&middot;&nbsp; ISO 9001:2015</span>
         </div>
     </footer>
 
@@ -854,19 +1258,22 @@ header("Expires: 0");
         </div>
     </div>
 
-    <!-- Botón flotante PEI 2026 - 2030 -->
+    <!-- ── Botón flotante PEI 2026-2030 — pestaña retráctil ── -->
     <a href="https://drive.google.com/file/d/1lidz7HL0a-IcucHCPc8OOI2gE4ZMArS0/view?usp=sharing" 
        id="boton-flotante-pei" 
        title="PEI 2026 - 2030" 
        target="_blank" 
        rel="noopener"
-       style="position: fixed; right: 32px; bottom: 200px; z-index: 1000; background: #d4af37; color: #000; padding: 16px 28px; border-radius: 30px 0 0 30px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); font-size: 1.1rem; font-weight: 600; text-decoration: none; transition: background 0.2s, transform 0.2s; display: flex; align-items: center; gap: 8px;">
-    PEI 2026 - 2030
+       aria-label="Ver Plan Estratégico Institucional 2026-2030">
+        <span style="font-size:1.2rem;flex-shrink:0;">📑</span>
+        <span>PEI 2026 – 2030</span>
     </a>
 
-    <!-- Botón flotante personalizado -->
-    <a href="https://legaltech.com.gt/escuelasgc/docs/" id="boton-flotante" title="Documentos codificados" target="_blank" rel="noopener">
-    Documentos codificados
+    <!-- ── Botón flotante Documentos — pestaña retráctil ── -->
+    <a href="https://legaltech.com.gt/escuelasgc/docs/" id="boton-flotante" title="Documentos codificados" target="_blank" rel="noopener"
+       aria-label="Ver documentos codificados del SGC">
+        <span style="font-size:1.2rem;flex-shrink:0;">📂</span>
+        <span>Documentos</span>
     </a>
     <!-- MODIFICADO: Contador de interacciones (ahora fijo sobre el footer del autor) -->
     <div id="viewCounter">
