@@ -1430,19 +1430,19 @@ header("Expires: 0");
                 <div class="carousel-slides">
                     <!-- Diapositiva 1 -->
                     <div class="carousel-slide">
-                        <img src="https://raw.githubusercontent.com/giovanni-1990/modulosgcescuela/refs/heads/main/ficha_procesos_2026/FP-GC-01%20Ficha%20de%20Procesos%20Escuela%20de%20Estudios%20Judiciales%202026-1_page-0001.jpg?token=GHSAT0AAAAAAEA3WRFO7K2GV6SV4RWV6CMQ2R4DT7Q" alt="Ficha de Procesos Página 1">
+                        <img src="https://raw.githubusercontent.com/giovanni-1990/modulosgcescuela/refs/heads/main/ficha_procesos_2026/FP-GC-01%20Ficha%20de%20Procesos%20Escuela%20de%20Estudios%20Judiciales%202026-1_page-0001.jpg" alt="Ficha de Procesos Página 1">
                     </div>
                     <!-- Diapositiva 2 -->
                     <div class="carousel-slide">
-                        <img src="https://raw.githubusercontent.com/giovanni-1990/modulosgcescuela/refs/heads/main/ficha_procesos_2026/FP-GC-01%20Ficha%20de%20Procesos%20Escuela%20de%20Estudios%20Judiciales%202026-2_page-0001.jpg?token=GHSAT0AAAAAAEA3WRFPOU74QBNVV3NNM3642R4DUSA" alt="Ficha de Procesos Página 2">
+                        <img src="https://raw.githubusercontent.com/giovanni-1990/modulosgcescuela/refs/heads/main/ficha_procesos_2026/FP-GC-01%20Ficha%20de%20Procesos%20Escuela%20de%20Estudios%20Judiciales%202026-2_page-0001.jpg" alt="Ficha de Procesos Página 2">
                     </div>
                     <!-- Diapositiva 3 -->
                     <div class="carousel-slide">
-                        <img src="https://raw.githubusercontent.com/giovanni-1990/modulosgcescuela/refs/heads/main/ficha_procesos_2026/FP-GC-01%20Ficha%20de%20Procesos%20Escuela%20de%20Estudios%20Judiciales%202026-3_page-0001.jpg?token=GHSAT0AAAAAAEA3WRFOJRGTJBHD3RSFJWJI2R4DVZQ" alt="Ficha de Procesos Página 3">
+                        <img src="https://raw.githubusercontent.com/giovanni-1990/modulosgcescuela/refs/heads/main/ficha_procesos_2026/FP-GC-01%20Ficha%20de%20Procesos%20Escuela%20de%20Estudios%20Judiciales%202026-3_page-0001.jpg" alt="Ficha de Procesos Página 3">
                     </div>
                     <!-- Diapositiva 4 -->
                     <div class="carousel-slide">
-                        <img src="https://raw.githubusercontent.com/giovanni-1990/modulosgcescuela/refs/heads/main/ficha_procesos_2026/FP-GC-01%20Ficha%20de%20Procesos%20Escuela%20de%20Estudios%20Judiciales%202026-4_page-0001.jpg?token=GHSAT0AAAAAAEA3WRFPEALC3ALC2UAFRWBY2R4DWQA" alt="Ficha de Procesos Página 4">
+                        <img src="https://raw.githubusercontent.com/giovanni-1990/modulosgcescuela/refs/heads/main/ficha_procesos_2026/FP-GC-01%20Ficha%20de%20Procesos%20Escuela%20de%20Estudios%20Judiciales%202026-4_page-0001.jpg" alt="Ficha de Procesos Página 4">
                     </div>
                 </div>
                 <!-- Botones de navegación -->
