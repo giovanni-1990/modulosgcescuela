@@ -1390,6 +1390,16 @@ header("Expires: 0");
         <span style="font-size:1.2rem;flex-shrink:0;">📂</span>
         <span>Documentos</span>
     </a>
+     <!-- ── Botón flotante organigrama — pestaña retráctil ── -->
+    <a href="https://clases.legaltech.com.gt/gio/eej-2026/riaej-2026/NCR_5/organigrama/" 
+       id="boton-flotante-organigrama" 
+       title="Organigrama" 
+       target="_blank" 
+       rel="noopener"
+       aria-label="Ver Organigrama Escuela de Estudios Judiciales">
+        <span style="font-size:1.2rem;flex-shrink:0;">🏢</span>
+        <span>Organigrama</span>
+    </a>
     <!-- MODIFICADO: Contador de interacciones (ahora fijo sobre el footer del autor) -->
     <div id="viewCounter">
         Vistas: <span id="views">0</span> | Interacciones: <span id="interactions">0</span>
@@ -1420,15 +1430,19 @@ header("Expires: 0");
                 <div class="carousel-slides">
                     <!-- Diapositiva 1 -->
                     <div class="carousel-slide">
-                        <img src="https://raw.githubusercontent.com/giovanni-1990/objetivos-y-politicas/refs/heads/main/FICHA%20DE%20PROCESOS%20-%202025-1-3_page-0001.jpg" alt="Ficha de Procesos Página 1">
+                        <img src="https://raw.githubusercontent.com/giovanni-1990/modulosgcescuela/refs/heads/main/ficha_procesos_2026/FP-GC-01%20Ficha%20de%20Procesos%20Escuela%20de%20Estudios%20Judiciales%202026-1_page-0001.jpg?token=GHSAT0AAAAAAEA3WRFO7K2GV6SV4RWV6CMQ2R4DT7Q" alt="Ficha de Procesos Página 1">
                     </div>
                     <!-- Diapositiva 2 -->
                     <div class="carousel-slide">
-                        <img src="https://raw.githubusercontent.com/giovanni-1990/objetivos-y-politicas/refs/heads/main/FICHA%20DE%20PROCESOS%20-%202025-1-3_page-0002.jpg" alt="Ficha de Procesos Página 2">
+                        <img src="https://raw.githubusercontent.com/giovanni-1990/modulosgcescuela/refs/heads/main/ficha_procesos_2026/FP-GC-01%20Ficha%20de%20Procesos%20Escuela%20de%20Estudios%20Judiciales%202026-2_page-0001.jpg?token=GHSAT0AAAAAAEA3WRFPOU74QBNVV3NNM3642R4DUSA" alt="Ficha de Procesos Página 2">
                     </div>
                     <!-- Diapositiva 3 -->
                     <div class="carousel-slide">
-                        <img src="https://raw.githubusercontent.com/giovanni-1990/objetivos-y-politicas/refs/heads/main/FICHA%20DE%20PROCESOS%20-%202025-1-3_page-0003.jpg" alt="Ficha de Procesos Página 3">
+                        <img src="https://raw.githubusercontent.com/giovanni-1990/modulosgcescuela/refs/heads/main/ficha_procesos_2026/FP-GC-01%20Ficha%20de%20Procesos%20Escuela%20de%20Estudios%20Judiciales%202026-3_page-0001.jpg?token=GHSAT0AAAAAAEA3WRFOJRGTJBHD3RSFJWJI2R4DVZQ" alt="Ficha de Procesos Página 3">
+                    </div>
+                    <!-- Diapositiva 4 -->
+                    <div class="carousel-slide">
+                        <img src="https://raw.githubusercontent.com/giovanni-1990/modulosgcescuela/refs/heads/main/ficha_procesos_2026/FP-GC-01%20Ficha%20de%20Procesos%20Escuela%20de%20Estudios%20Judiciales%202026-4_page-0001.jpg?token=GHSAT0AAAAAAEA3WRFPEALC3ALC2UAFRWBY2R4DWQA" alt="Ficha de Procesos Página 4">
                     </div>
                 </div>
                 <!-- Botones de navegación -->
