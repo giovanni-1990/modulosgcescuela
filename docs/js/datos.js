@@ -436,8 +436,8 @@ const listaDocumentos = [
   {
     "codigo": "FO-EEJ-63",
     "nombre": "Requerimiento de Insumos para Capacitación",
-    "version": "3",
-    "fecha": "ene-24",
+    "version": "4",
+    "fecha": "oct-26",
     "archivo": "FO-EEJ-63 REQUERIMIENTO DE INSUMOS PARA CAPACITACIÓN.doc"
   },
   {
